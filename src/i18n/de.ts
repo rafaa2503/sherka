@@ -17,53 +17,13 @@ export const de = {
   hero: {
     plakette: "4 Seiten in Betrieb",
     /* Zweizeilig, weil beide Zeilen einzeln auf der Falltafel einlaufen. */
-    titelOben: "WEBSITES DIE",
-    titelUnten: "ETWAS KÖNNEN",
+    titelOben: "Websites, die",
+    titelUnten: "etwas können.",
     text: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Gebaut von einem Entwickler, nicht aus einer Vorlage.",
     cta: "Projekt anfragen",
-    cta2: "Tempo prüfen",
+    cta2: "Arbeiten ansehen",
   },
 
-  tempo: {
-    titel: "Wie schnell ist Ihre Website heute?",
-    text: "Adresse eingeben, ich messe mit demselben Werkzeug, das Google für die Bewertung benutzt. Dauert etwa zwanzig Sekunden und kostet nichts.",
-    label: "Adresse Ihrer Website",
-    platzhalter: "ihre-domain.ch",
-    knopf: "Messen",
-    laeuft: "Wird gemessen",
-    laeuftHinweis: "Google lädt Ihre Seite gerade auf einem simulierten Mobiltelefon. Das dauert bis zu dreissig Sekunden.",
-    nochmal: "Andere Adresse prüfen",
-
-    lcpLabel: "Bis der grösste Inhalt sichtbar ist",
-    clsLabel: "Springt das Layout beim Laden",
-    scoreLabel: "Gesamtwertung von Google",
-
-    stufeGut: "gut",
-    stufeMittel: "verbesserungswürdig",
-    stufeSchlecht: "schlecht",
-
-    urteilGut: "Ihre Seite ist schnell genug. Daran müssen Sie nichts ändern.",
-    urteilMittel:
-      "Da geht mehr. Auf dem Handy dauert es {lcp} Sekunden, bis Ihre Besucher den ersten grossen Inhalt sehen.",
-    urteilSchlecht:
-      "Das ist zu langsam. Google stuft Seiten ab diesem Wert schlechter ein, und ein Teil Ihrer Besucher ist vorher wieder weg.",
-
-    feldDaten: "Werte aus echten Besuchen der letzten 28 Tage",
-    laborDaten: "Labormessung, weil noch zu wenige echte Besuche vorliegen",
-
-    weiterGut: "Wenn Sie trotzdem etwas ändern möchten, schreiben Sie mir.",
-    weiterSchlecht: "Soll ich mir ansehen, woran es liegt?",
-    weiterKnopf: "Das mit mir besprechen",
-
-    fehlerUrl: "Diese Adresse kann ich nicht lesen. Beispiel: ihre-domain.ch",
-    fehlerNichtErreichbar:
-      "Die Seite war für den Test nicht erreichbar. Prüfen Sie die Adresse, oder sie blockiert automatische Zugriffe.",
-    fehlerKontingent:
-      "Das Messwerkzeug ist gerade ausgelastet. Versuchen Sie es in ein paar Minuten nochmal.",
-    fehlerAllgemein: "Die Messung hat nicht geklappt.",
-    fehlerHinweis: "Rufen Sie mich an, dann schaue ich es mir direkt an.",
-    ohneJs: "Für den Tempocheck wird JavaScript gebraucht. Rufen Sie mich an, dann messe ich Ihre Seite für Sie.",
-  },
 
   arbeiten: {
     titel: "Vier Seiten, die arbeiten",
@@ -95,6 +55,49 @@ export const de = {
       },
     ],
   },
+
+  aussage: "Jede dieser Seiten ist von Hand gebaut. Kein Theme, kein Baukasten, kein Stapel Plugins, der irgendwann bricht.",
+
+  branchen: {
+    titel: "Für wen ich baue",
+    text: "Vier Branchen, in denen bereits etwas von mir läuft. Wenn Ihre nicht dabei ist, heisst das nur, dass Sie die erste wären.",
+    liste: [
+      {
+        was: "Gastronomie",
+        beleg: "bledi-bienne.ch",
+        text: "Karte, Öffnungszeiten und Bestellung, zuerst fürs Handy gedacht.",
+      },
+      {
+        was: "Praxen und Gesundheit",
+        beleg: "bern-zahnarzt-team.ch",
+        text: "Terminanfrage, Notfallnummer und die Auszeichnung, mit der Google Öffnungszeiten und Bewertungen anzeigt.",
+      },
+      {
+        was: "Handel und B2B",
+        beleg: "kamil-energy.ch",
+        text: "Nüchtern gehalten und auf internationale Gegenparteien ausgelegt.",
+      },
+      {
+        was: "Events und Community",
+        beleg: "takabul.ch",
+        text: "Termine und Inhalte pflegt der Kunde selbst über ein Redaktionssystem.",
+      },
+    ],
+  },
+
+  regionen: {
+    titel: "Wo ich arbeite",
+    text: "Ich komme aus Biel und arbeite in der Region. Fürs erste Gespräch fahre ich vorbei, statt eine Videokonferenz anzusetzen.",
+    liste: ["Biel/Bienne", "Bern", "Seeland", "Solothurn"],
+    fern: "Weiter weg geht auch. Dann läuft alles über Telefon und Bildschirm, das ändert am Ergebnis nichts.",
+  },
+
+  zahlen: [
+    { wert: "4", label: "Seiten, die heute laufen" },
+    { wert: "2", label: "Sprachen ab Werk, Deutsch und Französisch" },
+    { wert: "24 h", label: "bis Sie eine Antwort haben" },
+    { wert: "1", label: "Ansprechperson, vom ersten Anruf bis danach" },
+  ],
 
   ablauf: {
     titel: "Ablauf und Kosten",

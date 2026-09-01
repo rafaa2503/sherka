@@ -14,7 +14,7 @@ const FORMSPREE = import.meta.env.VITE_FORMSPREE as string | undefined;
 type Zustand = "bereit" | "sendet" | "fertig" | "fehler";
 type Fehler = Partial<Record<"projekt" | "zeit" | "name" | "mail", string>>;
 
-export function Anfrage({ domain }: { domain: string | null }) {
+export function Anfrage() {
   const { t, sprache } = useSprache();
   const [projekt, setProjekt] = useState("");
   const [zeit, setZeit] = useState("");
@@ -25,14 +25,7 @@ export function Anfrage({ domain }: { domain: string | null }) {
   const erfolgRef = useRef<HTMLDivElement>(null);
   const zumFehler = useRef(false);
 
-  // Kommt jemand aus dem Tempocheck, ist die Domain schon bekannt.
   const [text, setText] = useState("");
-  useEffect(() => {
-    if (domain) {
-      setProjekt(t.kontakt.projektOptionen[1]);
-      setText(`${domain}\n`);
-    }
-  }, [domain, t]);
 
   useEffect(() => {
     if (zustand === "fertig") erfolgRef.current?.focus();

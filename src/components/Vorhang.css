@@ -1,0 +1,47 @@
+.vorhang {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* Zwei Lagen. Die hintere ist bernsteinfarben und blitzt beim Aufreissen
+   kurz durch, das gibt dem Uebergang Tiefe statt einer flachen Blende. */
+.vorhang-lage {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.vorhang-lage:first-child { background: var(--amber); }
+.vorhang-lage:last-of-type { background: var(--grund); }
+
+.vorhang-inhalt {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--pad);
+  gap: 1rem;
+}
+
+.vorhang-marke {
+  font-weight: 800;
+  font-size: clamp(2rem, 7vw, 5rem);
+  letter-spacing: -0.045em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.vorhang-zahl {
+  font-size: clamp(2rem, 7vw, 5rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--amber);
+  line-height: 1;
+}
+.vorhang-zahl::after { content: "%"; font-size: 0.45em; vertical-align: super; margin-left: 0.15em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vorhang { display: none; }
+}

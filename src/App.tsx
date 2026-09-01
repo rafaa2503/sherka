@@ -1,11 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Nav } from "./components/Nav";
+import { Vorhang } from "./components/Vorhang";
 import { Nebel } from "./components/Nebel";
 import { Fallblatt } from "./components/Fallblatt";
-import { Tempocheck } from "./components/Tempocheck";
+import { Magnet } from "./components/Magnet";
+import { BildFluss } from "./components/BildFluss";
+import { ZahlAuf } from "./components/ZahlAuf";
 import { Anfrage } from "./components/Anfrage";
 import { projekte } from "./data/projekte";
-import { starteEnthuellung } from "./lib/bewegung";
+import { starteEnthuellung, starteFortschritt, starteKippen, starteLenis, starteScrub } from "./lib/bewegung";
 import { useSprache } from "./i18n";
 import "./App.css";
 
@@ -15,22 +18,27 @@ const MAIL = "raffa.amro@gmail.com";
 
 export default function App() {
   const { t, sprache } = useSprache();
-  const [ausTempo, setAusTempo] = useState<string | null>(null);
-  const kontakt = useRef<HTMLElement>(null);
   const wurzel = useRef<HTMLDivElement>(null);
 
-  const zurAnfrage = useCallback((domain: string) => {
-    setAusTempo(domain);
-    kontakt.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
+  useEffect(() => starteLenis(), []);
 
   useEffect(() => {
     if (!wurzel.current) return;
-    return starteEnthuellung(wurzel.current);
+    const auf = starteEnthuellung(wurzel.current);
+    const scrub = starteScrub(wurzel.current);
+    const kippen = starteKippen(wurzel.current);
+    const fortschritt = starteFortschritt();
+    return () => {
+      auf();
+      scrub();
+      kippen();
+      fortschritt();
+    };
   }, [sprache]);
 
   return (
     <div ref={wurzel}>
+      <Vorhang />
       <a className="springlink" href="#inhalt">
         {t.nav.zumInhalt}
       </a>
@@ -58,12 +66,12 @@ export default function App() {
               </p>
 
               <div className="hero-knoepfe">
-                <a className="knopf knopf-voll" href="#kontakt">
-                  <span>{t.hero.cta}</span>
-                </a>
-                <a className="knopf knopf-leer" href="#tempo">
-                  <span>{t.hero.cta2}</span>
-                </a>
+                <Magnet className="knopf knopf-voll" href="#kontakt">
+                  {t.hero.cta}
+                </Magnet>
+                <Magnet className="knopf knopf-leer" href="#arbeiten">
+                  {t.hero.cta2}
+                </Magnet>
               </div>
             </div>
 
@@ -86,25 +94,11 @@ export default function App() {
           </div>
         </section>
 
-        <section className="sektion" id="tempo">
-          <div className="shell stapel-gross">
-            <div className="stapel spalte">
-              <h2 className="maske">
-                <span>{t.tempo.titel}</span>
-              </h2>
-              <p className="leise">{t.tempo.text}</p>
-            </div>
-            <div data-auf>
-              <Tempocheck aufAnfrage={zurAnfrage} />
-            </div>
-          </div>
-        </section>
-
         <section className="sektion" id="arbeiten">
           <div className="shell stapel-gross">
             <div className="stapel spalte">
               <h2 className="maske">
-                <span>{t.arbeiten.titel}</span>
+                <span data-zerlegen>{t.arbeiten.titel}</span>
               </h2>
               <p className="leise">{t.arbeiten.text}</p>
             </div>
@@ -115,24 +109,26 @@ export default function App() {
                   <div className="projekt-bild">
                     {p.bild ? (
                       <>
-                        <img
+                        <BildFluss
                           src={p.bild}
                           alt={`${p.domain}, ${p.text[sprache].was}`}
-                          width={1240}
-                          height={775}
-                          loading="lazy"
-                          decoding="async"
+                          breite={1240}
+                          hoehe={775}
                         />
                         {p.bildMobil && (
-                          <img
-                            className="projekt-telefon"
-                            src={p.bildMobil}
-                            alt=""
-                            width={275}
-                            height={597}
-                            loading="lazy"
-                            decoding="async"
-                          />
+                          /* Echtes Handy-Bildschirmfoto im Geraeterahmen.
+                             Belegt nebenbei, dass die Seite mobil gebaut ist. */
+                          <div className="telefon" aria-hidden="true">
+                            <span className="telefon-insel" />
+                            <img
+                              src={p.bildMobil}
+                              alt=""
+                              width={275}
+                              height={597}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
                         )}
                       </>
                     ) : (
@@ -157,9 +153,9 @@ export default function App() {
 
         <section className="sektion" id="leistungen">
           <div className="shell stapel-gross">
-            <h2 className="maske spalte">
+            <h2 className="spalte"><span className="maske">
               <span>{t.leistungen.titel}</span>
-            </h2>
+            </span></h2>
             <ul className="reihen">
               {t.leistungen.liste.map((l) => (
                 <li className="reihe zweispaltig" key={l.was} data-auf>
@@ -171,11 +167,90 @@ export default function App() {
           </div>
         </section>
 
+        {/* Laufschrift. Genau eine auf der Seite, und sie traegt echten Inhalt:
+            die vier Domains, die tatsaechlich laufen. */}
+        <section className="laufband" aria-hidden="true">
+          <div className="laufband-spur">
+            {[0, 1].map((n) => (
+              <span key={n}>
+                {projekte.map((p) => (
+                  <span key={p.domain}>
+                    {p.domain}
+                    <i />
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </section>
+        {/* Aussage, die sich beim Durchscrollen fuellt. Traegt den Satz,
+            der die ganze Positionierung in einer Zeile zusammenfasst. */}
+        <section className="sektion aussage-sektion">
+          <div className="shell">
+            <p className="aussage fuellsatz">{t.aussage}</p>
+          </div>
+        </section>
+
+
+        {/* Zahlen. Nur echte: vier laufende Seiten, zwei Sprachen,
+            Antwortzeit, eine Ansprechperson. Keine erfundenen Prozente. */}
+        <section className="sektion" id="zahlen">
+          <div className="shell">
+            <ul className="zahlen" data-auf>
+              {t.zahlen.map((z) => (
+                <li key={z.label}>
+                  <span className="zahl-wert num"><ZahlAuf wert={z.wert} /></span>
+                  <span className="zahl-label">{z.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="sektion" id="branchen">
+          <div className="shell stapel-gross">
+            <div className="stapel spalte">
+              <h2 className="maske">
+                <span data-zerlegen>{t.branchen.titel}</span>
+              </h2>
+              <p className="leise">{t.branchen.text}</p>
+            </div>
+            <ul className="branchen">
+              {t.branchen.liste.map((b) => (
+                <li key={b.was} data-auf>
+                  <h3>{b.was}</h3>
+                  <p className="leise">{b.text}</p>
+                  <span className="branche-beleg num">{b.beleg}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="sektion" id="regionen">
+          <div className="shell zweispaltig" data-auf>
+            <div className="stapel">
+              <h2 className="maske">
+                <span>{t.regionen.titel}</span>
+              </h2>
+            </div>
+            <div className="stapel">
+              <p className="leise">{t.regionen.text}</p>
+              <ul className="regionen">
+                {t.regionen.liste.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+              <p className="leise regionen-fern">{t.regionen.fern}</p>
+            </div>
+          </div>
+        </section>
+
         <section className="sektion" id="ablauf">
           <div className="shell stapel-gross">
-            <h2 className="maske spalte">
+            <h2 className="spalte"><span className="maske">
               <span>{t.ablauf.titel}</span>
-            </h2>
+            </span></h2>
 
             <ol className="ablauf" data-auf>
               {t.ablauf.schritte.map((s) => (
@@ -199,9 +274,9 @@ export default function App() {
 
         <section className="sektion" id="einwaende">
           <div className="shell stapel-gross">
-            <h2 className="maske spalte">
-              <span>{t.einwaende.titel}</span>
-            </h2>
+            <h2 className="spalte"><span className="maske">
+              <span data-zerlegen>{t.einwaende.titel}</span>
+            </span></h2>
             <ul className="reihen">
               {t.einwaende.liste.map((e) => (
                 <li className="reihe zweispaltig" key={e.frage} data-auf>
@@ -225,11 +300,11 @@ export default function App() {
           </div>
         </section>
 
-        <section className="sektion" id="kontakt" ref={kontakt}>
+        <section className="sektion" id="kontakt">
           <div className="shell kontakt">
             <div className="stapel">
               <h2 className="maske">
-                <span>{t.kontakt.titel}</span>
+                <span data-zerlegen>{t.kontakt.titel}</span>
               </h2>
               <p className="leise">{t.kontakt.text}</p>
 
@@ -252,7 +327,7 @@ export default function App() {
             </div>
 
             <div data-auf>
-              <Anfrage domain={ausTempo} />
+              <Anfrage />
             </div>
           </div>
         </section>

@@ -1,71 +1,48 @@
-/* Maschinentaste, keine Pille. Rechteckig, mit sichtbarem Tastenweg:
-   die Taste sitzt 3px ueber ihrem Sockel und faellt beim Druecken
-   darauf. Das ist Mechanik, nicht Schatten-Deko. */
+/* Knopf: rund und wuchtig. Die Kraft kommt aus Groesse, Gewicht und Farbe,
+   nicht aus harten Kanten. Kein Monospace, keine Versalien, keine Pille:
+   ein grosszuegiger Radius, satte Flaeche, klarer Druckpunkt. */
 
 .knopf {
   position: relative;
   display: inline-flex;
-  align-items: stretch;
-  min-height: 54px;
-  border: 1px solid var(--linie-an);
-  border-radius: 0;
-  background: var(--flaeche);
-  color: var(--ink);
-  font-family: var(--f-num);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 0 1.9rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-i);
+  font-family: var(--f);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  /* Der Sockel. Kein weicher Schein, eine harte Kante darunter. */
-  box-shadow: 0 3px 0 0 var(--linie-an);
-  transform: translateY(0);
-  transition: transform 90ms var(--ease-hart), box-shadow 90ms var(--ease-hart),
-    background var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease);
+  transition: transform 160ms var(--ease-hart), background var(--t) var(--ease),
+    border-color var(--t) var(--ease), color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease);
 }
+.knopf > span { display: block; }
+.knopf:hover:not(:disabled) { transform: translateY(-2px); }
+.knopf:active { transform: translateY(0) scale(0.985); }
+.knopf:disabled { opacity: 0.45; cursor: default; transform: none; }
 
-.knopf > span {
-  display: flex;
-  align-items: center;
-  padding: 0 1.5rem;
-}
-
-/* Indexzelle rechts, durch eine Fuge getrennt, wie an einem Schaltpult.
-   Darin eine Leuchte, die beim Hover angeht. */
-.knopf::after {
-  content: "";
-  width: 44px;
-  flex: none;
-  border-left: 1px solid var(--linie-an);
-  background-image: radial-gradient(circle at 50% 50%, currentColor 0 3px, transparent 3px);
-  opacity: 0.32;
-  transition: opacity var(--t) var(--ease);
-}
-.knopf:hover::after { opacity: 1; }
-
-.knopf:active {
-  transform: translateY(3px);
-  box-shadow: 0 0 0 0 var(--linie-an);
-}
-
-.knopf:disabled { opacity: 0.45; cursor: default; }
-.knopf:disabled:active { transform: none; box-shadow: 0 3px 0 0 var(--linie-an); }
-
-/* Hauptaktion: bernsteinfarben, wie ein aktives Feld auf der Tafel. */
 .knopf-voll {
   background: var(--amber);
   color: var(--ink-auf);
-  border-color: var(--amber);
-  box-shadow: 0 3px 0 0 var(--amber-tief);
+  box-shadow: 0 10px 30px -12px var(--amber-schein);
 }
-.knopf-voll::after { border-left-color: rgba(10, 10, 11, 0.35); }
-.knopf-voll:hover:not(:disabled) { background: #FFB84A; border-color: #FFB84A; }
-.knopf-voll:active { box-shadow: 0 0 0 0 var(--amber-tief); }
+.knopf-voll:hover:not(:disabled) {
+  background: var(--amber-hell);
+  box-shadow: 0 18px 44px -14px var(--amber-schein);
+}
 
-.knopf-leer { background: transparent; }
-.knopf-leer:hover { border-color: var(--ink); color: var(--ink); background: var(--flaeche); }
+.knopf-leer {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
+  border-color: var(--linie-an);
+}
+.knopf-leer:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--linie-an); }
 
 /* ---------- Hero ---------- */
 
@@ -121,10 +98,8 @@
   align-items: baseline;
   gap: 1rem;
   flex-wrap: wrap;
-  font-family: var(--f-num);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
   color: var(--leise);
   border-bottom: 1px solid var(--linie);
   padding-bottom: 0.9rem;
@@ -157,6 +132,8 @@
   position: relative;
   z-index: 1;
   border: 1px solid var(--linie);
+  border-radius: var(--r);
+  overflow: hidden;
   background: rgba(10, 10, 11, 0.72);
   backdrop-filter: blur(6px);
   align-self: end;
@@ -171,8 +148,7 @@
   border-bottom: 1px solid var(--linie);
   font-family: var(--f-num);
   font-size: 0.6875rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--leise);
 }
 .tafel-status { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--gut); }
@@ -207,7 +183,7 @@
   height: 43px;
   object-fit: cover;
   object-position: top center;
-  border: 1px solid var(--linie);
+  border-radius: var(--r-klein);
   filter: saturate(0.75);
   transition: filter var(--t) var(--ease);
 }
@@ -242,46 +218,67 @@
   position: relative;
   aspect-ratio: 16 / 10;
   border: 1px solid var(--linie);
-  border-radius: 6px;
+  border-radius: var(--r);
   background: var(--flaeche);
   display: grid;
   place-content: center;
   overflow: hidden;
   transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
 }
-.projekt-bild > img:first-child {
+
+.projekt:hover .projekt-bild { border-color: var(--linie-an); box-shadow: 0 0 60px -22px var(--amber-schein); }
+
+/* Geraeterahmen. Aussen der Rand des Telefons, innen der Bildschirm mit
+   dem echten Bildschirmfoto. Das Seitenverhaeltnis ist 9:19.5 und damit
+   praktisch identisch mit dem der Aufnahmen, es wird also nichts
+   nennenswert beschnitten. */
+.telefon {
+  position: absolute;
+  right: 5.5%;
+  bottom: -9%;
+  width: 23%;
+  aspect-ratio: 9 / 19.5;
+  padding: 5px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, #3A3A42, #131317 42%, #26262C);
+  box-shadow:
+    0 24px 48px -14px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  transition: transform 620ms var(--ease);
+}
+.projekt:hover .telefon { transform: translateY(-8px); }
+
+.telefon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  transition: transform 700ms var(--ease);
+  border-radius: 17px;
+  display: block;
 }
-.projekt:hover .projekt-bild { border-color: var(--linie-an); box-shadow: 0 0 60px -22px var(--amber-schein); }
-.projekt:hover .projekt-bild > img:first-child { transform: scale(1.045); }
 
-/* Echtes Handy-Bildschirmfoto als Overlay. Gibt Tiefe und belegt
-   nebenbei, dass die Seite auch mobil gebaut wurde. */
-.projekt-telefon {
+/* Die Insel oben. Kleines Detail, aber ohne sie liest der Rahmen
+   nicht als Telefon, sondern als gerundetes Rechteck. */
+.telefon-insel {
   position: absolute;
-  right: 5%;
-  bottom: -8%;
-  width: 21%;
-  height: auto;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.75);
-  transition: transform 700ms var(--ease);
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 7px;
+  border-radius: 999px;
+  background: #08080A;
+  z-index: 1;
 }
-.projekt:hover .projekt-telefon { transform: translateY(-6px); }
 
-@media (max-width: 560px) {
-  .projekt-telefon { display: none; }
+@media (max-width: 620px) {
+  .telefon { display: none; }
 }
 
 .projekt-kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .projekt-text { display: grid; gap: 0.65rem; }
 .projekt-text h3 { font-family: var(--f-num); font-weight: 500; font-size: 1.125rem; letter-spacing: -0.01em; }
-.projekt-was { color: var(--ink); font-weight: 600; font-stretch: 102%; }
+.projekt-was { color: var(--ink); font-weight: 600; }
 .projekt-kann { color: var(--leise); max-width: 46ch; }
 
 .projekt-link {
@@ -297,12 +294,142 @@
 }
 .projekt-link:hover { color: var(--ink); border-color: var(--ink); }
 
+/* ---------- Laufschrift ---------- */
+
+/* Genau eine auf der Seite. Sie traegt echten Inhalt, keine Deko-Woerter,
+   und laeuft mit Grundtempo plus einem Schub aus dem Scrollen. */
+.laufband {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--linie);
+  border-bottom: 1px solid var(--linie);
+  /* Raender ausblenden, damit die Schrift nicht abgeschnitten wirkt. */
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.laufband-spur {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.laufband-spur > span { display: flex; }
+.laufband-spur span span {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--linie-an);
+  white-space: nowrap;
+}
+/* Jede zweite Domain gefuellt, damit die Zeile Rhythmus hat. */
+.laufband-spur span span:nth-child(even) {
+  color: var(--amber);
+  -webkit-text-stroke: 0;
+}
+.laufband-spur i {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-inline: 0.55em;
+  border-radius: 999px;
+  background: var(--linie-an);
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laufband { display: none; }
+}
+
+/* ---------- Aussage ---------- */
+
+.aussage {
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4.6vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+/* ---------- Zahlen ---------- */
+
+.zahlen {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.zahlen li { display: grid; gap: 0.5rem; align-content: start; }
+.zahl-wert {
+  font-family: var(--f);
+  font-weight: 800;
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--amber);
+}
+.zahl-label { color: var(--leise); font-size: 0.9375rem; max-width: 22ch; }
+
+/* ---------- Branchen ---------- */
+
+.branchen {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.branchen li {
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: clamp(1.4rem, 2.5vw, 1.9rem);
+  border: 1px solid var(--linie);
+  border-radius: var(--r);
+  background: var(--flaeche);
+  transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+}
+.branchen li:hover { border-color: var(--linie-an); background: var(--erhoben); }
+.branchen h3 { font-size: 1.25rem; }
+.branchen p { font-size: 0.9688rem; }
+.branche-beleg {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--amber);
+}
+
+/* ---------- Regionen ---------- */
+
+.regionen {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.regionen li {
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--linie-an);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.regionen-fern { font-size: 0.9375rem; }
+
 /* ---------- Reihen ---------- */
 
 .reihen { list-style: none; padding: 0; margin: 0; display: grid; }
 .reihe { padding-block: clamp(1.6rem, 3vw, 2.4rem); border-top: 1px solid var(--linie); }
 .reihe:last-child { border-bottom: 1px solid var(--linie); }
-.reihe h3 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 500; font-stretch: 106%; }
+.reihe h3 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 500; }
 .reihe p { color: var(--leise); max-width: 56ch; }
 
 /* ---------- Ablauf ---------- */
@@ -315,7 +442,7 @@
   gap: 1px;
   background: var(--linie);
   border: 1px solid var(--linie);
-  border-radius: 6px;
+  border-radius: var(--r);
   overflow: hidden;
 }
 @media (min-width: 900px) { .ablauf { grid-template-columns: repeat(4, 1fr); } }
@@ -352,7 +479,7 @@
 .person-bild {
   aspect-ratio: 4 / 5;
   border: 1px solid var(--linie);
-  border-radius: 6px;
+  border-radius: var(--r);
   background: var(--flaeche);
   display: grid;
   place-content: center;
@@ -361,7 +488,6 @@
 .person-text {
   font-size: clamp(1.25rem, 2.6vw, 1.875rem);
   font-weight: 500;
-  font-stretch: 104%;
   line-height: 1.28;
   letter-spacing: -0.022em;
   max-width: 24ch;

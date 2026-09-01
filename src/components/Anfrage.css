@@ -1,7 +1,7 @@
 .anfrage { display: grid; gap: 1.5rem; }
 
 .wahl { border: 0; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
-.wahl legend { padding: 0; font-weight: 600; font-stretch: 104%; font-size: 0.9375rem; }
+.wahl legend { padding: 0; font-weight: 600; font-size: 0.9375rem; }
 
 .wahl-knoepfe { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
@@ -17,7 +17,7 @@
 .chip span {
   display: block;
   border: 1px solid var(--linie-an);
-  border-radius: var(--r-i);
+  border-radius: 999px;
   padding: 0.6rem 0.95rem;
   font-size: 0.9375rem;
   background: rgba(255,255,255,0.03);
@@ -38,14 +38,14 @@
 .chip input[aria-invalid="true"] + span { border-color: var(--schlecht); }
 
 .feld { display: grid; gap: 0.4rem; }
-.feld label { font-weight: 600; font-stretch: 104%; font-size: 0.9375rem; }
+.feld label { font-weight: 600; font-size: 0.9375rem; }
 .feld label .leise { font-weight: 400; }
 
 .feld input,
 .feld textarea {
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--linie);
-  border-radius: 8px;
+  border-radius: var(--r-i);
   padding: 0.7rem 0.85rem;
   font-size: 1rem;
   min-height: 44px;

@@ -18,52 +18,13 @@ export const fr: Woerter = {
 
   hero: {
     plakette: "4 sites en service",
-    titelOben: "DES SITES QUI",
-    titelUnten: "TRAVAILLENT",
+    titelOben: "Des sites qui",
+    titelUnten: "travaillent.",
     text: "Prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues. Construit par un développeur, pas à partir d'un modèle.",
     cta: "Demander un devis",
-    cta2: "Tester la vitesse",
+    cta2: "Voir les réalisations",
   },
 
-  tempo: {
-    titel: "Votre site est-il rapide aujourd'hui ?",
-    text: "Entrez l'adresse, je mesure avec l'outil que Google utilise lui-même pour son évaluation. Cela prend une vingtaine de secondes et ne coûte rien.",
-    label: "Adresse de votre site",
-    platzhalter: "votre-domaine.ch",
-    knopf: "Mesurer",
-    laeuft: "Mesure en cours",
-    laeuftHinweis: "Google charge votre page sur un téléphone simulé. Cela peut durer jusqu'à trente secondes.",
-    nochmal: "Tester une autre adresse",
-
-    lcpLabel: "Avant que le plus grand contenu soit visible",
-    clsLabel: "La mise en page bouge-t-elle au chargement",
-    scoreLabel: "Note globale de Google",
-
-    stufeGut: "bon",
-    stufeMittel: "à améliorer",
-    stufeSchlecht: "insuffisant",
-
-    urteilGut: "Votre site est assez rapide. Vous n'avez rien à changer.",
-    urteilMittel:
-      "On peut faire mieux. Sur téléphone, vos visiteurs attendent {lcp} secondes avant de voir le premier grand contenu.",
-    urteilSchlecht:
-      "C'est trop lent. Google déclasse les sites à partir de cette valeur, et une partie de vos visiteurs repart avant.",
-
-    feldDaten: "Valeurs issues de vraies visites des 28 derniers jours",
-    laborDaten: "Mesure en laboratoire, faute d'assez de visites réelles",
-
-    weiterGut: "Si vous souhaitez tout de même changer quelque chose, écrivez-moi.",
-    weiterSchlecht: "Voulez-vous que je regarde d'où cela vient ?",
-    weiterKnopf: "En parler avec moi",
-
-    fehlerUrl: "Je n'arrive pas à lire cette adresse. Exemple : votre-domaine.ch",
-    fehlerNichtErreichbar:
-      "Le site n'était pas joignable pour le test. Vérifiez l'adresse, ou bien il bloque les accès automatiques.",
-    fehlerKontingent: "L'outil de mesure est saturé pour le moment. Réessayez dans quelques minutes.",
-    fehlerAllgemein: "La mesure n'a pas abouti.",
-    fehlerHinweis: "Appelez-moi, je regarde directement.",
-    ohneJs: "Le test de vitesse nécessite JavaScript. Appelez-moi, je mesure votre site pour vous.",
-  },
 
   arbeiten: {
     titel: "Quatre sites qui travaillent",
@@ -95,6 +56,49 @@ export const fr: Woerter = {
       },
     ],
   },
+
+  aussage: "Chacun de ces sites est construit à la main. Pas de thème, pas de constructeur, pas d'empilement de plugins qui finit par casser.",
+
+  branchen: {
+    titel: "Pour qui je construis",
+    text: "Quatre secteurs où quelque chose de moi tourne déjà. Si le vôtre n'y figure pas, cela veut simplement dire que vous seriez le premier.",
+    liste: [
+      {
+        was: "Restauration",
+        beleg: "bledi-bienne.ch",
+        text: "Carte, horaires et commande, pensés d'abord pour le téléphone.",
+      },
+      {
+        was: "Cabinets et santé",
+        beleg: "bern-zahnarzt-team.ch",
+        text: "Demande de rendez-vous, numéro d'urgence et le balisage qui fait afficher horaires et avis par Google.",
+      },
+      {
+        was: "Négoce et B2B",
+        beleg: "kamil-energy.ch",
+        text: "Sobre et pensé pour des contreparties internationales.",
+      },
+      {
+        was: "Événements et communauté",
+        beleg: "takabul.ch",
+        text: "Le client gère lui-même dates et contenus via un système de gestion de contenu.",
+      },
+    ],
+  },
+
+  regionen: {
+    titel: "Où je travaille",
+    text: "Je viens de Bienne et je travaille dans la région. Pour le premier entretien je passe sur place plutôt que de fixer une visioconférence.",
+    liste: ["Bienne/Biel", "Berne", "Seeland", "Soleure"],
+    fern: "Plus loin, c'est possible aussi. Tout passe alors par téléphone et par écran, cela ne change rien au résultat.",
+  },
+
+  zahlen: [
+    { wert: "4", label: "sites en service aujourd'hui" },
+    { wert: "2", label: "langues d'origine, allemand et français" },
+    { wert: "24 h", label: "avant que vous ayez une réponse" },
+    { wert: "1", label: "interlocuteur, du premier appel jusqu'après" },
+  ],
 
   ablauf: {
     titel: "Déroulement et coûts",

@@ -11,7 +11,7 @@ import "./Fallblatt.css";
    eines pro Buchstabe, sonst laufen bei langen Ueberschriften hundert
    Timer gleichzeitig. */
 
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789.,;:!?-/";
+const ALPHABET = "abcdefghijklmnopqrstuvwxyzäöüABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const TAKT = 42;
 
 export function Fallblatt({

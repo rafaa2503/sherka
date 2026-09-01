@@ -1,0 +1,19 @@
+.fluss {
+  position: absolute;
+  inset: 0;
+}
+
+.fluss img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 700ms var(--ease), opacity 260ms var(--ease);
+}
+
+/* Sobald der Canvas zeichnet, wird das Bild darunter ausgeblendet.
+   Es bleibt im Markup: Alt-Text, Suchmaschinen und der Fall ohne WebGL. */
+.fluss-an img { opacity: 0; }
+
+.fluss canvas { pointer-events: none; }

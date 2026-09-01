@@ -1,4 +1,4 @@
-@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/plus-jakarta-sans/wght.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "./tokens.css";
 
@@ -11,8 +11,7 @@ body {
   background: var(--grund);
   color: var(--ink);
   font-family: var(--f);
-  font-stretch: 100%;
-  font-size: 1.0625rem;
+    font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
@@ -35,25 +34,25 @@ body::after {
 h1, h2, h3, h4 {
   margin: 0;
   line-height: 1.02;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
+    text-wrap: balance;
 }
 
-/* Gross und leicht, wie in den Referenzen. Das Gewicht macht den
-   Unterschied: 800 waere Sport, 500 ist teuer. */
+/* Wucht kommt aus Gewicht und Groesse. 800 statt 500: die Form ist jetzt
+   rund, also darf die Schrift laut sein, ohne hart zu wirken. */
 h1 {
-  font-stretch: 112%;
-  font-weight: 500;
-  font-size: clamp(2.75rem, 8.5vw, 7.5rem);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 8vw, 6.5rem);
+  letter-spacing: -0.045em;
+  line-height: 0.98;
 }
 h2 {
-  font-stretch: 110%;
-  font-weight: 500;
+  font-weight: 800;
   font-size: clamp(2rem, 5.5vw, 4rem);
-  letter-spacing: -0.032em;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
-h3 { font-stretch: 104%; font-weight: 600; font-size: 1.375rem; letter-spacing: -0.022em; line-height: 1.15; }
-h4 { font-stretch: 102%; font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.012em; }
+h3 { font-weight: 700; font-size: 1.375rem; letter-spacing: -0.02em; line-height: 1.18; }
+h4 { font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.012em; }
 
 p, li { margin: 0; }
 
@@ -104,6 +103,41 @@ button, input, textarea { font: inherit; color: inherit; }
   opacity: 1;
   transform: none;
   transition: opacity 420ms var(--ease), transform 420ms var(--ease);
+}
+
+/* Buchstaben der zerlegten Ueberschriften. Der Wrapper schneidet ab,
+   also steigen sie einzeln hinter der Kante hervor. */
+[data-zerlegen] { display: block; overflow: hidden; padding-bottom: 0.12em; }
+.zeichen { display: inline-block; white-space: pre; will-change: transform; }
+
+/* Fortschrittsbalken am oberen Rand. */
+.fortschritt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 80;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Satz, der sich beim Durchscrollen fuellt. Der Verlauf laeuft von
+   links nach rechts durch, die Breite steuert GSAP. */
+/* Zweifarb-Verlauf, doppelt so breit wie der Satz: links bernstein,
+   rechts gedimmt. Verschoben wird die Position, nicht die Groesse.
+   Mit background-size waere der ungefuellte Teil unsichtbar, weil
+   -webkit-text-fill-color: transparent jede Textfarbe aussticht. */
+.fuellsatz {
+  background-image: linear-gradient(to right, var(--amber) 50%, var(--linie-an) 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 :focus-visible {

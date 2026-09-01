@@ -21,7 +21,6 @@
 .nav-inhalt { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
 
 .marke {
-  font-stretch: 112%;
   font-weight: 600;
   font-size: 1.375rem;
   letter-spacing: -0.035em;
@@ -42,7 +41,7 @@
 .sprachwahl {
   display: flex;
   border: 1px solid var(--linie-an);
-  border-radius: var(--r-i);
+  border-radius: 999px;
   overflow: hidden;
 }
 .sprachwahl button {

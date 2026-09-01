@@ -46,161 +46,67 @@
 
 /* ---------- Hero ---------- */
 
+/* Ruhig statt laut. Ein Satz in der Serife, kein Bild, kein Panel.
+   Der Beweis steht in der Arbeiten-Sektion, nicht im ersten Bildschirm. */
+
 .hero {
   position: relative;
   min-height: 100svh;
   display: grid;
   align-content: center;
-  padding-block: clamp(6rem, 12vh, 8rem) clamp(3rem, 8vh, 5rem);
+  padding-block: clamp(7rem, 14vh, 9rem) clamp(4rem, 10vh, 7rem);
   border-top: 0;
   overflow: clip;
 }
 
-.nebel {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 1;
-}
+.nebel { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 1; }
 
-/* Freigelegtes Raster. Keine Deko: es traegt links die Bemassung und
-   markiert die Spalten, an denen die Seite tatsaechlich ausgerichtet ist. */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--linie) 1px, transparent 1px),
-    radial-gradient(120% 80% at 12% 100%, rgba(255, 165, 30, 0.09), transparent 62%);
-  background-size: calc(100% / 6) 100%, 100% 100%;
-  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 82%, transparent);
+  background: radial-gradient(90% 60% at 22% 88%, var(--amber-schein), transparent 60%);
+  opacity: 0.4;
 }
 
-.hero .shell {
+.hero-oben {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: end;
-}
-@media (min-width: 900px) {
-  .hero .shell { grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); }
+  justify-items: start;
+  gap: clamp(1.25rem, 2.4vw, 1.9rem);
 }
 
-.hero-kopf { display: grid; gap: clamp(1.5rem, 3vw, 2.25rem); }
-
-
-.hero-marke {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
+.hero-rolle {
+  font-size: 0.9375rem;
   color: var(--leise);
-  border-bottom: 1px solid var(--linie);
-  padding-bottom: 0.9rem;
+  letter-spacing: 0.01em;
 }
-.hero-marke b { color: var(--amber); font-weight: 500; }
-.hero-marke .rechts { margin-left: auto; }
 
-.hero h1 {
-  color: var(--ink);
-  /* Jede Zeile laeuft einzeln auf der Falltafel ein, also darf keine
-     davon umbrechen. Die Groesse richtet sich nach der laengsten. */
-  font-size: clamp(2.25rem, 7.4vw, 6rem);
+/* Serife, leichtes Gewicht, moderate Groesse. Ein lesbarer Satz statt
+   eines Typo-Klotzes: das traegt die Haltung, die die Referenz hat. */
+.hero-satz {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4.6vw, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  max-width: 19ch;
+  text-wrap: balance;
 }
-.hero h1 > * { white-space: nowrap; }
-/* Die zweite Zeile in Bernstein: die Anzeige hebt hervor, was zaehlt. */
-.hero h1 .an { color: var(--amber); }
+.hero-satz .fallblatt { display: inline; }
+.hero-satz .an { color: var(--leise); }
 
 .hero-unterzeile {
-  max-width: 42ch;
-  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
   color: var(--leise);
   text-wrap: pretty;
 }
 
-.hero-knoepfe { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-/* Abfahrtstafel. Fuellt rechts das Feld, das sonst tot waere, und bringt
-   die echten Bildschirmfotos direkt in den ersten Bildschirm. */
-.tafel {
-  position: relative;
-  z-index: 1;
-  border: 1px solid var(--linie);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: rgba(10, 10, 11, 0.72);
-  backdrop-filter: blur(6px);
-  align-self: end;
-}
-
-.tafel-kopf {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid var(--linie);
-  font-family: var(--f-num);
-  font-size: 0.6875rem;
-  letter-spacing: 0.02em;
-  color: var(--leise);
-}
-.tafel-status { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--gut); }
-.tafel-status::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--gut);
-  /* Ein echter Statuspunkt: die vier Seiten laufen tatsaechlich. */
-  animation: puls 2.4s steps(2, end) infinite;
-}
-@keyframes puls { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0.35; } }
-@media (prefers-reduced-motion: reduce) { .tafel-status::before { animation: none; } }
-
-.tafel-zeile {
-  display: grid;
-  grid-template-columns: 68px minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: 0.1rem 0.85rem;
-  padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid var(--linie);
-  text-decoration: none;
-  transition: background var(--t) var(--ease);
-}
-.tafel-zeile:last-child { border-bottom: 0; }
-.tafel-zeile:hover { background: var(--flaeche); }
-
-.tafel-zeile img {
-  grid-row: span 2;
-  width: 68px;
-  height: 43px;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: var(--r-klein);
-  filter: saturate(0.75);
-  transition: filter var(--t) var(--ease);
-}
-.tafel-zeile:hover img { filter: saturate(1); }
-
-.tafel-name {
-  font-family: var(--f-num);
-  font-size: 0.8125rem;
-  color: var(--ink);
-  transition: color var(--t) var(--ease);
-}
-.tafel-zeile:hover .tafel-name { color: var(--amber); }
-.tafel-was { font-size: 0.75rem; color: var(--leise); }
-
-@media (max-width: 899px) {
-  .tafel { margin-top: clamp(2rem, 6vh, 3.5rem); }
-}
+.hero-knoepfe { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
 /* ---------- Projekte ---------- */
 
@@ -327,7 +233,7 @@
 }
 /* Jede zweite Domain gefuellt, damit die Zeile Rhythmus hat. */
 .laufband-spur span span:nth-child(even) {
-  color: var(--amber);
+  color: var(--amber-text);
   -webkit-text-stroke: 0;
 }
 .laufband-spur i {
@@ -372,7 +278,7 @@
   font-size: clamp(3rem, 6vw, 4.75rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
-  color: var(--amber);
+  color: var(--amber-text);
 }
 .zahl-label { color: var(--leise); font-size: 0.9375rem; max-width: 22ch; }
 
@@ -402,7 +308,7 @@
 .branche-beleg {
   margin-top: 0.35rem;
   font-size: 0.8125rem;
-  color: var(--amber);
+  color: var(--amber-text);
 }
 
 /* ---------- Regionen ---------- */

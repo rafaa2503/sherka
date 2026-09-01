@@ -10,16 +10,20 @@ export const fr: Woerter = {
   nav: {
     zumInhalt: "Aller au contenu",
     arbeiten: "Réalisations",
+    leistungen: "Prestations",
+    person: "À propos",
     ablauf: "Déroulement",
     kontakt: "Contact",
     anfragen: "Demander un devis",
+    themaHell: "Passer en affichage clair",
+    themaDunkel: "Passer en affichage sombre",
     sprache: "Langue",
   },
 
   hero: {
-    plakette: "4 sites en service",
-    titelOben: "Des sites qui",
-    titelUnten: "travaillent.",
+    rolle: "Développeur web à Bienne",
+    titelOben: "Votre site doit savoir faire quelque chose.",
+    titelUnten: "Pas seulement exister.",
     text: "Prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues. Construit par un développeur, pas à partir d'un modèle.",
     cta: "Demander un devis",
     cta2: "Voir les réalisations",

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Nav } from "./components/Nav";
 import { Vorhang } from "./components/Vorhang";
+import { Laeufer } from "./components/Laeufer";
 import { Nebel } from "./components/Nebel";
 import { Fallblatt } from "./components/Fallblatt";
 import { Magnet } from "./components/Magnet";
@@ -8,7 +9,7 @@ import { BildFluss } from "./components/BildFluss";
 import { ZahlAuf } from "./components/ZahlAuf";
 import { Anfrage } from "./components/Anfrage";
 import { projekte } from "./data/projekte";
-import { starteEnthuellung, starteFortschritt, starteKippen, starteLenis, starteScrub } from "./lib/bewegung";
+import { starteEnthuellung, starteKippen, starteLenis, starteScrub } from "./lib/bewegung";
 import { useSprache } from "./i18n";
 import "./App.css";
 
@@ -27,18 +28,17 @@ export default function App() {
     const auf = starteEnthuellung(wurzel.current);
     const scrub = starteScrub(wurzel.current);
     const kippen = starteKippen(wurzel.current);
-    const fortschritt = starteFortschritt();
     return () => {
       auf();
       scrub();
       kippen();
-      fortschritt();
     };
   }, [sprache]);
 
   return (
     <div ref={wurzel}>
       <Vorhang />
+      <Laeufer />
       <a className="springlink" href="#inhalt">
         {t.nav.zumInhalt}
       </a>
@@ -49,48 +49,33 @@ export default function App() {
 
         <section className="sektion hero">
           <Nebel />
-          <div className="shell">
-            <div className="hero-kopf">
-              <div className="hero-marke">
-                <span>Sherka</span>
-                <b>{t.hero.plakette}</b>
-              </div>
+          {/* Kein Text links, Panel rechts: die Ueberschrift laeuft ueber
+              die volle Breite und die echte Arbeit liegt als durchgehende
+              Bahn dazwischen. Der Beweis steht damit im ersten Bild,
+              nicht in einer Karte am Rand. */}
+          {/* Keine Bilder im Hero. Ein Satz, ruhig gesetzt, davor eine
+              Zeile die sagt was ich bin. Den Beweis liefert die
+              Arbeiten-Sektion, nicht der erste Bildschirm. */}
+          <div className="shell hero-oben">
+            <span className="hero-rolle">{t.hero.rolle}</span>
 
-              <h1>
-                <Fallblatt as="span" text={t.hero.titelOben} />
-                <Fallblatt as="span" className="an" text={t.hero.titelUnten} verzoegerung={340} />
-              </h1>
+            <h1 className="hero-satz">
+              <Fallblatt as="span" text={t.hero.titelOben} />{" "}
+              <Fallblatt as="span" className="an" text={t.hero.titelUnten} verzoegerung={260} />
+            </h1>
 
-              <p className="hero-unterzeile maske">
-                <span>{t.hero.text}</span>
-              </p>
+            <p className="hero-unterzeile maske">
+              <span>{t.hero.text}</span>
+            </p>
 
-              <div className="hero-knoepfe">
-                <Magnet className="knopf knopf-voll" href="#kontakt">
-                  {t.hero.cta}
-                </Magnet>
-                <Magnet className="knopf knopf-leer" href="#arbeiten">
-                  {t.hero.cta2}
-                </Magnet>
-              </div>
+            <div className="hero-knoepfe">
+              <Magnet className="knopf knopf-voll" href="#kontakt">
+                {t.hero.cta}
+              </Magnet>
+              <Magnet className="knopf knopf-leer" href="#arbeiten">
+                {t.hero.cta2}
+              </Magnet>
             </div>
-
-            {/* Abfahrtstafel. Vier echte Domains mit ihrem echten
-                Bildschirmfoto, keine erfundenen Kundenlogos. Steht rechts
-                im Hero, weil dort sonst ein totes Feld waere. */}
-            <aside className="tafel" data-auf>
-              <div className="tafel-kopf">
-                <span>{t.arbeiten.tafelKopf}</span>
-                <span className="tafel-status">{t.arbeiten.tafelStatus}</span>
-              </div>
-              {projekte.map((p) => (
-                <a className="tafel-zeile" key={p.domain} href={p.url} target="_blank" rel="noopener noreferrer">
-                  <img src={p.bild ?? ""} alt="" width={1240} height={775} loading="eager" decoding="async" />
-                  <span className="tafel-name">{p.domain}</span>
-                  <span className="tafel-was">{p.text[sprache].was}</span>
-                </a>
-              ))}
-            </aside>
           </div>
         </section>
 

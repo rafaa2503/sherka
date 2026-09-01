@@ -8,17 +8,21 @@ export const de = {
   nav: {
     zumInhalt: "Zum Inhalt springen",
     arbeiten: "Arbeiten",
+    leistungen: "Leistungen",
+    person: "Über mich",
     ablauf: "Ablauf",
     kontakt: "Kontakt",
     anfragen: "Projekt anfragen",
+    themaHell: "Auf helle Darstellung wechseln",
+    themaDunkel: "Auf dunkle Darstellung wechseln",
     sprache: "Sprache",
   },
 
   hero: {
-    plakette: "4 Seiten in Betrieb",
+    rolle: "Webentwickler aus Biel/Bienne",
     /* Zweizeilig, weil beide Zeilen einzeln auf der Falltafel einlaufen. */
-    titelOben: "Websites, die",
-    titelUnten: "etwas können.",
+    titelOben: "Ihre Website soll etwas können.",
+    titelUnten: "Nicht nur da sein.",
     text: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Gebaut von einem Entwickler, nicht aus einer Vorlage.",
     cta: "Projekt anfragen",
     cta2: "Arbeiten ansehen",

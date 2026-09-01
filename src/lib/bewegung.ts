@@ -287,23 +287,3 @@ export function starteKippen(wurzel: HTMLElement): () => void {
   return () => auframen.forEach((f) => f());
 }
 
-/** Fortschrittsbalken am oberen Rand. */
-export function starteFortschritt(): () => void {
-  const balken = document.createElement("div");
-  balken.className = "fortschritt";
-  balken.setAttribute("aria-hidden", "true");
-  document.body.appendChild(balken);
-
-  const st = ScrollTrigger.create({
-    start: 0,
-    end: "max",
-    onUpdate: (self) => {
-      balken.style.transform = `scaleX(${self.progress})`;
-    },
-  });
-
-  return () => {
-    st.kill();
-    balken.remove();
-  };
-}

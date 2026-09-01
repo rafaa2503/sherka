@@ -1,0 +1,83 @@
+/* Am unteren Bildrand statt oben: dort ist die Figur wirklich sichtbar
+   und laeuft auf der Linie wie auf dem Boden. Oben lag sie halb hinter
+   der Navigationsleiste. */
+.laufbahn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 80;
+  pointer-events: none;
+}
+
+/* Die Spur, die der Laeufer hinter sich herzieht. */
+.laufbahn-spur {
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  box-shadow: 0 0 18px -2px var(--amber-schein);
+}
+
+.laeufer {
+  --stoff: var(--amber);
+  --haut: #F3E4CB;
+  --schuh: #2A2A31;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  /* Steht auf der Linie, nicht darauf. */
+  margin: 0 0 1px -22px;
+  will-change: transform;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}
+.laeufer svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* Beim Zurueckscrollen dreht er sich um. */
+.laeufer[data-richtung="zurueck"] svg { transform: scaleX(-1); }
+
+/* Lauf. Die Glieder pendeln nur, solange gescrollt wird. Beim Anhalten
+   wird pausiert statt zurueckgesetzt, er bleibt also im Schritt stehen. */
+.bein,
+.arm {
+  transform-origin: 17px 27px;
+  animation: schritt 0.4s linear infinite;
+  animation-play-state: paused;
+}
+/* Die Arme bleiben hinten und zittern nur leicht. Wuerden sie den vollen
+   Winkel der Beine mitgehen, schwaengen sie nach vorn und die gestreckte
+   Laufhaltung waere weg. */
+.arm { transform-origin: 22px 18px; animation-name: armzucken; }
+.bein-b,
+.arm-b { animation-delay: -0.2s; }
+
+@keyframes armzucken {
+  0%   { transform: rotate(7deg); }
+  50%  { transform: rotate(-7deg); }
+  100% { transform: rotate(7deg); }
+}
+
+.laeufer[data-laeuft="1"] .bein,
+.laeufer[data-laeuft="1"] .arm { animation-play-state: running; }
+
+@keyframes schritt {
+  0%   { transform: rotate(24deg); }
+  50%  { transform: rotate(-24deg); }
+  100% { transform: rotate(24deg); }
+}
+
+/* Leichtes Auf und Ab, damit der Lauf Gewicht bekommt. */
+.laeufer[data-laeuft="1"] svg { animation: huepf 0.2s ease-in-out infinite alternate; }
+@keyframes huepf {
+  from { translate: 0 0; }
+  to   { translate: 0 -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laeufer { display: none; }
+}

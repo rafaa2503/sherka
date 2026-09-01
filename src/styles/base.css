@@ -1,4 +1,5 @@
 @import "@fontsource-variable/plus-jakarta-sans/wght.css";
+@import "@fontsource-variable/newsreader/opsz.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "./tokens.css";
 
@@ -109,20 +110,6 @@ button, input, textarea { font: inherit; color: inherit; }
    also steigen sie einzeln hinter der Kante hervor. */
 [data-zerlegen] { display: block; overflow: hidden; padding-bottom: 0.12em; }
 .zeichen { display: inline-block; white-space: pre; will-change: transform; }
-
-/* Fortschrittsbalken am oberen Rand. */
-.fortschritt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 80;
-  background: var(--amber);
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  pointer-events: none;
-}
 
 /* Satz, der sich beim Durchscrollen fuellt. Der Verlauf laeuft von
    links nach rechts durch, die Breite steuert GSAP. */

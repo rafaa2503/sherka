@@ -1,0 +1,247 @@
+/* Knoepfe. Pillenform und Glow statt Flaeche, wie in den Referenzen.
+   Der Glow liegt im Weiss, nicht in einer Markenfarbe, damit er nicht
+   mit den Ampelfarben des Tempochecks kollidiert. */
+
+.knopf {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0.85rem 1.7rem;
+  border-radius: var(--r-i);
+  border: 1px solid transparent;
+  font-size: 0.9688rem;
+  font-weight: 600;
+  font-stretch: 102%;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--t) var(--ease), border-color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease), opacity var(--t) var(--ease), color var(--t) var(--ease);
+}
+.knopf > span { display: block; }
+.knopf:active { transform: scale(0.975); }
+.knopf:disabled { opacity: 0.5; cursor: default; }
+
+.knopf-voll {
+  background: var(--ink);
+  color: var(--ink-auf);
+  box-shadow: 0 0 0 0 var(--glow-hart);
+}
+.knopf-voll:hover:not(:disabled) { box-shadow: 0 0 34px -6px var(--glow-hart); }
+
+.knopf-leer {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  border-color: var(--linie-an);
+  backdrop-filter: blur(10px);
+}
+.knopf-leer:hover { border-color: var(--ink); box-shadow: 0 0 28px -10px var(--glow); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: clamp(6rem, 14vh, 9rem) clamp(4rem, 10vh, 7rem);
+  border-top: 0;
+  overflow: clip;
+}
+
+.nebel {
+  position: absolute;
+  inset: -10% -10% 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Statischer Grundschein. Liegt auch dann da, wenn der Shader nicht
+   startet (Reduced Motion, Touch, kein WebGL), damit der Hero nie
+   als leere schwarze Flaeche erscheint. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 44% at 50% 34%, rgba(255, 255, 255, 0.11), transparent 72%),
+    radial-gradient(38% 30% at 18% 68%, rgba(255, 255, 255, 0.05), transparent 70%);
+}
+
+.hero .shell { position: relative; z-index: 1; }
+
+.hero-mitte { text-align: center; display: grid; justify-items: center; gap: 1.75rem; }
+
+.hero-mitte h1 { max-width: 15ch; }
+
+.hero-unterzeile {
+  max-width: 44ch;
+  font-size: clamp(1.0625rem, 1.7vw, 1.3125rem);
+  color: var(--leise);
+  text-wrap: pretty;
+}
+
+.hero-knoepfe { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; }
+
+/* Logowand direkt unter dem Hero, nicht darin. */
+.beweiszeile {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(3rem, 8vh, 5.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem clamp(1.5rem, 4vw, 3rem);
+  font-family: var(--f-num);
+  font-size: 0.8125rem;
+  color: var(--leise);
+}
+.beweiszeile a { text-decoration: none; transition: color var(--t) var(--ease); }
+.beweiszeile a:hover { color: var(--ink); }
+
+/* ---------- Projekte ---------- */
+
+.projekte { list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(3rem, 7vw, 6rem); }
+
+@media (min-width: 900px) {
+  .projekte { grid-template-columns: 1fr 1fr; }
+  /* Versatz, damit die Reihe nicht wie eine Tabelle wirkt. */
+  .projekt:nth-child(even) { margin-top: clamp(3rem, 7vw, 7rem); }
+}
+
+.projekt { display: grid; gap: 1.5rem; align-content: start; }
+
+.projekt-bild {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  background: var(--flaeche);
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.projekt-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 700ms var(--ease), filter var(--t) var(--ease);
+}
+.projekt:hover .projekt-bild { border-color: var(--linie-an); box-shadow: 0 0 60px -22px var(--glow-hart); }
+.projekt:hover .projekt-bild img { transform: scale(1.045); }
+
+.projekt-kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.projekt-text { display: grid; gap: 0.65rem; }
+.projekt-text h3 { font-family: var(--f-num); font-weight: 500; font-size: 1.125rem; letter-spacing: -0.01em; }
+.projekt-was { color: var(--ink); font-weight: 600; font-stretch: 102%; }
+.projekt-kann { color: var(--leise); max-width: 46ch; }
+
+.projekt-link {
+  justify-self: start;
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--leise);
+  text-decoration: none;
+  border-bottom: 1px solid var(--linie-an);
+  padding-bottom: 2px;
+  transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+.projekt-link:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- Reihen ---------- */
+
+.reihen { list-style: none; padding: 0; margin: 0; display: grid; }
+.reihe { padding-block: clamp(1.6rem, 3vw, 2.4rem); border-top: 1px solid var(--linie); }
+.reihe:last-child { border-bottom: 1px solid var(--linie); }
+.reihe h3 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 500; font-stretch: 106%; }
+.reihe p { color: var(--leise); max-width: 56ch; }
+
+/* ---------- Ablauf ---------- */
+
+.ablauf {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--linie);
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  overflow: hidden;
+}
+@media (min-width: 900px) { .ablauf { grid-template-columns: repeat(4, 1fr); } }
+
+.ablauf li {
+  background: var(--flaeche);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  transition: background var(--t) var(--ease);
+}
+.ablauf li:hover { background: var(--erhoben); }
+.ablauf-zeit { font-size: 0.8125rem; color: var(--leise); }
+.ablauf h3 { font-size: 1.1875rem; font-weight: 600; }
+.ablauf p { color: var(--leise); font-size: 0.9688rem; }
+
+.preis { padding-top: clamp(2rem, 4vw, 3rem); }
+.preis-zahl {
+  font-family: var(--f-num);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.preis p { color: var(--leise); max-width: 52ch; }
+
+/* ---------- Person ---------- */
+
+.person { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (min-width: 800px) { .person { grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); } }
+
+.person-bild {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  background: var(--flaeche);
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+}
+.person-text {
+  font-size: clamp(1.25rem, 2.6vw, 1.875rem);
+  font-weight: 500;
+  font-stretch: 104%;
+  line-height: 1.28;
+  letter-spacing: -0.022em;
+  max-width: 24ch;
+}
+.person-fuss { color: var(--leise); max-width: 48ch; }
+
+/* ---------- Kontakt ---------- */
+
+.kontakt { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
+@media (min-width: 940px) { .kontakt { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); } }
+
+.kanaele { display: grid; gap: 1.25rem; margin: 1.25rem 0 0; }
+.kanaele dt { font-size: 0.8125rem; color: var(--leise); }
+.kanaele dd { margin: 0.2rem 0 0; font-size: 1.1875rem; }
+.kanaele a { text-decoration: none; border-bottom: 1px solid var(--linie-an); padding-bottom: 2px; transition: border-color var(--t) var(--ease); }
+.kanaele a:hover { border-color: var(--ink); }
+
+/* ---------- Fuss ---------- */
+
+.fuss { border-top: 1px solid var(--linie); padding-block: clamp(2.5rem, 5vw, 4rem) 3rem; }
+.fuss-inhalt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.7rem 2rem; }
+.fuss-inhalt .marke { font-size: 1.1875rem; }
+.fuss-inhalt a { font-size: 0.9375rem; color: var(--leise); text-decoration: none; transition: color var(--t) var(--ease); }
+.fuss-inhalt a:hover { color: var(--ink); }
+.fuss-jahr { margin-left: auto; font-size: 0.875rem; color: var(--leise); }

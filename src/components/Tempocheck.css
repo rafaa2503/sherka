@@ -1,0 +1,99 @@
+.tempo {
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  padding: clamp(1.4rem, 3.5vw, 2.5rem);
+}
+.tempo-input { border-radius: var(--r-i) !important; }
+
+.tempo-form { display: grid; gap: 0.5rem; }
+
+.tempo-label { font-weight: 600; font-stretch: 104%; font-size: 0.9375rem; }
+
+.tempo-zeile { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.tempo-input {
+  flex: 1 1 15rem;
+  min-width: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  font-family: var(--f-num);
+  font-size: 1rem;
+  transition: border-color var(--t) var(--ease);
+}
+.tempo-input::placeholder { color: var(--leise); }
+.tempo-input:hover { border-color: var(--leise); }
+.tempo-input[aria-invalid] { border-color: var(--schlecht); }
+
+.tempo-ausgabe:empty { display: none; }
+.tempo-ausgabe > * { margin-top: 1.5rem; }
+
+.tempo-laeuft { display: grid; gap: 0.7rem; }
+
+.tempo-balken {
+  height: 3px;
+  background: var(--tief);
+  overflow: hidden;
+}
+.tempo-balken span {
+  display: block;
+  height: 100%;
+  width: 35%;
+  background: var(--ink);
+  animation: tempo-lauf 1.4s var(--ease) infinite;
+}
+@keyframes tempo-lauf {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(340%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tempo-balken span { animation: none; width: 100%; opacity: 0.45; }
+}
+
+.tempo-fehler { display: grid; gap: 0.35rem; border-top: 1px solid var(--linie); padding-top: 1.25rem; }
+.tempo-fehler > p:first-child { color: var(--schlecht); }
+
+.tempo-ergebnis { display: grid; gap: 1.5rem; border-top: 1px solid var(--linie); padding-top: 1.5rem; }
+
+.tempo-urteil {
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2.4vw, 1.4375rem);
+  line-height: 1.28;
+  letter-spacing: -0.018em;
+  max-width: 34ch;
+}
+
+.tempo-werte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1px;
+  background: var(--linie);
+  border: 1px solid var(--linie);
+  margin: 0;
+}
+.tempo-wert { background: var(--flaeche); padding: 0.9rem 1rem; display: grid; gap: 0.3rem; }
+.tempo-wert dt { font-size: 0.8125rem; color: var(--leise); line-height: 1.35; }
+.tempo-wert dd {
+  margin: 0;
+  font-family: var(--f-num);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.625rem;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.tempo-stufe {
+  font-family: var(--f);
+  font-size: 0.8125rem;
+  color: var(--leise);
+  letter-spacing: 0;
+}
+
+.tempo-quelle { font-size: 0.875rem; }
+
+.tempo-weiter { display: grid; gap: 0.85rem; border-top: 1px solid var(--linie); padding-top: 1.35rem; }
+.tempo-knoepfe { display: flex; flex-wrap: wrap; gap: 0.6rem; }

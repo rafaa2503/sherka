@@ -1,0 +1,45 @@
+/* Sherka Design-Tokens, dunkle Fassung.
+   Richtung aus den Referenzen: Schwarz, riesige leichte Typo, lebender
+   Hintergrund, Glow statt Flaeche. Einzige Ausnahme von der Farblosigkeit
+   bleibt der Tempocheck, dort sind Gruen/Gelb/Rot echte Messdaten. */
+
+:root {
+  /* Kein reines Schwarz. #05060A hat einen Hauch Blau, damit der Shader
+     dahinter nicht wie ein Loch wirkt. */
+  --grund:    #05060A;
+  --flaeche:  #0B0D13;
+  --erhoben:  #11141C;
+  --linie:    rgba(255, 255, 255, 0.09);
+  --linie-an: rgba(255, 255, 255, 0.22);
+
+  --ink:      #F4F6FA;
+  --leise:    #9AA3B2;
+  --ink-auf:  #05060A;
+
+  /* Glow. In den Referenzen liegt das Leuchten immer im Weiss, nicht in
+     einer Markenfarbe. Genau so hier. */
+  --glow:     rgba(255, 255, 255, 0.16);
+  --glow-hart: rgba(255, 255, 255, 0.42);
+
+  --gut:      #35D08A;
+  --mittel:   #E0A93B;
+  --schlecht: #FF6B57;
+
+  --f: "Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-num: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --r: 0px;
+  --r-i: 999px;
+
+  --shell: 1240px;
+  --pad: clamp(1.25rem, 5vw, 3rem);
+  --sektion: clamp(5rem, 12vw, 10rem);
+
+  --t: 220ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+/* Die Seite committet sich auf eine Welt. Ein Hellmodus wuerde den
+   Shader und das ganze Glow-System zerstoeren, also gibt es keinen. */

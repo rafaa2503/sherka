@@ -1,0 +1,97 @@
+.anfrage { display: grid; gap: 1.5rem; }
+
+.wahl { border: 0; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.wahl legend { padding: 0; font-weight: 600; font-stretch: 104%; font-size: 0.9375rem; }
+
+.wahl-knoepfe { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* block, damit das unsichtbare Radio die sichtbare Flaeche wirklich deckt.
+   Als inline-Element waere die Trefferflaeche kleiner als der Knopf. */
+.chip { position: relative; display: block; }
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.chip span {
+  display: block;
+  border: 1px solid var(--linie-an);
+  border-radius: var(--r-i);
+  padding: 0.6rem 0.95rem;
+  font-size: 0.9375rem;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  /* Touch-Ziel mindestens 44px hoch. */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+}
+.chip:hover span { border-color: var(--leise); }
+.chip input:checked + span {
+  background: var(--ink);
+  color: var(--ink-auf);
+  border-color: var(--ink);
+}
+.chip input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+.chip input[aria-invalid="true"] + span { border-color: var(--schlecht); }
+
+.feld { display: grid; gap: 0.4rem; }
+.feld label { font-weight: 600; font-stretch: 104%; font-size: 0.9375rem; }
+.feld label .leise { font-weight: 400; }
+
+.feld input,
+.feld textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  font-size: 1rem;
+  min-height: 44px;
+  transition: border-color var(--t) var(--ease);
+}
+.feld input::placeholder,
+.feld textarea::placeholder { color: var(--leise); }
+.feld input:hover,
+.feld textarea:hover { border-color: var(--leise); }
+.feld textarea { resize: vertical; min-height: 6.5rem; line-height: 1.5; }
+.feld [aria-invalid="true"] { border-color: var(--schlecht); }
+
+.feld-fehler { color: var(--schlecht); font-size: 0.875rem; }
+
+.anfrage-paar { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 560px) { .anfrage-paar { grid-template-columns: 1fr; } }
+
+/* Kein left: -9999px, das kann horizontales Scrollen ausloesen.
+   clip-path haelt das Feld ausserhalb des Layouts, aber im Formular. */
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.anfrage-fuss { display: grid; gap: 0.7rem; justify-items: start; }
+.anfrage-hinweis { font-size: 0.875rem; }
+
+/* Der Knopf behaelt beim Senden seine Breite, damit nichts springt. */
+.knopf-text { display: inline-block; min-width: 9.5rem; text-align: center; }
+
+.anfrage-fehler {
+  border: 1px solid var(--schlecht);
+  padding: 0.9rem 1.1rem;
+  display: grid;
+  gap: 0.25rem;
+}
+.anfrage-fehler > p:first-child { color: var(--schlecht); font-weight: 600; }
+
+.anfrage-erfolg {
+  border: 1px solid var(--gut);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: grid;
+  gap: 0.5rem;
+}
+.anfrage-erfolg h3 { color: var(--gut); }

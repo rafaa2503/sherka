@@ -1,0 +1,60 @@
+/* Eigenes Stylesheet fuer die Rechtsseiten. Die laufen ohne JavaScript
+   und ohne das React-Bundle, damit sie sofort da sind. Tokens sind mit
+   src/styles/tokens.css identisch gehalten. */
+
+:root {
+  --grund: #E8EAEC;
+  --linie: #C6CBCF;
+  --ink: #0C0F10;
+  --leise: #575F64;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grund: #101314;
+    --linie: #2A3033;
+    --ink: #ECEEEF;
+    --leise: #99A1A6;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--ink);
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell { width: min(100% - 2.5rem, 46rem); margin-inline: auto; }
+
+header { border-bottom: 1px solid var(--linie); padding-block: 1.5rem; margin-bottom: 3rem; }
+header a { font-weight: 800; font-size: 1.3125rem; letter-spacing: -0.03em; text-decoration: none; color: inherit; }
+
+h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: -0.028em; line-height: 1.08; margin: 0 0 2rem; }
+h2 { font-size: 1.25rem; letter-spacing: -0.018em; margin: 2.5rem 0 0.6rem; }
+
+p, li { margin: 0 0 0.9rem; max-width: 68ch; }
+ul { padding-left: 1.2rem; }
+
+a { color: inherit; text-underline-offset: 0.22em; }
+
+.leise { color: var(--leise); }
+
+.offen {
+  border: 1px solid var(--linie);
+  padding: 1rem 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+footer { border-top: 1px solid var(--linie); margin-top: 4rem; padding-block: 2rem 3rem; }
+footer a { color: var(--leise); text-decoration: none; margin-right: 1.5rem; font-size: 0.9375rem; }
+footer a:hover { color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }

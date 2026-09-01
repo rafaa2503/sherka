@@ -90,31 +90,20 @@ button, input, textarea { font: inherit; color: inherit; }
 
 .leise { color: var(--leise); }
 
-/* Zeilenmaske: der Text steigt beim Enthuellen hinter einer Kante hervor.
-   Braucht den Wrapper, sonst waere nur eine Verschiebung sichtbar. */
+/* Zeilenmaske: der Text steigt beim Enthuellen hinter einer Kante hervor. */
 .maske { overflow: hidden; display: block; padding-bottom: 0.12em; }
 
-/* Kleines Etikett mit Punkt, wie im Polo-Template. Genau eins pro Seite,
-   im Hero, damit es nicht zur Schablone ueber jeder Sektion wird. */
-.plakette {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  border: 1px solid var(--linie-an);
-  border-radius: var(--r-i);
-  padding: 0.45rem 1rem 0.45rem 0.8rem;
-  font-size: 0.8125rem;
-  color: var(--leise);
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
+/* Enthuellung. Sichtbar ist der Normalzustand, "aus" setzt erst das
+   Skript. Ohne JavaScript steht die Seite vollstaendig da.
+   Die Kurve rastet ein statt weich auszulaufen, passend zur Anzeige. */
+[data-auf="aus"] {
+  opacity: 0;
+  transform: translateY(18px);
 }
-.plakette::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gut);
-  box-shadow: 0 0 10px var(--gut);
+[data-auf="an"] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 420ms var(--ease), transform 420ms var(--ease);
 }
 
 :focus-visible {

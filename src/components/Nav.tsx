@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { SPRACHEN, useSprache, type Sprache } from "../i18n";
-import { Magnet } from "./Magnet";
 import "./Nav.css";
 
 export function Nav() {
@@ -46,9 +45,9 @@ export function Nav() {
             ))}
           </div>
 
-          <Magnet className="knopf knopf-leer nav-cta" href="#kontakt" staerke={0.22}>
-            {t.nav.anfragen}
-          </Magnet>
+          <a className="knopf knopf-leer nav-cta" href="#kontakt">
+            <span>{t.nav.anfragen}</span>
+          </a>
         </div>
       </div>
     </header>

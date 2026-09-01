@@ -15,11 +15,13 @@ export const de = {
   },
 
   hero: {
-    plakette: "Vier Seiten live in Biel, Bern und im Seeland",
-    titel: "Ihre Website soll etwas können. Nicht nur da sein.",
+    plakette: "4 Seiten in Betrieb",
+    /* Zweizeilig, weil beide Zeilen einzeln auf der Falltafel einlaufen. */
+    titelOben: "WEBSITES DIE",
+    titelUnten: "ETWAS KÖNNEN",
     text: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Gebaut von einem Entwickler, nicht aus einer Vorlage.",
     cta: "Projekt anfragen",
-    cta2: "Tempo Ihrer Seite prüfen",
+    cta2: "Tempo prüfen",
   },
 
   tempo: {
@@ -67,6 +69,8 @@ export const de = {
     titel: "Vier Seiten, die arbeiten",
     text: "Ein Restaurant, eine Zahnarztpraxis, ein Rohstoffhändler, eine Event-Plattform. Alle vier sind live und Sie können sie anklicken.",
     besuchen: "Seite öffnen",
+    tafelKopf: "In Betrieb",
+    tafelStatus: "live",
     bildFehlt: "Bildschirmfoto folgt",
   },
 

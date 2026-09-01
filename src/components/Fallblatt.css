@@ -1,0 +1,16 @@
+.fallblatt {
+  display: block;
+  /* Tabellenziffern und feste Vorschubweite, sonst zappelt die Zeile
+     waehrend des Ratterns hin und her. */
+  font-variant-numeric: tabular-nums;
+  font-kerning: none;
+  font-feature-settings: "tnum", "kern" 0;
+}
+
+/* Die eigentliche Anzeige: Zeichen sitzen auf dunklen Blaettern mit
+   einer Trennfuge in der Mitte, wie an einer echten Falltafel. */
+.fallblatt-tafel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}

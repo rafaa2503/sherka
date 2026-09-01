@@ -6,9 +6,9 @@ import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl";
    Vollbild-Shader braucht diese Seite nicht.
 
    Kosten sind bewusst begrenzt:
-   - laeuft erst nach dem ersten Anstrich, damit LCP unberuehrt bleibt
+   - startet erst nach dem Laden, damit LCP unberuehrt bleibt
    - pausiert, sobald der Hero aus dem Bild ist
-   - aus bei prefers-reduced-motion und auf Zeigergeraeten ohne Maus
+   - aus bei prefers-reduced-motion und auf Touchgeraeten
    - dpr auf 1.5 gedeckelt, sonst rechnet ein Retina-Display sich tot */
 
 const VERT = `
@@ -27,7 +27,6 @@ uniform float uZeit;
 uniform vec2 uAufloesung;
 uniform vec2 uMaus;
 
-// Klassisches Simplex-artiges Rauschen, gefaltet zu weichem Nebel.
 vec2 hash(vec2 p) {
   p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
   return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
@@ -72,24 +71,18 @@ void main() {
 
   float f = fbm(p + 2.4 * r);
 
-  // Der Zeiger zieht den Nebel leicht zu sich. Sehr dezent, damit es
-  // sich wie Materie anfuehlt und nicht wie ein Spielzeug.
-  float d = distance(uv, uMaus);
-  float zug = smoothstep(0.55, 0.0, d) * 0.28;
+  // Der Zeiger zieht den Nebel leicht zu sich. Dezent, damit es sich
+  // wie Materie anfuehlt und nicht wie ein Spielzeug.
+  float zug = smoothstep(0.55, 0.0, distance(uv, uMaus)) * 0.28;
 
   float helligkeit = smoothstep(-0.15, 0.85, f) + zug;
 
   // Nur Weiss in unterschiedlicher Dichte. Keine Markenfarbe, sonst
   // kollidiert der Hintergrund mit den Ampelfarben des Tempochecks.
-  vec3 farbe = vec3(helligkeit);
-
-  // Nach unten und zu den Raendern ausblenden, damit die Schrift
-  // ueberall auf ruhigem Grund sitzt.
   float vignette = smoothstep(1.15, 0.15, length(p) * 0.72);
   float unten = smoothstep(0.0, 0.55, uv.y);
 
-  float a = helligkeit * vignette * unten * 0.42;
-  gl_FragColor = vec4(farbe, a);
+  gl_FragColor = vec4(vec3(helligkeit), helligkeit * vignette * unten * 0.78);
 }`;
 
 export function Nebel() {
@@ -98,99 +91,98 @@ export function Nebel() {
   useEffect(() => {
     const el = halter.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    const reduziert = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const grobeZeiger = window.matchMedia("(pointer: coarse)").matches;
-    if (reduziert || grobeZeiger) return;
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio, 1.5),
+      });
+    } catch {
+      // Kein WebGL: der statische Schein aus .hero::before bleibt sichtbar.
+      return;
+    }
 
-    let renderer: Renderer | null = null;
+    const gl = renderer.gl;
+    gl.clearColor(0, 0, 0, 0);
+    gl.canvas.style.cssText = "width:100%;height:100%;display:block";
+    el.appendChild(gl.canvas);
+
+    const programm = new Program(gl, {
+      vertex: VERT,
+      fragment: FRAG,
+      uniforms: {
+        uZeit: { value: 0 },
+        uAufloesung: { value: new Vec2(1, 1) },
+        uMaus: { value: new Vec2(0.5, 0.6) },
+      },
+      transparent: true,
+    });
+    const mesh = new Mesh(gl, { geometry: new Triangle(gl), program: programm });
+
+    const messen = () => {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return;
+      renderer.setSize(r.width, r.height);
+      programm.uniforms.uAufloesung.value.set(gl.drawingBufferWidth, gl.drawingBufferHeight);
+    };
+    messen();
+
+    const ro = new ResizeObserver(messen);
+    ro.observe(el);
+
+    // Zielwert plus Interpolation, damit der Nebel dem Zeiger traege folgt.
+    const ziel = { x: 0.5, y: 0.6 };
+    const aufMaus = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      ziel.x = (e.clientX - r.left) / r.width;
+      ziel.y = 1 - (e.clientY - r.top) / r.height;
+    };
+    window.addEventListener("pointermove", aufMaus, { passive: true });
+
     let raf = 0;
-    let laeuft = true;
-    let abgeraeumt = false;
+    let sichtbar = true;
 
-    // Erst nach dem ersten Anstrich starten. So faellt der Shader nicht
-    // in die LCP-Messung und die Ueberschrift ist zuerst da.
-    const start = () => {
-      if (abgeraeumt) return;
-
-      renderer = new Renderer({ alpha: true, antialias: false, dpr: Math.min(devicePixelRatio, 1.5) });
-      const gl = renderer.gl;
-      gl.clearColor(0, 0, 0, 0);
-      el.appendChild(gl.canvas);
-      gl.canvas.style.cssText = "width:100%;height:100%;display:block";
-
-      const programm = new Program(gl, {
-        vertex: VERT,
-        fragment: FRAG,
-        uniforms: {
-          uZeit: { value: 0 },
-          uAufloesung: { value: new Vec2(1, 1) },
-          uMaus: { value: new Vec2(0.5, 0.6) },
-        },
-        transparent: true,
-      });
-      const mesh = new Mesh(gl, { geometry: new Triangle(gl), program: programm });
-
-      const messen = () => {
-        const r = el.getBoundingClientRect();
-        renderer!.setSize(r.width, r.height);
-        programm.uniforms.uAufloesung.value.set(gl.drawingBufferWidth, gl.drawingBufferHeight);
-      };
-      messen();
-
-      const ro = new ResizeObserver(messen);
-      ro.observe(el);
-
-      // Zielwert plus Interpolation, damit der Nebel dem Zeiger traege
-      // folgt statt zu springen.
-      const ziel = { x: 0.5, y: 0.6 };
-      const aufMaus = (e: PointerEvent) => {
-        const r = el.getBoundingClientRect();
-        ziel.x = (e.clientX - r.left) / r.width;
-        ziel.y = 1 - (e.clientY - r.top) / r.height;
-      };
-      window.addEventListener("pointermove", aufMaus, { passive: true });
-
-      // Ausserhalb des Bildes nicht weiterrechnen.
-      const io = new IntersectionObserver(([e]) => {
-        laeuft = e.isIntersecting;
-        if (laeuft && !raf) raf = requestAnimationFrame(schleife);
-      });
-      io.observe(el);
-
-      const schleife = (t: number) => {
-        raf = 0;
-        if (!laeuft || abgeraeumt) return;
-        const m = programm.uniforms.uMaus.value as Vec2;
-        m.x += (ziel.x - m.x) * 0.045;
-        m.y += (ziel.y - m.y) * 0.045;
-        programm.uniforms.uZeit.value = t * 0.001;
-        renderer!.render({ scene: mesh });
-        raf = requestAnimationFrame(schleife);
-      };
+    const schleife = (t: number) => {
+      const m = programm.uniforms.uMaus.value as Vec2;
+      m.x += (ziel.x - m.x) * 0.045;
+      m.y += (ziel.y - m.y) * 0.045;
+      programm.uniforms.uZeit.value = t * 0.001;
+      renderer.render({ scene: mesh });
       raf = requestAnimationFrame(schleife);
-
-      aufraeumen = () => {
-        abgeraeumt = true;
-        laeuft = false;
-        if (raf) cancelAnimationFrame(raf);
-        ro.disconnect();
-        io.disconnect();
-        window.removeEventListener("pointermove", aufMaus);
-        gl.canvas.remove();
-        gl.getExtension("WEBGL_lose_context")?.loseContext();
-      };
     };
 
-    let aufraeumen = () => {
-      abgeraeumt = true;
+    const an = () => {
+      if (!raf) raf = requestAnimationFrame(schleife);
+    };
+    const aus = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
     };
 
-    const id = requestAnimationFrame(() => requestAnimationFrame(start));
+    // Ausserhalb des Bildes und im Hintergrundtab nicht weiterrechnen.
+    const io = new IntersectionObserver(([e]) => {
+      sichtbar = e.isIntersecting;
+      sichtbar && !document.hidden ? an() : aus();
+    });
+    io.observe(el);
+
+    const aufTabwechsel = () => (document.hidden || !sichtbar ? aus() : an());
+    document.addEventListener("visibilitychange", aufTabwechsel);
+
+    an();
 
     return () => {
-      cancelAnimationFrame(id);
-      aufraeumen();
+      aus();
+      ro.disconnect();
+      io.disconnect();
+      window.removeEventListener("pointermove", aufMaus);
+      document.removeEventListener("visibilitychange", aufTabwechsel);
+      gl.canvas.remove();
+      gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);
 

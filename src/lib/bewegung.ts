@@ -1,67 +1,56 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
+/* Enthuellung beim Scrollen, ohne GSAP und ohne Lenis.
 
-gsap.registerPlugin(ScrollTrigger);
+   Warum beide raus sind:
+   - Lenis ersetzt natives Scrollen durch simuliertes. Das passt nicht zu
+     einer Anzeige, die einrasten soll, und es hat ScrollTrigger die
+     Positionen verfaelscht: Inhalte blieben auf opacity 0 stehen, obwohl
+     sie im Bild waren. Ein unsichtbarer Abschnitt ist der teuerste Bug,
+     den eine Verkaufsseite haben kann.
+   - GSAP loest hier nichts, was IntersectionObserver plus eine
+     CSS-Transition nicht koennen. Zusammen sparen die beiden rund 60 KB.
 
-/* Alle Bewegung an einer Stelle registriert, damit es genau einen Ort
-   gibt, an dem man sie abschaltet. */
+   Sicherheitsnetz: sichtbar ist der Normalzustand. Die Elemente werden
+   erst versteckt, wenn dieses Skript laeuft. Faellt JavaScript aus,
+   steht die Seite trotzdem vollstaendig da. */
 
 export function reduziert(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export function starteLenis(): () => void {
-  if (reduziert()) return () => {};
+export function starteEnthuellung(wurzel: HTMLElement): () => void {
+  const ziele = Array.from(wurzel.querySelectorAll<HTMLElement>("[data-auf]"));
+  if (ziele.length === 0) return () => {};
 
-  const lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 1, touchMultiplier: 1.4 });
+  if (reduziert()) {
+    ziele.forEach((el) => el.setAttribute("data-auf", "an"));
+    return () => {};
+  }
 
-  // Lenis und ScrollTrigger muessen sich denselben Takt teilen, sonst
-  // laufen gepinnte Sektionen der Seite hinterher.
-  lenis.on("scroll", ScrollTrigger.update);
-  const tick = (t: number) => lenis.raf(t * 1000);
-  gsap.ticker.add(tick);
-  gsap.ticker.lagSmoothing(0);
+  ziele.forEach((el) => el.setAttribute("data-auf", "aus"));
+
+  const io = new IntersectionObserver(
+    (eintraege) => {
+      for (const e of eintraege) {
+        if (!e.isIntersecting) continue;
+        const el = e.target as HTMLElement;
+        el.setAttribute("data-auf", "an");
+        io.unobserve(el);
+      }
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.06 },
+  );
+
+  ziele.forEach((el) => io.observe(el));
+
+  // Notbremse: was nach zehn Sekunden immer noch versteckt ist, wird
+  // sichtbar gemacht. Lieber ohne Animation als unsichtbar.
+  const notbremse = window.setTimeout(() => {
+    ziele.forEach((el) => el.setAttribute("data-auf", "an"));
+    io.disconnect();
+  }, 10000);
 
   return () => {
-    gsap.ticker.remove(tick);
-    lenis.destroy();
+    window.clearTimeout(notbremse);
+    io.disconnect();
   };
-}
-
-/** Zeilenweise Enthuellung: Text steigt hinter einer Kante hervor. */
-export function zeilenAuf(ziel: string, wurzel: Element): gsap.Context {
-  return gsap.context(() => {
-    if (reduziert()) {
-      gsap.set(ziel, { yPercent: 0, opacity: 1 });
-      return;
-    }
-    gsap.utils.toArray<HTMLElement>(ziel).forEach((el) => {
-      gsap.from(el, {
-        yPercent: 118,
-        duration: 1.15,
-        ease: "expo.out",
-        scrollTrigger: { trigger: el, start: "top 88%", once: true },
-      });
-    });
-  }, wurzel);
-}
-
-/** Blockweise Enthuellung mit Versatz. Fuer Listen und Karten. */
-export function blockAuf(ziel: string, wurzel: Element): gsap.Context {
-  return gsap.context(() => {
-    if (reduziert()) {
-      gsap.set(ziel, { opacity: 1, y: 0 });
-      return;
-    }
-    gsap.utils.toArray<HTMLElement>(ziel).forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 46,
-        duration: 1,
-        ease: "expo.out",
-        scrollTrigger: { trigger: el, start: "top 90%", once: true },
-      });
-    });
-  }, wurzel);
 }

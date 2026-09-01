@@ -17,11 +17,12 @@ export const fr: Woerter = {
   },
 
   hero: {
-    plakette: "Quatre sites en ligne à Bienne, Berne et dans le Seeland",
-    titel: "Votre site doit savoir faire quelque chose. Pas seulement exister.",
+    plakette: "4 sites en service",
+    titelOben: "DES SITES QUI",
+    titelUnten: "TRAVAILLENT",
     text: "Prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues. Construit par un développeur, pas à partir d'un modèle.",
     cta: "Demander un devis",
-    cta2: "Tester la vitesse de votre site",
+    cta2: "Tester la vitesse",
   },
 
   tempo: {
@@ -68,6 +69,8 @@ export const fr: Woerter = {
     titel: "Quatre sites qui travaillent",
     text: "Un restaurant, un cabinet dentaire, un négociant en matières premières, une plateforme d'événements. Les quatre sont en ligne et vous pouvez les ouvrir.",
     besuchen: "Ouvrir le site",
+    tafelKopf: "En service",
+    tafelStatus: "en ligne",
     bildFehlt: "Capture à venir",
   },
 

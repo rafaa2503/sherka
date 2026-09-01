@@ -7,7 +7,10 @@ import type { Sprache } from "../i18n";
 export type Projekt = {
   domain: string;
   url: string;
+  /* Echte Bildschirmfotos der laufenden Seiten. Keine nachgebauten
+     Attrappen aus divs, das ist der auffaelligste Fake ueberhaupt. */
   bild: string | null;
+  bildMobil: string | null;
   text: Record<Sprache, { was: string; kann: string }>;
 };
 
@@ -15,7 +18,8 @@ export const projekte: Projekt[] = [
   {
     domain: "bledi-bienne.ch",
     url: "https://bledi-bienne.ch",
-    bild: null,
+    bild: "/shots/bledi-bienne.ch.webp",
+    bildMobil: "/shots/bledi-bienne.ch-mobile.webp",
     text: {
       de: {
         was: "Restaurant in Biel",
@@ -30,7 +34,8 @@ export const projekte: Projekt[] = [
   {
     domain: "bern-zahnarzt-team.ch",
     url: "https://bern-zahnarzt-team.ch",
-    bild: null,
+    bild: "/shots/bern-zahnarzt-team.ch.webp",
+    bildMobil: "/shots/bern-zahnarzt-team.ch-mobile.webp",
     text: {
       de: {
         was: "Zahnarztpraxis in Bern",
@@ -45,7 +50,8 @@ export const projekte: Projekt[] = [
   {
     domain: "kamil-energy.ch",
     url: "https://kamil-energy.ch",
-    bild: null,
+    bild: "/shots/kamil-energy.ch.webp",
+    bildMobil: "/shots/kamil-energy.ch-mobile.webp",
     text: {
       de: {
         was: "Handel mit Agrar-Rohstoffen",
@@ -60,7 +66,8 @@ export const projekte: Projekt[] = [
   {
     domain: "takabul.ch",
     url: "https://takabul.ch",
-    bild: null,
+    bild: "/shots/takabul.ch.webp",
+    bildMobil: "/shots/takabul.ch-mobile.webp",
     text: {
       de: {
         was: "Event-Plattform",

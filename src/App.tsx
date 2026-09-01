@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Nav } from "./components/Nav";
 import { Nebel } from "./components/Nebel";
-import { Magnet } from "./components/Magnet";
+import { Fallblatt } from "./components/Fallblatt";
 import { Tempocheck } from "./components/Tempocheck";
 import { Anfrage } from "./components/Anfrage";
 import { projekte } from "./data/projekte";
-import { blockAuf, starteLenis, zeilenAuf } from "./lib/bewegung";
+import { starteEnthuellung } from "./lib/bewegung";
 import { useSprache } from "./i18n";
 import "./App.css";
 
@@ -24,16 +24,9 @@ export default function App() {
     kontakt.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  useEffect(() => starteLenis(), []);
-
   useEffect(() => {
     if (!wurzel.current) return;
-    const a = zeilenAuf(".maske > *", wurzel.current);
-    const b = blockAuf("[data-auf]", wurzel.current);
-    return () => {
-      a.revert();
-      b.revert();
-    };
+    return starteEnthuellung(wurzel.current);
   }, [sprache]);
 
   return (
@@ -49,13 +42,15 @@ export default function App() {
         <section className="sektion hero">
           <Nebel />
           <div className="shell">
-            <div className="hero-mitte">
-              <span className="plakette maske">
-                <span>{t.hero.plakette}</span>
-              </span>
+            <div className="hero-kopf">
+              <div className="hero-marke">
+                <span>Sherka</span>
+                <b>{t.hero.plakette}</b>
+              </div>
 
-              <h1 className="maske">
-                <span>{t.hero.titel}</span>
+              <h1>
+                <Fallblatt as="span" text={t.hero.titelOben} />
+                <Fallblatt as="span" className="an" text={t.hero.titelUnten} verzoegerung={340} />
               </h1>
 
               <p className="hero-unterzeile maske">
@@ -63,24 +58,31 @@ export default function App() {
               </p>
 
               <div className="hero-knoepfe">
-                <Magnet className="knopf knopf-voll" href="#kontakt">
-                  {t.hero.cta}
-                </Magnet>
-                <Magnet className="knopf knopf-leer" href="#tempo">
-                  {t.hero.cta2}
-                </Magnet>
+                <a className="knopf knopf-voll" href="#kontakt">
+                  <span>{t.hero.cta}</span>
+                </a>
+                <a className="knopf knopf-leer" href="#tempo">
+                  <span>{t.hero.cta2}</span>
+                </a>
               </div>
             </div>
 
-            {/* Beweiszeile unter dem Hero, nicht darin: vier echte Domains
-                statt erfundener Kundenlogos. */}
-            <div className="beweiszeile" data-auf>
+            {/* Abfahrtstafel. Vier echte Domains mit ihrem echten
+                Bildschirmfoto, keine erfundenen Kundenlogos. Steht rechts
+                im Hero, weil dort sonst ein totes Feld waere. */}
+            <aside className="tafel" data-auf>
+              <div className="tafel-kopf">
+                <span>{t.arbeiten.tafelKopf}</span>
+                <span className="tafel-status">{t.arbeiten.tafelStatus}</span>
+              </div>
               {projekte.map((p) => (
-                <a key={p.domain} href={p.url} target="_blank" rel="noopener noreferrer">
-                  {p.domain}
+                <a className="tafel-zeile" key={p.domain} href={p.url} target="_blank" rel="noopener noreferrer">
+                  <img src={p.bild ?? ""} alt="" width={1240} height={775} loading="eager" decoding="async" />
+                  <span className="tafel-name">{p.domain}</span>
+                  <span className="tafel-was">{p.text[sprache].was}</span>
                 </a>
               ))}
-            </div>
+            </aside>
           </div>
         </section>
 
@@ -112,7 +114,27 @@ export default function App() {
                 <li className="projekt" key={p.domain} data-auf>
                   <div className="projekt-bild">
                     {p.bild ? (
-                      <img src={p.bild} alt="" width={1280} height={800} loading="lazy" />
+                      <>
+                        <img
+                          src={p.bild}
+                          alt={`${p.domain}, ${p.text[sprache].was}`}
+                          width={1240}
+                          height={775}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        {p.bildMobil && (
+                          <img
+                            className="projekt-telefon"
+                            src={p.bildMobil}
+                            alt=""
+                            width={275}
+                            height={597}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        )}
+                      </>
                     ) : (
                       <span className="leise num">{t.arbeiten.bildFehlt}</span>
                     )}

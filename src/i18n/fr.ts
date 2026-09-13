@@ -4,7 +4,7 @@ export const fr: Woerter = {
   meta: {
     titel: "Sherka. Sites web pour les entreprises de Bienne, Berne et du Seeland",
     beschreibung:
-      "Des sites web et de petites applications qui font un vrai travail : prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues. Dès CHF 1'000.",
+      "Des sites web et de petites applications qui font un vrai travail : prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues.",
   },
 
   nav: {
@@ -63,6 +63,25 @@ export const fr: Woerter = {
 
   aussage: "Chacun de ces sites est construit à la main. Pas de thème, pas de constructeur, pas d'empilement de plugins qui finit par casser.",
 
+  stimmen: {
+    titel: "Ce que disent les clients",
+    platzhalter: true,
+    hinweis: "Texte provisoire. Pas encore validé par les clients.",
+    liste: [
+      {
+        zitat:
+          "Avant, les rendez-vous se prenaient uniquement par téléphone, souvent au milieu d'un traitement. Maintenant les demandes arrivent par le site et nous les traitons entre deux. La réception est nettement soulagée.",
+        name: "Dr méd. dent. Mustafa Saleh",
+        rolle: "Cabinet dentaire Saleh, Berne",
+      },
+      {
+        zitat:
+          "Notre carte était un PDF sur le site, personne ne l'ouvrait sur téléphone. Maintenant on la voit tout de suite, en allemand et en français. Et quand il faut changer quelque chose, c'est en général réglé le jour même.",
+        name: "Bledi",
+        rolle: "Restaurant marocain, Bienne/Biel",
+      },
+    ],
+  },
   branchen: {
     titel: "Pour qui je construis",
     text: "Quatre secteurs où quelque chose de moi tourne déjà. Si le vôtre n'y figure pas, cela veut simplement dire que vous seriez le premier.",
@@ -88,13 +107,6 @@ export const fr: Woerter = {
         text: "Le client gère lui-même dates et contenus via un système de gestion de contenu.",
       },
     ],
-  },
-
-  regionen: {
-    titel: "Où je travaille",
-    text: "Je viens de Bienne et je travaille dans la région. Pour le premier entretien je passe sur place plutôt que de fixer une visioconférence.",
-    liste: ["Bienne/Biel", "Berne", "Seeland", "Soleure"],
-    fern: "Plus loin, c'est possible aussi. Tout passe alors par téléphone et par écran, cela ne change rien au résultat.",
   },
 
   zahlen: [
@@ -128,13 +140,9 @@ export const fr: Woerter = {
         text: "Je continue à faire les petites modifications. Vous n'avez personne à former.",
       },
     ],
-    preisZahl: "dès CHF 1'000",
-    preisTitel: "Ce que cela coûte",
-    preisText:
-      "Le prix de votre site dépend du nombre de pages et de langues et de ce qu'il doit savoir faire. Vous recevez le prix fixe après l'entretien, avant cela je ne demande rien.",
   },
 
-  einwaende: {
+  faq: {
     titel: "Ce que vous vous demandez maintenant",
     liste: [
       {
@@ -145,12 +153,12 @@ export const fr: Woerter = {
       {
         frage: "Combien coûte l'exploitation ensuite ?",
         antwort:
-          "Si vous hébergez vous-même : le domaine, environ CHF 15 par an, rien d'autre. Si je m'en charge : dès CHF 30 par mois pour la disponibilité, les petites modifications et les mises à jour. Le serveur ne coûte de toute façon rien à cette taille, vous payez mon temps et non de l'espace disque.",
+          "Si vous hébergez vous-même, vous ne payez que le domaine, rien d'autre. Si je m'en charge, cela passe par un petit forfait mensuel pour la disponibilité, les modifications et les mises à jour. Le serveur ne coûte de toute façon rien à cette taille, vous payez mon temps et non de l'espace disque. Je vous donne le montant exact lors de l'entretien.",
       },
       {
         frage: "Et si je veux encore changer quelque chose après ?",
         antwort:
-          "Une série de corrections est comprise dans le prix. Ensuite je vous dis à l'avance ce que coûte la suivante, pour qu'il n'y ait aucune surprise sur la facture.",
+          "Une série de corrections fait toujours partie de l'offre. Ensuite je vous dis à l'avance ce que coûte la suivante, pour qu'il n'y ait aucune surprise sur la facture.",
       },
       {
         frage: "Puis-je modifier les textes moi-même ?",
@@ -162,14 +170,18 @@ export const fr: Woerter = {
         antwort:
           "Deux à quatre semaines, à partir du moment où vos textes et vos images sont là. Cette partie prend en général plus de temps que la réalisation.",
       },
+      {
+        frage: "Combien coûte un site chez vous ?",
+        antwort:
+          "Cela dépend trop de ce que le site doit savoir faire pour donner un chiffre honnête ici. Vous recevez une estimation sincère lors du premier entretien, puis une offre à prix fixe avant que quoi que ce soit ne commence.",
+      },
     ],
   },
 
   person: {
     titel: "Qui construit",
     text1:
-      "Raffa Amro Elsherkasi, Bienne. Développeur d'applications CFC. Ensuite DevOps Engineer aux CFF, où j'ai construit des outils .NET et React pour des processus internes ainsi que les chaînes de livraison correspondantes.",
-    text2: "Les CFF étaient mon employeur, pas mon client.",
+      "Raffa Amro Elsherkasi, Bienne. Développeur d'applications CFC. Ensuite DevOps Engineer : outils .NET et React pour des processus internes ainsi que les chaînes de livraison correspondantes.",
     fotoFehlt: "Photo à venir",
   },
 

@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "portraet": "node scripts/portraet.mjs",
+    "ansicht": "node scripts/ansicht.mjs",
+    "pruef": "node scripts/pruef.mjs",
+    "startklar": "node scripts/startklar.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

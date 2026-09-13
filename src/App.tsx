@@ -192,6 +192,33 @@ export default function App() {
           </div>
         </section>
 
+        {/* Kundenstimmen. Solange platzhalter true ist, liegt ein
+            sichtbares Band darueber und die Startpruefung scheitert.
+            Erfundene Zitate unter echtem Namen duerfen nie live gehen. */}
+        <section className="sektion" id="stimmen">
+          <div className="shell stapel-gross">
+            <h2 className="spalte">
+              <span className="maske">
+                <span data-zerlegen>{t.stimmen.titel}</span>
+              </span>
+            </h2>
+
+            {t.stimmen.platzhalter && <p className="platzhalter-band">{t.stimmen.hinweis}</p>}
+
+            <ul className="stimmen">
+              {t.stimmen.liste.map((s) => (
+                <li key={s.name} data-auf>
+                  <blockquote>{s.zitat}</blockquote>
+                  <p className="stimme-wer">
+                    <strong>{s.name}</strong>
+                    <span className="leise">{s.rolle}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section className="sektion" id="branchen">
           <div className="shell stapel-gross">
             <div className="stapel spalte">
@@ -212,25 +239,6 @@ export default function App() {
           </div>
         </section>
 
-        <section className="sektion" id="regionen">
-          <div className="shell zweispaltig" data-auf>
-            <div className="stapel">
-              <h2 className="maske">
-                <span>{t.regionen.titel}</span>
-              </h2>
-            </div>
-            <div className="stapel">
-              <p className="leise">{t.regionen.text}</p>
-              <ul className="regionen">
-                {t.regionen.liste.map((r) => (
-                  <li key={r}>{r}</li>
-                ))}
-              </ul>
-              <p className="leise regionen-fern">{t.regionen.fern}</p>
-            </div>
-          </div>
-        </section>
-
         <section className="sektion" id="ablauf">
           <div className="shell stapel-gross">
             <h2 className="spalte"><span className="maske">
@@ -246,27 +254,28 @@ export default function App() {
                 </li>
               ))}
             </ol>
-
-            <div className="preis zweispaltig" data-auf>
-              <div>
-                <span className="preis-zahl">{t.ablauf.preisZahl}</span>
-                <h3>{t.ablauf.preisTitel}</h3>
-              </div>
-              <p>{t.ablauf.preisText}</p>
-            </div>
           </div>
         </section>
 
-        <section className="sektion" id="einwaende">
+        {/* FAQ als Akkordeon, ueber natives <details>/<summary>: funktioniert
+            ohne jedes JavaScript und ist ohne Zusatzarbeit per Tastatur und
+            Screenreader bedienbar. Nur das Plus-Icon wird animiert (Transform,
+            keine Hoehe), das Auf- und Zuklappen selbst bleibt nativ. */}
+        <section className="sektion" id="faq">
           <div className="shell stapel-gross">
             <h2 className="spalte"><span className="maske">
-              <span data-zerlegen>{t.einwaende.titel}</span>
+              <span data-zerlegen>{t.faq.titel}</span>
             </span></h2>
-            <ul className="reihen">
-              {t.einwaende.liste.map((e) => (
-                <li className="reihe zweispaltig" key={e.frage} data-auf>
-                  <h3>{e.frage}</h3>
-                  <p>{e.antwort}</p>
+            <ul className="faq">
+              {t.faq.liste.map((e) => (
+                <li key={e.frage} data-auf>
+                  <details>
+                    <summary>
+                      <span>{e.frage}</span>
+                      <span className="faq-icon" aria-hidden="true" />
+                    </summary>
+                    <p>{e.antwort}</p>
+                  </details>
                 </li>
               ))}
             </ul>
@@ -280,7 +289,6 @@ export default function App() {
             </div>
             <div className="stapel">
               <p className="person-text">{t.person.text1}</p>
-              <p className="person-fuss">{t.person.text2}</p>
             </div>
           </div>
         </section>

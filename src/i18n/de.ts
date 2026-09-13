@@ -2,7 +2,7 @@ export const de = {
   meta: {
     titel: "Sherka. Websites für Betriebe in Biel, Bern und im Seeland",
     beschreibung:
-      "Websites und kleine Web-Anwendungen, die eine Aufgabe erfüllen: Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Ab CHF 1'000.",
+      "Websites und kleine Web-Anwendungen, die eine Aufgabe erfüllen: Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen.",
   },
 
   nav: {
@@ -62,6 +62,29 @@ export const de = {
 
   aussage: "Jede dieser Seiten ist von Hand gebaut. Kein Theme, kein Baukasten, kein Stapel Plugins, der irgendwann bricht.",
 
+  stimmen: {
+    titel: "Was Kundinnen und Kunden sagen",
+    /* platzhalter: true blendet ein sichtbares Band ein und laesst die
+       Startprüfung scheitern. Erst auf false setzen, wenn der Text
+       wirklich von der Person freigegeben ist. Erfundene Zitate unter
+       echtem Namen sind irrefuehrende Werbung, nicht nur unschoen. */
+    platzhalter: true,
+    hinweis: "Platzhalter. Noch nicht von den Kunden freigegeben.",
+    liste: [
+      {
+        zitat:
+          "Vorher haben wir Termine nur am Telefon vergeben, oft mitten in einer Behandlung. Jetzt kommen die Anfragen über die Seite herein und wir arbeiten sie zwischendurch ab. Das hat den Empfang spürbar entlastet.",
+        name: "Dr. med. dent. Mustafa Saleh",
+        rolle: "Zahnarztpraxis Saleh, Bern",
+      },
+      {
+        zitat:
+          "Unsere Karte lag vorher als PDF auf der Seite, das hat auf dem Handy niemand geöffnet. Jetzt sieht man sie sofort, auf Deutsch und Französisch. Und wenn etwas zu ändern ist, ist es meist am selben Tag erledigt.",
+        name: "Bledi",
+        rolle: "Marokkanisches Restaurant, Biel/Bienne",
+      },
+    ],
+  },
   branchen: {
     titel: "Für wen ich baue",
     text: "Vier Branchen, in denen bereits etwas von mir läuft. Wenn Ihre nicht dabei ist, heisst das nur, dass Sie die erste wären.",
@@ -87,13 +110,6 @@ export const de = {
         text: "Termine und Inhalte pflegt der Kunde selbst über ein Redaktionssystem.",
       },
     ],
-  },
-
-  regionen: {
-    titel: "Wo ich arbeite",
-    text: "Ich komme aus Biel und arbeite in der Region. Fürs erste Gespräch fahre ich vorbei, statt eine Videokonferenz anzusetzen.",
-    liste: ["Biel/Bienne", "Bern", "Seeland", "Solothurn"],
-    fern: "Weiter weg geht auch. Dann läuft alles über Telefon und Bildschirm, das ändert am Ergebnis nichts.",
   },
 
   zahlen: [
@@ -127,13 +143,9 @@ export const de = {
         text: "Kleine Änderungen mache ich weiter. Sie müssen niemanden neu einarbeiten.",
       },
     ],
-    preisZahl: "ab CHF 1'000",
-    preisTitel: "Was es kostet",
-    preisText:
-      "Was Ihre Website kostet, hängt davon ab, wie viele Seiten und Sprachen sie hat und was sie können muss. Den Fixpreis bekommen Sie nach dem Gespräch, vorher verlange ich nichts.",
   },
 
-  einwaende: {
+  faq: {
     titel: "Was Sie sich jetzt fragen",
     liste: [
       {
@@ -144,12 +156,12 @@ export const de = {
       {
         frage: "Was kostet der Betrieb danach?",
         antwort:
-          "Wenn Sie selbst hosten: die Domain, rund CHF 15 im Jahr, sonst nichts. Wenn ich es übernehme: ab CHF 30 im Monat für Erreichbarkeit, kleine Änderungen und Aktualisierungen. Der Server kostet bei dieser Seitengrösse ohnehin nichts, Sie zahlen meine Zeit und nicht Speicherplatz.",
+          "Wenn Sie selbst hosten, zahlen Sie nur die Domain, sonst nichts. Wenn ich es übernehme, läuft das über eine kleine monatliche Betreuung für Erreichbarkeit, Änderungen und Aktualisierungen. Der Server kostet bei dieser Seitengrösse ohnehin nichts, Sie zahlen meine Zeit und nicht Speicherplatz. Den genauen Betrag nenne ich Ihnen im Gespräch.",
       },
       {
         frage: "Was, wenn ich nachher noch etwas ändern will?",
         antwort:
-          "Eine Korrekturrunde ist im Preis drin. Danach sage ich Ihnen vorher, was eine weitere kostet, damit am Schluss keine Überraschung auf der Rechnung steht.",
+          "Eine Korrekturrunde ist im Angebot immer dabei. Danach sage ich Ihnen vorher, was eine weitere kostet, damit am Schluss keine Überraschung auf der Rechnung steht.",
       },
       {
         frage: "Kann ich Texte selbst ändern?",
@@ -161,14 +173,18 @@ export const de = {
         antwort:
           "Zwei bis vier Wochen, ab dem Moment, in dem Ihre Texte und Bilder da sind. Dieser Teil dauert erfahrungsgemäss länger als der Bau.",
       },
+      {
+        frage: "Was kostet eine Website bei Ihnen?",
+        antwort:
+          "Das hängt zu stark davon ab, was die Seite können muss, um es hier in einer Zahl fair zu sagen. Sie bekommen im Erstgespräch eine ehrliche Einschätzung und danach ein Fixpreis-Angebot, bevor irgendetwas beginnt.",
+      },
     ],
   },
 
   person: {
     titel: "Wer das baut",
     text1:
-      "Raffa Amro Elsherkasi, Biel. Applikationsentwickler EFZ. Danach DevOps Engineer bei der SBB, dort .NET- und React-Werkzeuge für interne Abläufe und die Auslieferungsprozesse dahinter.",
-    text2: "Die SBB war mein Arbeitgeber, nicht mein Kunde.",
+      "Raffa Amro Elsherkasi, Biel. Applikationsentwickler EFZ. Danach DevOps Engineer: .NET- und React-Werkzeuge für interne Abläufe und die Auslieferungsprozesse dahinter.",
     fotoFehlt: "Foto folgt",
   },
 

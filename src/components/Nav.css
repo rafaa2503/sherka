@@ -56,7 +56,11 @@
   min-width: 44px;
   transition: color var(--t) var(--ease), background var(--t) var(--ease);
 }
-.sprachwahl button[aria-pressed="true"] { background: var(--ink); color: var(--ink-auf); }
+/* --ink-auf ist in beiden Modi dunkel (fuer Text auf dem hellen
+   Bernstein-Knopf gedacht). Hier faerbt --ink die Pille selbst, der
+   Text braucht die Gegenfarbe --grund, sonst steht dunkler Text auf
+   dunklem Grund im Hellmodus unsichtbar da. */
+.sprachwahl button[aria-pressed="true"] { background: var(--ink); color: var(--grund); }
 .sprachwahl button:hover[aria-pressed="false"] { color: var(--ink); }
 
 /* Kleinerer CTA in der Leiste, damit sie unter 80px bleibt. */

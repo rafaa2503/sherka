@@ -1,0 +1,13 @@
+﻿import { chromium } from "playwright";
+const b = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2, colorScheme: "dark" });
+const fehler = [];
+p.on("pageerror", (e) => fehler.push(e.message));
+await p.goto("http://localhost:5188", { waitUntil: "networkidle" });
+await p.evaluate(async () => { const s = innerHeight * 0.7; for (let y = 0; y < document.body.scrollHeight; y += s) { scrollTo(0, y); await new Promise(r => setTimeout(r, 150)); } });
+const el = await p.$("#stimmen");
+await el.scrollIntoViewIfNeeded();
+await p.waitForTimeout(1000);
+await el.screenshot({ path: "ansichten/x-stimmen.png" });
+console.log(JSON.stringify({ band: await p.$eval(".platzhalter-band", e => e.textContent).catch(() => null), stimmen: (await p.$$(".stimmen li")).length }), fehler.length ? "FEHLER " + fehler[0] : "ok");
+await b.close();

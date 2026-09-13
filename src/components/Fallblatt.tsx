@@ -42,9 +42,16 @@ export function Fallblatt({
     let start = 0;
 
     const lauf = () => {
-      // Pro Zeichen eine eigene Standzeit, damit die Zeile von links
-      // nach rechts zur Ruhe kommt statt auf einen Schlag.
-      const fest = text.split("").map((z, i) => (z === " " ? 0 : 4 + i * 1.6));
+      /* Pro Zeichen eine eigene Standzeit, damit die Zeile von links
+         nach rechts zur Ruhe kommt statt auf einen Schlag.
+
+         Der Versatz wird auf die Textlaenge normiert. Fest gesetzt
+         dauerte ein Satz mit 45 Zeichen ueber drei Sekunden, waehrend
+         der Besucher auf Buchstabensalat schaut. So bleibt die Dauer
+         unabhaengig von der Laenge bei rund 700 ms. */
+      const zeichen = text.length || 1;
+      const spanne = Math.min(1.6, 14 / zeichen);
+      const fest = text.split("").map((z, i) => (z === " " ? 0 : 3 + i * spanne));
       let schritt = 0;
       const maximum = Math.max(...fest, 1);
 

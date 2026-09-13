@@ -250,6 +250,51 @@
   .laufband { display: none; }
 }
 
+/* ---------- Stimmen ---------- */
+
+.platzhalter-band {
+  justify-self: start;
+  padding: 0.6rem 1.1rem;
+  border: 1px dashed var(--amber);
+  border-radius: var(--r-i);
+  color: var(--amber-text);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.stimmen {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.stimmen li {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--linie);
+  border-radius: var(--r);
+  background: var(--flaeche);
+}
+
+.stimmen blockquote {
+  margin: 0;
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1.9vw, 1.4375rem);
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+}
+/* Echte typografische Anfuehrungszeichen, keine geraden. */
+.stimmen blockquote::before { content: "\201E"; }
+.stimmen blockquote::after { content: "\201C"; }
+
+.stimme-wer { display: grid; gap: 0.15rem; font-size: 0.9375rem; }
+
 /* ---------- Aussage ---------- */
 
 .aussage {
@@ -311,25 +356,6 @@
   color: var(--amber-text);
 }
 
-/* ---------- Regionen ---------- */
-
-.regionen {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-.regionen li {
-  padding: 0.6rem 1.15rem;
-  border: 1px solid var(--linie-an);
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.9375rem;
-}
-.regionen-fern { font-size: 0.9375rem; }
-
 /* ---------- Reihen ---------- */
 
 .reihen { list-style: none; padding: 0; margin: 0; display: grid; }
@@ -366,16 +392,80 @@
 .ablauf h3 { font-size: 1.1875rem; font-weight: 600; }
 .ablauf p { color: var(--leise); font-size: 0.9688rem; }
 
-.preis { padding-top: clamp(2rem, 4vw, 3rem); }
-.preis-zahl {
-  font-family: var(--f-num);
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  display: block;
-  margin-bottom: 0.75rem;
+/* ---------- FAQ ---------- */
+
+.faq { list-style: none; padding: 0; margin: 0; display: grid; }
+.faq li { border-top: 1px solid var(--linie); }
+.faq li:last-child { border-bottom: 1px solid var(--linie); }
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: clamp(1.25rem, 2.6vw, 1.6rem);
+  cursor: pointer;
+  list-style: none;
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.012em;
 }
-.preis p { color: var(--leise); max-width: 52ch; }
+/* Chrome/Safari zeichnen sonst zusaetzlich das eingebaute Dreieck. */
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: ""; }
+
+.faq summary:focus-visible { outline-offset: 6px; }
+
+/* Plus-Icon, das zu einem Minus wird. Animiert wird ausschliesslich
+   der senkrechte Balken per Transform, nie eine Breite oder Hoehe. */
+.faq-icon {
+  flex: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+}
+.faq-icon::after {
+  transform: rotate(90deg);
+  transition: transform 200ms var(--ease);
+}
+.faq details[open] .faq-icon::after { transform: rotate(0deg); }
+
+.faq details > p {
+  margin: 0 0 clamp(1.25rem, 2.6vw, 1.6rem);
+  color: var(--leise);
+  max-width: 62ch;
+  font-size: 0.9688rem;
+}
+
+/* Fortschrittliche Verbesserung: das native Auf- und Zuklappen von
+   <details> ist immer sofort da, das aendert diese Regel nicht. Nur wo
+   der Browser @starting-style und allow-discrete kennt, blendet der
+   Antworttext zusaetzlich sanft ein statt zu teleportieren. Kennt der
+   Browser es nicht, bleibt es beim normalen sofortigen Anzeigen. */
+@supports (transition-behavior: allow-discrete) {
+  .faq details > p {
+    transition: opacity 200ms var(--ease), translate 200ms var(--ease), display 200ms allow-discrete;
+  }
+  .faq details:not([open]) > p {
+    opacity: 0;
+    translate: 0 -4px;
+    display: none;
+  }
+  @starting-style {
+    .faq details[open] > p { opacity: 0; translate: 0 -4px; }
+  }
+}
 
 /* ---------- Person ---------- */
 
@@ -398,8 +488,6 @@
   letter-spacing: -0.022em;
   max-width: 24ch;
 }
-.person-fuss { color: var(--leise); max-width: 48ch; }
-
 /* ---------- Kontakt ---------- */
 
 .kontakt { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }

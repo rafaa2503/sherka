@@ -1,21 +1,22 @@
-import type { Sprache } from "../i18n";
+import type { Sprache } from "../lib/sprache";
 
-/* Jedes Projekt nennt eine Funktion, die eine Vorlage nicht kann.
-   Bewusst nicht ueber Optik argumentiert: drei der vier Seiten benutzen
-   aehnliche Farbwelten, optische Vielfalt waere hier gelogen. */
+/* Die vier echten Referenzen. Nur Prüfpunkte, die stimmen. Was Raffa noch
+   bestätigen muss, steht in BESTAETIGEN (npm run startklar listet es).
+   Reihenfolge: zuerst die Betriebe aus der Region, kamil-energy zuletzt. */
 
 export type Projekt = {
   domain: string;
   url: string;
-  /* Echte Bildschirmfotos der laufenden Seiten. Keine nachgebauten
-     Attrappen aus divs, das ist der auffaelligste Fake ueberhaupt. */
-  bild: string | null;
-  bildMobil: string | null;
-  /* Wem die Domain gehört. Stand laut Raffa (September 2026): bledi und die
-     Zahnarztpraxis laufen über Sherka, takabul und kamil auf den Kunden.
-     Ändert sich das, hier nachführen, sonst steht etwas Falsches online. */
+  bild: string;
+  bildBreite: number;
+  bildHoehe: number;
+  /* Wem die Domain gehört. Stand laut Raffa: bledi und die Zahnarztpraxis
+     laufen über Sherka, takabul und kamil auf den Kunden. */
   domainBei: "kunde" | "sherka";
-  text: Record<Sprache, { was: string; kann: string }>;
+  /* bledi-bienne.ch sendet X-Frame-Options: SAMEORIGIN und lässt sich nicht
+     einbetten. Dort gibt es nur den Link. */
+  einbettbar: boolean;
+  text: Record<Sprache, { was: string; pruefpunkte: string[] }>;
 };
 
 export const projekte: Projekt[] = [
@@ -23,16 +24,28 @@ export const projekte: Projekt[] = [
     domain: "bledi-bienne.ch",
     url: "https://bledi-bienne.ch",
     bild: "/shots/bledi-bienne.ch.webp",
-    bildMobil: "/shots/bledi-bienne.ch-mobile.webp",
+    bildBreite: 1240,
+    bildHoehe: 775,
     domainBei: "sherka",
+    einbettbar: false,
     text: {
       de: {
-        was: "Restaurant in Biel",
-        kann: "Speisekarte auf Deutsch und Französisch, direkt lesbar statt als PDF zum Herunterladen. Wochenend-Brunch als eigener Bereich, Bestellung angebunden. Zuerst fürs Handy gebaut, weil dort bestellt wird.",
+        was: "Restaurant in Biel/Bienne",
+        pruefpunkte: [
+          "Speisekarte direkt lesbar statt als PDF",
+          "Wochenend-Brunch als eigener Bereich",
+          "Bestellung angebunden",
+          "Zuerst fürs Handy gebaut",
+        ],
       },
       fr: {
         was: "Restaurant à Bienne",
-        kann: "Carte en allemand et en français, lisible directement au lieu d'un PDF à télécharger. Le brunch du week-end a sa propre section, la commande est reliée. Conçu d'abord pour le téléphone, parce que c'est là qu'on commande.",
+        pruefpunkte: [
+          "Carte lisible directement, sans PDF",
+          "Brunch du week-end dans sa propre section",
+          "Commande reliée",
+          "Conçu d'abord pour le téléphone",
+        ],
       },
     },
   },
@@ -40,33 +53,28 @@ export const projekte: Projekt[] = [
     domain: "bern-zahnarzt-team.ch",
     url: "https://bern-zahnarzt-team.ch",
     bild: "/shots/bern-zahnarzt-team.ch.webp",
-    bildMobil: "/shots/bern-zahnarzt-team.ch-mobile.webp",
+    bildBreite: 1240,
+    bildHoehe: 775,
     domainBei: "sherka",
+    einbettbar: true,
     text: {
       de: {
-        was: "Zahnarztpraxis in Bern",
-        kann: "Terminanfrage direkt auf der Seite, Notfallnummer sofort sichtbar, sieben Personen im Team vorgestellt. Im Code so ausgezeichnet, dass Google Öffnungszeiten und Bewertungen selbst anzeigt.",
+        was: "Zahnarztpraxis",
+        pruefpunkte: [
+          "Terminanfrage direkt auf der Seite",
+          "Notfallnummer sofort sichtbar",
+          "Das Team wird vorgestellt",
+          "Öffnungszeiten für Google ausgezeichnet",
+        ],
       },
       fr: {
-        was: "Cabinet dentaire à Berne",
-        kann: "Demande de rendez-vous directement sur le site, numéro d'urgence visible d'emblée, sept personnes présentées. Balisé dans le code pour que Google affiche lui-même les horaires et les avis.",
-      },
-    },
-  },
-  {
-    domain: "kamil-energy.ch",
-    url: "https://kamil-energy.ch",
-    bild: "/shots/kamil-energy.ch.webp",
-    bildMobil: "/shots/kamil-energy.ch-mobile.webp",
-    domainBei: "kunde",
-    text: {
-      de: {
-        was: "Handel mit Agrar-Rohstoffen",
-        kann: "Auf Englisch für internationale Gegenparteien, bewusst nüchtern gehalten, weil hier Zahlen verkaufen und keine Bilder.",
-      },
-      fr: {
-        was: "Négoce de matières premières agricoles",
-        kann: "En anglais pour des contreparties internationales, volontairement sobre, parce qu'ici ce sont les chiffres qui vendent et non les images.",
+        was: "Cabinet dentaire",
+        pruefpunkte: [
+          "Demande de rendez-vous directement sur le site",
+          "Numéro d'urgence visible d'emblée",
+          "L'équipe est présentée",
+          "Horaires balisés pour Google",
+        ],
       },
     },
   },
@@ -74,17 +82,51 @@ export const projekte: Projekt[] = [
     domain: "takabul.ch",
     url: "https://takabul.ch",
     bild: "/shots/takabul.ch.webp",
-    bildMobil: "/shots/takabul.ch-mobile.webp",
+    bildBreite: 1240,
+    bildHoehe: 775,
     domainBei: "kunde",
+    einbettbar: true,
     text: {
       de: {
         was: "Event-Plattform",
-        kann: "Der Kunde pflegt Termine und Inhalte selbst über ein Redaktionssystem, ohne mich und ohne Zusatzkosten pro Änderung.",
+        pruefpunkte: [
+          "Der Kunde pflegt Termine und Inhalte selbst",
+          "Redaktionssystem, ohne auf mich zu warten",
+        ],
       },
       fr: {
         was: "Plateforme d'événements",
-        kann: "Le client gère lui-même les dates et les contenus via un système de gestion de contenu, sans moi et sans frais par modification.",
+        pruefpunkte: [
+          "Le client gère lui-même dates et contenus",
+          "Système de gestion de contenu, sans passer par moi",
+        ],
       },
     },
   },
+  {
+    domain: "kamil-energy.ch",
+    url: "https://kamil-energy.ch",
+    bild: "/shots/kamil-energy.ch.webp",
+    bildBreite: 1240,
+    bildHoehe: 775,
+    domainBei: "kunde",
+    einbettbar: true,
+    text: {
+      de: {
+        was: "Handel mit Agrar-Rohstoffen",
+        pruefpunkte: ["Ganz auf Englisch, für internationale Geschäftspartner", "Bewusst nüchtern gehalten"],
+      },
+      fr: {
+        was: "Négoce de matières premières agricoles",
+        pruefpunkte: ["Entièrement en anglais, pour des partenaires internationaux", "Volontairement sobre"],
+      },
+    },
+  },
+];
+
+/** Aussagen, die Raffa vor dem Livegang bestätigen muss. */
+export const BESTAETIGEN = [
+  "bledi-bienne.ch: Ist die Bestellung wirklich angebunden (eigene Lösung oder externer Dienst)?",
+  "bern-zahnarzt-team.ch: Sind die Öffnungszeiten im Code für Google ausgezeichnet (Rich-Results-Test)?",
+  "Alle vier Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
 ];

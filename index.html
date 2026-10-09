@@ -2,60 +2,17 @@
 <html lang="de-CH">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sherka. Websites für Betriebe in Biel, Bern und im Seeland</title>
-    <meta
-      name="description"
-      content="Websites und kleine Web-Anwendungen, die eine Aufgabe erfüllen: Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen."
-    />
-    <link rel="canonical" href="https://sherka.ch/" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Sherka" />
-    <meta property="og:title" content="Ihre Website soll etwas können. Nicht nur da sein." />
-    <meta
-      property="og:description"
-      content="Websites und kleine Web-Anwendungen für Betriebe in Biel, Bern und im Seeland."
-    />
-    <meta property="og:url" content="https://sherka.ch/" />
-    <meta property="og:image" content="https://sherka.ch/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!--kopf-->
+    <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      try {
-        document.documentElement.setAttribute("data-theme", localStorage.getItem("sherka:thema") === "hell" ? "hell" : "dunkel");
-      } catch (e) {}
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Sherka",
-        "description": "Websites und kleine Web-Anwendungen für Betriebe in Biel, Bern und im Seeland.",
-        "url": "https://sherka.ch/",
-        "telephone": "+41787450047",
-        "email": "raffa.amro@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Biel/Bienne",
-          "postalCode": "2502",
-          "addressRegion": "BE",
-          "addressCountry": "CH"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Biel/Bienne" },
-          { "@type": "City", "name": "Bern" },
-          { "@type": "AdministrativeArea", "name": "Seeland" }
-        ],
-        "availableLanguage": ["de", "fr"],
-        "founder": { "@type": "Person", "name": "Raffa Amro Elsherkasi" }
-      }
-    </script>
+    <!-- Thema und Bewegungsstufe vor dem ersten Zeichnen setzen, sonst blitzt
+         die Seite kurz in der falschen Farbe auf. Dunkel ist der Standard.
+         Die CSP erlaubt genau dieses Skript per Hash (scripts/vorrendern.mjs). -->
+    <script>(function(){var d=document.documentElement,b="voll";try{d.setAttribute("data-theme",localStorage.getItem("sherka:thema")==="hell"?"hell":"dunkel")}catch(e){d.setAttribute("data-theme","dunkel")}try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)b="aus";else{var c=navigator.connection;if((c&&c.saveData)||(navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2)||sessionStorage.getItem("sherka:bewegung")==="leicht")b="leicht"}}catch(e){}d.setAttribute("data-bewegung",b)})();</script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="app"><!--app--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

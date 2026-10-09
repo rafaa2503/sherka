@@ -1,84 +1,103 @@
-/* Sherka Design-Tokens.
+/* Sherka V2 Gestaltungssystem.
 
-   Hell ist der Standard: ein kuehles Hellgrau, nicht Weiss. Dunkel ist
-   Anthrazit mit leichtem Blaustich, nicht Schwarz, und kommt nur ueber den
-   Schalter in der Leiste. Die Systemeinstellung wird bewusst nicht gelesen:
-   ein Betrieb, der die Seite am Arbeitsplatz oeffnet, soll dieselbe Seite
-   sehen wie auf dem Flyer.
+   Dunkel ist der Standard (Entscheid Raffa), hell nur per Schalter. Die
+   Systemeinstellung wird bewusst nicht gelesen. Neutraltöne leicht kühl
+   (Ton 255), kein Lila, nie reines Schwarz oder Weiss.
 
-   Bernstein ist ausschliesslich fuer Knoepfe, die etwas ausloesen. */
+   Signal-Bernstein gehört ausschliesslich zu Handlungen: Knöpfe und das
+   Baugespann der Bautafel. Nie Textfarbe, nie Schmuck. Text auf Signal ist
+   immer die dunkle Tinte. */
 
 :root {
-  --grund:    #100F1C;
-  --flaeche:  #1A1830;
-  --erhoben:  #242240;
+  --grund: #16181c;
+  --flaeche: #1f2125;
+  --erhoben: #282a2f;
+  --ink: #eaecef;
+  --leise: #a8abb2;
+  --linie: #33363b;
+  --linie-an: #686b72;
 
-  --linie:    #2A2842;
-  --linie-an: #46436E;
+  --signal: #f0a23a;
+  --signal-hover: #f4b55e;
+  --signal-druck: #e0902a;
+  --signal-kante: transparent;
+  --auf-signal: #191b1f;
 
-  --ink:      #F2F1F7;
-  --leise:    #A6A4C0;
-  --ink-auf:  #14161A;
+  --gut: #5fd394;
+  --schlecht: #ff7a66;
 
-  --amber:      #FFA51E;
-  --amber-hell: #FFBC52;
+  --f: "Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
 
-  --gut:      #3FCF7F;
-  --schlecht: #FF5A45;
+  --t-h1: clamp(2.25rem, 1.6rem + 2.9vw, 4.25rem);
+  --t-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+  --t-h3: clamp(1.25rem, 1.12rem + 0.55vw, 1.625rem);
+  --t-gross: clamp(1.125rem, 1.06rem + 0.3vw, 1.25rem);
+  --t-text: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --t-klein: 0.875rem;
+  --t-kote: 0.75rem;
 
-  --f: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-num: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --a-1: 4px;
+  --a-2: 8px;
+  --a-3: 12px;
+  --a-4: 16px;
+  --a-5: 24px;
+  --a-6: 32px;
+  --a-7: 48px;
+  --a-8: 64px;
+  --a-9: 96px;
+  --sektion: clamp(4rem, 2.9rem + 4.5vw, 6rem);
 
-  --r-klein:  10px;
-  --r:        16px;
-  --r-i:      12px;
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 12px;
 
-  --shell: 1140px;
-  --pad: clamp(1.25rem, 4vw, 2.5rem);
-  --sektion: clamp(3.5rem, 7vw, 6rem);
+  --shell: 72rem;
+  --rand: clamp(20px, 4vw, 40px);
+  --kopf: 64px;
 
-  /* Die Buehnen (Anfang, Kontakt) liegen immer auf dieser Marken-Nacht. */
-  --nacht: #17152A;
+  --schwebe: 0 2px 8px rgb(10 12 16 / 0.35);
 
-  --t: 200ms;
+  --t: 180ms;
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --z-nav: 30;
+  --z-leiste: 40;
+  --z-laeufer: 41;
+  --z-menue: 50;
 
   color-scheme: dark;
 }
 
-/* Hell nur auf Wunsch des Besuchers. */
+@supports (color: oklch(0.5 0 0)) {
+  :root {
+    --grund: oklch(0.21 0.008 255);
+    --flaeche: oklch(0.25 0.009 255);
+    --ink: oklch(0.94 0.006 255);
+    --leise: oklch(0.74 0.01 255);
+    --linie: oklch(0.33 0.01 255);
+    --linie-an: oklch(0.52 0.01 255);
+    --signal: oklch(0.79 0.15 68);
+  }
+}
+
 :root[data-theme="hell"] {
-  --grund:    #E9EAED;
-  --flaeche:  #F2F3F5;
-  --erhoben:  #FAFAFB;
-
-  --linie:    #CDD0D6;
-  --linie-an: #A9AEB8;
-
-  --ink:      #14161A;
-  --leise:    #50565F;
-
-  --gut:      #12784B;
-  --schlecht: #B32414;
-
+  --grund: #eeeff1;
+  --flaeche: #f6f7f8;
+  --erhoben: #fbfbfc;
+  --ink: #191b1f;
+  --leise: #575a61;
+  --linie: #cfd1d5;
+  --linie-an: #83868c;
+  --signal-kante: #b06d14;
+  --gut: #12784b;
+  --schlecht: #b32414;
+  --schwebe: 0 2px 8px rgb(20 22 26 / 0.18);
   color-scheme: light;
 }
 
-/* Die Buehnen behalten ihre Nacht auch im hellen Modus. */
-.flaeche-dunkel {
-  --grund:    #17152A;
-  --flaeche:  #1F1D35;
-  --erhoben:  #292744;
-
-  --linie:    #302E4D;
-  --linie-an: #4A4770;
-
-  --ink:      #F2F1F7;
-  --leise:    #A4A2BC;
-  --ink-auf:  #14161A;
-
-  --gut:      #3FCF7F;
-  --schlecht: #FF5A45;
-
-  color-scheme: dark;
+@media (max-width: 899px) {
+  :root {
+    --kopf: 56px;
+  }
 }

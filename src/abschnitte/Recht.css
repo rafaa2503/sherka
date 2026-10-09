@@ -1,0 +1,6 @@
+.recht-kopf { padding-block: var(--a-4); border-bottom: 1px solid var(--linie); }
+.recht { max-width: 46rem; padding-block: var(--a-7) var(--a-8); display: grid; gap: var(--a-4); }
+.recht h1 { font-size: var(--t-h2); }
+.recht h2 { font-size: 1.25rem; margin-top: var(--a-5); margin-bottom: var(--a-2); }
+.recht section p + p { margin-top: var(--a-2); }
+.recht-links { display: flex; flex-wrap: wrap; gap: var(--a-5); }

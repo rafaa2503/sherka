@@ -1,0 +1,84 @@
+.stapel { display: grid; gap: var(--a-4); align-content: start; }
+.stapel-gross { display: grid; gap: var(--a-7); align-content: start; }
+
+.zwei-spalten { display: grid; gap: var(--a-5); }
+@media (min-width: 900px) {
+  .zwei-spalten { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--a-8); align-items: start; }
+  .zwei-spalten > .sektion-kopf { margin-bottom: 0; }
+  .klebt { position: sticky; top: calc(var(--kopf) + var(--a-6)); }
+}
+
+/* ---------- Hauswartung ---------- */
+
+.haus-liste { display: grid; }
+.haus-liste > div { display: grid; gap: var(--a-1); padding-block: var(--a-4); }
+.haus-liste > div + div { border-top: 1px solid var(--linie); }
+.haus-liste > div:first-child { padding-top: 0; }
+@media (min-width: 640px) {
+  .haus-liste > div { grid-template-columns: 11rem minmax(0, 1fr); gap: var(--a-4); }
+}
+.haus-liste dt { font-weight: 600; }
+.haus-liste dd { color: var(--leise); }
+
+.leist-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--a-4); }
+.leist-liste li { display: grid; gap: var(--a-1); }
+
+/* ---------- Ablauf ---------- */
+
+.abl { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--a-6); }
+@media (min-width: 700px) {
+  .abl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .abl { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--a-5); }
+}
+.abl-schritt { display: grid; gap: var(--a-2); align-content: start; padding-top: var(--a-4); border-top: 2px solid var(--linie-an); }
+.abl-schritt:first-child { border-top-color: var(--ink); }
+.abl-nr { font-size: var(--t-kote); color: var(--leise); }
+.abl-zeit { font-size: var(--t-klein); color: var(--leise); }
+.abl-schritt h3 { font-size: 1.25rem; }
+.abl-schritt p { font-size: 0.9688rem; }
+
+/* ---------- Über mich ---------- */
+
+.person { display: grid; gap: var(--a-6); align-items: center; }
+@media (min-width: 900px) {
+  .person { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: var(--a-8); }
+  .person-ohne-bild { grid-template-columns: minmax(0, 1fr); }
+}
+.person-bild { width: 100%; max-width: 20rem; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-3); }
+.person-text { font-size: clamp(1.25rem, 1.05rem + 1vw, 1.75rem); line-height: 1.4; letter-spacing: -0.015em; max-width: 36ch; }
+
+/* ---------- Fragen ---------- */
+
+.faq { list-style: none; margin: 0; padding: 0; display: grid; }
+.faq li + li { border-top: 1px solid var(--linie); }
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--a-5);
+  min-height: 48px;
+  padding-block: var(--a-4);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--t-gross);
+  font-weight: 600;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: ""; }
+.faq-icon { flex: none; position: relative; width: 18px; height: 18px; }
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.faq-icon::after { transform: rotate(90deg); transition: transform 200ms var(--ease); }
+.faq details[open] .faq-icon::after { transform: rotate(0deg); }
+.faq details > p { padding-bottom: var(--a-5); color: var(--leise); max-width: 60ch; }

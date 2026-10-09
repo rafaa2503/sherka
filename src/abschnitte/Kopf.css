@@ -1,0 +1,137 @@
+.kopf {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-nav);
+  height: var(--kopf);
+  display: flex;
+  align-items: center;
+  background: var(--grund);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t) var(--ease);
+}
+/* Weiche Kante, wo Inhalt unter die Leiste läuft, statt einer harten Linie. */
+.kopf::after {
+  content: "";
+  position: absolute;
+  inset: 100% 0 auto;
+  height: 16px;
+  background: linear-gradient(var(--grund), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t) var(--ease);
+}
+.kopf-linie::after { opacity: 1; }
+@media (prefers-contrast: more) {
+  .kopf-linie { border-bottom-color: var(--linie-an); }
+}
+
+.kopf-innen { display: flex; align-items: center; gap: var(--a-5); }
+
+.kopf-marke {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.kopf-nav { display: flex; gap: var(--a-1); margin-inline: auto; }
+.kopf-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--a-3);
+  border-radius: var(--r-2);
+  font-size: 0.9375rem;
+  color: var(--leise);
+  text-decoration: none;
+  transition: color var(--t) var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .kopf-nav a:hover { color: var(--ink); }
+}
+
+.kopf-werkzeuge { display: flex; align-items: center; gap: var(--a-2); margin-left: auto; }
+.kopf-nav + .kopf-werkzeuge { margin-left: 0; }
+
+.kopf-sprache,
+.kopf-thema,
+.kopf-menue-knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--a-3);
+  border: 1px solid var(--linie-an);
+  border-radius: var(--r-2);
+  background: none;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--t) var(--ease);
+}
+.kopf-thema,
+.kopf-menue-knopf { padding: 0; width: 44px; }
+@media (hover: hover) and (pointer: fine) {
+  :is(.kopf-sprache, .kopf-thema, .kopf-menue-knopf):hover { border-color: var(--ink); }
+}
+.kopf-sprache-kurz { display: none; }
+
+.kopf .kopf-cta { min-height: 44px; padding: 0 var(--a-4); font-size: 0.9375rem; }
+
+.kopf-menue-knopf { display: none; }
+.kopf-menue { display: none; }
+
+@media (max-width: 1100px) {
+  .kopf-sprache-lang { display: none; }
+  .kopf-sprache-kurz { display: inline; }
+}
+
+@media (max-width: 899px) {
+  .kopf-nav,
+  .kopf .kopf-cta { display: none; }
+  .kopf-menue-knopf { display: inline-flex; }
+
+  /* Menü klappt unter der Leiste auf. Öffnen 300 ms, schliessen 200 ms,
+     sichtbar bleibt es bis die Bewegung fertig ist. */
+  .kopf-menue {
+    display: grid;
+    gap: var(--a-5);
+    position: fixed;
+    inset: var(--kopf) 0 auto;
+    z-index: var(--z-menue);
+    padding: var(--a-5) var(--rand) var(--a-6);
+    background: var(--grund);
+    border-bottom: 1px solid var(--linie);
+    box-shadow: var(--schwebe);
+    opacity: 0;
+    transform: translateY(-8px);
+    visibility: hidden;
+    transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s 200ms;
+  }
+  .kopf-menue-offen {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    transition: opacity 300ms var(--ease), transform 300ms var(--ease), visibility 0s;
+  }
+  .kopf-menue nav { display: grid; }
+  .kopf-menue nav a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    font-size: 1.375rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .kopf-menue nav a + a { border-top: 1px solid var(--linie); }
+}
+
+.icon-im-hell { display: none; }
+:root[data-theme="hell"] .icon-im-dunkel { display: none; }
+:root[data-theme="hell"] .icon-im-hell { display: block; }

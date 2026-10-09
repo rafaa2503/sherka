@@ -1,0 +1,329 @@
+/* ---------- Bautafel: Raster ---------- */
+
+.tafel-sektion {
+  padding-top: calc(var(--kopf) + var(--a-6));
+  padding-bottom: var(--a-8);
+}
+
+.tafel-raster {
+  display: grid;
+  gap: var(--a-5);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "kopf" "bg" "entwurf" "tafel" "knoepfe";
+}
+.tafel-kopf { grid-area: kopf; display: grid; gap: var(--a-4); }
+.bg { grid-area: bg; }
+.tafel-entwurf { grid-area: entwurf; }
+.tafel { grid-area: tafel; }
+.tafel-knoepfe { grid-area: knoepfe; }
+
+@media (min-width: 900px) {
+  .tafel-sektion { padding-top: calc(var(--kopf) + var(--a-7)); }
+  .tafel-raster {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-areas: "kopf bg" "tafel bg" "knoepfe bg" ". entwurf";
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: var(--a-8);
+    row-gap: var(--a-5);
+    align-items: start;
+  }
+  .tafel-knoepfe { align-self: start; }
+}
+
+.tafel-unter {
+  color: var(--leise);
+  font-size: var(--t-gross);
+  max-width: 34rem;
+}
+
+.tafel-entwurf {
+  color: var(--leise);
+  font-size: var(--t-klein);
+  overflow-wrap: anywhere;
+}
+
+.tafel-knoepfe { display: flex; flex-wrap: wrap; gap: var(--a-3); }
+@media (max-width: 520px) {
+  .tafel-knoepfe .knopf { flex: 1 1 100%; }
+}
+
+/* ---------- Die Tafel ---------- */
+
+/* Rechteckig wie eine echte Bautafel am Bauzaun. Eine Linie zwischen den
+   Zeilen, keine Karte in der Karte. */
+.tafel {
+  background: var(--flaeche);
+  border: 1px solid var(--linie-an);
+  border-radius: var(--r-1);
+}
+.tafel-zeile {
+  display: grid;
+  gap: var(--a-2);
+  padding: var(--a-3) var(--a-4);
+}
+.tafel-zeile + .tafel-zeile { border-top: 1px solid var(--linie); }
+@media (min-width: 560px) {
+  .tafel-zeile { grid-template-columns: 10.5rem minmax(0, 1fr); align-items: baseline; gap: var(--a-4); }
+}
+.tafel-feld { font-size: var(--t-klein); color: var(--leise); font-weight: 500; }
+.tafel-wert { min-width: 0; }
+
+.tafel input[type="text"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--a-3);
+  background: var(--grund);
+  border: 1px solid var(--linie-an);
+  border-radius: var(--r-2);
+  font-size: 1rem;
+  transition: border-color var(--t) var(--ease);
+}
+.tafel input[type="text"]::placeholder { color: var(--leise); }
+@media (hover: hover) and (pointer: fine) {
+  .tafel input[type="text"]:hover { border-color: var(--ink); }
+}
+.tafel input[type="text"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tafel-hinweis { margin-top: var(--a-1); font-size: var(--t-kote); color: var(--leise); }
+
+.tafel-chips { display: flex; flex-wrap: wrap; gap: var(--a-2); }
+
+/* ---------- Chips (auch im Formular) ---------- */
+
+.chip { position: relative; display: block; }
+.chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 var(--a-3);
+  border: 1px solid var(--linie-an);
+  border-radius: var(--r-2);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+.chip span svg { display: none; width: 16px; height: 16px; }
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover span { border-color: var(--ink); }
+}
+.chip input:checked + span { background: var(--ink); color: var(--grund); border-color: var(--ink); }
+/* Rückmeldung beim Drücken, nicht erst beim Loslassen. */
+.chip:active span { transform: scale(0.97); }
+.chip span { transition-property: background-color, border-color, color, transform; }
+.chip input:checked + span svg { display: block; }
+.chip input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+.chip input[aria-invalid="true"] + span { border-color: var(--schlecht); }
+
+/* ---------- Baugespann ---------- */
+
+/* Profillinien in Signal-Orange, wie die Stangen, die auf einer Wiese zeigen,
+   wo ein Haus entstehen wird. Die Masse sind echt, gemessen im Browser. */
+.bg {
+  --bg-abstand: 24px;
+  position: relative;
+  padding: var(--bg-abstand) var(--bg-abstand) calc(var(--bg-abstand) + 44px);
+}
+.bg-linie {
+  position: absolute;
+  background: var(--signal);
+  pointer-events: none;
+}
+.bg-o, .bg-u { left: 6px; right: 6px; height: 2px; transform-origin: 0 50%; }
+.bg-l, .bg-r { top: 6px; bottom: 50px; width: 2px; transform-origin: 50% 0; }
+.bg-o { top: calc(var(--bg-abstand) - 1px); }
+.bg-u { bottom: calc(var(--bg-abstand) + 44px - 1px); }
+.bg-l { left: calc(var(--bg-abstand) - 1px); }
+.bg-r { right: calc(var(--bg-abstand) - 1px); }
+
+.bg-pfosten {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--signal);
+  pointer-events: none;
+}
+.bg-p1 { top: calc(var(--bg-abstand) - 4px); left: calc(var(--bg-abstand) - 4px); }
+.bg-p2 { top: calc(var(--bg-abstand) - 4px); right: calc(var(--bg-abstand) - 4px); }
+.bg-p3 { bottom: calc(var(--bg-abstand) + 40px); left: calc(var(--bg-abstand) - 4px); }
+.bg-p4 { bottom: calc(var(--bg-abstand) + 40px); right: calc(var(--bg-abstand) - 4px); }
+
+.bg-mass {
+  position: absolute;
+  top: 0;
+  left: calc(var(--bg-abstand) + var(--a-2));
+  font-size: var(--t-kote);
+  color: var(--leise);
+  line-height: var(--bg-abstand);
+  white-space: nowrap;
+}
+
+.bg-feld { position: relative; }
+
+.bg-plakette {
+  position: absolute;
+  left: var(--bg-abstand);
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px var(--a-2);
+  min-height: 36px;
+  font-size: var(--t-klein);
+  font-weight: 600;
+}
+.bg-plakette svg { width: 18px; height: 18px; color: var(--gut); }
+.bg-plakette .leise { font-weight: 400; }
+
+@media (max-width: 899px) {
+  .bg { --bg-abstand: 16px; }
+}
+
+/* ---------- Der Entwurf ---------- */
+
+/* Der Entwurf sieht nach dem Betrieb des Besuchers aus, nicht nach Sherka:
+   heller Grund in beiden Modi, eigene Akzentfarbe je Branche. */
+.vp {
+  --vp-papier: #f7f6f3;
+  --vp-tinte: #1d1e21;
+  --vp-leise: #5c5f66;
+  --vp-roh: #d9d7d1;
+  container-type: inline-size;
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  min-height: 25rem;
+  padding: 18px 20px 20px;
+  background: var(--vp-papier);
+  color: var(--vp-tinte);
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 1.45;
+  overflow: hidden;
+}
+@media (max-width: 899px) {
+  .vp { min-height: 19rem; gap: 10px; padding: 14px; }
+}
+
+.vp-teil { position: relative; min-width: 0; }
+.vp-roh {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: var(--vp-roh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vp-leiste { display: flex; align-items: center; gap: 12px; }
+.vp-logo strong { font-size: 15px; font-weight: 700; overflow-wrap: anywhere; }
+.vp-nav { margin-left: auto; }
+.vp-links { display: flex; gap: 14px; font-size: 13px; color: var(--vp-leise); }
+.vp-sprache { display: flex; gap: 2px; }
+.vp-sprache button {
+  min-width: 32px;
+  min-height: 32px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  color: var(--vp-leise);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vp-sprache button[aria-pressed="true"] { border-color: var(--vp-tinte); color: var(--vp-tinte); }
+@container (max-width: 460px) {
+  .vp-nav { display: none; }
+  .vp-sprache { margin-left: auto; }
+}
+
+.vp-h {
+  font-size: clamp(1.3rem, 6.2cqi, 2.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.vp-text p { color: var(--vp-leise); max-width: 34ch; }
+
+.vp-foto .vp-echt {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 5;
+  border: 1px dashed #9a9890;
+  border-radius: 2px;
+  color: var(--vp-leise);
+  font-size: 13px;
+}
+@container (max-width: 460px) {
+  .vp-foto .vp-echt { aspect-ratio: 16 / 6; }
+}
+
+.vp-funktion .vp-echt { display: grid; gap: 8px; justify-items: start; }
+.vp-ftitel { font-size: 13px; font-weight: 600; }
+.vp-optionen { display: flex; flex-wrap: wrap; gap: 6px; }
+.vp-option {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #b9b7b0;
+  border-radius: min(var(--vp-radius), 18px);
+  background: none;
+  color: var(--vp-tinte);
+  font-size: 13px;
+  cursor: pointer;
+}
+.vp-option[aria-pressed="true"] { background: var(--vp-akzent); border-color: var(--vp-akzent); color: #fff8f2; }
+.vp-knopf {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: min(var(--vp-radius), 19px);
+  background: var(--vp-tinte);
+  color: var(--vp-papier);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vp-erfolg { font-size: 12px; color: var(--vp-leise); min-height: 1em; }
+.vp-option:active,
+.vp-knopf:active { transform: scale(0.97); }
+.vp-option,
+.vp-knopf { transition: transform 100ms var(--ease); }
+
+.vp :focus-visible { outline: 2px solid var(--vp-akzent); outline-offset: 2px; }
+
+/* ---------- Zustände der Aufrichte ---------- */
+
+/* Vorgabe ist der fertige Zustand: ohne JavaScript, bei reduzierter Bewegung
+   und nach der Aufrichte. Nur wenn die Bewegungsstufe gesetzt ist und die
+   Aufrichte noch nicht begonnen hat, startet der Entwurf leer. Startet das
+   Skript nicht, erscheint nach drei Sekunden trotzdem alles. */
+:is(html[data-bewegung="voll"], html[data-bewegung="leicht"]) .bg:not([data-fertig]):not([data-laeuft]) :is(.vp-echt, .bg-mass, .bg-plakette) {
+  opacity: 0;
+  animation: bg-notfall 300ms 3s both;
+}
+:is(html[data-bewegung="voll"]) .bg:not([data-fertig]):not([data-laeuft]) .bg-linie[data-achse="x"] {
+  transform: scaleX(0);
+  animation: bg-notfall-linie 300ms 3s both;
+}
+:is(html[data-bewegung="voll"]) .bg:not([data-fertig]):not([data-laeuft]) .bg-linie[data-achse="y"] {
+  transform: scaleY(0);
+  animation: bg-notfall-linie 300ms 3s both;
+}
+@keyframes bg-notfall { to { opacity: 1; } }
+@keyframes bg-notfall-linie { to { transform: none; } }
+
+/* Laptop mit 768 px Höhe: Überschrift, Tafel und beide Knöpfe müssen ohne
+   Scrollen sichtbar sein. */
+@media (min-width: 900px) and (max-height: 860px) {
+  .tafel-sektion { padding-top: calc(var(--kopf) + var(--a-5)); }
+  .tafel-raster { row-gap: var(--a-4); }
+  .tafel-kopf { gap: var(--a-3); }
+  .tafel-kopf h1 { font-size: clamp(2.25rem, 1rem + 2.6vw, 3.4rem); }
+  .tafel-unter { font-size: 1.0625rem; }
+  .tafel-zeile { padding-block: var(--a-2); }
+  .tafel-hinweis { margin-top: 2px; }
+  .vp { min-height: 23rem; }
+}

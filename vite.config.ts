@@ -2,8 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 /* preact/compat statt React: identischer Code, rund 40 KB weniger im Bundle.
-   Auf einer Seite, die mit Ladezeit argumentiert, ist das keine Spielerei,
-   sondern die Voraussetzung dafuer, den eigenen Tempocheck zu bestehen. */
+   Gebaut wird zweimal: einmal für den Browser, einmal (--ssr) für das
+   Vorrendern in scripts/vorrendern.mjs. */
 
 export default defineConfig({
   plugins: [react()],
@@ -14,6 +14,12 @@ export default defineConfig({
       "react-dom/test-utils": "preact/test-utils",
       "react/jsx-runtime": "preact/jsx-runtime",
     },
+  },
+  ssr: {
+    noExternal: true,
+  },
+  build: {
+    manifest: true,
   },
   server: {
     port: Number(process.env.PORT) || 5173,

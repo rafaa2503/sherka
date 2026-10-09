@@ -1,0 +1,59 @@
+# Auslieferung von sherka.ch auf Infomaniak.
+#
+# Läuft bei jedem Push auf main und auf Knopfdruck. Baut die Seite, prüft die
+# Budgets (bricht bei Überschreitung ab) und kopiert dist/ per rsync über SSH
+# in den Webordner. Danach ein kurzer Rauchtest.
+#
+# Benötigte Secrets (Repository > Settings > Secrets and variables > Actions):
+#   INFOMANIAK_SSH_HOST   z. B. xxxxx.ftp.infomaniak.com
+#   INFOMANIAK_SSH_USER   SSH-Benutzer des Hostings
+#   INFOMANIAK_SSH_KEY    privater Schlüssel (nur für diesen Zweck erzeugt)
+#   INFOMANIAK_WEBORDNER  Zielordner, z. B. sites/sherka.ch
+# Die Formular-Konfiguration (sherka-config.php) liegt eine Ebene über dem
+# Webordner und wird hier bewusst NICHT übertragen.
+#
+# Zurück auf eine frühere Version: Tag auschecken und diesen Ablauf von Hand
+# starten (Actions > Deploy > Run workflow, Branch oder Tag wählen).
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: SSH-Schlüssel einrichten
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.INFOMANIAK_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.INFOMANIAK_SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Übertragen
+        run: |
+          rsync -az --delete --exclude ".vite" dist/ \
+            "${{ secrets.INFOMANIAK_SSH_USER }}@${{ secrets.INFOMANIAK_SSH_HOST }}:${{ secrets.INFOMANIAK_WEBORDNER }}/"
+
+      - name: Rauchtest
+        run: |
+          curl -fsSI https://sherka.ch/ | head -n 1
+          curl -fsSI https://sherka.ch/fr/ | head -n 1
+          curl -fsS https://sherka.ch/ | grep -q "<h1"

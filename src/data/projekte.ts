@@ -11,6 +11,10 @@ export type Projekt = {
      Attrappen aus divs, das ist der auffaelligste Fake ueberhaupt. */
   bild: string | null;
   bildMobil: string | null;
+  /* Wem die Domain gehört. Stand laut Raffa (September 2026): bledi und die
+     Zahnarztpraxis laufen über Sherka, takabul und kamil auf den Kunden.
+     Ändert sich das, hier nachführen, sonst steht etwas Falsches online. */
+  domainBei: "kunde" | "sherka";
   text: Record<Sprache, { was: string; kann: string }>;
 };
 
@@ -20,6 +24,7 @@ export const projekte: Projekt[] = [
     url: "https://bledi-bienne.ch",
     bild: "/shots/bledi-bienne.ch.webp",
     bildMobil: "/shots/bledi-bienne.ch-mobile.webp",
+    domainBei: "sherka",
     text: {
       de: {
         was: "Restaurant in Biel",
@@ -36,6 +41,7 @@ export const projekte: Projekt[] = [
     url: "https://bern-zahnarzt-team.ch",
     bild: "/shots/bern-zahnarzt-team.ch.webp",
     bildMobil: "/shots/bern-zahnarzt-team.ch-mobile.webp",
+    domainBei: "sherka",
     text: {
       de: {
         was: "Zahnarztpraxis in Bern",
@@ -52,6 +58,7 @@ export const projekte: Projekt[] = [
     url: "https://kamil-energy.ch",
     bild: "/shots/kamil-energy.ch.webp",
     bildMobil: "/shots/kamil-energy.ch-mobile.webp",
+    domainBei: "kunde",
     text: {
       de: {
         was: "Handel mit Agrar-Rohstoffen",
@@ -68,6 +75,7 @@ export const projekte: Projekt[] = [
     url: "https://takabul.ch",
     bild: "/shots/takabul.ch.webp",
     bildMobil: "/shots/takabul.ch-mobile.webp",
+    domainBei: "kunde",
     text: {
       de: {
         was: "Event-Plattform",

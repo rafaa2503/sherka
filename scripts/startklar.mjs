@@ -20,7 +20,7 @@ const gibtEs = (p) => access(p).then(() => true).catch(() => false);
 for (const sprache of ["de", "fr"]) {
   const inhalt = await lies(`src/i18n/${sprache}.ts`);
   if (/platzhalter:\s*true/.test(inhalt)) {
-    fehler.push(`${sprache}.ts: Kundenstimmen stehen noch auf platzhalter: true. Erst freigeben lassen, dann auf false setzen.`);
+    warnung.push(`${sprache}.ts: Kundenstimmen stehen auf platzhalter: true, die Sektion wird nicht gezeigt. Erst nach schriftlicher Freigabe auf false.`);
   }
 }
 

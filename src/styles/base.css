@@ -1,5 +1,4 @@
 @import "@fontsource-variable/plus-jakarta-sans/wght.css";
-@import "@fontsource-variable/newsreader/opsz.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "./tokens.css";
 
@@ -12,48 +11,36 @@ body {
   background: var(--grund);
   color: var(--ink);
   font-family: var(--f);
-    font-size: 1.0625rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
 
-/* Feines Korn ueber der ganzen Seite. Nimmt dem Schwarz das Digitale
-   und kaschiert Bandenbildung in den Verlaeufen. Fix positioniert und
-   ohne Zeigerereignisse, damit nichts pro Scrollframe neu gemalt wird. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.28;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-}
-
 h1, h2, h3, h4 {
   margin: 0;
-  line-height: 1.02;
-    text-wrap: balance;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
-/* Wucht kommt aus Gewicht und Groesse. 800 statt 500: die Form ist jetzt
-   rund, also darf die Schrift laut sein, ohne hart zu wirken. */
 h1 {
-  font-weight: 800;
-  font-size: clamp(2.5rem, 8vw, 6.5rem);
-  letter-spacing: -0.045em;
-  line-height: 0.98;
-}
-h2 {
-  font-weight: 800;
-  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 300;
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
   letter-spacing: -0.04em;
+  word-spacing: 0.04em;
   line-height: 1.02;
 }
-h3 { font-weight: 700; font-size: 1.375rem; letter-spacing: -0.02em; line-height: 1.18; }
-h4 { font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.012em; }
+h2 {
+  font-weight: 300;
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  letter-spacing: -0.04em;
+  word-spacing: 0.04em;
+  line-height: 1.05;
+}
+
+/* Zweiter Satzteil gedaempft, so liest sich die Ueberschrift in zwei Atemzuegen. */
+.ton-zwei { color: var(--leise); }
+h3 { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
 
 p, li { margin: 0; }
 
@@ -61,7 +48,7 @@ a { color: inherit; text-underline-offset: 0.22em; }
 
 img { max-width: 100%; height: auto; display: block; }
 
-button, input, textarea { font: inherit; color: inherit; }
+button, input, textarea, select { font: inherit; color: inherit; }
 
 .num {
   font-family: var(--f-num);
@@ -86,60 +73,14 @@ button, input, textarea { font: inherit; color: inherit; }
 .sektion + .sektion { border-top: 1px solid var(--linie); }
 
 .stapel { display: grid; gap: 1.25rem; }
-.stapel-gross { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); }
+.stapel-gross { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
 
 .leise { color: var(--leise); }
-
-/* Zeilenmaske: der Text steigt beim Enthuellen hinter einer Kante hervor. */
-.maske { overflow: hidden; display: block; padding-bottom: 0.12em; }
-
-/* Enthuellung. Sichtbar ist der Normalzustand, "aus" setzt erst das
-   Skript. Ohne JavaScript steht die Seite vollstaendig da.
-   Die Kurve rastet ein statt weich auszulaufen, passend zur Anzeige. */
-[data-auf="aus"] {
-  opacity: 0;
-  transform: translateY(18px);
-}
-[data-auf="an"] {
-  opacity: 1;
-  transform: none;
-  transition: opacity 420ms var(--ease), transform 420ms var(--ease);
-}
-
-/* Buchstaben der zerlegten Ueberschriften. Der Wrapper schneidet ab,
-   also steigen sie einzeln hinter der Kante hervor. */
-[data-zerlegen] { display: block; overflow: hidden; padding-bottom: 0.12em; }
-.zeichen { display: inline-block; white-space: pre; will-change: transform; }
-
-/* Satz, der sich beim Durchscrollen fuellt. Der Verlauf laeuft von
-   links nach rechts durch, die Breite steuert GSAP. */
-/* Zweifarb-Verlauf, doppelt so breit wie der Satz: links bernstein,
-   rechts gedimmt. Verschoben wird die Position, nicht die Groesse.
-   Mit background-size waere der ungefuellte Teil unsichtbar, weil
-   -webkit-text-fill-color: transparent jede Textfarbe aussticht. */
-.fuellsatz {
-  background-image: linear-gradient(to right, var(--amber) 50%, var(--linie-an) 50%);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 4px;
   border-radius: 2px;
-}
-
-.nur-screenreader {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .springlink {
@@ -148,7 +89,7 @@ button, input, textarea { font: inherit; color: inherit; }
   top: -100px;
   z-index: 100;
   background: var(--ink);
-  color: var(--ink-auf);
+  color: var(--grund);
   padding: 0.7rem 1.1rem;
   border-radius: var(--r-i);
   transition: top var(--t) var(--ease);
@@ -162,5 +103,4 @@ button, input, textarea { font: inherit; color: inherit; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  body::after { display: none; }
 }

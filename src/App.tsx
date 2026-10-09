@@ -1,15 +1,14 @@
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect } from "react";
 import { Nav } from "./components/Nav";
-import { Vorhang } from "./components/Vorhang";
 import { Laeufer } from "./components/Laeufer";
-import { Nebel } from "./components/Nebel";
-import { Fallblatt } from "./components/Fallblatt";
-import { Magnet } from "./components/Magnet";
-import { BildFluss } from "./components/BildFluss";
-import { ZahlAuf } from "./components/ZahlAuf";
 import { Anfrage } from "./components/Anfrage";
+import { Bau } from "./components/Bau";
+import { Arbeiten } from "./components/Arbeiten";
+import { Ablauf } from "./components/Ablauf";
+import { LiveTelefon } from "./components/LiveTelefon";
 import { projekte } from "./data/projekte";
-import { starteEnthuellung, starteKippen, starteLenis, starteScrub } from "./lib/bewegung";
+import { PORTRAET_1120, PORTRAET_560, PORTRAET_DA } from "./data/portraet";
+import { starteHero, starteLenis } from "./lib/bewegung";
 import { useSprache } from "./i18n";
 import "./App.css";
 
@@ -17,133 +16,99 @@ const TELEFON = "+41 78 745 00 47";
 const TELEFON_ROH = "41787450047";
 const MAIL = "raffa.amro@gmail.com";
 
+/* Worte statt Buchstaben: jedes Wort steigt hinter einer Kante hervor. So
+   bleibt jeder Umbruch an einer Wortgrenze, und der Text steht in beiden
+   Sprachen von selbst richtig da. */
+function woerter(satz: string, start: number) {
+  return satz.split(" ").map((w, i) => (
+    <Fragment key={`${w}-${i}`}>
+      <span className="wort" aria-hidden="true">
+        <span style={{ animationDelay: `${120 + (start + i) * 70}ms` }}>{w}</span>
+      </span>{" "}
+    </Fragment>
+  ));
+}
+
+/* Zweifarbige Ueberschrift: erster Teil in Tinte, Rest gedaempft. Geteilt wird
+   am Komma, sonst in der Mitte, immer an einer Wortgrenze. */
+function zweiton(text: string) {
+  const komma = text.indexOf(", ");
+  const teile = text.split(" ");
+  const schnitt = komma > 0 ? text.slice(0, komma + 1).split(" ").length : Math.ceil(teile.length / 2);
+  return (
+    <>
+      {teile.slice(0, schnitt).join(" ")} <span className="ton-zwei">{teile.slice(schnitt).join(" ")}</span>
+    </>
+  );
+}
+
 export default function App() {
-  const { t, sprache } = useSprache();
-  const wurzel = useRef<HTMLDivElement>(null);
+  const { t } = useSprache();
 
   useEffect(() => starteLenis(), []);
+  useEffect(() => starteHero(), []);
 
-  useEffect(() => {
-    if (!wurzel.current) return;
-    const auf = starteEnthuellung(wurzel.current);
-    const scrub = starteScrub(wurzel.current);
-    const kippen = starteKippen(wurzel.current);
-    return () => {
-      auf();
-      scrub();
-      kippen();
-    };
-  }, [sprache]);
+  const live = projekte[1];
 
   return (
-    <div ref={wurzel}>
-      <Vorhang />
+    <>
       <Laeufer />
       <a className="springlink" href="#inhalt">
         {t.nav.zumInhalt}
       </a>
       <Nav />
 
-      <main id="inhalt">
+      <header className="buehne-aussen">
         <span id="oben" />
+        <div className="buehne flaeche-dunkel">
+          <div className="buehne-licht" aria-hidden="true">
+            <i className="blob blob-a" />
+            <i className="blob blob-b" />
+            <i className="blob blob-c" />
+            <i className="buehne-spot" />
+            <i className="buehne-korn" />
+          </div>
 
-        <section className="sektion hero">
-          <Nebel />
-          {/* Kein Text links, Panel rechts: die Ueberschrift laeuft ueber
-              die volle Breite und die echte Arbeit liegt als durchgehende
-              Bahn dazwischen. Der Beweis steht damit im ersten Bild,
-              nicht in einer Karte am Rand. */}
-          {/* Keine Bilder im Hero. Ein Satz, ruhig gesetzt, davor eine
-              Zeile die sagt was ich bin. Den Beweis liefert die
-              Arbeiten-Sektion, nicht der erste Bildschirm. */}
-          <div className="shell hero-oben">
-            <span className="hero-rolle">{t.hero.rolle}</span>
-
-            <h1 className="hero-satz">
-              <Fallblatt as="span" text={t.hero.titelOben} />{" "}
-              <Fallblatt as="span" className="an" text={t.hero.titelUnten} verzoegerung={260} />
+          <div className="buehne-text">
+            <span className="abzeichen">{t.hero.rolle}</span>
+            <h1 aria-label={`${t.hero.titelOben} ${t.hero.titelUnten}`}>
+              {woerter(t.hero.titelOben, 0)}
+              <br />
+              <span className="ton-zwei">{woerter(t.hero.titelUnten, t.hero.titelOben.split(" ").length)}</span>
             </h1>
-
-            <p className="hero-unterzeile maske">
-              <span>{t.hero.text}</span>
-            </p>
-
-            <div className="hero-knoepfe">
-              <Magnet className="knopf knopf-voll" href="#kontakt">
+            <p className="buehne-unterzeile">{t.hero.text}</p>
+            <div className="buehne-knoepfe">
+              <a className="knopf knopf-voll" href="#kontakt">
                 {t.hero.cta}
-              </Magnet>
-              <Magnet className="knopf knopf-leer" href="#arbeiten">
-                {t.hero.cta2}
-              </Magnet>
+              </a>
+              <a
+                className="knopf knopf-leer"
+                href={`https://wa.me/${TELEFON_ROH}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.hero.whatsapp}
+              </a>
             </div>
           </div>
-        </section>
 
-        <section className="sektion" id="arbeiten">
-          <div className="shell stapel-gross">
-            <div className="stapel spalte">
-              <h2 className="maske">
-                <span data-zerlegen>{t.arbeiten.titel}</span>
-              </h2>
-              <p className="leise">{t.arbeiten.text}</p>
-            </div>
-
-            <ul className="projekte">
-              {projekte.map((p) => (
-                <li className="projekt" key={p.domain} data-auf>
-                  <div className="projekt-bild">
-                    {p.bild ? (
-                      <>
-                        <BildFluss
-                          src={p.bild}
-                          alt={`${p.domain}, ${p.text[sprache].was}`}
-                          breite={1240}
-                          hoehe={775}
-                        />
-                        {p.bildMobil && (
-                          /* Echtes Handy-Bildschirmfoto im Geraeterahmen.
-                             Belegt nebenbei, dass die Seite mobil gebaut ist. */
-                          <div className="telefon" aria-hidden="true">
-                            <span className="telefon-insel" />
-                            <img
-                              src={p.bildMobil}
-                              alt=""
-                              width={275}
-                              height={597}
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <span className="leise num">{t.arbeiten.bildFehlt}</span>
-                    )}
-                  </div>
-                  <div className="projekt-text">
-                    <div className="projekt-kopf">
-                      <h3>{p.domain}</h3>
-                      <span className="leise num">{p.text[sprache].was}</span>
-                    </div>
-                    <p className="projekt-kann">{p.text[sprache].kann}</p>
-                    <a className="projekt-link" href={p.url} target="_blank" rel="noopener noreferrer">
-                      {t.arbeiten.besuchen}
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <div className="buehne-geraet">
+            <LiveTelefon url={live.url} poster={live.bildMobil} alt={t.hero.bildAlt} hinweis={t.hero.live} />
           </div>
-        </section>
+        </div>
+      </header>
+
+      <main id="inhalt">
+        <Bau />
+
+        <Arbeiten titel={zweiton(t.arbeiten.titel)} />
 
         <section className="sektion" id="leistungen">
-          <div className="shell stapel-gross">
-            <h2 className="spalte"><span className="maske">
-              <span>{t.leistungen.titel}</span>
-            </span></h2>
-            <ul className="reihen">
+          <div className="shell leist">
+            <h2>{zweiton(t.leistungen.titel)}</h2>
+            <ul className="leist-liste">
               {t.leistungen.liste.map((l) => (
-                <li className="reihe zweispaltig" key={l.was} data-auf>
+                <li key={l.was}>
                   <h3>{l.was}</h3>
                   <p>{l.text}</p>
                 </li>
@@ -152,123 +117,34 @@ export default function App() {
           </div>
         </section>
 
-        {/* Laufschrift. Genau eine auf der Seite, und sie traegt echten Inhalt:
-            die vier Domains, die tatsaechlich laufen. */}
-        <section className="laufband" aria-hidden="true">
-          <div className="laufband-spur">
-            {[0, 1].map((n) => (
-              <span key={n}>
-                {projekte.map((p) => (
-                  <span key={p.domain}>
-                    {p.domain}
-                    <i />
-                  </span>
+        {/* Stimmen erscheinen erst, wenn der Text schriftlich freigegeben ist. */}
+        {!t.stimmen.platzhalter && (
+          <section className="sektion" id="stimmen">
+            <div className="shell stapel-gross">
+              <h2 className="spalte">{zweiton(t.stimmen.titel)}</h2>
+              <ul className="stimmen">
+                {t.stimmen.liste.map((s) => (
+                  <li key={s.name}>
+                    <blockquote>{s.zitat}</blockquote>
+                    <p className="stimme-wer">
+                      <strong>{s.name}</strong>
+                      <span className="leise">{s.rolle}</span>
+                    </p>
+                  </li>
                 ))}
-              </span>
-            ))}
-          </div>
-        </section>
-        {/* Aussage, die sich beim Durchscrollen fuellt. Traegt den Satz,
-            der die ganze Positionierung in einer Zeile zusammenfasst. */}
-        <section className="sektion aussage-sektion">
-          <div className="shell">
-            <p className="aussage fuellsatz">{t.aussage}</p>
-          </div>
-        </section>
-
-
-        {/* Zahlen. Nur echte: vier laufende Seiten, zwei Sprachen,
-            Antwortzeit, eine Ansprechperson. Keine erfundenen Prozente. */}
-        <section className="sektion" id="zahlen">
-          <div className="shell">
-            <ul className="zahlen" data-auf>
-              {t.zahlen.map((z) => (
-                <li key={z.label}>
-                  <span className="zahl-wert num"><ZahlAuf wert={z.wert} /></span>
-                  <span className="zahl-label">{z.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Kundenstimmen. Solange platzhalter true ist, liegt ein
-            sichtbares Band darueber und die Startpruefung scheitert.
-            Erfundene Zitate unter echtem Namen duerfen nie live gehen. */}
-        <section className="sektion" id="stimmen">
-          <div className="shell stapel-gross">
-            <h2 className="spalte">
-              <span className="maske">
-                <span data-zerlegen>{t.stimmen.titel}</span>
-              </span>
-            </h2>
-
-            {t.stimmen.platzhalter && <p className="platzhalter-band">{t.stimmen.hinweis}</p>}
-
-            <ul className="stimmen">
-              {t.stimmen.liste.map((s) => (
-                <li key={s.name} data-auf>
-                  <blockquote>{s.zitat}</blockquote>
-                  <p className="stimme-wer">
-                    <strong>{s.name}</strong>
-                    <span className="leise">{s.rolle}</span>
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="sektion" id="branchen">
-          <div className="shell stapel-gross">
-            <div className="stapel spalte">
-              <h2 className="maske">
-                <span data-zerlegen>{t.branchen.titel}</span>
-              </h2>
-              <p className="leise">{t.branchen.text}</p>
+              </ul>
             </div>
-            <ul className="branchen">
-              {t.branchen.liste.map((b) => (
-                <li key={b.was} data-auf>
-                  <h3>{b.was}</h3>
-                  <p className="leise">{b.text}</p>
-                  <span className="branche-beleg num">{b.beleg}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section className="sektion" id="ablauf">
-          <div className="shell stapel-gross">
-            <h2 className="spalte"><span className="maske">
-              <span>{t.ablauf.titel}</span>
-            </span></h2>
+        <Ablauf titel={zweiton(t.ablauf.titel)} />
 
-            <ol className="ablauf" data-auf>
-              {t.ablauf.schritte.map((s) => (
-                <li key={s.was}>
-                  <span className="ablauf-zeit num">{s.zeit}</span>
-                  <h3>{s.was}</h3>
-                  <p>{s.text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* FAQ als Akkordeon, ueber natives <details>/<summary>: funktioniert
-            ohne jedes JavaScript und ist ohne Zusatzarbeit per Tastatur und
-            Screenreader bedienbar. Nur das Plus-Icon wird animiert (Transform,
-            keine Hoehe), das Auf- und Zuklappen selbst bleibt nativ. */}
         <section className="sektion" id="faq">
-          <div className="shell stapel-gross">
-            <h2 className="spalte"><span className="maske">
-              <span data-zerlegen>{t.faq.titel}</span>
-            </span></h2>
+          <div className="shell faq-raster">
+            <h2>{zweiton(t.faq.titel)}</h2>
             <ul className="faq">
               {t.faq.liste.map((e) => (
-                <li key={e.frage} data-auf>
+                <li key={e.frage}>
                   <details>
                     <summary>
                       <span>{e.frage}</span>
@@ -283,25 +159,49 @@ export default function App() {
         </section>
 
         <section className="sektion" id="person">
-          <div className="shell person" data-auf>
-            <div className="person-bild">
-              <span className="leise num">{t.person.fotoFehlt}</span>
-            </div>
-            <div className="stapel">
+          <div className={PORTRAET_DA ? "shell person" : "shell person person-ohne-bild"}>
+            {PORTRAET_DA && (
+              <img
+                className="person-bild"
+                src={PORTRAET_1120}
+                srcSet={`${PORTRAET_560} 560w, ${PORTRAET_1120} 1120w`}
+                sizes="(min-width: 800px) 288px, 70vw"
+                alt={t.person.fotoAlt}
+                width={560}
+                height={700}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <div className="person-spalte">
+              <h2>{zweiton(t.person.titel)}</h2>
               <p className="person-text">{t.person.text1}</p>
             </div>
           </div>
         </section>
+      </main>
 
-        <section className="sektion" id="kontakt">
+      <section className="kontakt-aussen" id="kontakt">
+        <div className="kontakt-buehne flaeche-dunkel">
+          <div className="buehne-licht" aria-hidden="true">
+            <i className="blob blob-b kontakt-blob-a" />
+            <i className="blob blob-a kontakt-blob-b" />
+            <i className="buehne-korn" />
+          </div>
           <div className="shell kontakt">
             <div className="stapel">
-              <h2 className="maske">
-                <span data-zerlegen>{t.kontakt.titel}</span>
-              </h2>
+              <h2>{zweiton(t.kontakt.titel)}</h2>
               <p className="leise">{t.kontakt.text}</p>
 
               <dl className="kanaele">
+                <div>
+                  <dt>{t.kontakt.whatsapp}</dt>
+                  <dd>
+                    <a href={`https://wa.me/${TELEFON_ROH}`} target="_blank" rel="noopener noreferrer">
+                      {t.hero.whatsapp}
+                    </a>
+                  </dd>
+                </div>
                 <div>
                   <dt>{t.kontakt.telefon}</dt>
                   <dd>
@@ -319,12 +219,10 @@ export default function App() {
               </dl>
             </div>
 
-            <div data-auf>
-              <Anfrage />
-            </div>
+            <Anfrage />
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       <footer className="fuss">
         <div className="shell fuss-inhalt">
@@ -334,7 +232,10 @@ export default function App() {
           <a href="/datenschutz.html">{t.fuss.datenschutz}</a>
           <span className="fuss-jahr num">2026</span>
         </div>
+        <span className="fuss-marke" aria-hidden="true">
+          Sherka
+        </span>
       </footer>
-    </div>
+    </>
   );
 }

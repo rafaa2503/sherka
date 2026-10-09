@@ -5,74 +5,71 @@ import "./Nav.css";
 type Thema = "hell" | "dunkel";
 const SPEICHER = "sherka:thema";
 
-function gespeichertesThema(): Thema | null {
-  if (typeof window === "undefined") return null;
-  const g = window.localStorage.getItem(SPEICHER);
-  return g === "hell" || g === "dunkel" ? g : null;
+/* Dunkel ist der Standard. Gelesen wird nur die eigene Wahl des Besuchers,
+   nie die Systemeinstellung. */
+function gespeichertesThema(): Thema {
+  try {
+    return window.localStorage.getItem(SPEICHER) === "hell" ? "hell" : "dunkel";
+  } catch {
+    return "dunkel";
+  }
 }
 
+const LINKS = ["bau", "arbeiten", "leistungen", "ablauf", "person"] as const;
+
+/* Am Computer eine schwebende Pille, am Handy eine schmale Leiste mit
+   Vollbildmenue, das sich als Kreis vom Knopf aus oeffnet. */
 export function Nav() {
   const { t, sprache, setzeSprache } = useSprache();
-  const [gescrollt, setGescrollt] = useState(false);
-  const [thema, setThema] = useState<Thema | null>(gespeichertesThema);
-
-  // Ohne gespeicherte Wahl gilt die Systemeinstellung.
-  const istDunkel =
-    thema === "dunkel" ||
-    (thema === null &&
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [thema, setThema] = useState<Thema>(gespeichertesThema);
+  const [offen, setOffen] = useState(false);
+  const istDunkel = thema === "dunkel";
 
   useEffect(() => {
-    const wurzel = document.documentElement;
-    if (thema === null) {
-      wurzel.removeAttribute("data-theme");
-      window.localStorage.removeItem(SPEICHER);
-    } else {
-      wurzel.setAttribute("data-theme", thema);
+    document.documentElement.setAttribute("data-theme", thema);
+    try {
       window.localStorage.setItem(SPEICHER, thema);
+    } catch {
+      /* Speicher gesperrt: die Wahl gilt nur fuer diesen Besuch. */
     }
   }, [thema]);
 
   useEffect(() => {
-    const marke = document.getElementById("oben");
-    if (!marke) return;
-    const io = new IntersectionObserver(([e]) => setGescrollt(!e.isIntersecting), {
-      rootMargin: "-80px 0px 0px 0px",
-    });
-    io.observe(marke);
-    return () => io.disconnect();
-  }, []);
+    if (!offen) return;
+    const taste = (e: KeyboardEvent) => e.key === "Escape" && setOffen(false);
+    document.addEventListener("keydown", taste);
+    document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", taste);
+      document.documentElement.style.overflow = "";
+    };
+  }, [offen]);
 
   return (
-    <header className={gescrollt ? "nav nav-fest" : "nav"}>
-      <div className="shell nav-inhalt">
-        <a className="marke" href="#oben">
-          Sherka
-        </a>
+    <header className="nav flaeche-dunkel">
+      <div className="nav-leiste">
+        <div className="pille pille-marke">
+          <a className="marke" href="#oben">
+            Sherka
+          </a>
+        </div>
 
-        <nav className="nav-links" aria-label="Navigation">
-          <a href="#arbeiten">{t.nav.arbeiten}</a>
-          <a href="#leistungen">{t.nav.leistungen}</a>
-          <a href="#ablauf">{t.nav.ablauf}</a>
-          <a href="#person">{t.nav.person}</a>
+        <nav className="pille nav-links" aria-label="Navigation">
+          {LINKS.map((k) => (
+            <a key={k} href={`#${k}`}>
+              {t.nav[k]}
+            </a>
+          ))}
         </nav>
 
-        <div className="nav-werkzeuge">
+        <div className="pille nav-werkzeuge">
           <div className="sprachwahl" role="group" aria-label={t.nav.sprache}>
             {SPRACHEN.map((s: Sprache) => (
-              <button
-                key={s}
-                type="button"
-                onClick={() => setzeSprache(s)}
-                aria-pressed={sprache === s}
-                lang={s}
-              >
+              <button key={s} type="button" onClick={() => setzeSprache(s)} aria-pressed={sprache === s} lang={s}>
                 {s.toUpperCase()}
               </button>
             ))}
           </div>
-
           <button
             className="thema-knopf"
             type="button"
@@ -81,11 +78,33 @@ export function Nav() {
           >
             {istDunkel ? "☀" : "☾"}
           </button>
-
-          <a className="knopf knopf-leer nav-cta" href="#kontakt">
-            <span>{t.nav.anfragen}</span>
+          <a className="knopf knopf-voll nav-cta" href="#kontakt">
+            {t.nav.anfragen}
           </a>
+          <button
+            className="menue-knopf"
+            type="button"
+            aria-expanded={offen}
+            aria-controls="vollmenue"
+            onClick={() => setOffen(!offen)}
+          >
+            <span className="menue-strich" aria-hidden="true" />
+            <span className="nur-lesen">{offen ? t.nav.menueZu : t.nav.menue}</span>
+          </button>
         </div>
+      </div>
+
+      <div id="vollmenue" className={offen ? "vollmenue vollmenue-offen" : "vollmenue"} inert={!offen}>
+        <nav aria-label="Navigation">
+          {LINKS.map((k, i) => (
+            <a key={k} href={`#${k}`} onClick={() => setOffen(false)} style={{ transitionDelay: `${120 + i * 50}ms` }}>
+              {t.nav[k]}
+            </a>
+          ))}
+        </nav>
+        <a className="knopf knopf-voll" href="#kontakt" onClick={() => setOffen(false)}>
+          {t.nav.anfragen}
+        </a>
       </div>
     </header>
   );

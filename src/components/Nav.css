@@ -1,87 +1,164 @@
+/* Schwebende Pille. Dunkles Glas (backdrop-filter nur hier), ueber dem Hero
+   wie ueber dem hellen Blatt gleich lesbar. */
 .nav {
   position: fixed;
-  top: 0;
+  top: 1.5rem;
   left: 0;
   right: 0;
   z-index: 50;
-  height: 76px;
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--pad);
+  pointer-events: none;
+  color: var(--ink);
+}
+
+.nav-leiste {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, 78rem);
+}
+.nav-leiste > * { pointer-events: auto; }
+.nav-leiste > :last-child { justify-self: end; }
+.nav-leiste > :first-child { justify-self: start; }
+
+/* Jede Gruppe ist eine eigene Pille aus dunklem Glas. */
+.pille {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid transparent;
-  transition: background var(--t) var(--ease), border-color var(--t) var(--ease),
-    backdrop-filter var(--t) var(--ease);
-}
-
-.nav-fest {
-  background: color-mix(in srgb, var(--grund) 82%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--nacht) 72%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 14px 30px -18px rgba(10, 9, 24, 0.6);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
-  border-bottom-color: var(--linie);
 }
+.pille-marke { padding: 0.5rem 1.1rem; }
 
-.nav-inhalt { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
+.marke { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.035em; text-decoration: none; }
 
-.marke {
-  font-weight: 600;
-  font-size: 1.375rem;
-  letter-spacing: -0.035em;
-  text-decoration: none;
-}
-
-.nav-links { display: flex; gap: 1.75rem; }
+.nav-links { gap: 0.15rem; padding: 0.3rem; }
 .nav-links a {
-  font-size: 0.9375rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
   color: var(--leise);
   text-decoration: none;
-  transition: color var(--t) var(--ease);
+  white-space: nowrap;
+  transition: color var(--t) var(--ease), background var(--t) var(--ease);
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.1); }
 
-.nav-werkzeuge { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
+.nav-werkzeuge { gap: 0.5rem; padding: 0.3rem; }
 
-.sprachwahl {
-  display: flex;
-  border: 1px solid var(--linie-an);
-  border-radius: 999px;
-  overflow: hidden;
-}
+.sprachwahl { display: flex; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--linie-an); overflow: hidden; }
 .sprachwahl button {
   background: none;
   border: 0;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  padding: 0 0.7rem;
+  min-width: 44px;
+  min-height: 40px;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--leise);
   cursor: pointer;
-  min-height: 44px;
-  min-width: 44px;
   transition: color var(--t) var(--ease), background var(--t) var(--ease);
 }
-/* --ink-auf ist in beiden Modi dunkel (fuer Text auf dem hellen
-   Bernstein-Knopf gedacht). Hier faerbt --ink die Pille selbst, der
-   Text braucht die Gegenfarbe --grund, sonst steht dunkler Text auf
-   dunklem Grund im Hellmodus unsichtbar da. */
-.sprachwahl button[aria-pressed="true"] { background: var(--ink); color: var(--grund); }
+.sprachwahl button[aria-pressed="true"] { background: var(--ink); color: var(--nacht); }
 .sprachwahl button:hover[aria-pressed="false"] { color: var(--ink); }
-
-/* Kleinerer CTA in der Leiste, damit sie unter 80px bleibt. */
-.nav .nav-cta { min-height: 44px; padding: 0.5rem 1.15rem; font-size: 0.875rem; }
-
-@media (max-width: 760px) {
-  .nav { height: 68px; }
-  .nav .nav-links { display: none; }
-  .nav .nav-cta { display: none; }
-}
 
 .thema-knopf {
   background: none;
-  border: 1px solid var(--linie-an);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--linie-an);
   border-radius: 999px;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   font-size: 1rem;
   line-height: 1;
   color: var(--leise);
   cursor: pointer;
-  transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+  transition: color var(--t) var(--ease);
 }
-.thema-knopf:hover { color: var(--ink); border-color: var(--ink); }
+.thema-knopf:hover { color: var(--ink); }
+
+.nav .nav-cta { min-height: 40px; padding: 0 1.1rem; font-size: 0.875rem; border-radius: 999px; }
+
+.menue-knopf { display: none; }
+.vollmenue { display: none; }
+.nur-lesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- Handy ---------- */
+
+@media (max-width: 899px) {
+  .nav { top: 0.9rem; }
+  .nav-leiste { grid-template-columns: 1fr auto; }
+  .nav-links, .nav .nav-cta { display: none; }
+  .nav-werkzeuge { gap: 0.4rem; padding: 0.25rem; }
+  .pille-marke { padding: 0.55rem 1rem; }
+
+  .menue-knopf {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 40px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    cursor: pointer;
+  }
+  .menue-strich,
+  .menue-strich::before {
+    display: block;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--nacht);
+    transition: transform 280ms var(--ease);
+  }
+  .menue-strich::before { content: ""; transform: translateY(6px); }
+  .menue-knopf[aria-expanded="true"] .menue-strich { transform: translateY(1px) rotate(45deg); }
+  .menue-knopf[aria-expanded="true"] .menue-strich::before { transform: translateY(0) rotate(-90deg); }
+
+  /* Vollbildmenue: oeffnet sich als Kreis vom Knopf aus. */
+  .vollmenue {
+    pointer-events: auto;
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 6rem var(--pad) 3rem;
+    background: var(--nacht);
+    clip-path: circle(0 at calc(100% - 2.6rem) 2.1rem);
+    transition: clip-path 650ms var(--ease);
+    visibility: hidden;
+  }
+  .vollmenue-offen {
+    clip-path: circle(150% at calc(100% - 2.6rem) 2.1rem);
+    visibility: visible;
+  }
+  .vollmenue nav { display: grid; gap: 0.35rem; }
+  .vollmenue nav a {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    padding-block: 0.15rem;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 400ms var(--ease), transform 500ms var(--ease);
+  }
+  .vollmenue-offen nav a { opacity: 1; transform: none; }
+  .vollmenue .knopf { justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vollmenue { transition: none; }
+}

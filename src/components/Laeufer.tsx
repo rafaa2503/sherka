@@ -19,34 +19,42 @@ const HALTEZEIT = 220;
 export function Laeufer() {
   const spur = useRef<HTMLDivElement>(null);
   const figur = useRef<HTMLDivElement>(null);
+  const bahn = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const s = spur.current;
     const f = figur.current;
-    if (!s || !f) return;
+    const b = bahn.current;
+    if (!s || !f || !b) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      f.style.display = "none";
-      const st = ScrollTrigger.create({
-        start: 0,
-        end: "max",
-        onUpdate: (self) => {
-          s.style.transform = `scaleX(${self.progress})`;
-        },
-      });
-      return () => st.kill();
-    }
+    // Nur am Computer und ohne reduzierte Bewegung. Das CSS blendet die
+    // Bahn sonst ohnehin aus, hier wird zusaetzlich nichts berechnet.
+    const aktiv = window.matchMedia("(min-width: 900px) and (prefers-reduced-motion: no-preference)");
+    if (!aktiv.matches) return;
 
     const xZu = gsap.quickTo(f, "x", { duration: 0.3, ease: "power2.out" });
     let stehtTimer = 0;
+    // Die Bahn nimmt die Farbwelt dessen an, was gerade hinter ihr liegt.
+    const faerben = () => {
+      const el = document.elementFromPoint(window.innerWidth * 0.5, window.innerHeight - 70);
+      b.classList.toggle("flaeche-dunkel", !!el?.closest(".flaeche-dunkel"));
+    };
+    const setze = (p: number) => {
+      faerben();
+      s.style.transform = `scaleX(${p})`;
+      return 24 + p * (window.innerWidth - 48);
+    };
 
     const st = ScrollTrigger.create({
       start: 0,
       end: "max",
+      // Richtige Startposition auch nach Neuladen mitten auf der Seite und
+      // nach Groessenaenderung, sonst steht er links und springt erst beim
+      // naechsten Scrollen an seinen Platz.
+      onRefresh: (self) => gsap.set(f, { x: setze(self.progress) }),
       onUpdate: (self) => {
-        s.style.transform = `scaleX(${self.progress})`;
         // Am Rand nicht aus dem Bild laufen.
-        xZu(24 + self.progress * (window.innerWidth - 48));
+        xZu(setze(self.progress));
 
         const v = self.getVelocity();
         if (Math.abs(v) > 40) f.dataset.richtung = v > 0 ? "vor" : "zurueck";
@@ -73,7 +81,7 @@ export function Laeufer() {
   }, []);
 
   return (
-    <div className="laufbahn" aria-hidden="true">
+    <div className="laufbahn" aria-hidden="true" ref={bahn}>
       <div className="laufbahn-spur" ref={spur} />
       <div className="laeufer" ref={figur} data-laeuft="0" data-richtung="vor">
         <svg viewBox="0 0 44 44" fill="none" strokeLinecap="round">

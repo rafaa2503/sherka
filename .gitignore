@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Prüfaufnahmen, lokal
+ansichten
+.env
+.env.*
+!.env.example

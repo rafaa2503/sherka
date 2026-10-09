@@ -7,35 +7,56 @@ export const de = {
 
   nav: {
     zumInhalt: "Zum Inhalt springen",
+    bau: "So entsteht eine Seite",
     arbeiten: "Arbeiten",
     leistungen: "Leistungen",
-    person: "Über mich",
     ablauf: "Ablauf",
+    person: "Über mich",
     kontakt: "Kontakt",
     anfragen: "Projekt anfragen",
     themaHell: "Auf helle Darstellung wechseln",
     themaDunkel: "Auf dunkle Darstellung wechseln",
     sprache: "Sprache",
+    menue: "Menü",
+    menueZu: "Menü schliessen",
   },
 
   hero: {
     rolle: "Webentwickler aus Biel/Bienne",
-    /* Zweizeilig, weil beide Zeilen einzeln auf der Falltafel einlaufen. */
     titelOben: "Ihre Website soll etwas können.",
     titelUnten: "Nicht nur da sein.",
-    text: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Gebaut von einem Entwickler, nicht aus einer Vorlage.",
+    text: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Gebaut von Hand, für Betriebe in Biel, Bern und im Seeland.",
     cta: "Projekt anfragen",
-    cta2: "Arbeiten ansehen",
+    whatsapp: "Auf WhatsApp schreiben",
+    bildAlt: "bern-zahnarzt-team.ch auf dem Handy, eine von Sherka gebaute Praxisseite",
+    live: "Das ist die echte Seite einer Zahnarztpraxis, live. Scrollen und klicken Sie.",
   },
 
+  bau: {
+    titel: "So entsteht eine Seite",
+    text: "Ein Beispiel, kein Kundenprojekt. Scrollen Sie durch: links der Code, rechts das, was Ihre Kundschaft sieht.",
+    beispiel: "Beispiel",
+    codeLabel: "Code",
+    schritte: [
+      { name: "Gerüst", text: "Zuerst die Struktur: was steht wo, ohne jede Farbe." },
+      { name: "Gestaltung", text: "Schrift, Farbe, Abstände. Alles aus wenigen Werten, damit es zusammenpasst." },
+      { name: "Funktion", text: "Das Formular prüft Eingaben und schickt sie ab. Ein Klick, eine Anfrage." },
+      { name: "Zweisprachig und auffindbar", text: "Deutsch und Französisch, dazu die Auszeichnung, mit der Google Öffnungszeiten selbst anzeigt." },
+    ],
+    chips: ["Zweisprachig", "Formular", "Für Google lesbar"],
+  },
 
   arbeiten: {
     titel: "Vier Seiten, die arbeiten",
-    text: "Ein Restaurant, eine Zahnarztpraxis, ein Rohstoffhändler, eine Event-Plattform. Alle vier sind live und Sie können sie anklicken.",
+    text: "Alle vier sind live. Klicken Sie sie an und schauen Sie selbst.",
     besuchen: "Seite öffnen",
-    tafelKopf: "In Betrieb",
-    tafelStatus: "live",
-    bildFehlt: "Bildschirmfoto folgt",
+    branche: "Betrieb",
+    domain: "Domain",
+    domainKunde: "läuft auf den Namen des Kunden",
+    domainSherka: "läuft über Sherka, auf Wunsch jederzeit auf den Kunden umgeschrieben",
+    ladezeit: "Ladezeit am Handy",
+    gemessen: "gemessen am",
+    auchDafuer: "Salon, Praxis oder Handwerk? Auch dafür.",
   },
 
   leistungen: {
@@ -60,77 +81,41 @@ export const de = {
     ],
   },
 
-  aussage: "Jede dieser Seiten ist von Hand gebaut. Kein Theme, kein Baukasten, kein Stapel Plugins, der irgendwann bricht.",
-
   stimmen: {
     titel: "Was Kundinnen und Kunden sagen",
-    /* platzhalter: true blendet ein sichtbares Band ein und laesst die
-       Startprüfung scheitern. Erst auf false setzen, wenn der Text
-       wirklich von der Person freigegeben ist. Erfundene Zitate unter
-       echtem Namen sind irrefuehrende Werbung, nicht nur unschoen. */
+    /* Solange platzhalter true ist, wird die Sektion gar nicht gezeigt und
+       die Startprüfung scheitert. Erst auf false setzen, wenn der Text
+       schriftlich von der Person freigegeben ist. Erfundene Zitate unter
+       echtem Namen sind irreführende Werbung. */
     platzhalter: true,
-    hinweis: "Platzhalter. Noch nicht von den Kunden freigegeben.",
     liste: [
       {
         zitat:
-          "Vorher haben wir Termine nur am Telefon vergeben, oft mitten in einer Behandlung. Jetzt kommen die Anfragen über die Seite herein und wir arbeiten sie zwischendurch ab. Das hat den Empfang spürbar entlastet.",
+          "Vorher haben wir Termine nur am Telefon vergeben, oft mitten in einer Behandlung. Jetzt kommen die Anfragen über die Seite herein und wir arbeiten sie zwischendurch ab.",
         name: "Dr. med. dent. Mustafa Saleh",
         rolle: "Zahnarztpraxis Saleh, Bern",
       },
       {
         zitat:
-          "Unsere Karte lag vorher als PDF auf der Seite, das hat auf dem Handy niemand geöffnet. Jetzt sieht man sie sofort, auf Deutsch und Französisch. Und wenn etwas zu ändern ist, ist es meist am selben Tag erledigt.",
+          "Unsere Karte lag vorher als PDF auf der Seite, das hat auf dem Handy niemand geöffnet. Jetzt sieht man sie sofort, auf Deutsch und Französisch.",
         name: "Bledi",
         rolle: "Marokkanisches Restaurant, Biel/Bienne",
       },
     ],
   },
-  branchen: {
-    titel: "Für wen ich baue",
-    text: "Vier Branchen, in denen bereits etwas von mir läuft. Wenn Ihre nicht dabei ist, heisst das nur, dass Sie die erste wären.",
-    liste: [
-      {
-        was: "Gastronomie",
-        beleg: "bledi-bienne.ch",
-        text: "Karte, Öffnungszeiten und Bestellung, zuerst fürs Handy gedacht.",
-      },
-      {
-        was: "Praxen und Gesundheit",
-        beleg: "bern-zahnarzt-team.ch",
-        text: "Terminanfrage, Notfallnummer und die Auszeichnung, mit der Google Öffnungszeiten und Bewertungen anzeigt.",
-      },
-      {
-        was: "Handel und B2B",
-        beleg: "kamil-energy.ch",
-        text: "Nüchtern gehalten und auf internationale Gegenparteien ausgelegt.",
-      },
-      {
-        was: "Events und Community",
-        beleg: "takabul.ch",
-        text: "Termine und Inhalte pflegt der Kunde selbst über ein Redaktionssystem.",
-      },
-    ],
-  },
-
-  zahlen: [
-    { wert: "4", label: "Seiten, die heute laufen" },
-    { wert: "2", label: "Sprachen ab Werk, Deutsch und Französisch" },
-    { wert: "24 h", label: "bis Sie eine Antwort haben" },
-    { wert: "1", label: "Ansprechperson, vom ersten Anruf bis danach" },
-  ],
 
   ablauf: {
-    titel: "Ablauf und Kosten",
+    titel: "So läuft es ab",
     schritte: [
       {
         zeit: "20 Minuten",
-        was: "Gespräch",
+        was: "Erstgespräch, kostenlos",
         text: "Ich frage, was die Seite können muss. Sie fragen, was ich kann. Danach wissen wir beide, ob es passt.",
       },
       {
         zeit: "2 Arbeitstage",
         was: "Offerte",
-        text: "Fixpreis, fixer Umfang, fixes Datum. Kommt später etwas dazu, sage ich vorher, was es kostet.",
+        text: "Fixer Umfang, fixes Datum, schriftlich. Kommt später etwas dazu, besprechen wir es vorher.",
       },
       {
         zeit: "2 bis 4 Wochen",
@@ -139,7 +124,7 @@ export const de = {
       },
       {
         zeit: "danach",
-        was: "Weiterbetreuung",
+        was: "Betreuung",
         text: "Kleine Änderungen mache ich weiter. Sie müssen niemanden neu einarbeiten.",
       },
     ],
@@ -151,17 +136,12 @@ export const de = {
       {
         frage: "Sie arbeiten allein. Was, wenn Sie ausfallen?",
         antwort:
-          "Sie entscheiden, wo Ihre Seite liegt. Auf Ihrem eigenen Konto, dann kann jeder andere Entwickler übernehmen, ohne bei null anzufangen. Oder bei mir, dann kümmere ich mich um alles. Die Domain gehört in beiden Fällen Ihnen, und wenn sie über mich läuft, schreibe ich sie auf Wunsch jederzeit auf Sie um.",
-      },
-      {
-        frage: "Was kostet der Betrieb danach?",
-        antwort:
-          "Wenn Sie selbst hosten, zahlen Sie nur die Domain, sonst nichts. Wenn ich es übernehme, läuft das über eine kleine monatliche Betreuung für Erreichbarkeit, Änderungen und Aktualisierungen. Der Server kostet bei dieser Seitengrösse ohnehin nichts, Sie zahlen meine Zeit und nicht Speicherplatz. Den genauen Betrag nenne ich Ihnen im Gespräch.",
+          "Ihre Seite liegt bei mir, ich kümmere mich um Hosting und Betrieb. Die Adresse (Domain) bleibt in Ihrer Hand: Sie läuft auf Ihren Namen, oder ich schreibe sie auf Wunsch jederzeit auf Sie um. So sind Sie nie von mir abhängig, wenn es um Ihren Auftritt im Netz geht.",
       },
       {
         frage: "Was, wenn ich nachher noch etwas ändern will?",
         antwort:
-          "Eine Korrekturrunde ist im Angebot immer dabei. Danach sage ich Ihnen vorher, was eine weitere kostet, damit am Schluss keine Überraschung auf der Rechnung steht.",
+          "Eine Korrekturrunde ist im Angebot dabei. Was darüber hinausgeht, besprechen wir vorher, damit es am Schluss keine Überraschungen gibt.",
       },
       {
         frage: "Kann ich Texte selbst ändern?",
@@ -174,9 +154,9 @@ export const de = {
           "Zwei bis vier Wochen, ab dem Moment, in dem Ihre Texte und Bilder da sind. Dieser Teil dauert erfahrungsgemäss länger als der Bau.",
       },
       {
-        frage: "Was kostet eine Website bei Ihnen?",
+        frage: "Arbeiten Sie mit Patientendaten?",
         antwort:
-          "Das hängt zu stark davon ab, was die Seite können muss, um es hier in einer Zahl fair zu sagen. Sie bekommen im Erstgespräch eine ehrliche Einschätzung und danach ein Fixpreis-Angebot, bevor irgendetwas beginnt.",
+          "Dann klären wir im ersten Gespräch, welche Angaben ein Formular überhaupt abfragen darf und wo sie landen. Gesundheitsdaten gehören nicht in ein gewöhnliches Kontaktformular.",
       },
     ],
   },
@@ -184,14 +164,15 @@ export const de = {
   person: {
     titel: "Wer das baut",
     text1:
-      "Raffa Amro Elsherkasi, Biel. Applikationsentwickler EFZ. Danach DevOps Engineer: .NET- und React-Werkzeuge für interne Abläufe und die Auslieferungsprozesse dahinter.",
-    fotoFehlt: "Foto folgt",
+      "Raffa Amro Elsherkasi, Biel/Bienne. Applikationsentwickler EFZ, danach DevOps Engineer. Ich baue Websites und halte sie danach auch am Laufen.",
+    fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   kontakt: {
     titel: "Sagen Sie mir, was Sie brauchen",
-    text: "Antwort am selben Werktag. Wenn es schnell gehen soll, rufen Sie an.",
-    telefon: "Telefon und WhatsApp",
+    text: "Antwort innerhalb eines Werktags. Wenn es schnell gehen soll, schreiben Sie auf WhatsApp oder rufen Sie an.",
+    whatsapp: "WhatsApp",
+    telefon: "Telefon",
     mail: "E-Mail",
 
     projektLabel: "Worum geht es?",
@@ -217,7 +198,7 @@ export const de = {
     sendet: "Wird geschickt",
 
     erfolgTitel: "Angekommen",
-    erfolgText: "Ich melde mich innerhalb von 24 Stunden, meistens schneller.",
+    erfolgText: "Ich melde mich innerhalb eines Werktags.",
 
     fehlerTitel: "Das hat nicht geklappt",
     fehlerText: "Rufen Sie mich an oder schreiben Sie an raffa.amro@gmail.com, dann geht es sicher.",
@@ -237,7 +218,7 @@ export const de = {
   },
 };
 
-/* Kein "as const": sonst waeren die deutschen Saetze Literaltypen und
-   keine franzoesische Uebersetzung liesse sich zuweisen. Die Struktur
-   bleibt trotzdem gepruefet, jeder fehlende Schluessel faellt beim Build auf. */
+/* Kein "as const": sonst wären die deutschen Sätze Literaltypen und keine
+   französische Übersetzung liesse sich zuweisen. Die Struktur bleibt
+   trotzdem geprüft, jeder fehlende Schlüssel fällt beim Build auf. */
 export type Woerter = typeof de;

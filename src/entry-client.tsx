@@ -1,7 +1,7 @@
+import "./styles/base.css";
 import { hydrate } from "preact";
 import App from "./App";
 import { SprachProvider, spracheAusPfad } from "./lib/sprache";
-import "./styles/base.css";
 import "./abschnitte/Recht.css";
 
 /* Das HTML steht schon vorgerendert da. hydrate hängt nur die Logik an,

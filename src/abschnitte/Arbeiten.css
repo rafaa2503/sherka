@@ -1,0 +1,151 @@
+/* ---------- Einleitung ---------- */
+
+.intro {
+  padding-block: clamp(4rem, 2rem + 8vw, 9rem) 0;
+}
+.intro-satz {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1.2;
+  max-width: 28ch;
+}
+
+/* ---------- Karussell ---------- */
+
+.arbeiten-kopf {
+  display: grid;
+  gap: var(--a-3);
+  margin-bottom: var(--a-7);
+}
+.arbeiten-text {
+  font-size: var(--t-gross);
+  max-width: 40ch;
+}
+
+.karussell {
+  list-style: none;
+  margin: 0;
+  padding: var(--a-2) max(var(--rand), calc((100vw - var(--shell-breit)) / 2)) var(--a-5);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(84vw, 420px);
+  gap: 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(var(--rand), calc((100vw - var(--shell-breit)) / 2));
+  scrollbar-width: none;
+}
+.karussell::-webkit-scrollbar {
+  display: none;
+}
+
+.kachel {
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: var(--r-3);
+  background: var(--flaeche);
+  overflow: hidden;
+  transition-property: opacity, transform, box-shadow;
+}
+@media (hover: hover) and (pointer: fine) {
+  .kachel:hover {
+    box-shadow: var(--schatten);
+  }
+  .kachel:hover .kachel-bild img {
+    transform: scale(1.03);
+  }
+}
+
+.kachel-bild {
+  aspect-ratio: 1240 / 775;
+  overflow: hidden;
+  background: var(--erhoben);
+}
+.kachel-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 900ms var(--ease-feder);
+}
+
+.kachel-text {
+  display: grid;
+  gap: var(--a-3);
+  align-content: start;
+  padding: var(--a-5) var(--a-5) var(--a-4);
+}
+.kachel-was {
+  font-size: var(--t-klein);
+  font-weight: 600;
+  color: var(--leise);
+}
+.kachel-text h3 {
+  font-size: 1.5rem;
+}
+.kachel-punkte {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--a-2);
+}
+.kachel-punkte li {
+  display: flex;
+  gap: var(--a-2);
+  align-items: flex-start;
+  font-size: 0.9375rem;
+}
+.kachel-punkte svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  color: var(--gut);
+}
+.kachel-domain {
+  font-size: var(--t-kote);
+  color: var(--leise);
+}
+
+.karussell-steuerung {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--a-3);
+}
+.rund-knopf {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--flaeche);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color var(--t) var(--ease),
+    opacity var(--t) var(--ease),
+    transform 100ms var(--ease);
+}
+.rund-knopf:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.rund-knopf:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+@media (hover: hover) and (pointer: fine) {
+  .rund-knopf:hover:not(:disabled) {
+    background: var(--linie);
+  }
+}
+.pfeil-links {
+  transform: scaleX(-1);
+}
+@media (max-width: 899px) {
+  .karussell-steuerung {
+    display: none;
+  }
+}

@@ -27,7 +27,7 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").repl
 
 // Die eine Schrift, die im ersten Bild gebraucht wird, früh laden.
 const assets = await readdir(path.join(DIST, "assets"));
-const archivo = assets.find((f) => /^archivo-latin-wght-normal.*\.woff2$/.test(f));
+const schriftDatei = assets.find((f) => /^inter-latin-wght-normal.*.woff2$/.test(f));
 
 function kopfHtml(k) {
   const zeilen = [
@@ -47,7 +47,9 @@ function kopfHtml(k) {
     `<meta property="og:locale" content="${k.lang.replace("-", "_")}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
   );
-  if (archivo) zeilen.push(`<link rel="preload" href="/assets/${archivo}" as="font" type="font/woff2" crossorigin />`);
+  // Kein preload: auf Mac und iPhone wird die Systemschrift genutzt, Inter nur
+  // als Ersatz auf anderen Systemen. Ein preload würde sie überall laden.
+  void schriftDatei;
   if (k.jsonld) zeilen.push(`<script type="application/ld+json">${k.jsonld.replace(/</g, "\\u003c")}</script>`);
   return zeilen.join("\n    ");
 }

@@ -4,22 +4,23 @@ import { aktuellesThema, setzeThema, type Thema } from "../lib/thema";
 import { IconListe, IconMond, IconSonne, IconX } from "./Icons";
 import "./Kopf.css";
 
-/* Deckende Leiste, kein Glas. Der Sprachwechsel ist ein echter Link auf die
+/* Dünne Glasleiste wie auf apple.com (bei reduzierter Transparenz deckend). Der Sprachwechsel ist ein echter Link auf die
    andere Fassung der Seite. Am Handy klappt ein Menü von oben auf. */
 
 const LINKS = [
-  ["abnahme", "#abnahme"],
-  ["hauswartung", "#hauswartung"],
+  ["arbeiten", "#arbeiten"],
+  ["entstehung", "#entstehung"],
+  ["vorteile", "#vorteile"],
   ["ablauf", "#ablauf"],
-  ["person", "#person"],
   ["faq", "#faq"],
 ] as const;
 
 export function Kopf() {
   const { t, sprache } = useSprache();
-  const [thema, setThemaState] = useState<Thema>("dunkel");
+  const [thema, setThemaState] = useState<Thema>("hell");
   const [offen, setOffen] = useState(false);
   const [gescrollt, setGescrollt] = useState(false);
+  const [ueberDunkel, setUeberDunkel] = useState(false);
   const andere = sprache === "de" ? "fr" : "de";
 
   // Das Thema steht schon im DOM (Inline-Skript im head). Erst danach lesen,
@@ -31,6 +32,22 @@ export function Kopf() {
     pruefe();
     window.addEventListener("scroll", pruefe, { passive: true });
     return () => window.removeEventListener("scroll", pruefe);
+  }, []);
+
+  // Über einer dunklen Bühne wird die Leiste selbst dunkel, wie auf apple.com.
+  useEffect(() => {
+    const dunkle = document.querySelectorAll(".buehne-dunkel");
+    if (!dunkle.length || typeof IntersectionObserver === "undefined") return;
+    const sichtbar = new Set<Element>();
+    const io = new IntersectionObserver(
+      (eintraege) => {
+        for (const e of eintraege) e.isIntersecting ? sichtbar.add(e.target) : sichtbar.delete(e.target);
+        setUeberDunkel(sichtbar.size > 0);
+      },
+      { rootMargin: "0px 0px -96% 0px" },
+    );
+    dunkle.forEach((d) => io.observe(d));
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -47,8 +64,8 @@ export function Kopf() {
   };
 
   return (
-    <header className={gescrollt ? "kopf kopf-linie" : "kopf"}>
-      <div className="shell kopf-innen">
+    <header className={`kopf${gescrollt ? " kopf-linie" : ""}${ueberDunkel ? " buehne-dunkel kopf-dunkel" : ""}`}>
+      <div className="kopf-innen">
         <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no">
           Sherka
         </a>

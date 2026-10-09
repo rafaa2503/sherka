@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <!--kopf-->
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <!-- Thema und Bewegungsstufe vor dem ersten Zeichnen setzen, sonst blitzt
-         die Seite kurz in der falschen Farbe auf. Dunkel ist der Standard.
+         die Seite kurz in der falschen Farbe auf. Hell ist der Standard.
          Die CSP erlaubt genau dieses Skript per Hash (scripts/vorrendern.mjs). -->
-    <script>(function(){var d=document.documentElement,b="voll";try{d.setAttribute("data-theme",localStorage.getItem("sherka:thema")==="hell"?"hell":"dunkel")}catch(e){d.setAttribute("data-theme","dunkel")}try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)b="aus";else{var c=navigator.connection;if((c&&c.saveData)||(navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2)||sessionStorage.getItem("sherka:bewegung")==="leicht")b="leicht"}}catch(e){}d.setAttribute("data-bewegung",b)})();</script>
+    <script>(function(){var d=document.documentElement,b="voll";try{d.setAttribute("data-theme",localStorage.getItem("sherka:thema")==="dunkel"?"dunkel":"hell")}catch(e){d.setAttribute("data-theme","hell")}try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)b="aus";else{var c=navigator.connection;if((c&&c.saveData)||(navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2)||sessionStorage.getItem("sherka:bewegung")==="leicht")b="leicht"}}catch(e){}d.setAttribute("data-bewegung",b)})();</script>
   </head>
   <body>
     <div id="app"><!--app--></div>

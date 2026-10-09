@@ -107,12 +107,6 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
         ],
       },
       {
-        titel: "Bautafel am Anfang der Seite",
-        absaetze: [
-          "Den Namen Ihres Betriebs, den Sie auf der Bautafel eintragen, speichere ich nicht und er wird nicht gesendet. Er bleibt in diesem Browserfenster, bis Sie das Kontaktformular abschicken.",
-        ],
-      },
-      {
         titel: "Kontaktformular",
         absaetze: [
           "Wenn Sie das Formular abschicken, übermittle ich Ihre Angaben (Anliegen, Betrieb, Zeitrahmen, Ihre Nachricht, Name, E-Mail-Adresse oder Telefonnummer, Sprache) über einen Server der Infomaniak Network SA in der Schweiz an mein Postfach, ebenfalls bei Infomaniak. Ich verwende sie nur, um Ihre Anfrage zu beantworten. Bitte geben Sie im Formular keine Gesundheits- oder Patientendaten an.",
@@ -163,12 +157,6 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
         titel: "Mémoire du navigateur",
         absaetze: [
           "Si vous choisissez l'affichage clair ou sombre, ce choix est enregistré dans la mémoire de votre navigateur. Il ne quitte pas votre appareil et peut être effacé dans les réglages du navigateur.",
-        ],
-      },
-      {
-        titel: "Panneau de chantier en haut de page",
-        absaetze: [
-          "Le nom de votre entreprise saisi sur le panneau de chantier n'est ni enregistré ni envoyé. Il reste dans cette fenêtre du navigateur jusqu'à l'envoi du formulaire de contact.",
         ],
       },
       {

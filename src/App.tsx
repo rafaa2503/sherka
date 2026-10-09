@@ -1,17 +1,20 @@
 import { useSprache } from "./lib/sprache";
+import { useAuftritt } from "./lib/bewegung";
 import { Kopf } from "./abschnitte/Kopf";
-import { Bautafel } from "./abschnitte/Bautafel";
-import { Abnahme } from "./abschnitte/Abnahme";
-import { Ablauf, Faq, Hauswartung, UeberMich } from "./abschnitte/Abschnitte";
+import { Hero } from "./abschnitte/Hero";
+import { Arbeiten, Intro } from "./abschnitte/Arbeiten";
+import { Entstehung } from "./abschnitte/Entstehung";
+import { Ablauf, Faq, UeberMich, Vorteile } from "./abschnitte/Abschnitte";
 import { Kontakt } from "./abschnitte/Kontakt";
 import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
 
-/* Sherka V2, Etappe a. Reihenfolge: Bautafel, Abnahme (echte Arbeiten),
-   Hauswartung, Ablauf, Über mich, Fragen, Kontakt. Kein Abschnitt hält das
-   Scrollen fest. */
+/* Sherka V2 im Stil einer Apple-Produktseite: Laptop mit echter Kundenseite,
+   Arbeiten als Karussell, "So entsteht" auf dunkler Bühne, Vorteile als
+   Kacheln, Ablauf, Über mich, Fragen, Kontakt. */
 
 export default function App() {
   const { t } = useSprache();
+  useAuftritt();
   return (
     <>
       <a className="springlink" href="#inhalt">
@@ -19,9 +22,11 @@ export default function App() {
       </a>
       <Kopf />
       <main id="inhalt">
-        <Bautafel />
-        <Abnahme />
-        <Hauswartung />
+        <Hero />
+        <Intro />
+        <Arbeiten />
+        <Entstehung />
+        <Vorteile />
         <Ablauf />
         <UeberMich />
         <Faq />

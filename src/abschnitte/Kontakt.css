@@ -25,7 +25,13 @@
 
 /* ---------- Formular ---------- */
 
-.anfrage { display: grid; gap: var(--a-5); }
+.anfrage {
+  display: grid;
+  gap: var(--a-5);
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: var(--r-3);
+  background: var(--flaeche);
+}
 
 .wahl,
 .erreichbar { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: var(--a-2); }
@@ -39,10 +45,10 @@
   width: 100%;
   min-height: 48px;
   padding: var(--a-3);
-  background: var(--flaeche);
-  border: 1px solid var(--linie-an);
+  background: var(--grund);
+  border: 1px solid var(--linie);
   border-radius: var(--r-2);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   transition: border-color var(--t) var(--ease);
 }
 .feld textarea { resize: vertical; min-height: 96px; }
@@ -51,7 +57,7 @@
 @media (hover: hover) and (pointer: fine) {
   :is(.feld input, .feld textarea):hover { border-color: var(--ink); }
 }
-:is(.feld input, .feld textarea):focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+:is(.feld input, .feld textarea):focus-visible { outline: 2px solid var(--akzent); outline-offset: 1px; border-color: var(--akzent); }
 .feld input[aria-invalid="true"] { border-color: var(--schlecht); }
 
 .anfrage-paar { display: grid; gap: var(--a-4); }
@@ -79,5 +85,29 @@
 .anfrage-alternativen { display: flex; flex-wrap: wrap; gap: var(--a-2) var(--a-5); }
 .anfrage-alternativen .textlink { display: inline-flex; align-items: center; min-height: 44px; }
 
-.anfrage-erfolg { display: grid; gap: var(--a-3); padding: var(--a-5); border: 1px solid var(--linie-an); border-radius: var(--r-3); }
+.anfrage-erfolg { display: grid; gap: var(--a-3); padding: clamp(24px, 3vw, 40px); border-radius: var(--r-3); background: var(--flaeche); }
 .anfrage-erfolg:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- Auswahl als Pillen ---------- */
+
+.chip { position: relative; display: block; }
+.chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--a-4);
+  border-radius: var(--r-pille);
+  background: var(--grund);
+  box-shadow: inset 0 0 0 1px var(--linie);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color var(--t) var(--ease), box-shadow var(--t) var(--ease), color var(--t) var(--ease), transform 100ms var(--ease);
+}
+.chip:active span { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover span { box-shadow: inset 0 0 0 1px var(--linie-an); }
+}
+.chip input:checked + span { background: var(--akzent); color: var(--auf-akzent); box-shadow: none; }
+.chip input:focus-visible + span { outline: 2px solid var(--akzent); outline-offset: 3px; }
+.chip input[aria-invalid="true"] + span { box-shadow: inset 0 0 0 1px var(--schlecht); }

@@ -1,3 +1,5 @@
+/* Dünne Leiste aus Glas wie auf apple.com: Inhalt scrollt sichtbar darunter
+   durch. Bei reduzierter Transparenz oder ohne backdrop-filter deckend. */
 .kopf {
   position: fixed;
   inset: 0 0 auto;
@@ -5,30 +7,43 @@
   height: var(--kopf);
   display: flex;
   align-items: center;
-  background: var(--grund);
+  justify-content: center;
+  background: color-mix(in srgb, var(--grund) 78%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--t) var(--ease);
 }
-/* Weiche Kante, wo Inhalt unter die Leiste läuft, statt einer harten Linie. */
-.kopf::after {
-  content: "";
-  position: absolute;
-  inset: 100% 0 auto;
-  height: 16px;
-  background: linear-gradient(var(--grund), transparent);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--t) var(--ease);
+/* Über dunklen Bühnen: dunkles Glas. .buehne-dunkel setzt die Farben, der
+   Hintergrund bleibt durchscheinend. */
+.kopf.kopf-dunkel {
+  background: color-mix(in srgb, var(--grund) 80%, transparent);
 }
-.kopf-linie::after { opacity: 1; }
-@media (prefers-contrast: more) {
-  .kopf-linie { border-bottom-color: var(--linie-an); }
+.kopf-linie {
+  border-bottom-color: color-mix(in srgb, var(--linie) 70%, transparent);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .kopf {
+    background: var(--grund);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .kopf {
+    background: var(--grund);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
-.kopf-innen { display: flex; align-items: center; gap: var(--a-5); }
+.kopf-innen {
+  display: flex;
+  align-items: center;
+  gap: var(--a-5);
+  width: min(100% - var(--rand) * 2, var(--shell-breit));
+}
 
 .kopf-marke {
-  font-size: 1.25rem;
+  font-size: 1.1875rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   text-decoration: none;
@@ -37,24 +52,37 @@
   align-items: center;
 }
 
-.kopf-nav { display: flex; gap: var(--a-1); margin-inline: auto; }
+.kopf-nav {
+  display: flex;
+  gap: var(--a-1);
+  margin-inline: auto;
+}
 .kopf-nav a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   padding: 0 var(--a-3);
-  border-radius: var(--r-2);
-  font-size: 0.9375rem;
-  color: var(--leise);
+  font-size: 0.8125rem;
+  letter-spacing: -0.005em;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
   text-decoration: none;
   transition: color var(--t) var(--ease);
 }
 @media (hover: hover) and (pointer: fine) {
-  .kopf-nav a:hover { color: var(--ink); }
+  .kopf-nav a:hover {
+    color: var(--ink);
+  }
 }
 
-.kopf-werkzeuge { display: flex; align-items: center; gap: var(--a-2); margin-left: auto; }
-.kopf-nav + .kopf-werkzeuge { margin-left: 0; }
+.kopf-werkzeuge {
+  display: flex;
+  align-items: center;
+  gap: var(--a-2);
+  margin-left: auto;
+}
+.kopf-nav + .kopf-werkzeuge {
+  margin-left: 0;
+}
 
 .kopf-sprache,
 .kopf-thema,
@@ -64,41 +92,78 @@
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  padding: 0 var(--a-3);
-  border: 1px solid var(--linie-an);
-  border-radius: var(--r-2);
+  padding: 0 var(--a-2);
+  border: 0;
+  border-radius: var(--r-pille);
   background: none;
   color: var(--ink);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color var(--t) var(--ease);
+  transition: background-color var(--t) var(--ease);
 }
 .kopf-thema,
-.kopf-menue-knopf { padding: 0; width: 44px; }
-@media (hover: hover) and (pointer: fine) {
-  :is(.kopf-sprache, .kopf-thema, .kopf-menue-knopf):hover { border-color: var(--ink); }
+.kopf-menue-knopf {
+  padding: 0;
+  width: 44px;
 }
-.kopf-sprache-kurz { display: none; }
+.kopf-thema svg,
+.kopf-menue-knopf svg {
+  width: 18px;
+  height: 18px;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(.kopf-sprache, .kopf-thema, .kopf-menue-knopf):hover {
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+  }
+}
+.kopf-sprache-kurz {
+  display: none;
+}
 
-.kopf .kopf-cta { min-height: 44px; padding: 0 var(--a-4); font-size: 0.9375rem; }
+.kopf .kopf-cta {
+  min-height: 32px;
+  padding: 0 var(--a-4);
+  font-size: 0.8125rem;
+}
 
-.kopf-menue-knopf { display: none; }
-.kopf-menue { display: none; }
+.kopf-menue-knopf {
+  display: none;
+}
+.kopf-menue {
+  display: none;
+}
+
+.icon-im-hell {
+  display: none;
+}
+:root[data-theme="dunkel"] .icon-im-dunkel {
+  display: none;
+}
+:root[data-theme="dunkel"] .icon-im-hell {
+  display: block;
+}
 
 @media (max-width: 1100px) {
-  .kopf-sprache-lang { display: none; }
-  .kopf-sprache-kurz { display: inline; }
+  .kopf-sprache-lang {
+    display: none;
+  }
+  .kopf-sprache-kurz {
+    display: inline;
+  }
 }
 
 @media (max-width: 899px) {
   .kopf-nav,
-  .kopf .kopf-cta { display: none; }
-  .kopf-menue-knopf { display: inline-flex; }
+  .kopf .kopf-cta {
+    display: none;
+  }
+  .kopf-menue-knopf {
+    display: inline-flex;
+  }
 
-  /* Menü klappt unter der Leiste auf. Öffnen 300 ms, schliessen 200 ms,
-     sichtbar bleibt es bis die Bewegung fertig ist. */
+  /* Menü klappt unter der Leiste auf, auf demselben Weg wieder zu. */
   .kopf-menue {
     display: grid;
     gap: var(--a-5);
@@ -107,31 +172,37 @@
     z-index: var(--z-menue);
     padding: var(--a-5) var(--rand) var(--a-6);
     background: var(--grund);
-    border-bottom: 1px solid var(--linie);
     box-shadow: var(--schwebe);
     opacity: 0;
     transform: translateY(-8px);
     visibility: hidden;
-    transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s 200ms;
+    transition:
+      opacity 200ms var(--ease),
+      transform 200ms var(--ease),
+      visibility 0s 200ms;
   }
   .kopf-menue-offen {
     opacity: 1;
     transform: none;
     visibility: visible;
-    transition: opacity 300ms var(--ease), transform 300ms var(--ease), visibility 0s;
+    transition:
+      opacity 300ms var(--ease),
+      transform 300ms var(--ease),
+      visibility 0s;
   }
-  .kopf-menue nav { display: grid; }
+  .kopf-menue nav {
+    display: grid;
+  }
   .kopf-menue nav a {
     display: flex;
     align-items: center;
-    min-height: 48px;
-    font-size: 1.375rem;
+    min-height: 52px;
+    font-size: 1.5rem;
     font-weight: 600;
+    letter-spacing: -0.02em;
     text-decoration: none;
   }
-  .kopf-menue nav a + a { border-top: 1px solid var(--linie); }
+  .kopf-menue nav a + a {
+    border-top: 1px solid var(--linie);
+  }
 }
-
-.icon-im-hell { display: none; }
-:root[data-theme="hell"] .icon-im-dunkel { display: none; }
-:root[data-theme="hell"] .icon-im-hell { display: block; }

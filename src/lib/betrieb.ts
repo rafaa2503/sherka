@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
-import type { VorlageId } from "../bautafel/vorlagen";
 
-/* Der Betriebsname und die Branche aus der Bautafel. Liegen nur im
+/* Der Betriebsname aus dem Kontaktformular (geteilt mit der WhatsApp-
+   Vorlage und dem Titel des Kontaktabschnitts). Liegt nur im
    Arbeitsspeicher dieses Fensters: kein localStorage, keine Adresse, kein
    Server. Erst wenn der Besucher das Formular abschickt, geht der Name mit.
    Das ist die Zusage am Eingabefeld, also nichts daran ändern, ohne den
@@ -9,9 +9,9 @@ import type { VorlageId } from "../bautafel/vorlagen";
 
 export const NAME_MAX = 40;
 
-type Zustand = { name: string; branche: VorlageId };
+type Zustand = { name: string };
 
-let zustand: Zustand = { name: "", branche: "salon" };
+let zustand: Zustand = { name: "" };
 const hoerer = new Set<() => void>();
 
 function melden() {
@@ -25,12 +25,6 @@ export function setzeName(roh: string) {
   const name = teile.length > NAME_MAX ? teile.slice(0, NAME_MAX).join("") : sauber;
   if (name === zustand.name) return;
   zustand = { ...zustand, name };
-  melden();
-}
-
-export function setzeBranche(branche: VorlageId) {
-  if (branche === zustand.branche) return;
-  zustand = { ...zustand, branche };
   melden();
 }
 

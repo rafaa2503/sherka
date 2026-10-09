@@ -1,5 +1,4 @@
-@import "@fontsource-variable/archivo/wght.css";
-@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource-variable/inter/wght.css";
 @import "./tokens.css";
 
 *,
@@ -25,8 +24,10 @@ body {
   color: var(--ink);
   font-family: var(--f);
   font-size: var(--t-text);
-  line-height: 1.55;
+  line-height: 1.47;
+  letter-spacing: -0.012em;
   -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
   overflow-x: clip;
 }
 
@@ -34,20 +35,23 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-weight: 620;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
+  font-weight: 700;
   text-wrap: balance;
 }
 h1 {
-  font-size: var(--t-h1);
+  font-size: var(--t-riesig);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
 }
 h2 {
   font-size: var(--t-h2);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
 }
 h3 {
   font-size: var(--t-h3);
-  letter-spacing: -0.015em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 p,
@@ -82,52 +86,58 @@ textarea,
 select {
   font: inherit;
   color: inherit;
-}
-
-/* Laufweite je nach Grösse: grosse Schrift enger, kleine leicht weiter. */
-small,
-.leise[class*="hinweis"],
-.tafel-feld,
-.feld-hinweis {
-  letter-spacing: 0.01em;
+  letter-spacing: inherit;
 }
 
 .mono {
   font-family: var(--f-mono);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
 }
-
 .leise {
   color: var(--leise);
+}
+small,
+.klein {
+  font-size: var(--t-klein);
+  letter-spacing: -0.005em;
 }
 
 .shell {
   width: min(100% - var(--rand) * 2, var(--shell));
   margin-inline: auto;
 }
+.shell-breit {
+  width: min(100% - var(--rand) * 2, var(--shell-breit));
+  margin-inline: auto;
+}
 
 .sektion {
   padding-block: var(--sektion);
 }
-.sektion + .sektion {
-  border-top: 1px solid var(--linie);
+.buehne-dunkel {
+  background: var(--grund);
+  color: var(--ink);
 }
 
-.sektion-kopf {
-  display: grid;
-  gap: var(--a-4);
-  max-width: 44rem;
-  margin-bottom: var(--a-7);
-}
-.sektion-kopf p {
-  color: var(--leise);
+/* Apple-Satz: der erste Teil fett in Tinte, der Rest grau. */
+.zweiklang {
   font-size: var(--t-gross);
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--leise);
+  max-width: 40ch;
+}
+.zweiklang strong {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--akzent);
   outline-offset: 3px;
-  border-radius: var(--r-1);
+  border-radius: 4px;
 }
 
 .nur-lesen {
@@ -147,7 +157,7 @@ small,
   background: var(--ink);
   color: var(--grund);
   padding: var(--a-3) var(--a-4);
-  border-radius: var(--r-2);
+  border-radius: var(--r-pille);
   transform: translateY(-200%);
   transition: transform var(--t) var(--ease);
 }
@@ -155,26 +165,26 @@ small,
   transform: none;
 }
 
-/* ---------- Knöpfe ---------- */
+/* ---------- Knöpfe: Apple-Pille ---------- */
 
 .knopf {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--a-2);
-  min-height: 52px;
+  min-height: 48px;
   padding: 0 var(--a-5);
-  border: 1px solid transparent;
-  border-radius: var(--r-2);
-  font-size: 1rem;
-  font-weight: 600;
+  border: 0;
+  border-radius: var(--r-pille);
+  font-size: 1.0625rem;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
   transition:
-    transform 140ms var(--ease),
+    transform 100ms var(--ease),
     background-color var(--t) var(--ease),
-    border-color var(--t) var(--ease);
+    color var(--t) var(--ease);
 }
 .knopf:active {
   transform: scale(0.97);
@@ -182,50 +192,88 @@ small,
 .knopf:disabled {
   background: var(--linie);
   color: var(--leise);
-  border-color: transparent;
   cursor: default;
   transform: none;
 }
-
 .knopf-voll {
-  background: var(--signal);
-  color: var(--auf-signal);
-  box-shadow: inset 0 0 0 1px var(--signal-kante);
+  background: var(--akzent);
+  color: var(--auf-akzent);
 }
 .knopf-leer {
   background: transparent;
-  color: var(--ink);
-  border-color: var(--linie-an);
+  color: var(--link);
+  box-shadow: inset 0 0 0 1px var(--link);
 }
 @media (hover: hover) and (pointer: fine) {
   .knopf-voll:hover:not(:disabled) {
-    background: var(--signal-hover);
+    background: var(--akzent-hover);
   }
   .knopf-leer:hover {
-    border-color: var(--ink);
+    background: color-mix(in srgb, var(--link) 8%, transparent);
   }
 }
 .knopf-voll:active:not(:disabled) {
-  background: var(--signal-druck);
+  background: var(--akzent-druck);
 }
-
 .knopf svg {
   width: 20px;
   height: 20px;
   flex: none;
 }
 
-/* Textlink mit klarer Linie, für Navigation zu anderen Seiten. */
-.textlink {
-  font-weight: 600;
+/* Link mit Pfeil, wie "Mehr erfahren" bei Apple. */
+.pfeillink {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 44px;
+  color: var(--link);
+  font-size: 1.0625rem;
   text-decoration: none;
-  border-bottom: 2px solid var(--linie-an);
-  padding-bottom: 2px;
-  transition: border-color var(--t) var(--ease);
+}
+.pfeillink::after {
+  content: "›";
+  font-size: 1.25em;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform var(--t) var(--ease);
 }
 @media (hover: hover) and (pointer: fine) {
-  .textlink:hover {
-    border-color: var(--ink);
+  .pfeillink:hover {
+    text-decoration: underline;
+  }
+  .pfeillink:hover::after {
+    transform: translate(2px, -1px);
+  }
+}
+.textlink {
+  color: var(--link);
+  text-decoration: none;
+}
+.textlink:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Auftritt beim Scrollen ---------- */
+
+/* Vorgabe ist sichtbar. Nur mit Bewegungsstufe "voll" startet ein Element
+   versteckt und erscheint, sobald es ins Bild kommt (lib/auftritt.ts).
+   Startet das Skript nicht, ist nach drei Sekunden trotzdem alles da. */
+html[data-bewegung="voll"] .auftritt:not(.da) {
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+  animation: auftritt-notfall 400ms 3s forwards;
+}
+.auftritt {
+  transition:
+    opacity 900ms var(--ease-feder),
+    transform 1100ms var(--ease-feder);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+@keyframes auftritt-notfall {
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -237,8 +285,6 @@ small,
   }
 }
 
-/* Weicher Übergang beim Wechsel hell/dunkel (View Transitions), statt eines
-   harten Helligkeitssprungs. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 260ms;

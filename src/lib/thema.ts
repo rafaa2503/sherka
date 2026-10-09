@@ -1,4 +1,4 @@
-/* Hell oder dunkel. Dunkel ist der Standard, gelesen wird nur die eigene
+/* Hell oder dunkel. Hell ist der Standard, gelesen wird nur die eigene
    Wahl des Besuchers (localStorage), nie die Systemeinstellung. Gesetzt wird
    das Attribut schon im Inline-Skript in index.html, damit nichts aufblitzt. */
 
@@ -6,7 +6,7 @@ export type Thema = "hell" | "dunkel";
 const SPEICHER = "sherka:thema";
 
 export function aktuellesThema(): Thema {
-  return document.documentElement.dataset.theme === "hell" ? "hell" : "dunkel";
+  return document.documentElement.dataset.theme === "dunkel" ? "dunkel" : "hell";
 }
 
 export function setzeThema(thema: Thema) {

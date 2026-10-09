@@ -58,7 +58,7 @@ pruefe("CSS gesamt (gzip)", cssGesamt, 15 * KB);
 // ---------- Schriften ----------
 let schrift = 0;
 for (const f of assets) {
-  if (/^(archivo-latin-wght|jetbrains-mono-latin-400)-normal.*\.woff2$/.test(f)) schrift += (await stat(path.join(DIST, "assets", f))).size;
+  if (/^inter-latin-wght-normal.*.woff2$/.test(f)) schrift += (await stat(path.join(DIST, "assets", f))).size;
 }
 pruefe("Schriften erstes Laden", schrift, 75 * KB);
 

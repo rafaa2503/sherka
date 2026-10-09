@@ -2,30 +2,27 @@ import type { Woerter } from "./de";
 import { typoFr } from "../lib/typo";
 
 /* Vor dem Livegang von einer bezahlten Muttersprachlerin aus der Romandie
-   abnehmen lassen. Die Begriffe der Bautafel folgen dem Gebrauch auf
-   Westschweizer Bautafeln (Maître de l'ouvrage, Conception et réalisation).
-   Kein Satz darf ein Adjektiv an {name} angleichen müssen. */
+   abnehmen lassen. Kein Satz darf ein Adjektiv an {name} angleichen müssen. */
 
 export const fr: Woerter = typoFr({
   meta: {
     titel: "Création de site internet à Bienne pour PME et artisans | Sherka",
     beschreibung:
       "Raffa Amro Elsherkasi crée des sites web pour salons, cabinets, restaurants et artisans, et en assure ensuite l'entretien. Bilingues, faits à la main. Le premier entretien est gratuit.",
-    ogTitel: "Ici se construit votre site web.",
+    ogTitel: "Des sites qui travaillent.",
   },
 
   kopf: {
     zumInhalt: "Aller au contenu",
     navLabel: "Navigation principale",
     links: {
-      abnahme: "Réalisations",
-      hauswartung: "Entretien",
+      arbeiten: "Réalisations",
+      entstehung: "Comment ça naît",
+      vorteile: "Pourquoi Sherka",
       ablauf: "Déroulement",
-      person: "À propos",
       faq: "Questions",
     },
-    anfragen: "Parler de votre projet",
-    anfragenKurz: "Contact",
+    anfragen: "Contact",
     themaHell: "Passer en affichage clair",
     themaDunkel: "Passer en affichage sombre",
     andereSprache: "Deutsch",
@@ -34,79 +31,78 @@ export const fr: Woerter = typoFr({
     menueZu: "Fermer le menu",
   },
 
-  tafel: {
-    titelOben: "Ici se construit",
-    titelUnten: "votre site web.",
-    unterzeile:
-      "Indiquez le nom de votre entreprise ou choisissez votre activité. Le site se construit sous forme d'esquisse.",
-    tafelLabel: "Panneau de chantier",
-    bauherrschaft: "Maître de l'ouvrage",
-    platzhalter: "p. ex. Coiffure Anna",
-    feldHinweis: "Rien n'est envoyé. Reste dans cette fenêtre jusqu'à votre demande.",
-    branche: "Activité",
-    planung: "Conception et réalisation",
-    planungWer: "Raffa Amro Elsherkasi, Bienne",
-    hauswartung: "Entretien",
-    hauswartungWer: "Raffa Amro Elsherkasi",
-    ihrBetrieb: "Votre entreprise",
-    entwurfFuer: "Esquisse pour {name}. La version réelle se dessine au premier entretien.",
+  hero: {
+    marke: "Sherka. Développement web à Bienne.",
+    titel: "Des sites qui travaillent.",
+    unter: "Faits à la main, en français et en allemand. Puis entretenus par la personne qui les a construits.",
     cta: "Parler de votre projet",
-    whatsapp: "Écrire sur WhatsApp",
-    vorschauLabel: "Esquisse du site web pour {name}",
-    vorschauSprache: "Langue de l'esquisse",
-    status: "Esquisse pour {name} construite, activité {branche}.",
-    fotos: "Ici, vos photos",
-    nichtsGesendet: "Rien n'est envoyé depuis l'esquisse.",
-    abgenommen: "Réceptionné",
-    messungLcp: "Cette page était lisible après {s} s.",
-    messungLaden: "Cette page était chargée après {s} s.",
-    ueberspringen: "Passer la construction",
+    cta2: "Voir les réalisations",
+    laptopAlt: "bledi-bienne.ch, un site de restaurant réalisé par Sherka, sur un ordinateur portable",
+    handyAlt: "bern-zahnarzt-team.ch sur un téléphone",
+    messTitel: "Ce site, mesuré dans votre navigateur",
+    messLcp: "Contenu entièrement affiché après",
+    messFcp: "Premier contenu affiché après",
+    messRichtLcp: "Seuil recommandé par Google : moins de 2,5 s",
+    messRichtFcp: "Seuil recommandé par Google : moins de 1,8 s",
+    build: ["pré-rendu : / et /fr/", "JavaScript sous 30 Ko", "aucun serveur tiers"],
   },
 
-  abnahme: {
-    titel: "Réception des travaux",
-    text: "Avant la remise, un ouvrage est contrôlé point par point. Voici quatre vrais sites que j'ai réalisés. Tous sont en ligne, ouvrez-les vous-même.",
-    betrieb: "Entreprise",
-    domain: "Adresse",
-    domainKunde: "enregistrée au nom du client",
-    domainSherka: "gérée par moi, transférée au client sur simple demande",
-    pruefpunkte: "Points de contrôle",
+  intro: {
+    stark: "Un site web doit apporter des demandes.",
+    rest: "Prendre des rendez-vous, recevoir des commandes, fonctionner en deux langues. Pas seulement être joli, mais travailler au quotidien avec votre entreprise.",
+  },
+
+  arbeiten: {
+    titel: "Quatre sites. Tous en ligne.",
+    text: "Ouvrez-les vous-même. Chacun a été construit à la main et fonctionne aujourd'hui.",
+    domainKunde: "Domaine au nom du client",
+    domainSherka: "Domaine géré par Sherka, transféré sur demande",
     oeffnen: "Ouvrir le site",
-    live: "Voir en direct ici",
-    liveHinweis: "Charge le site du client dans cette fenêtre. Son exploitant reçoit alors votre adresse IP.",
-    liveZu: "Fermer l'aperçu en direct",
-    ladezeit: "Temps de chargement sur mobile",
-    gemessen: "mesuré le",
+    zurueck: "Réalisation précédente",
+    weiter: "Réalisation suivante",
     bildAlt: "Page d'accueil de {domain}",
   },
 
-  hauswartung: {
-    titel: "Entretien",
-    text: "Une fois en ligne, le site doit continuer à tourner. Je m'en occupe, vous n'avez personne à former.",
-    zeilen: [
-      {
-        was: "Hébergement",
-        text: "Votre site tourne sur un serveur dont je m'occupe. Vous n'avez besoin d'aucun compte.",
-      },
-      {
-        was: "Adresse",
-        text: "Votre domaine est enregistré à votre nom, ou je le gère pour vous et le transfère à votre nom sur simple demande.",
-      },
-      {
-        was: "Mises à jour",
-        text: "Je me charge des mises à jour techniques. Les petites modifications de textes ou d'horaires, vous me les envoyez par e-mail ou WhatsApp.",
-      },
-      {
-        was: "Pannes",
-        text: "Si le site ne fonctionne plus, je m'en occupe.",
-      },
+  entstehung: {
+    titel: "Comment naît un site.",
+    text: "Un exemple, pas un projet client. À côté, le code qui le fait fonctionner.",
+    beispiel: "Exemple",
+    codeLabel: "Code de cette étape",
+    schritte: [
+      { name: "Structure.", text: "D'abord l'ordre : ce qui va en haut, ce qui va en bas, sans aucune couleur." },
+      { name: "Mise en forme.", text: "Typographie, couleurs, espacements. Peu de valeurs, pour que tout tienne ensemble." },
+      { name: "Fonction.", text: "Le formulaire vérifie les saisies et envoie la demande. Un clic suffit." },
+      { name: "Bilingue et sur Google.", text: "Français et allemand, plus des indications dans le code grâce auxquelles Google affiche vos horaires." },
     ],
-    leistungenTitel: "Ce que je réalise",
+    vorschau: {
+      name: "Salon Lumen",
+      links: ["Prestations", "Équipe", "Contact"],
+      titel: "Réserver, sans téléphoner.",
+      text: "Choisissez un horaire. Nous confirmons par e-mail.",
+      titelFr: "Termin buchen, ohne anzurufen.",
+      textFr: "Wählen Sie eine Zeit. Wir bestätigen per E-Mail.",
+      zeiten: ["mar. 10 h 00", "mar. 14 h 30", "mer. 9 h 00"],
+      knopf: "Prendre rendez-vous",
+      erfolg: "Demande envoyée",
+    },
+  },
+
+  vorteile: {
+    titel: "Pourquoi Sherka.",
+    kacheln: [
+      { gross: "FR et DE", text: "Bilingue dès le départ, pas traduit après coup." },
+      { gross: "Fait main", text: "Pas de kit de construction. Chaque site est construit pour votre entreprise." },
+      { gross: "Une personne", text: "Qui construit, entretient aussi. Vous n'avez personne à former." },
+      { gross: "20 minutes", text: "C'est la durée du premier entretien. Il est gratuit." },
+      { gross: "1 jour ouvrable", text: "C'est le délai de réponse à votre demande." },
+      { gross: "Votre adresse", text: "Le domaine est à votre nom ou vous est transféré sur simple demande." },
+    ],
+    leistungenTitel: "Ce que je réalise.",
     leistungen: [
-      { was: "Nouveaux sites web", text: "En une ou deux langues, de la page unique à la présence complète." },
-      { was: "Demandes de rendez-vous et réservations", text: "Les demandes arrivent par le site, plutôt que par téléphone entre deux clients." },
-      { was: "Petites applications web", text: "Pour les processus qui passent aujourd'hui par Excel et WhatsApp." },
-      { was: "Refonte d'un site existant", text: "Le rendre plus rapide et plus utile, sans repartir de zéro." },
+      { was: "Nouveaux sites web.", text: "En une ou deux langues, de la page unique à la présence complète." },
+      { was: "Rendez-vous et réservations.", text: "Les demandes arrivent par le site, plutôt que par téléphone entre deux clients." },
+      { was: "Petites applications web.", text: "Pour les processus qui passent aujourd'hui par Excel et WhatsApp." },
+      { was: "Refonte d'un site existant.", text: "Le rendre plus rapide et plus utile, sans repartir de zéro." },
     ],
   },
 

@@ -32,15 +32,21 @@ export function useAuftritt() {
   }, []);
 }
 
-/** Schreibt den Scroll-Fortschritt (0 bis 1) eines hohen Abschnitts als
-    CSS-Variable --p auf ein Ziel. 0 = Abschnitt beginnt, 1 = Ende erreicht. */
-export function useScrollFortschritt(abschnitt: RefObject<HTMLElement | null>, ziel: RefObject<HTMLElement | null>) {
+/** Schreibt den Scroll-Fortschritt (0 bis 1) eines Abschnitts als CSS-Variable
+    --p auf ein Ziel. "durch": ein hoher Abschnitt mit stehender Bühne, 0 =
+    beginnt, 1 = Ende erreicht. "raus": ein normaler Abschnitt, 0 = steht oben
+    im Bild, 1 = ganz hinausgescrollt. */
+export function useScrollFortschritt(
+  abschnitt: RefObject<HTMLElement | null>,
+  ziel: RefObject<HTMLElement | null>,
+  art: "durch" | "raus" = "durch",
+) {
   useEffect(() => {
     const a = abschnitt.current;
     const z = ziel.current;
     if (!a || !z) return;
     if (stufe() === "aus") {
-      z.style.setProperty("--p", "1");
+      z.style.setProperty("--p", art === "raus" ? "0" : "1");
       return;
     }
     let geplant = 0;
@@ -48,8 +54,8 @@ export function useScrollFortschritt(abschnitt: RefObject<HTMLElement | null>, z
     const messen = () => {
       geplant = 0;
       const r = a.getBoundingClientRect();
-      const weg = r.height - innerHeight;
-      const p = weg > 0 ? Math.min(1, Math.max(0, -r.top / weg)) : 1;
+      const weg = art === "raus" ? r.height : r.height - innerHeight;
+      const p = weg > 0 ? Math.min(1, Math.max(0, -r.top / weg)) : art === "raus" ? 0 : 1;
       const gerundet = Math.round(p * 1000) / 1000;
       if (gerundet !== letzter) {
         letzter = gerundet;

@@ -1,181 +1,207 @@
-/* Dunkle Bühne wie auf den Pro-Seiten von apple.com.
+/* Dunkle Bühne in drei Spalten: 1/4 Text, 2/4 Gerät, 1/4 Auswahl.
 
-   Ohne Bewegung (und ohne Skript): Text, darunter das fertige Gerät mit
-   Karten, alles im normalen Fluss. Mit Bewegung bleibt die Bühne stehen
-   (sticky), und --p läuft beim Scrollen von 0 bis 1:
-     --t1  0 bis 0.42 von --p: Text tritt zurück, Gerät fährt in die Mitte,
-           der Bildschirm richtet sich auf.
-     --t2  0.3 bis 0.7 von --p: Handy kommt herein, Karten lösen sich.
-   --hub misst das Skript: so weit muss das Gerät hoch, um mittig zu stehen.
-   --nx/--ny (-1 bis 1) kommen von der Maus und neigen die Szene. */
+   Das Gerät ist echtes 3D: Bildschirm und Tastaturfläche sind zwei Ebenen im
+   Raum, die Szene ist gedreht und von oben gesehen.
+     --nx/--ny (-1 bis 1) kommen von der Maus und neigen die Szene.
+     --p (0 bis 1) läuft, während der Anfang aus dem Bild scrollt: die Szene
+         dreht sich dabei nach vorne.
+   Unter 1100px stehen die drei Teile untereinander, im normalen Fluss und
+   ohne feste Höhe. */
 
 .hero {
   position: relative;
   overflow: clip;
 }
-.hero-sticky {
-  --t1: 1;
-  --t2: 1;
-  --hub: 0px;
-  position: relative;
-  padding: calc(var(--kopf) + clamp(2rem, 1rem + 3vw, 4rem)) 0 var(--sektion);
-}
 
-/* Unsichtbare Marke für die Aktionsleiste unten: sie erscheint, sobald man
-   gut einen halben Bildschirm gescrollt hat. */
-.hero-marke-leiste {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 50vh;
-  pointer-events: none;
-}
-
-/* ---------- Text ---------- */
-
-/* Der Text liegt unter der Bühne: beim Scrollen fährt das Gerät über ihn. */
-.hero-text {
-  position: relative;
-  z-index: 0;
+.hero-raster {
   display: grid;
-  justify-items: center;
+  gap: var(--a-7);
+  width: min(100% - var(--rand) * 2, 88rem);
+  margin-inline: auto;
+  padding: calc(var(--kopf) + var(--a-6)) 0 var(--a-8);
+}
+
+/* ---------- Links: Text ---------- */
+
+.hero-text {
+  container-type: inline-size;
+  display: grid;
+  justify-items: start;
   gap: var(--a-4);
-  text-align: center;
 }
 .hero-marke {
-  font-size: var(--t-gross);
+  font-size: var(--t-klein);
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.005em;
   color: var(--leise);
 }
+/* Die Grösse hängt an der Spaltenbreite, damit der Titel in jeder Sprache
+   in zwei Zeilen steht. */
 .hero-text h1 {
-  max-width: 12ch;
+  font-size: clamp(2.375rem, 11.5cqi, 4.5rem);
 }
 .hero-wort {
   display: inline-block;
 }
 .hero-unter {
-  max-width: 34ch;
-  font-size: var(--t-gross);
-  line-height: 1.4;
-  letter-spacing: -0.015em;
+  max-width: 36ch;
+  font-size: var(--t-text);
+  line-height: 1.5;
   color: var(--leise);
 }
 .hero-knoepfe {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: var(--a-3) var(--a-6);
   margin-top: var(--a-3);
 }
 
-/* ---------- Bühne ---------- */
+/* ---------- Mitte: das Gerät ---------- */
 
-.hero-buehne {
-  position: relative;
-  z-index: 1;
-  margin-top: var(--a-8);
-  perspective: 2400px;
-  perspective-origin: 50% 30%;
+.hero-geraet {
+  display: grid;
+  place-items: center;
+  /* Unten Platz für die Tastaturfläche, die nach vorne aus dem Bild ragt. */
+  padding: 4% 0 24%;
+  perspective: 1800px;
+  perspective-origin: 50% 35%;
 }
 
 .szene {
-  --breite: min(88vw, 60rem, calc((100svh - var(--kopf) - 7rem) * 1.6));
   position: relative;
-  width: var(--breite);
-  margin-inline: auto;
+  width: min(68%, 24rem);
+  /* Die Tastaturfläche ragt nach links vorne: etwas nach rechts rücken. */
+  translate: 7% 0;
   transform-style: preserve-3d;
-  transform: rotateX(calc(var(--ny, 0) * -4deg)) rotateY(calc(var(--nx, 0) * 6deg));
+  transform: translateY(calc(var(--p, 0) * -2.5rem)) rotateX(calc(-14deg + var(--ny, 0) * -5deg))
+    rotateY(calc(-24deg + var(--nx, 0) * 9deg + var(--p, 0) * 18deg));
 }
 
 /* Das Licht des Bildschirms im Raum: dasselbe Bild, stark weichgezeichnet,
-   hinter dem Gerät. Wird heller, wenn sich der Bildschirm aufrichtet. */
+   hinter dem Gerät. Wechselt mit der gewählten Seite. */
 .hero-schein {
   position: absolute;
-  left: 8%;
-  top: 2%;
-  width: 84%;
-  height: auto;
-  border-radius: 40px;
-  filter: blur(56px) saturate(2.2) brightness(1.15);
-  opacity: calc(0.45 + var(--t1) * 0.45);
-  transform: translateZ(-160px) scale(1.2);
+  inset: -8% 2% auto;
+  aspect-ratio: 1240 / 775;
+  filter: blur(56px) saturate(2.1) brightness(1.15);
+  opacity: 0.8;
+  transform: translateZ(-140px) scale(1.3);
   pointer-events: none;
+}
+.hero-schein img,
+.schirm img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+}
+.hero-schein img.an,
+.schirm img.an {
+  opacity: 1;
 }
 
 .laptop {
   position: relative;
   transform-style: preserve-3d;
 }
+
+/* Bildschirm: am unteren Rand angeschlagen, leicht nach hinten gelehnt. */
 .laptop-deckel {
-  position: relative;
-  width: 86%;
-  margin-inline: auto;
   transform-origin: 50% 100%;
-  /* Zu Beginn nach hinten gekippt, richtet sich auf. */
-  transform: rotateX(calc((1 - var(--t1)) * 28deg));
+  transform: rotateX(10deg);
 }
 .laptop-rahmen {
   position: relative;
-  padding: 2.2% 2.2% 3%;
-  border-radius: 18px 18px 6px 6px;
+  padding: 2.4% 2.4% 3.2%;
+  border-radius: 14px 14px 4px 4px;
   background: #0d0d0f;
   box-shadow:
     inset 0 0 0 1px #3a3a3e,
-    inset 0 0 0 3px #0d0d0f,
-    0 0 0 1px rgb(255 255 255 / 0.07);
+    0 0 0 1px rgb(255 255 255 / 0.08);
 }
-.laptop-rahmen img {
-  width: 100%;
+.schirm {
+  position: relative;
   aspect-ratio: 1240 / 775;
-  object-fit: cover;
-  object-position: top center;
+  overflow: hidden;
   border-radius: 4px;
+  background: #151517;
 }
 .laptop-glanz {
   position: absolute;
-  inset: 2.2% 2.2% 3%;
-  border-radius: 4px;
-  background: linear-gradient(115deg, rgb(255 255 255 / 0.09), transparent 38%);
+  inset: 0;
+  background: linear-gradient(115deg, rgb(255 255 255 / 0.1), transparent 36%);
   pointer-events: none;
 }
 .laptop-kamera {
   position: absolute;
   top: 0.9%;
   left: 50%;
-  width: 6px;
-  height: 6px;
-  margin-left: -3px;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
   border-radius: 50%;
   background: #1f1f23;
 }
-.laptop-boden {
-  position: relative;
-  height: clamp(10px, 1.6vw, 18px);
-  border-radius: 2px 2px 14px 14px;
-  background: linear-gradient(#e3e4e8, #b4b5bb 70%, #85868c);
-  box-shadow: 0 40px 60px -30px rgb(0 0 0 / 0.9);
-}
-.laptop-boden span {
+
+/* Tastaturfläche: hängt am unteren Rand des Bildschirms und liegt waagrecht
+   nach vorne. */
+.laptop-deck {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 16%;
-  height: 45%;
-  transform: translateX(-50%);
+  left: 0;
+  top: 100%;
+  width: 100%;
+  aspect-ratio: 100 / 66;
+  transform-origin: 50% 0;
+  transform: rotateX(90deg);
+  transform-style: preserve-3d;
+  border-radius: 3px 3px 16px 16px;
+  background: linear-gradient(180deg, #b9babf, #dcdde1 22%, #cdced3);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+}
+/* Vordere Kante, damit der Körper eine Dicke hat. */
+.laptop-deck::after {
+  content: "";
+  position: absolute;
+  left: 1%;
+  top: 100%;
+  width: 98%;
+  height: 9px;
+  transform-origin: 50% 0;
+  transform: rotateX(-90deg);
   border-radius: 0 0 8px 8px;
-  background: #c4c5ca;
+  background: linear-gradient(#a3a4a9, #6f7075);
+}
+.laptop-tasten {
+  position: absolute;
+  inset: 7% 5% auto;
+  height: 50%;
+  border-radius: 5px;
+  background-color: #1b1b1d;
+  background-image: linear-gradient(90deg, #cdced3 2px, transparent 2px), linear-gradient(0deg, #cdced3 2px, transparent 2px);
+  background-size:
+    calc(100% / 14) 100%,
+    100% calc(100% / 5);
+  box-shadow: 0 0 0 2px #cdced3;
+}
+.laptop-pad {
+  position: absolute;
+  left: 31%;
+  top: 64%;
+  width: 38%;
+  height: 29%;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.16);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.14);
 }
 
+/* Handy: steht vor dem Laptop, leicht zum Betrachter gedreht. */
 .handy {
   position: absolute;
-  right: -3%;
-  bottom: 0;
-  width: 19%;
-  opacity: var(--t2);
-  transform: translateZ(50px) translateX(calc((1 - var(--t2)) * 55%)) rotate(calc((1 - var(--t2)) * 8deg));
+  right: -14%;
+  bottom: -34%;
+  width: 24%;
+  transform: translateZ(150px) rotateY(34deg);
 }
 .handy-rahmen {
   position: relative;
@@ -184,14 +210,11 @@
   background: #0d0d0f;
   box-shadow:
     inset 0 0 0 1px #3a3a3e,
-    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 0 0 1px rgb(255 255 255 / 0.1),
     0 30px 60px -20px rgb(0 0 0 / 0.9);
 }
-.handy-rahmen img {
-  width: 100%;
+.schirm-handy {
   aspect-ratio: 275 / 597;
-  object-fit: cover;
-  object-position: top center;
   border-radius: 13% / 6%;
 }
 .handy-insel {
@@ -206,183 +229,151 @@
   z-index: 1;
 }
 
-/* ---------- Karten ---------- */
+/* ---------- Rechts: Auswahl und Messung ---------- */
 
-/* Sie schweben vor dem Gerät (translateZ) und wandern beim Scrollen nach
-   aussen (translate, eigene Eigenschaft, damit sich beides nicht stört). */
-.karte {
-  position: absolute;
+.hero-wahl {
   display: grid;
-  gap: 4px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgb(30 30 32 / 0.94);
-  color: #f5f5f7;
-  font-size: 12px;
-  line-height: 1.45;
-  text-align: left;
-  box-shadow:
-    inset 0 0 0 1px rgb(255 255 255 / 0.1),
-    0 30px 60px -20px rgb(0 0 0 / 0.85);
-  transform: translateZ(var(--z));
-  translate: calc(var(--t2) * var(--dx)) calc(var(--t2) * var(--dy));
+  gap: var(--a-3);
+  align-content: center;
 }
-
-.karte-code {
-  --z: 90px;
-  --dx: -2.5rem;
-  --dy: -1rem;
-  left: -9%;
-  top: 14%;
-  width: 17.5rem;
-}
-.karte-kopf {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 4px;
-  color: #8e8e93;
-  font-family: var(--f-mono);
-  font-size: 11px;
-}
-.karte-kopf i {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #48484c;
-}
-.karte-kopf span {
-  margin-left: 6px;
-}
-.karte pre {
-  margin: 0;
-  display: grid;
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  line-height: 1.65;
-  color: #e3e5ea;
-  white-space: pre;
-  overflow: hidden;
-}
-.kz em {
-  font-style: normal;
-}
-.karte .c-k {
-  color: #8fb4ff;
-}
-.karte .c-s {
-  color: #9fd6b0;
-}
-
-.karte-mess {
-  --z: 140px;
-  --dx: 2.5rem;
-  --dy: -1.5rem;
-  right: -8%;
-  top: 2%;
-  width: 14.5rem;
-  padding: 14px 16px;
-}
-.km-titel {
-  color: #8e8e93;
-  font-size: 11px;
+.wahl-titel {
+  font-size: var(--t-klein);
   font-weight: 600;
-  letter-spacing: 0.01em;
+  color: var(--leise);
 }
-.km-label {
-  margin-top: 6px;
-  color: #c7c7cc;
+.wahl-liste {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.km-wert {
-  font-size: 2.25rem;
+.wahl-knopf {
+  position: relative;
+  display: grid;
+  gap: 1px;
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 0 12px;
+  border: 0;
+  border-top: 1px solid var(--linie);
+  background: none;
+  color: var(--leise);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--t) var(--ease);
+}
+.wahl-domain {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.wahl-was {
+  font-size: var(--t-klein);
+  color: var(--leise);
+}
+.wahl-an {
+  color: var(--ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  .wahl-knopf:hover {
+    color: var(--ink);
+  }
+}
+/* Die Linie über der gewählten Seite. Läuft der Wechsel von selbst, füllt sie
+   sich in der Zeit bis zur nächsten Seite. */
+.wahl-balken {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+.wahl-an .wahl-balken {
+  transform: scaleX(1);
+}
+.wahl-lauf .wahl-balken {
+  animation: wahl-lauf 4500ms linear both;
+}
+@keyframes wahl-lauf {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.mess {
+  display: grid;
+  gap: 2px;
+  padding-top: var(--a-4);
+  border-top: 1px solid var(--linie);
+}
+.mess-titel {
+  font-size: var(--t-klein);
+  font-weight: 600;
+  color: var(--leise);
+}
+.mess-label {
+  margin-top: var(--a-2);
+  font-size: var(--t-kote);
+  color: var(--leise);
+}
+.mess-wert {
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
-  color: #f5f5f7;
 }
-.km-balken {
+.mess-balken {
   position: relative;
-  height: 6px;
-  margin-top: 6px;
+  height: 4px;
+  margin-top: var(--a-1);
   border-radius: 99px;
-  background: #3a3a3e;
+  background: var(--linie);
   overflow: hidden;
 }
-.km-balken span {
+.mess-balken span {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: #34c759;
+  background: var(--gut);
   transform-origin: 0 50%;
   transform: scaleX(var(--anteil));
   transition: transform 1.4s var(--ease-feder);
 }
-.km-hinweis {
-  margin-top: 2px;
-  color: #8e8e93;
-  font-size: 11px;
+.mess-hinweis {
+  margin-top: var(--a-1);
+  font-size: var(--t-kote);
+  color: var(--leise);
 }
 
-.karte-build {
-  --z: 60px;
-  --dx: -2rem;
-  --dy: 1.5rem;
-  left: 3%;
-  bottom: 4%;
-  width: 15.5rem;
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-}
-.kb-zeile {
-  color: #c7c7cc;
-  white-space: nowrap;
-}
-.kb-zeile b {
-  color: #34c759;
-  font-weight: 400;
-}
-.kb-befehl {
-  color: #f5f5f7;
+/* ---------- Ab 1100px: drei Spalten in einem Bildschirm ---------- */
+
+@media (min-width: 1100px) {
+  .hero-raster {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1.5rem, 2.6vw, 3rem);
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: calc(var(--kopf) + var(--a-5)) 0 var(--a-6);
+  }
+  .hero-text h1 {
+    font-size: clamp(2rem, 13cqi, 3.75rem);
+  }
+  .szene {
+    width: min(84%, 33rem);
+    translate: 6% 0;
+  }
 }
 
-/* ---------- Mit Bewegung: die stehende Bühne ---------- */
+/* ---------- Auftritt beim Laden, nur bei voller Bewegung ---------- */
 
-html[data-bewegung="voll"] .hero,
-html[data-bewegung="leicht"] .hero {
-  height: 240vh;
-}
-html[data-bewegung="voll"] .hero-sticky,
-html[data-bewegung="leicht"] .hero-sticky {
-  --p: 0;
-  --t1: min(1, calc(var(--p) * 2.4));
-  --t2: max(0, min(1, calc((var(--p) - 0.3) * 2.5)));
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
-  padding: calc(var(--kopf) + clamp(1.5rem, 0.5rem + 3vh, 3.5rem)) 0 0;
-  overflow: clip;
-}
-html[data-bewegung="voll"] .hero-text,
-html[data-bewegung="leicht"] .hero-text {
-  transform-origin: 50% 0;
-  transform: translateY(calc(var(--t1) * -56px)) scale(calc(1 - var(--t1) * 0.06));
-  opacity: calc(1 - var(--t1) * 2.2);
-}
-html .hero-text:focus-within {
-  z-index: 2;
-  opacity: 1;
-}
-html[data-bewegung="voll"] .hero-buehne,
-html[data-bewegung="leicht"] .hero-buehne {
-  margin-top: clamp(1.5rem, 0.5rem + 4vh, 3.5rem);
-  transform-origin: 50% 0;
-  transform: translateY(calc(var(--t1) * var(--hub))) scale(calc(0.88 + var(--t1) * 0.12));
-}
-
-/* Auftritt beim Laden, nur bei voller Bewegung. Der Titel ist nie ganz
-   unsichtbar (er ist das grösste Element im ersten Bild). */
+/* Der Titel ist nie ganz unsichtbar (er ist das grösste Textelement). */
 html[data-bewegung="voll"] .hero-wort {
   animation: hero-wort 1100ms var(--ease-feder) both;
   animation-delay: calc(120ms + var(--i) * 90ms);
@@ -399,28 +390,15 @@ html[data-bewegung="voll"] .hero-unter {
 html[data-bewegung="voll"] .hero-knoepfe {
   animation-delay: 540ms;
 }
-html[data-bewegung="voll"] .hero-buehne {
-  animation: hero-buehne 1400ms var(--ease-feder) 260ms both;
+html[data-bewegung="voll"] .hero-wahl {
+  animation-delay: 700ms;
 }
-html[data-bewegung="voll"] .karte {
-  animation: karte-auf 900ms var(--ease-feder) both;
+html[data-bewegung="voll"] .hero-geraet {
+  animation: hero-geraet 1300ms var(--ease-feder) 200ms both;
 }
-html[data-bewegung="voll"] .karte-mess {
-  animation-delay: 900ms;
-}
-html[data-bewegung="voll"] .karte-code {
-  animation-delay: 1050ms;
-}
-html[data-bewegung="voll"] .karte-build {
-  animation-delay: 1200ms;
-}
-html[data-bewegung="voll"] .kz {
-  animation: zeile 500ms var(--ease) both;
-  animation-delay: calc(1300ms + var(--n) * 110ms);
-}
-html[data-bewegung="voll"] .kb-zeile {
-  animation: zeile 400ms var(--ease) both;
-  animation-delay: calc(1500ms + var(--n) * 260ms);
+/* Das Gerät dreht sich aus der Seitenansicht in seine Stellung. */
+html[data-bewegung="voll"] .szene {
+  animation: szene-ein 1700ms var(--ease-feder) 200ms both;
 }
 
 @keyframes hero-wort {
@@ -436,94 +414,25 @@ html[data-bewegung="voll"] .kb-zeile {
     translate: 0 14px;
   }
 }
-@keyframes hero-buehne {
+@keyframes hero-geraet {
   from {
     opacity: 0;
-    translate: 0 80px;
+    translate: 0 60px;
   }
 }
-@keyframes karte-auf {
+@keyframes szene-ein {
   from {
-    opacity: 0;
+    rotate: y -38deg;
     scale: 0.9;
-  }
-}
-@keyframes zeile {
-  from {
-    opacity: 0;
-    translate: -6px 0;
-  }
-}
-
-/* ---------- Kleinere Bildschirme ---------- */
-
-@media (max-width: 1100px) {
-  .karte-code {
-    left: -3%;
-  }
-  .karte-mess {
-    right: -3%;
-  }
-}
-
-@media (max-width: 699px) {
-  html[data-bewegung="voll"] .hero,
-  html[data-bewegung="leicht"] .hero {
-    height: 200vh;
-  }
-  .szene {
-    --breite: 92vw;
-  }
-  .handy {
-    width: 26%;
-    right: -2%;
-    bottom: -10%;
-  }
-  .karte {
-    padding: 9px 11px;
-    border-radius: 12px;
-    font-size: 10.5px;
-  }
-  .karte-code {
-    display: none;
-  }
-  .karte {
-    --dx: 0rem;
-  }
-  .karte-mess {
-    --dy: -3.5rem;
-    right: -1%;
-    top: -16%;
-    width: 10.5rem;
-  }
-  .km-wert {
-    font-size: 1.625rem;
-  }
-  .km-label,
-  .km-hinweis {
-    font-size: 10px;
-  }
-  .karte-build {
-    --dy: 3rem;
-    left: 0;
-    bottom: -22%;
-    width: auto;
-    font-size: 10px;
-  }
-  /* Ohne stehende Bühne: Platz für die Messkarte über dem Gerät. */
-  .hero-buehne {
-    margin-top: 9rem;
-    margin-bottom: var(--a-8);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-wort,
   .hero-ein,
-  .hero-buehne,
-  .karte,
-  .kz,
-  .kb-zeile {
+  .hero-geraet,
+  .szene,
+  .wahl-balken {
     animation: none !important;
   }
 }

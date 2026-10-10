@@ -1,30 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { useSprache } from "../lib/sprache";
+import { fuelle } from "../lib/typo";
 import { stufe, useScrollFortschritt } from "../lib/bewegung";
+import { projekte } from "../data/projekte";
 import "./Hero.css";
 
-/* Anfang wie eine dunkle Apple-Produktseite. Der Satz steht sofort da, darunter
-   schaut das Produkt herein: echte Kundenseiten auf Laptop und Handy, mit dem
-   Licht des Bildschirms im Raum. Um das Gerät schweben drei Karten, die zeigen,
-   was dahinter steckt: Code, die in diesem Browser gemessene Ladezeit dieser
-   Seite und der Build mit seinen Grenzen.
+/* Der Anfang in drei Spalten: ein Viertel Text, die Hälfte das Gerät, ein
+   Viertel Auswahl.
 
-   Beim Scrollen bleibt die Bühne stehen: der Text tritt zurück, das Gerät
-   fährt in die Mitte und richtet den Bildschirm auf, das Handy kommt herein,
-   die Karten lösen sich in die Tiefe. Mit feinem Zeiger neigt sich die ganze
-   Szene leicht zur Maus (echtes 3D, die Karten liegen davor).
-   Ohne Bewegung steht alles fertig da. */
+   Links steht, was Sherka macht, mit genau einem Knopf. In der Mitte steht ein
+   Laptop als echtes 3D-Objekt (Bildschirm und Tastaturfläche sind zwei Ebenen
+   im Raum), davor ein Handy, dahinter das Licht des Bildschirms. Rechts wählt
+   man, welche der vier Kundenseiten im Gerät läuft; darunter steht die in
+   diesem Browser gemessene Ladezeit dieser Seite.
 
-const CODE = [
-  ["<", "section", ' class="', "hero", '">'],
-  ["  <", "h1", ">", "Marokkanische Küche", ""],
-  ["      in Biel</", "h1", ">", "", ""],
-  ["  <", "a", ' href="', "/fr/", '">FR</a>'],
-  ["</", "section", ">", "", ""],
-] as const;
+   Regeln aus den Skills: Titel höchstens zwei Zeilen, Text unter 20 Wörtern,
+   ein Knopf, alles im ersten Bildschirm, nichts Erfundenes im Gerät, am Handy
+   normaler Fluss ohne feste Höhe. Ohne Bewegung steht alles fertig da. */
+
+const WECHSEL_MS = 4500;
 
 function zahl(sek: number, sprache: string) {
   return sek.toFixed(2).replace(".", ",") + (sprache === "fr" ? " s" : " s");
+}
+
+function handyBild(bild: string) {
+  return bild.replace(/\.webp$/, "-mobile.webp");
 }
 
 /** Misst, wann der grösste Inhalt dieser Seite sichtbar war (LCP). Safari kennt
@@ -42,7 +43,7 @@ function useMessung() {
         po.observe({ type: "largest-contentful-paint", buffered: true });
       }
     } catch {
-      /* ohne Messung bleibt die Karte beim Strich */
+      /* ohne Messung bleibt die Anzeige beim Platzhalter */
     }
     const fertig = () =>
       setTimeout(() => {
@@ -95,46 +96,48 @@ function useNeigung(ziel: React.RefObject<HTMLElement | null>) {
   }, []);
 }
 
-/** Wie weit das Gerät nach oben fahren muss, um am Ende mittig zu stehen. */
-function useHub(sticky: React.RefObject<HTMLElement | null>, buehne: React.RefObject<HTMLElement | null>) {
-  useEffect(() => {
-    const s = sticky.current;
-    const b = buehne.current;
-    if (!s || !b || stufe() === "aus") return;
-    const kopf = 52;
-    const rechne = () => {
-      const hoehe = s.clientHeight;
-      const oben = b.offsetTop;
-      const h = b.offsetHeight;
-      const ziel = kopf + Math.max(16, (hoehe - kopf - h) / 2);
-      s.style.setProperty("--hub", `${Math.min(0, Math.round(ziel - oben))}px`);
-    };
-    rechne();
-    const ro = new ResizeObserver(rechne);
-    ro.observe(s);
-    ro.observe(b);
-    return () => ro.disconnect();
-  }, []);
-}
-
 export function Hero() {
   const { t, sprache } = useSprache();
   const h = t.hero;
   const abschnitt = useRef<HTMLElement>(null);
-  const sticky = useRef<HTMLDivElement>(null);
-  const buehne = useRef<HTMLDivElement>(null);
-  useScrollFortschritt(abschnitt, sticky);
-  useNeigung(sticky);
-  useHub(sticky, buehne);
+  useScrollFortschritt(abschnitt, abschnitt, "raus");
+  useNeigung(abschnitt);
   const messung = useMessung();
+
+  const [aktiv, setAktiv] = useState(0);
+  // Der Wechsel läuft von selbst, bis jemand selbst wählt. Er ruht, solange
+  // der Zeiger auf der Auswahl liegt oder der Anfang nicht im Bild ist.
+  const [laeuft, setLaeuft] = useState(false);
+  const [ruht, setRuht] = useState(false);
+  const [imBild, setImBild] = useState(true);
+
+  useEffect(() => {
+    if (stufe() === "voll") setLaeuft(true);
+    const a = abschnitt.current;
+    if (!a || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([e]) => setImBild(e.isIntersecting), { threshold: 0.4 });
+    io.observe(a);
+    return () => io.disconnect();
+  }, []);
+
+  const wechselt = laeuft && !ruht && imBild;
+  useEffect(() => {
+    if (!wechselt) return;
+    const id = setTimeout(() => setAktiv((a) => (a + 1) % projekte.length), WECHSEL_MS);
+    return () => clearTimeout(id);
+  }, [wechselt, aktiv]);
+
+  const waehle = (i: number) => {
+    setAktiv(i);
+    setLaeuft(false);
+  };
 
   const woerter = h.titel.split(" ");
 
   return (
     <section className="hero buehne-dunkel" id="oben" aria-labelledby="hero-titel" ref={abschnitt}>
-      <span className="hero-marke-leiste" id="hero-knoepfe" aria-hidden="true" />
-      <div className="hero-sticky" ref={sticky}>
-        <div className="shell hero-text">
+      <div className="hero-raster">
+        <div className="hero-text">
           <p className="hero-marke hero-ein">{h.marke}</p>
           <h1 id="hero-titel">
             {woerter.map((w, i) => (
@@ -147,100 +150,125 @@ export function Hero() {
             ))}
           </h1>
           <p className="hero-unter hero-ein">{h.unter}</p>
-          <div className="hero-knoepfe hero-ein">
+          <div className="hero-knoepfe hero-ein" id="hero-knoepfe">
             <a className="knopf knopf-voll" href="#kontakt">
               {h.cta}
-            </a>
-            <a className="pfeillink" href="#arbeiten">
-              {h.cta2}
             </a>
           </div>
         </div>
 
-        <div className="hero-buehne" ref={buehne}>
+        <div className="hero-geraet">
           <div className="szene">
-            <img className="hero-schein" src="/shots/bledi-bienne.ch.webp" alt="" aria-hidden="true" width={1240} height={775} decoding="async" />
+            <div className="hero-schein" aria-hidden="true">
+              {projekte.map((p, i) => (
+                <img
+                  key={p.domain}
+                  className={i === aktiv ? "an" : ""}
+                  src={p.bild}
+                  alt=""
+                  width={p.bildBreite}
+                  height={p.bildHoehe}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              ))}
+            </div>
 
             <div className="laptop">
               <div className="laptop-deckel">
                 <div className="laptop-rahmen">
                   <span className="laptop-kamera" aria-hidden="true" />
-                  <img
-                    src="/shots/bledi-bienne.ch.webp"
-                    alt={h.laptopAlt}
-                    width={1240}
-                    height={775}
-                    fetchPriority="high"
-                    decoding="async"
-                  />
-                  <span className="laptop-glanz" aria-hidden="true" />
+                  <div className="schirm">
+                    {projekte.map((p, i) => (
+                      <img
+                        key={p.domain}
+                        className={i === aktiv ? "an" : ""}
+                        src={p.bild}
+                        alt={i === aktiv ? fuelle(h.laptopAlt, { domain: p.domain }) : ""}
+                        aria-hidden={i === aktiv ? undefined : true}
+                        width={p.bildBreite}
+                        height={p.bildHoehe}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        fetchPriority={i === 0 ? "high" : "low"}
+                        decoding="async"
+                      />
+                    ))}
+                    <span className="laptop-glanz" aria-hidden="true" />
+                  </div>
                 </div>
               </div>
-              <div className="laptop-boden" aria-hidden="true">
-                <span />
+              <div className="laptop-deck" aria-hidden="true">
+                <span className="laptop-tasten" />
+                <span className="laptop-pad" />
               </div>
             </div>
 
             <div className="handy">
               <div className="handy-rahmen">
                 <span className="handy-insel" aria-hidden="true" />
-                <img
-                  src="/shots/bern-zahnarzt-team.ch-mobile.webp"
-                  alt={h.handyAlt}
-                  width={275}
-                  height={597}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div className="schirm schirm-handy">
+                  {projekte.map((p, i) => (
+                    <img
+                      key={p.domain}
+                      className={i === aktiv ? "an" : ""}
+                      src={handyBild(p.bild)}
+                      alt={i === aktiv ? fuelle(h.handyAlt, { domain: p.domain }) : ""}
+                      aria-hidden={i === aktiv ? undefined : true}
+                      width={275}
+                      height={597}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="karte karte-code" aria-hidden="true">
-              <span className="karte-kopf">
-                <i />
-                <i />
-                <i />
-                <span>hero.html</span>
-              </span>
-              <pre>
-                {CODE.map(([a, tag, b, wert, c], i) => (
-                  <span className="kz" style={{ "--n": i } as React.CSSProperties} key={i}>
-                    {a}
-                    <em className="c-k">{tag}</em>
-                    {b}
-                    <em className={b.includes("=") ? "c-s" : ""}>{wert}</em>
-                    {c}
+        <div className="hero-wahl hero-ein">
+          <p className="wahl-titel" id="wahl-titel">
+            {h.wahlTitel}
+          </p>
+          <ul
+            className="wahl-liste"
+            aria-labelledby="wahl-titel"
+            onPointerEnter={() => setRuht(true)}
+            onPointerLeave={() => setRuht(false)}
+            onFocus={() => setRuht(true)}
+            onBlur={() => setRuht(false)}
+          >
+            {projekte.map((p, i) => (
+              <li key={p.domain}>
+                <button
+                  type="button"
+                  className={`wahl-knopf${i === aktiv ? " wahl-an" : ""}${i === aktiv && wechselt ? " wahl-lauf" : ""}`}
+                  aria-pressed={i === aktiv}
+                  aria-label={fuelle(h.zeigen, { domain: p.domain })}
+                  onClick={() => waehle(i)}
+                >
+                  <span className="wahl-domain" translate="no">
+                    {p.domain}
                   </span>
-                ))}
-              </pre>
-            </div>
+                  <span className="wahl-was">{p.text[sprache].was}</span>
+                  <span className="wahl-balken" aria-hidden="true" />
+                </button>
+              </li>
+            ))}
+          </ul>
 
-            <div className="karte karte-mess" role="group" aria-label={h.messTitel}>
-              <span className="km-titel">{h.messTitel}</span>
-              <span className="km-label">{messung?.art === "fcp" ? h.messFcp : h.messLcp}</span>
-              <strong className="km-wert">{messung ? zahl(messung.wert, sprache) : "…"}</strong>
-              <span className="km-balken" aria-hidden="true">
-                <span
-                  style={{
-                    "--anteil": messung ? Math.min(1, messung.wert / (messung.art === "fcp" ? 1.8 : 2.5)) : 0,
-                  } as React.CSSProperties}
-                />
-              </span>
-              <span className="km-hinweis">
-                {messung?.art === "fcp" ? h.messRichtFcp : h.messRichtLcp}
-              </span>
-            </div>
-
-            <div className="karte karte-build" aria-hidden="true">
-              <span className="kb-zeile kb-befehl" style={{ "--n": 0 } as React.CSSProperties}>
-                $ npm run build
-              </span>
-              {h.build.map((z, i) => (
-                <span className="kb-zeile" style={{ "--n": i + 1 } as React.CSSProperties} key={i}>
-                  <b>✓</b> {z}
-                </span>
-              ))}
-            </div>
+          <div className="mess" role="group" aria-label={h.messTitel}>
+            <span className="mess-titel">{h.messTitel}</span>
+            <span className="mess-label">{messung?.art === "fcp" ? h.messFcp : h.messLcp}</span>
+            <strong className="mess-wert">{messung ? zahl(messung.wert, sprache) : "…"}</strong>
+            <span className="mess-balken" aria-hidden="true">
+              <span
+                style={{
+                  "--anteil": messung ? Math.min(1, messung.wert / (messung.art === "fcp" ? 1.8 : 2.5)) : 0,
+                } as React.CSSProperties}
+              />
+            </span>
+            <span className="mess-hinweis">{messung?.art === "fcp" ? h.messRichtFcp : h.messRichtLcp}</span>
           </div>
         </div>
       </div>

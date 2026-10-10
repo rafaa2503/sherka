@@ -137,6 +137,40 @@ cfHeader.push("", "/assets/*", "  Cache-Control: public, max-age=31536000, immut
 await writeFile(path.join(DIST, "_headers"), cfHeader.join("\n") + "\n");
 await writeFile(path.join(DIST, "_redirects"), weiterleitungen.map(([a, b]) => `${a} ${b} 301`).join("\n") + "\n");
 
+// Vercel (Vorschau). Vercel liest vercel.json VOR dem Build, die Datei muss
+// also im Repo liegen. Sie wird hier aus derselben Quelle erzeugt; weicht die
+// eingecheckte Fassung ab, bricht der Build auf Vercel ab, statt mit alten
+// Headern auszuliefern (so entstand in V1 die CSP, die das Theme-Skript sperrte).
+const vercelSoll = {
+  $schema: "https://openapi.vercel.sh/vercel.json",
+  framework: "vite",
+  buildCommand: "npm run build",
+  outputDirectory: "dist",
+  trailingSlash: true,
+  redirects: weiterleitungen
+    .filter(([a]) => !["/index.html", "/fr"].includes(a))
+    .map(([source, destination]) => ({ source, destination, permanent: true })),
+  headers: [
+    { source: "/(.*)", headers: Object.entries(header).map(([key, value]) => ({ key, value })) },
+    { source: "/assets/(.*)", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
+  ],
+};
+// Vercel schreibt die Datei beim Hochladen um (eine Zeile, zusätzliche Felder
+// wie name und version). Verglichen wird deshalb der Inhalt unserer Felder.
+const vercelIst = JSON.parse(await readFile("vercel.json", "utf8").catch(() => "{}"));
+const abweichend = Object.keys(vercelSoll).filter((k) => JSON.stringify(vercelIst[k]) !== JSON.stringify(vercelSoll[k]));
+if (abweichend.length) {
+  if (process.env.VERCEL) {
+    console.error(`vercel.json ist veraltet (${abweichend.join(", ")}). Lokal "npm run build" ausführen und die Datei einchecken.`);
+    process.exit(1);
+  }
+  await writeFile("vercel.json", JSON.stringify(vercelSoll, null, 2) + "\n");
+  console.log("vercel.json neu geschrieben (bitte einchecken).");
+}
+// Auf Vercel gibt es kein PHP: der Formular-Endpunkt würde dort als Textdatei
+// ausgeliefert. Er gehört nur auf Infomaniak.
+if (process.env.VERCEL) await rm(path.join(DIST, "api"), { recursive: true, force: true });
+
 // Infomaniak (Apache)
 const ht = [
   "# Erzeugt von scripts/vorrendern.mjs. Nicht von Hand ändern.",

@@ -28,3 +28,4 @@ ansichten
 .env
 .env.*
 !.env.example
+.vercel

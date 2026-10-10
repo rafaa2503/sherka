@@ -32,9 +32,8 @@ export const fr: Woerter = typoFr({
   },
 
   hero: {
-    marke: "Sherka. Développement web à Bienne.",
-    titel: "Des sites qui travaillent.",
-    unter: "Vous vous occupez de vos clients. Votre site va chercher les suivants : demandes, rendez-vous et commandes, jour et nuit.",
+    titel: "Plus de clients. Moins d'efforts.",
+    unter: "Votre site apporte demandes, rendez-vous et commandes. Réalisation, hébergement et entretien : je m'en occupe, en personne, depuis Bienne.",
     cta: "Parler de votre projet",
     wahlTitel: "Quatre sites, tous en ligne",
     zeigen: "Afficher {domain} dans l'appareil",

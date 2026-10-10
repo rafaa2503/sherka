@@ -132,20 +132,27 @@ export function Hero() {
     setLaeuft(false);
   };
 
-  const woerter = h.titel.split(" ");
+  // Der Titel besteht aus zwei kurzen Sätzen: jeder steht auf seiner Zeile.
+  const zeilen = h.titel.split(/(?<=\.)\s+/).map((satz) => satz.split(" "));
 
   return (
     <section className="hero buehne-dunkel" id="oben" aria-labelledby="hero-titel" ref={abschnitt}>
       <div className="hero-raster">
         <div className="hero-text">
-          <p className="hero-marke hero-ein">{h.marke}</p>
           <h1 id="hero-titel">
-            {woerter.map((w, i) => (
-              <span key={i}>
-                <span className="hero-wort" style={{ "--i": i } as React.CSSProperties}>
-                  {w}
+            {zeilen.map((zeile, z) => (
+              <span key={z}>
+                <span className="hero-zeile">
+                  {zeile.map((w, i) => (
+                    <span key={i}>
+                      <span className="hero-wort" style={{ "--i": z * 2 + i } as React.CSSProperties}>
+                        {w}
+                      </span>
+                      {i < zeile.length - 1 ? " " : ""}
+                    </span>
+                  ))}
                 </span>
-                {i < woerter.length - 1 ? " " : ""}
+                {z < zeilen.length - 1 ? " " : ""}
               </span>
             ))}
           </h1>

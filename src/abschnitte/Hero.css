@@ -29,16 +29,14 @@
   justify-items: start;
   gap: var(--a-4);
 }
-.hero-marke {
-  font-size: var(--t-klein);
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  color: var(--leise);
-}
 /* Die Grösse hängt an der Spaltenbreite, damit der Titel in jeder Sprache
    in zwei Zeilen steht. */
 .hero-text h1 {
-  font-size: clamp(2.375rem, 11.5cqi, 4.5rem);
+  font-size: clamp(1.75rem, 10.6cqi, 4.5rem);
+}
+.hero-zeile {
+  display: block;
+  white-space: nowrap;
 }
 .hero-wort {
   display: inline-block;
@@ -363,7 +361,7 @@
     padding: calc(var(--kopf) + var(--a-5)) 0 var(--a-6);
   }
   .hero-text h1 {
-    font-size: clamp(2rem, 13cqi, 3.75rem);
+    font-size: clamp(1.75rem, 11.2cqi, 3.75rem);
   }
   .szene {
     width: min(84%, 33rem);
@@ -380,9 +378,6 @@ html[data-bewegung="voll"] .hero-wort {
 }
 html[data-bewegung="voll"] .hero-ein {
   animation: hero-ein 900ms var(--ease) both;
-}
-html[data-bewegung="voll"] .hero-marke {
-  animation-delay: 40ms;
 }
 html[data-bewegung="voll"] .hero-unter {
   animation-delay: 420ms;

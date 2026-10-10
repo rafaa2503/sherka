@@ -31,9 +31,8 @@ export const de = {
   },
 
   hero: {
-    marke: "Sherka. Webentwicklung aus Biel/Bienne.",
-    titel: "Websites, die arbeiten.",
-    unter: "Sie kümmern sich um Ihre Kunden. Ihre Website holt die nächsten: Anfragen, Termine und Bestellungen, rund um die Uhr.",
+    titel: "Mehr Kunden. Weniger Aufwand.",
+    unter: "Ihre Website bringt Anfragen, Termine und Bestellungen. Bau, Hosting und Pflege übernehme ich, persönlich aus Biel/Bienne.",
     cta: "Erstgespräch anfragen",
     wahlTitel: "Vier Seiten, alle live",
     zeigen: "{domain} im Gerät zeigen",

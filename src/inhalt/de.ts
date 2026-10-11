@@ -5,9 +5,9 @@
 
 export const de = {
   meta: {
-    titel: "Webdesign Biel/Bienne: Websites für kleine Betriebe | Sherka",
+    titel: "Webdesign Biel/Bienne: Website für Ihren Betrieb | Sherka",
     beschreibung:
-      "Raffa Amro Elsherkasi baut Websites für Salons, Praxen, Restaurants und Handwerksbetriebe und betreibt sie danach auch. Zweisprachig, von Hand gebaut. Das Erstgespräch ist kostenlos.",
+      "Websites für Salons, Praxen, Restaurants und Handwerker in Biel/Bienne. Auf Deutsch und Französisch, gebaut und danach betreut. Erstgespräch kostenlos.",
     ogTitel: "Websites, die arbeiten.",
   },
 
@@ -15,13 +15,13 @@ export const de = {
     zumInhalt: "Zum Inhalt springen",
     navLabel: "Hauptnavigation",
     links: {
-      arbeiten: "Arbeiten",
+      arbeiten: "Beispiele",
       entstehung: "So entsteht's",
       vorteile: "Warum Sherka",
       ablauf: "Ablauf",
       faq: "Fragen",
     },
-    anfragen: "Anfragen",
+    anfragen: "Erstgespräch",
     themaHell: "Auf helle Darstellung wechseln",
     themaDunkel: "Auf dunkle Darstellung wechseln",
     andereSprache: "Français",
@@ -32,44 +32,45 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ihre Website bringt Anfragen, Termine und Bestellungen. Bau, Hosting und Pflege übernehme ich, persönlich aus Biel/Bienne.",
+    unter: "Ihre Website bringt Anfragen, auf Deutsch und Französisch. Ich baue und betreue sie in Biel/Bienne, Sie kümmern sich um nichts.",
     cta: "Erstgespräch anfragen",
     wahlTitel: "Vier Seiten, alle live",
     zeigen: "{domain} im Gerät zeigen",
     laptopAlt: "{domain} auf einem Laptop",
     handyAlt: "{domain} auf einem Handy",
-    messTitel: "Diese Seite, gemessen in Ihrem Browser",
-    messLcp: "Inhalt vollständig sichtbar nach",
-    messFcp: "Erster Inhalt sichtbar nach",
-    messRichtLcp: "Richtwert von Google: unter 2,5 s",
-    messRichtFcp: "Richtwert von Google: unter 1,8 s",  },
+    messTitel: "So schnell lädt diese Seite bei Ihnen",
+    messLcp: "Das Wichtigste zu sehen nach",
+    messFcp: "Erster Inhalt zu sehen nach",
+    messRichtLcp: "Google empfiehlt: unter 2,5 Sekunden",
+    messRichtFcp: "Google empfiehlt: unter 1,8 Sekunden",
+  },
 
   intro: {
-    stark: "Eine Website soll Anfragen bringen.",
-    rest: "Termine annehmen, Bestellungen entgegennehmen, zweisprachig laufen. Nicht nur gut aussehen, sondern im Alltag Ihres Betriebs mitarbeiten.",
+    stark: "Das Telefon klingelt mitten in der Arbeit.",
+    rest: "Wieder nur die Frage nach den Öffnungszeiten, weil die Website veraltet ist. Eine gute Seite antwortet selbst und nimmt Anfragen an, während Sie arbeiten.",
   },
 
   arbeiten: {
     titel: "Vier Seiten. Alle live.",
-    text: "Öffnen Sie sie selbst. Jede wurde von Hand gebaut und läuft heute.",
-    domainKunde: "Domain auf den Namen des Kunden",
-    domainSherka: "Domain verwaltet von Sherka, auf Wunsch umgeschrieben",
+    text: "Alle vier gehören echten Betrieben. Öffnen Sie sie und schauen Sie selbst.",
+    domainKunde: "Internetadresse läuft auf den Kunden",
+    domainSherka: "Internetadresse bei Sherka, wechselt auf Wunsch zum Kunden",
     oeffnen: "Seite öffnen",
-    zurueck: "Vorherige Arbeit",
-    weiter: "Nächste Arbeit",
+    zurueck: "Vorheriges Beispiel",
+    weiter: "Nächstes Beispiel",
     bildAlt: "Startseite von {domain}",
   },
 
   entstehung: {
     titel: "So entsteht eine Seite.",
-    text: "Ein Beispiel, kein Kundenprojekt. Daneben der Code, der dafür sorgt.",
+    text: "Gezeigt an einem erfundenen Salon. Bei Ihrer Seite gehe ich genauso vor.",
     beispiel: "Beispiel",
     codeLabel: "Code zu diesem Schritt",
     schritte: [
-      { name: "Gerüst.", text: "Zuerst die Ordnung: was oben steht, was unten, ohne jede Farbe." },
-      { name: "Gestaltung.", text: "Schrift, Farben, Abstände. Wenige Werte, damit alles zusammenpasst." },
-      { name: "Funktion.", text: "Das Formular prüft die Eingaben und schickt die Anfrage ab. Ein Klick genügt." },
-      { name: "Zweisprachig und bei Google.", text: "Deutsch und Französisch, dazu Angaben im Code, mit denen Google Ihre Öffnungszeiten zeigt." },
+      { name: "Aufbau.", text: "Zuerst die Reihenfolge, noch ohne Farbe: Was Ihre Kunden suchen, steht oben." },
+      { name: "Gestaltung.", text: "Schrift und Farben, die zu Ihrem Betrieb passen. Wenige, damit es ruhig wirkt." },
+      { name: "Funktion.", text: "Ein Klick, und die Terminanfrage ist bei Ihnen. Tippfehler fängt das Formular vorher ab." },
+      { name: "Zweisprachig und bei Google.", text: "Deutsch und Französisch. Dazu Angaben, mit denen Google Ihre Öffnungszeiten richtig anzeigen kann." },
     ],
     vorschau: {
       name: "Salon Lumen",
@@ -87,19 +88,19 @@ export const de = {
   vorteile: {
     titel: "Warum Sherka.",
     kacheln: [
-      { gross: "DE und FR", text: "Zweisprachig von Anfang an, nicht nachträglich übersetzt." },
-      { gross: "Von Hand", text: "Kein Baukasten. Jede Seite wird für Ihren Betrieb gebaut." },
-      { gross: "Eine Person", text: "Wer baut, betreut auch. Sie müssen niemanden neu einarbeiten." },
-      { gross: "20 Minuten", text: "So lange dauert das Erstgespräch. Es ist kostenlos." },
-      { gross: "1 Werktag", text: "So schnell kommt die Antwort auf Ihre Anfrage." },
-      { gross: "Ihre Adresse", text: "Die Domain läuft auf Ihren Namen oder wird auf Wunsch auf Sie umgeschrieben." },
+      { gross: "DE und FR", text: "Ihre Kundschaft spricht beide Sprachen. Ihre Seite auch, von Anfang an." },
+      { gross: "Von Hand", text: "Für Ihren Betrieb gebaut, kein Baukasten. Sie pflegen nichts selbst." },
+      { gross: "Eine Person", text: "Wer baut, bleibt auch danach zuständig. Sie erklären alles nur einmal." },
+      { gross: "20 Minuten", text: "So kurz ist das kostenlose Erstgespräch. Sie entscheiden danach." },
+      { gross: "1 Werktag", text: "Länger warten Sie nicht auf meine Antwort." },
+      { gross: "Ihre Adresse", text: "Die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Wunsch auf Sie um." },
     ],
     leistungenTitel: "Was ich baue.",
     leistungen: [
-      { was: "Neue Websites.", text: "Ein- oder zweisprachig, von der einzelnen Seite bis zum ganzen Auftritt." },
-      { was: "Terminanfragen und Reservationen.", text: "Anfragen kommen auf der Seite herein, statt per Telefon zwischen zwei Kunden." },
-      { was: "Kleine Web-Anwendungen.", text: "Für Abläufe, die heute über Excel und WhatsApp laufen." },
-      { was: "Bestehende Seiten überarbeiten.", text: "Schneller und brauchbarer machen, ohne bei null anzufangen." },
+      { was: "Neue Websites.", text: "Ein- oder zweisprachig, von einer einzigen Seite bis zum ganzen Auftritt." },
+      { was: "Terminanfragen und Reservationen.", text: "Ihre Kunden fragen auf der Seite an, statt anzurufen, während Sie gerade jemanden bedienen." },
+      { was: "Hilfsmittel für Abläufe.", text: "Listen und Planung, die heute über Excel und WhatsApp laufen." },
+      { was: "Bestehende Seiten überarbeiten.", text: "Schneller und brauchbarer machen, ohne dass Sie bei null anfangen." },
     ],
   },
 
@@ -108,35 +109,35 @@ export const de = {
     schritte: [
       {
         zeit: "20 Minuten",
-        was: "Erstgespräch, kostenlos",
-        text: "Ich frage, was die Seite können muss. Sie fragen, was ich kann. Danach wissen wir beide, ob es passt.",
+        was: "Erstgespräch",
+        text: "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich davon bauen kann. Danach wissen wir beide, ob es passt.",
       },
       {
         zeit: "schriftlich",
         was: "Entwurf",
-        text: "Sie sehen, wie die Seite aussieht und was sie kann. Dazu steht schriftlich, was gebaut wird und bis wann.",
+        text: "Sie sehen, wie Ihre Seite aussehen wird. Dazu halte ich schriftlich fest, was ich baue und bis wann.",
       },
       {
         zeit: "2 bis 4 Wochen",
         was: "Bau",
-        text: "Ab dem Tag, an dem Texte und Bilder da sind. Zwischendurch bekommen Sie einen Link zum Anschauen.",
+        text: "Ab dem Tag, an dem Ihre Texte und Bilder da sind. Zwischendurch schicke ich Ihnen einen Link zum Anschauen.",
       },
       {
         zeit: "vor dem Start",
-        was: "Abnahme",
-        text: "Wir gehen alles gemeinsam durch. Was nicht stimmt, korrigiere ich.",
+        was: "Letzte Kontrolle",
+        text: "Wir schauen alles gemeinsam an. Was nicht stimmt, korrigiere ich.",
       },
       {
         zeit: "danach",
-        was: "Betrieb",
-        text: "Hosting, Adresse und kleine Änderungen bleiben bei mir.",
+        was: "Betreuung",
+        text: "Dass die Seite läuft, ist meine Aufgabe, nicht Ihre. Kleine Änderungen schicken Sie mir, ich erledige sie.",
       },
     ],
   },
 
   person: {
-    titel: "Wer das baut",
-    text: "Ich bin Raffa Amro Elsherkasi und arbeite von Biel/Bienne aus. Gelernt habe ich Applikationsentwickler EFZ, danach war ich DevOps Engineer, also dort, wo Systeme laufen müssen. Deshalb baue ich Ihre Seite nicht nur, ich betreibe sie auch.",
+    titel: "Wer Ihre Seite baut",
+    text: "Ich bin Raffa Amro Elsherkasi und arbeite von Biel/Bienne aus. Gelernt habe ich Informatiker (Applikationsentwickler EFZ). Danach war es mein Beruf, dafür zu sorgen, dass Systeme laufen. Deshalb ist für mich nach dem Start nicht Schluss: Ich bleibe zuständig, und Sie erreichen mich direkt.",
     fotoAlt: "Raffa Amro Elsherkasi",
   },
 
@@ -146,39 +147,39 @@ export const de = {
       {
         frage: "Wie lange dauert es wirklich?",
         antwort:
-          "Zwei bis vier Wochen, ab dem Moment, in dem Ihre Texte und Bilder da sind. Dieser Teil dauert meistens länger als der Bau.",
+          "Zwei bis vier Wochen, sobald Ihre Texte und Bilder da sind. Bis wann die Seite steht, bekommen Sie vorher schriftlich.",
       },
       {
         frage: "Was muss ich vorbereiten?",
         antwort:
-          "Ein paar Sätze über Ihren Betrieb, die Öffnungszeiten und Fotos, falls Sie welche haben. Was fehlt, besprechen wir im Erstgespräch.",
+          "Wenig: ein paar Sätze über Ihren Betrieb, die Öffnungszeiten und Fotos, falls Sie welche haben. Fehlt etwas, klären wir das im Erstgespräch.",
       },
       {
         frage: "Kann ich Texte selbst ändern?",
-        antwort: "Auf Wunsch ja, mit einem Redaktionssystem wie bei takabul.ch. Sonst ändere ich sie für Sie.",
+        antwort: "Ja, wenn Sie das möchten, so wie der Kunde bei takabul.ch. Sonst schicken Sie mir den neuen Text, und ich ändere ihn.",
       },
       {
         frage: "Was, wenn ich nachher noch etwas ändern will?",
         antwort:
-          "Bei der Abnahme korrigiere ich, was nicht stimmt. Spätere Wünsche schicken Sie mir per E-Mail oder WhatsApp, und wir besprechen sie.",
+          "Dann schreiben Sie mir per E-Mail oder WhatsApp. Grösseres besprechen wir kurz, kleine Änderungen erledige ich.",
       },
       {
-        frage: "Wem gehört die Adresse meiner Seite?",
+        frage: "Ich verstehe nichts von Technik. Geht das trotzdem?",
         antwort:
-          "Entweder läuft die Domain auf Ihren Namen, oder ich verwalte sie für Sie und schreibe sie auf Wunsch auf Sie um.",
+          "Ja. Von Ihnen brauche ich nur Texte, Bilder und ein paar Antworten. Alles Technische übernehme ich, vor dem Start und danach.",
       },
       {
         frage: "Ich habe eine Praxis. Was gilt für Patientendaten?",
         antwort:
-          "Im Erstgespräch klären wir, welche Angaben ein Formular überhaupt abfragen darf und wo sie landen. Gesundheitsdaten gehören nicht in ein gewöhnliches Kontaktformular.",
+          "Gesundheitsdaten gehören nicht in ein gewöhnliches Kontaktformular. Darum klären wir im Erstgespräch, was Ihr Formular abfragen darf und wo die Angaben landen.",
       },
     ],
   },
 
   kontakt: {
-    titel: "Sagen Sie mir, was Sie brauchen",
-    titelMitName: "Sagen Sie mir, was {name} braucht",
-    text: "Das Erstgespräch ist kostenlos. Ich antworte innerhalb eines Werktags. Wenn es schnell gehen soll, schreiben Sie auf WhatsApp oder rufen Sie an.",
+    titel: "Reden wir über Ihren Betrieb",
+    titelMitName: "Reden wir über {name}",
+    text: "Das Erstgespräch ist kostenlos, und Sie reden direkt mit dem, der Ihre Seite baut. Stichworte reichen. Ich antworte innerhalb eines Werktags. Wenn es eilt: WhatsApp oder Telefon.",
     whatsapp: "WhatsApp",
     whatsappText: "Grüezi, ich interessiere mich für eine Website für {betrieb}. Hätten Sie Zeit für ein kurzes Erstgespräch?",
     whatsappOhne: "meinen Betrieb",
@@ -189,18 +190,18 @@ export const de = {
     anliegen: [
       { wert: "neu", text: "Neue Website" },
       { wert: "ueberarbeiten", text: "Bestehende Seite überarbeiten" },
-      { wert: "anwendung", text: "App oder Tool" },
+      { wert: "anwendung", text: "Hilfsmittel für Abläufe" },
       { wert: "offen", text: "Weiss ich noch nicht" },
     ],
     betriebLabel: "Ihr Betrieb",
-    zeitLabel: "Wann soll es stehen?",
+    zeitLabel: "Wie eilig ist es?",
     zeit: [
       { wert: "bald", text: "So bald wie möglich" },
       { wert: "monate", text: "In den nächsten Monaten" },
       { wert: "umschauen", text: "Ich schaue mich erst um" },
     ],
-    textLabel: "Was soll die Seite können?",
-    textPlatzhalter: "Zwei, drei Sätze reichen",
+    textLabel: "Was sollte ich schon wissen?",
+    textPlatzhalter: "Zum Beispiel: Coiffeursalon, Termine online, zwei Sprachen",
     textHinweis: "Bitte keine Gesundheits- oder Patientendaten.",
     nameLabel: "Ihr Name",
     mailLabel: "E-Mail",
@@ -208,7 +209,7 @@ export const de = {
     erreichbarHinweis: "E-Mail oder Telefon, eines reicht.",
     freiwillig: "Freiwillig",
 
-    senden: "Anfrage schicken",
+    senden: "Erstgespräch anfragen",
     sendet: "Wird geschickt",
 
     erfolgTitel: "Angekommen",
@@ -225,7 +226,7 @@ export const de = {
     pflichtErreichbar: "Geben Sie eine E-Mail-Adresse oder eine Telefonnummer an.",
     falscheMail: "Diese E-Mail-Adresse stimmt so nicht.",
     falschesTel: "Diese Telefonnummer stimmt so nicht.",
-    fehlerAnzahl: "{n} Angaben fehlen noch.",
+    fehlerAnzahl: "Fehlende Angaben: {n}",
 
     datenschutzHinweis: "Ihre Angaben nutze ich nur, um Ihnen zu antworten.",
   },

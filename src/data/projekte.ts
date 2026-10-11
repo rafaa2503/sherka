@@ -32,19 +32,19 @@ export const projekte: Projekt[] = [
       de: {
         was: "Restaurant in Biel/Bienne",
         pruefpunkte: [
-          "Speisekarte direkt lesbar statt als PDF",
-          "Wochenend-Brunch als eigener Bereich",
-          "Bestellung angebunden",
+          "Gäste lesen die Speisekarte direkt, ohne PDF",
+          "Der Wochenend-Brunch hat seinen eigenen Bereich",
+          "Gäste können online bestellen",
           "Zuerst fürs Handy gebaut",
         ],
       },
       fr: {
         was: "Restaurant à Bienne",
         pruefpunkte: [
-          "Carte lisible directement, sans PDF",
-          "Brunch du week-end dans sa propre section",
-          "Commande reliée",
-          "Conçu d'abord pour le téléphone",
+          "Les clients lisent la carte directement, sans PDF",
+          "Le brunch du week-end a sa propre rubrique",
+          "Les clients commandent en ligne",
+          "Conçu d'abord pour mobile",
         ],
       },
     },
@@ -61,19 +61,19 @@ export const projekte: Projekt[] = [
       de: {
         was: "Zahnarztpraxis",
         pruefpunkte: [
-          "Terminanfrage direkt auf der Seite",
-          "Notfallnummer sofort sichtbar",
-          "Das Team wird vorgestellt",
-          "Öffnungszeiten für Google ausgezeichnet",
+          "Patienten fragen Termine auf der Seite an",
+          "Notfallnummer auf den ersten Blick",
+          "Patienten sehen vorher, wer sie behandelt",
+          "Öffnungszeiten für Google lesbar hinterlegt",
         ],
       },
       fr: {
         was: "Cabinet dentaire",
         pruefpunkte: [
-          "Demande de rendez-vous directement sur le site",
+          "Les patients demandent un rendez-vous en ligne",
           "Numéro d'urgence visible d'emblée",
-          "L'équipe est présentée",
-          "Horaires balisés pour Google",
+          "Les patients voient d'avance qui les soigne",
+          "Horaires enregistrés pour que Google les lise",
         ],
       },
     },
@@ -90,15 +90,15 @@ export const projekte: Projekt[] = [
       de: {
         was: "Event-Plattform",
         pruefpunkte: [
-          "Der Kunde pflegt Termine und Inhalte selbst",
-          "Redaktionssystem, ohne auf mich zu warten",
+          "Der Kunde trägt Termine und Inhalte selbst ein",
+          "Texte selber ändern, ohne auf mich zu warten",
         ],
       },
       fr: {
         was: "Plateforme d'événements",
         pruefpunkte: [
-          "Le client gère lui-même dates et contenus",
-          "Système de gestion de contenu, sans passer par moi",
+          "Le client saisit lui-même dates et contenus",
+          "Il change ses textes lui-même, sans m'attendre",
         ],
       },
     },

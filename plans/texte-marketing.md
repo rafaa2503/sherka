@@ -11,7 +11,7 @@ Heute sagt die Seite: "Ich baue Websites und erkläre Ihnen freundlich, wie das 
 ### Positionierung
 
 1. **Alternativen:** Ohne Sherka baut der Inhaber abends selbst am Baukasten, zahlt eine Agentur mit wechselnden Ansprechpersonen, fragt den Neffen, der danach nicht mehr antwortet, oder lässt die alte Seite stehen.
-2. **Was nur Sherka hat:** Ein gelernter Informatiker baut von Hand und bleibt danach selbst zuständig und erreichbar, belegt mit Kundenseiten, die jeder öffnen kann, und einer Ladezeit, die der Besucher selbst misst.
+2. **Was nur Sherka hat:** Ein gelernter Informatiker baut jede Seite eigens für den Betrieb, ohne Baukasten, und bleibt danach selbst zuständig und erreichbar, belegt mit Kundenseiten, die jeder öffnen kann, und einer Ladezeit, die der Besucher selbst misst.
 3. **Was der Kunde davon hat:** Er erklärt seinen Betrieb einmal, sitzt keinen Abend an der Technik, und die Seite nimmt Anfragen an, während er bedient.
 4. **Für wen:** Die Coiffeuse oder der Wirt, den ganzen Tag am Kunden, mit einer veralteten Seite und ohne Lust auf Technik.
 5. **Schublade:** "Mein Mann für die Website", so wie man einen Treuhänder oder einen Garagisten hat: eine Person, die baut, zuständig bleibt und abnimmt.
@@ -81,7 +81,7 @@ Neue Reihenfolge:
 1. **Hero:** gekürzt. Untertitel nennt jetzt Angebot und Unterschied, neu eine Zeile unter dem Knopf.
 2. **Arbeiten:** gekürzt. Vom vierten auf den zweiten Platz, weil der Beweis vor dem Zweifel kommen muss. Pro Seite eine Zeile statt bis zu vier, Hinweis zur Internetadresse gestrichen.
 3. **Intro:** gekürzt und verschoben. Steht neu nach den Arbeiten und trägt das Problem.
-4. **Entstehung:** gekürzt. Bleibt, weil man hier sieht, dass Raffa programmieren kann. Vier Schritte, je wenige Wörter.
+4. **Entstehung:** gekürzt. Bleibt, weil man hier sieht, dass jemand vom Fach baut und der Kunde nichts zusammenklicken muss. Vier Schritte, je wenige Wörter.
 5. **Vorteile:** gekürzt und mit "Über mich" zusammengelegt. Drei Kacheln statt sechs.
 6. **Leistungen:** gestrichen. Was gebaut wird, zeigen die Kundenseiten und die Auswahl im Formular.
 7. **Ablauf:** gekürzt. Drei Schritte statt fünf, Kontrolle und Betreuung stecken in Schritt 3 und in den Kacheln.
@@ -98,7 +98,7 @@ Neue Reihenfolge:
 Methode: keine. Menüpunkte sind Beschriftungen, damit man sich zurechtfindet.
 
 - `kopf.links.arbeiten`: Beispiele
-- `kopf.links.entstehung`: Handarbeit
+- `kopf.links.entstehung`: Vorführung
 - `kopf.links.vorteile`: Über mich
 - `kopf.links.ablauf`: Ablauf
 - `kopf.links.faq`: Fragen
@@ -124,7 +124,7 @@ Methode: Ergebnis in Kundenworten, darunter das Angebot so, wie Raffa es am Tres
 Der empfohlene Untertitel hat 15 Wörter, die Alternative 13. Der Ort steht in keinem Verkaufssatz mehr. Die empfohlene Fassung nimmt beide Wörter des Titels auf: Den Aufwand trage ich, die Kunden gehören Ihnen. "20 Minuten" steht nirgends mehr.
 
 - `meta.titel`: Webdesign für kleine Betriebe: gebaut und betreut | Sherka (58 Zeichen)
-- `meta.beschreibung`: Websites für Salons, Praxen, Restaurants und Handwerker. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos. (137 Zeichen)
+- `meta.beschreibung`: Websites für Salons, Praxen, Restaurants und Handwerker. Eigens für Ihren Betrieb gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos. (153 Zeichen)
 
 ### Arbeiten
 
@@ -155,7 +155,7 @@ Methode: Problem, Verstärkung, Lösung. Der Verlust wird benannt, nicht ausgema
 Methode: Unterschied gegen den Baukasten als Gegensatz. Die Vorführung ist der Beleg.
 
 - `entstehung.titel`: Beim Baukasten bauen Sie. Hier baue ich.
-- `entstehung.text`: Der Salon ist erfunden. Gebaut wird genau so.
+- `entstehung.text`: Der Salon ist erfunden. Die Schritte sind echt. (die alte Fassung "Gebaut wird genau so." klang nach Handarbeit)
 - `entstehung.schritte[0]`: name "Aufbau." text "Was Ihre Kunden suchen, steht oben."
 - `entstehung.schritte[1]`: name "Gestaltung." text "Ihre Farben, Ihre Schrift."
 - `entstehung.schritte[2]`: name "Funktion." text "Ein Klick, und die Anfrage ist bei Ihnen."
@@ -186,7 +186,7 @@ Methode: kurzer Weg in drei Schritten. Der Titel sagt, wie wenig der Kunde tun m
   - Alternative, stellt die Sicherheit vor den Aufwand: Erst sehen Sie Ihre Seite. Dann baue ich sie.
 - `ablauf.schritte[0]`: zeit "kostenlos", was "Wir reden", text "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue."
 - `ablauf.schritte[1]`: zeit "schriftlich", was "Sie sehen den Entwurf", text "Wie Ihre Seite aussieht und was ich baue."
-- `ablauf.schritte[2]`: zeit "von Hand", was "Ich baue", text "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen."
+- `ablauf.schritte[2]`: zeit "eigens für Sie", was "Ich baue", text "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen."
 - Die Schritte "Letzte Kontrolle" und "Betreuung": gestrichen.
 
 ### FAQ
@@ -245,6 +245,7 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 - Zweisprachigkeit kommt nicht mehr vor: raus aus Untertitel, Kacheln, Beschreibung, Vorführung, Formular und der Zeile zu kamil-energy.ch.
 - "20 Minuten" ist überall gestrichen. "Kostenlos" steht am Knopf, im ersten Schritt und im Kontakt.
 - Der Ort ist kein Argument: raus aus Untertitel, Über-mich-Satz, Seitentitel und Beschreibung. Biel/Bienne bleibt nur im Fuss und bei bledi-bienne.ch.
+- "Von Hand" und "Handarbeit" stehen nirgends mehr, weil Raffa mit KI baut. Wahr und im Text bleibt: kein Baukasten, jede Seite eigens für den Betrieb, gelernter Informatiker, bleibt zuständig. Die KI wird auf der Seite nicht erwähnt und ist kein Verkaufsargument für diese Leser.
 - Die Bauzeit wird nirgends versprochen: "zwei bis vier Wochen" und "bis wann" sind gestrichen. Die Antwort innert eines Werktags bleibt.
 - Am Knopf und im Kontakt steht "kostenlos und unverbindlich".
 - Offen: Raffa wählt den Ablauf-Titel aus der empfohlenen Fassung und einer Alternative.
@@ -258,13 +259,13 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 - **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), von wem (einer baut und hält sie am Laufen), was der Kunde davon hat (er kümmert sich um seine Kunden) und was zu tun ist (Erstgespräch, kostenlos). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
 - **Titel-Test:** bestanden. Die acht Titel ergeben allein das Gespräch: Versprechen, Beweis, Problem, zwei Unterschiede, Weg, Einwand, Handlung.
 - **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 besteht gegen den Baukasten, bei dem der Kunde den Rest selbst macht. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt. Die drei Kacheln bestehen: "Ich nehme ab." kann keine Agentur sagen, "Mein Problem." kein Baukasten, "Keiner wartet." keiner, der es nicht messen lässt.
-- **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Von Hand: Sie bauen nicht selbst. Eine Person: Sie reden mit dem, der gebaut hat. Betreuung: nicht Ihr Problem. Schnell: Ihre Besucher warten nicht, und den Wert hat der Leser gerade selbst gemessen.
+- **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Kein Baukasten: Sie bauen nicht selbst. Eine Person: Sie reden mit dem, der gebaut hat. Betreuung: nicht Ihr Problem. Schnell: Ihre Besucher warten nicht, und den Wert hat der Leser gerade selbst gemessen.
 - **Tresen-Test:** bestanden für alle Titel und Kacheln. Die Kacheln sind jetzt drei Sätze, die Raffa wörtlich so sagen kann.
 - **Streich-Test:** gestrichen sind Leistungen, Über mich als Kapitel, drei Kacheln, zwei Ablaufschritte, drei Fragen und der Hinweis zur Internetadresse in den Kacheln. Das Intro bleibt, weil sonst nirgends steht, was der Betrieb heute verliert.
-- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 15 Wörter, kein Ort in Verkaufssätzen, kein Wort zu Sprachen, keine "20 Minuten", Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Seitentitel 58 und Beschreibung 137 Zeichen.
+- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 15 Wörter, kein Ort in Verkaufssätzen, kein Wort zu Sprachen, keine "20 Minuten", Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Seitentitel 58 und Beschreibung 153 Zeichen.
 - **Wortzahl** (Hero bis Kontakt, ohne Formular, Fehlermeldungen, Menü, Fuss und die Vorschau des erfundenen Salons):
-  - vorher 788, nachher 361, das sind 46 Prozent.
-  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 320, das sind 48 Prozent.
+  - vorher 788, nachher 362, das sind 46 Prozent.
+  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 321, das sind 48 Prozent.
 
 | Abschnitt | vorher | nachher |
 |---|---|---|
@@ -274,6 +275,6 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 | Entstehung | 76 | 43 |
 | Vorteile und Leistungen | 137 | 58 |
 | Über mich | 48 | 0 (in Vorteile) |
-| Ablauf | 105 | 54 |
+| Ablauf | 105 | 55 |
 | FAQ | 166 | 62 |
 | Kontakt | 35 | 18 |

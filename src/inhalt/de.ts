@@ -8,7 +8,7 @@ export const de = {
   meta: {
     titel: "Webdesign für kleine Betriebe: gebaut und betreut | Sherka",
     beschreibung:
-      "Websites für Salons, Praxen, Restaurants und Handwerker. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos.",
+      "Websites für Salons, Praxen, Restaurants und Handwerker. Eigens für Ihren Betrieb gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos.",
     ogTitel: "Websites, die arbeiten.",
   },
 
@@ -17,7 +17,7 @@ export const de = {
     navLabel: "Hauptnavigation",
     links: {
       arbeiten: "Beispiele",
-      entstehung: "Handarbeit",
+      entstehung: "Vorführung",
       vorteile: "Über mich",
       ablauf: "Ablauf",
       faq: "Fragen",
@@ -63,7 +63,7 @@ export const de = {
 
   entstehung: {
     titel: "Beim Baukasten bauen Sie. Hier baue ich.",
-    text: "Der Salon ist erfunden. Gebaut wird genau so.",
+    text: "Der Salon ist erfunden. Die Schritte sind echt.",
     beispiel: "Beispiel",
     codeLabel: "Code zu diesem Schritt",
     schritte: [
@@ -106,7 +106,7 @@ export const de = {
         text: "Wie Ihre Seite aussieht und was ich baue.",
       },
       {
-        zeit: "von Hand",
+        zeit: "eigens für Sie",
         was: "Ich baue",
         text: "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen.",
       },

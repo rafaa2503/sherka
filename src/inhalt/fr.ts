@@ -11,7 +11,7 @@ export const fr: Woerter = typoFr({
   meta: {
     titel: "Site internet pour petite entreprise, créé et suivi | Sherka",
     beschreibung:
-      "Sites internet pour salons, cabinets, restaurants et artisans. Faits main, puis suivis, par une seule personne. Premier rendez-vous gratuit.",
+      "Sites internet pour salons, cabinets, restaurants et artisans. Créés pour votre entreprise et suivis par une seule personne. Premier rendez-vous gratuit.",
     ogTitel: "Des sites qui travaillent.",
   },
 
@@ -20,7 +20,7 @@ export const fr: Woerter = typoFr({
     navLabel: "Navigation principale",
     links: {
       arbeiten: "Exemples",
-      entstehung: "Fait main",
+      entstehung: "Démo",
       vorteile: "À propos",
       ablauf: "Étapes",
       faq: "Questions",
@@ -66,7 +66,7 @@ export const fr: Woerter = typoFr({
 
   entstehung: {
     titel: "Un site en kit, vous le montez. Ici, c'est moi.",
-    text: "Le salon est inventé. La méthode, non.",
+    text: "Le salon est inventé. Les étapes, non.",
     beispiel: "Exemple",
     codeLabel: "Code de cette étape",
     schritte: [
@@ -109,7 +109,7 @@ export const fr: Woerter = typoFr({
         text: "L'aspect du site et ce que je construis.",
       },
       {
-        zeit: "à la main",
+        zeit: "exprès pour vous",
         was: "Je construis",
         text: "Dès que j'ai vos textes et vos images. Rien n'est mis en ligne avant votre oui.",
       },

@@ -9,7 +9,7 @@ import { Kontakt } from "./abschnitte/Kontakt";
 import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
 
 /* Die Seite folgt einer Verkaufslinie (plans/texte-marketing.md): Versprechen
-   (Hero), Beweis (vier Seiten), Problem (Intro), Unterschied (Handarbeit auf
+   (Hero), Beweis (Kundenseiten), Problem (Intro), Unterschied (Vorführung auf
    dunkler Bühne, "Wer baut, bleibt" mit der Person), Weg (Ablauf), Einwände
    (Fragen), Handlung (Kontakt). */
 

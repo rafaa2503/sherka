@@ -34,7 +34,6 @@ export const projekte: Projekt[] = [
         pruefpunkte: [
           "Gäste lesen die Speisekarte direkt, ohne PDF",
           "Der Wochenend-Brunch hat seinen eigenen Bereich",
-          "Gäste können online bestellen",
           "Zuerst fürs Handy gebaut",
         ],
       },
@@ -43,7 +42,6 @@ export const projekte: Projekt[] = [
         pruefpunkte: [
           "Les clients lisent la carte directement, sans PDF",
           "Le brunch du week-end a sa propre rubrique",
-          "Les clients commandent en ligne",
           "Conçu d'abord pour mobile",
         ],
       },
@@ -126,7 +124,6 @@ export const projekte: Projekt[] = [
 
 /** Aussagen, die Raffa vor dem Livegang bestätigen muss. */
 export const BESTAETIGEN = [
-  "bledi-bienne.ch: Ist die Bestellung wirklich angebunden (eigene Lösung oder externer Dienst)?",
   "bern-zahnarzt-team.ch: Sind die Öffnungszeiten im Code für Google ausgezeichnet (Rich-Results-Test)?",
   "Alle vier Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
 ];

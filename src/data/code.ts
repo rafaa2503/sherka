@@ -60,8 +60,6 @@ export const code: CodeBlock[] = [
     datei: "head.html",
     zeilen: [
       '<html lang="de-CH">',
-      '<link rel="alternate" hreflang="fr-CH"',
-      '      href="/fr/">',
       '<script type="application/ld+json">',
       "{",
       '  "@type": "HairSalon",',

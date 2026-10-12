@@ -36,9 +36,9 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins d'efforts.",
-    unter: "Votre site prend les demandes jour et nuit. Je le construis à Bienne et j'en reste responsable.",
+    unter: "Je construis votre site à Bienne et je le fais tourner. Vous vous occupez de vos clients.",
     cta: "Demander un rendez-vous",
-    ctaHinweis: "Gratuit, 20 minutes.",
+    ctaHinweis: "Gratuit. Ça n'engage à rien.",
     wahlTitel: "Quatre de mes sites",
     zeigen: "Afficher {domain} dans l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
@@ -73,15 +73,13 @@ export const fr: Woerter = typoFr({
       { name: "Structure.", text: "Ce que vos clients cherchent est en haut." },
       { name: "Design.", text: "Vos couleurs, votre police." },
       { name: "Fonction.", text: "Un clic, et la demande vous arrive." },
-      { name: "Lisible par Google.", text: "Des horaires que Google sait lire. Bilingue sur demande." },
+      { name: "Google.", text: "Des horaires que Google sait lire." },
     ],
     vorschau: {
       name: "Salon Lumen",
       links: ["Prestations", "Équipe", "Contact"],
       titel: "Réserver, sans téléphoner.",
       text: "Choisissez un horaire. Nous confirmons par e-mail.",
-      titelFr: "Termin buchen, ohne anzurufen.",
-      textFr: "Wählen Sie eine Zeit. Wir bestätigen per E-Mail.",
       zeiten: ["mar. 10 h 00", "mar. 14 h 30", "mer. 9 h 00"],
       knopf: "Prendre rendez-vous",
       erfolg: "Demande envoyée",
@@ -101,7 +99,7 @@ export const fr: Woerter = typoFr({
     titel: "Deux à quatre semaines, et votre site est là.",
     schritte: [
       {
-        zeit: "20 minutes",
+        zeit: "gratuit",
         was: "On se parle",
         text: "Vous dites ce qu'il vous faut. Je dis ce que je construis.",
       },
@@ -145,7 +143,7 @@ export const fr: Woerter = typoFr({
   kontakt: {
     titel: "Parlons de votre entreprise.",
     titelMitName: "{name} : parlons-en.",
-    text: "20 minutes, gratuit. Ensuite, vous décidez. Réponse sous un jour ouvrable.",
+    text: "Le rendez-vous est gratuit. Ensuite, vous décidez. Réponse sous un jour ouvrable.",
     whatsapp: "WhatsApp",
     whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un premier rendez-vous ?",
     whatsappOhne: "mon entreprise",
@@ -167,7 +165,7 @@ export const fr: Woerter = typoFr({
       { wert: "umschauen", text: "Je me renseigne d'abord" },
     ],
     textLabel: "Quelques mots à ce sujet",
-    textPlatzhalter: "Par exemple : salon de coiffure, rendez-vous en ligne, bilingue",
+    textPlatzhalter: "Ex. : salon de coiffure, rendez-vous en ligne, remplacer l'ancien site",
     textHinweis: "Pas de données de santé ni de patients, merci.",
     nameLabel: "Votre nom",
     mailLabel: "E-mail",

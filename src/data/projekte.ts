@@ -88,11 +88,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Handel mit Agrar-Rohstoffen",
-        pruefpunkte: ["Ganz auf Englisch, bewusst nüchtern"],
+        pruefpunkte: ["Für Geschäftspartner im Ausland, bewusst nüchtern"],
       },
       fr: {
         was: "Négoce de matières premières agricoles",
-        pruefpunkte: ["Tout en anglais, volontairement sobre"],
+        pruefpunkte: ["Pour des partenaires à l'étranger, volontairement sobre"],
       },
     },
   },

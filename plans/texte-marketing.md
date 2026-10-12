@@ -19,7 +19,7 @@ Heute sagt die Seite: "Ich baue Websites und erkläre Ihnen freundlich, wie das 
 **Das eine Versprechen:** Sie bekommen eine Website, die Anfragen annimmt, und einen Mann in Biel/Bienne, der dafür zuständig bleibt.
 "Nur wir"-Test: Der Baukasten kann "das ist mein Problem" nicht sagen, die Agentur nicht "ich nehme ab", der Neffe nicht "ich bleibe". Besteht.
 
-Zweisprachigkeit ist kein Teil des Unterschieds. Sie kommt nur noch einmal beiläufig vor, im vierten Schritt der Vorführung, weil man sie dort sieht.
+Zweisprachigkeit ist kein Teil des Unterschieds und kommt in den Texten gar nicht mehr vor. Es bleibt nur der Sprachschalter der Seite selbst.
 
 ### Bewusstseinsstufe
 
@@ -68,7 +68,7 @@ Reihenfolge der Überzeugung:
 2. Beweis: vier Seiten, die Sie selbst öffnen können.
 3. Problem: Sie können nicht bedienen und gleichzeitig abnehmen.
 4. Unterschied: kein Baukasten, und wer baut, bleibt.
-5. Weg und Handlung: drei Schritte, 20 Minuten, kostenlos.
+5. Weg und Handlung: drei Schritte, das erste Gespräch kostenlos.
 
 ---
 
@@ -104,12 +104,14 @@ Methode: keine. Menüpunkte sind Beschriftungen, damit man sich zurechtfindet.
 
 ### Hero
 
-Methode: Ergebnis in Kundenworten, darunter das Angebot in einem Satz (was, wo, was anders ist). Reibung am Knopf gesenkt. Messung als Beleg zum Ausprobieren.
+Methode: Ergebnis in Kundenworten, darunter das Angebot so, wie Raffa es am Tresen sagt (was, von wem, wo, und dass der Kunde danach Ruhe hat). Reibung am Knopf gesenkt. Messung als Beleg zum Ausprobieren.
 
 - `hero.titel`: Mehr Kunden. Weniger Aufwand.
-- `hero.unter`: Ihre Website nimmt Tag und Nacht Anfragen an. Ich baue sie in Biel/Bienne und bleibe danach zuständig.
+- `hero.unter` (empfohlen): Ich baue Ihre Website in Biel/Bienne und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.
+  - Alternative 1, nimmt zuerst die Angst vor der Technik: Ihre Website baue ich, hier in Biel/Bienne. Sie müssen dafür nichts können und danach nichts tun.
+  - Alternative 2, sagt, was die Seite leistet: Ich baue Ihnen in Biel/Bienne eine Website, auf der Kunden direkt anfragen. Danach kümmere ich mich darum, nicht Sie.
 - `hero.cta`: Erstgespräch anfragen
-- `hero.ctaHinweis` (neuer Schlüssel, kleine Zeile direkt unter dem Knopf, kein zweiter Knopf): Kostenlos, 20 Minuten.
+- `hero.ctaHinweis` (neuer Schlüssel, kleine Zeile direkt unter dem Knopf, kein zweiter Knopf): Kostenlos. Verpflichtet zu nichts.
 - `hero.wahlTitel`: Vier Seiten von mir
 - `hero.messTitel`: Soeben bei Ihnen gemessen
 - `hero.messLcp`: Diese Seite sichtbar nach
@@ -118,7 +120,7 @@ Methode: Ergebnis in Kundenworten, darunter das Angebot in einem Satz (was, wo, 
 - `was` der vier Seiten in `projekte.ts`: unverändert.
 - Rest unverändert.
 
-Der Untertitel hat 17 Wörter. Satz eins belegt "Mehr Kunden" (die Seite nimmt auch an, wenn Sie zu haben), Satz zwei "Weniger Aufwand".
+Der empfohlene Untertitel hat 17 Wörter, die Alternativen 16 und 19. Die empfohlene Fassung nimmt beide Wörter des Titels auf: Den Aufwand trage ich, die Kunden gehören Ihnen. "20 Minuten" steht nirgends mehr.
 
 - `meta.beschreibung`: Websites für Salons, Praxen, Restaurants und Handwerker in Biel/Bienne. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos. (152 Zeichen)
 
@@ -137,7 +139,7 @@ Prüfpunkte in `src/data/projekte.ts`, Feld `text.de.pruefpunkte`, je genau ein 
 - bledi-bienne.ch: Speisekarte ohne PDF, Brunch mit eigenem Bereich
 - bern-zahnarzt-team.ch: Termin online anfragen, Notfallnummer sofort sichtbar
 - takabul.ch: Der Kunde ändert Texte selbst
-- kamil-energy.ch: Ganz auf Englisch, bewusst nüchtern
+- kamil-energy.ch: Für Geschäftspartner im Ausland, bewusst nüchtern (sagt, für wen die Seite gebaut ist, ohne die Sprache zu nennen)
 
 ### Intro
 
@@ -155,8 +157,8 @@ Methode: Unterschied gegen den Baukasten als Gegensatz. Die Vorführung ist der 
 - `entstehung.schritte[0]`: name "Aufbau." text "Was Ihre Kunden suchen, steht oben."
 - `entstehung.schritte[1]`: name "Gestaltung." text "Ihre Farben, Ihre Schrift."
 - `entstehung.schritte[2]`: name "Funktion." text "Ein Klick, und die Anfrage ist bei Ihnen."
-- `entstehung.schritte[3]`: name "Für Google lesbar." text "Öffnungszeiten, die Google lesen kann. Auf Wunsch zweisprachig."
-- `entstehung.beispiel`, `entstehung.codeLabel`, `entstehung.vorschau`: unverändert.
+- `entstehung.schritte[3]`: name "Google." text "Öffnungszeiten, die Google lesen kann."
+- `entstehung.beispiel`, `entstehung.codeLabel`: unverändert. `entstehung.vorschau`: unverändert bis auf `titelFr` und `textFr`, die mit dem Sprachwechsel entfallen.
 
 ### Vorteile mit Person
 
@@ -171,7 +173,7 @@ Aufbau: Titel, darunter Foto und `person.text`, darunter drei Kacheln.
 - `vorteile.kacheln[0]`: gross "Ich nehme ab." (13 Zeichen), text "Kein Sekretariat. Sie reden mit dem, der gebaut hat."
 - `vorteile.kacheln[1]`: gross "Mein Problem." (13 Zeichen), text "Dass die Seite läuft, ist meine Sache. Beim Baukasten Ihre."
 - `vorteile.kacheln[2]`: gross "Keiner wartet." (14 Zeichen), text "Die Ladezeit oben haben Sie selbst gemessen. So baue ich."
-- Alle sechs alten Kacheln sind ersetzt. "20 Minuten", "1 Werktag" und "Ihre Adresse" stehen jetzt am Knopf, im Kontakt und in der dritten Frage. Die Sprachen sind kein Argument mehr.
+- Alle sechs alten Kacheln sind ersetzt. "1 Werktag" und "Ihre Adresse" stehen jetzt im Kontakt und in der dritten Frage, "20 Minuten" ist ganz gestrichen. Die Sprachen sind kein Argument mehr.
 - `vorteile.leistungenTitel`, `vorteile.leistungen`: gestrichen.
 
 ### Ablauf
@@ -179,7 +181,7 @@ Aufbau: Titel, darunter Foto und `person.text`, darunter drei Kacheln.
 Methode: kurzer Weg in drei Schritten mit genauen Fristen. Schritt 3 endet mit Risikoumkehr.
 
 - `ablauf.titel`: In zwei bis vier Wochen steht Ihre Seite.
-- `ablauf.schritte[0]`: zeit "20 Minuten", was "Wir reden", text "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue."
+- `ablauf.schritte[0]`: zeit "kostenlos", was "Wir reden", text "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue."
 - `ablauf.schritte[1]`: zeit "schriftlich", was "Sie sehen den Entwurf", text "Wie Ihre Seite aussieht, was ich baue, bis wann."
 - `ablauf.schritte[2]`: zeit "2 bis 4 Wochen", was "Ich baue", text "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen."
 - Die Schritte "Letzte Kontrolle" und "Betreuung": gestrichen.
@@ -200,9 +202,10 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 
 - `kontakt.titel`: Reden wir über Ihren Betrieb.
 - `kontakt.titelMitName`: Reden wir über {name}.
-- `kontakt.text`: 20 Minuten, kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.
+- `kontakt.text`: Das Gespräch ist kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.
 - `kontakt.betriebLabel`: Wie heisst Ihr Betrieb?
 - `kontakt.textLabel`: Ein paar Stichworte dazu
+- `kontakt.textPlatzhalter`: Zum Beispiel: Coiffeursalon, Termine online, alte Seite ersetzen
 - `kontakt.anliegen[2].text`: Werkzeug statt Excel-Listen (der Wert "anwendung" bleibt)
 - `kontakt.senden`: Erstgespräch anfragen
 - Rest unverändert (Auswahl, Hinweise, Erfolg, Fehler, WhatsApp-Text mit {betrieb}, {name}, {n}).
@@ -219,7 +222,8 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 
 1. **bledi-bienne.ch, "Bestellung online":** Geklärt am 12.10.2026. Raffa: Das gibt es nicht. Die Zeile lautet "Speisekarte ohne PDF, Brunch mit eigenem Bereich". Online-Bestellung darf nirgends behauptet werden.
 2. **"Ich nehme ab. Sie reden mit dem, der gebaut hat.":** Du nimmst auch nach dem Start selbst ab oder rufst am selben Tag zurück.
-3. **"Mein Problem. Dass die Seite läuft, ist meine Sache.":** Die Betreuung gehört bei jedem neuen Kunden dazu.4. **"Online geht nichts, bevor Sie Ja sagen.":** Es gibt vor jedem Start eine Abnahme durch den Kunden.
+3. **"Mein Problem. Dass die Seite läuft, ist meine Sache.":** Die Betreuung gehört bei jedem neuen Kunden dazu.
+4. **"Online geht nichts, bevor Sie Ja sagen.":** Es gibt vor jedem Start eine Abnahme durch den Kunden.
 5. **"Die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um.":** Gilt für jeden Kunden.
 6. **"Informatiker EFZ" und "Im Beruf habe ich Systeme am Laufen gehalten.":** Kurzform und Vergangenheit passen so.
 7. **"Was gut ist, bleibt.":** Du übernimmst bei einer Überarbeitung wirklich Teile der alten Seite.
@@ -235,32 +239,34 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 
 - Hero-Titel bleibt: "Mehr Kunden. Weniger Aufwand."
 - Titel der Arbeiten bleibt: "Glauben Sie mir nichts. Öffnen Sie die vier Seiten."
-- Zweisprachigkeit ist kein Hauptargument. Sie ist aus Untertitel, Kacheln und Beschreibung entfernt.
+- Zweisprachigkeit kommt nicht mehr vor: raus aus Untertitel, Kacheln, Beschreibung, Vorführung, Formular und der Zeile zu kamil-energy.ch.
+- "20 Minuten" ist überall gestrichen. "Kostenlos" steht am Knopf, im ersten Schritt und im Kontakt.
+- Offen: Raffa wählt den Untertitel aus der empfohlenen Fassung und zwei Alternativen (siehe Hero).
 - bledi-bienne.ch hat keine Online-Bestellung. Steht nirgends mehr.
 
 ---
 
 ## 6. Prüfung
 
-- **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), wo (Biel/Bienne), was anders ist (einer baut und bleibt zuständig) und was zu tun ist (Erstgespräch, kostenlos, 20 Minuten). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
+- **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), wo (Biel/Bienne), was anders ist (einer baut und bleibt zuständig) und was zu tun ist (Erstgespräch, kostenlos). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
 - **Titel-Test:** bestanden. Die acht Titel ergeben allein das Gespräch: Versprechen, Beweis, Problem, zwei Unterschiede, Weg, Einwand, Handlung.
 - **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 kann jeder schreiben, er trägt aber eine Zahl, die stimmt. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt. Die drei Kacheln bestehen: "Ich nehme ab." kann keine Agentur sagen, "Mein Problem." kein Baukasten, "Keiner wartet." keiner, der es nicht messen lässt.
 - **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Von Hand: Sie bauen nicht selbst. Eine Person: Sie reden mit dem, der gebaut hat. Betreuung: nicht Ihr Problem. Schnell: Ihre Besucher warten nicht, und den Wert hat der Leser gerade selbst gemessen.
 - **Tresen-Test:** bestanden für alle Titel und Kacheln. Die Kacheln sind jetzt drei Sätze, die Raffa wörtlich so sagen kann.
 - **Streich-Test:** gestrichen sind Leistungen, Über mich als Kapitel, drei Kacheln, zwei Ablaufschritte, drei Fragen und der Hinweis zur Internetadresse in den Kacheln. Das Intro bleibt, weil sonst nirgends steht, was der Betrieb heute verliert.
-- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 17 Wörter, Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Beschreibung 152 Zeichen.
+- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 17 Wörter, kein Wort zu Sprachen, keine "20 Minuten", Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Beschreibung 152 Zeichen.
 - **Wortzahl** (Hero bis Kontakt, ohne Formular, Fehlermeldungen, Menü, Fuss und die Vorschau des erfundenen Salons):
-  - vorher 788, nachher 373, das sind 47 Prozent.
-  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 332, das sind 50 Prozent.
+  - vorher 788, nachher 370, das sind 47 Prozent.
+  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 329, das sind 49 Prozent.
 
 | Abschnitt | vorher | nachher |
 |---|---|---|
-| Hero | 59 | 55 |
+| Hero | 59 | 56 |
 | Intro | 31 | 22 |
-| Arbeiten | 131 | 52 |
-| Entstehung | 76 | 48 |
+| Arbeiten | 131 | 53 |
+| Entstehung | 76 | 43 |
 | Vorteile und Leistungen | 137 | 59 |
 | Über mich | 48 | 0 (in Vorteile) |
-| Ablauf | 105 | 57 |
+| Ablauf | 105 | 56 |
 | FAQ | 166 | 62 |
-| Kontakt | 35 | 18 |
+| Kontakt | 35 | 19 |

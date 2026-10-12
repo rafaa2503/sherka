@@ -52,14 +52,8 @@ export function Entstehung() {
                   ))}
                 </span>
               </div>
-              <p className="ev-teil ev-titel">
-                <span className="ev-sprache-a">{v.titel}</span>
-                <span className="ev-sprache-b">{v.titelFr}</span>
-              </p>
-              <p className="ev-teil ev-text">
-                <span className="ev-sprache-a">{v.text}</span>
-                <span className="ev-sprache-b">{v.textFr}</span>
-              </p>
+              <p className="ev-teil ev-titel">{v.titel}</p>
+              <p className="ev-teil ev-text">{v.text}</p>
               <div className="ev-teil ev-zeiten">
                 {v.zeiten.map((z, i) => (
                   <span key={z} className={i === 1 ? "ev-zeit ev-gewaehlt" : "ev-zeit"}>
@@ -70,8 +64,8 @@ export function Entstehung() {
               <span className="ev-teil ev-knopf">{v.knopf}</span>
               <span className="ev-toast">{v.erfolg}</span>
               <span className="ev-marken">
-                <span>DE · FR</span>
                 <span>schema.org</span>
+                <span className="mono">Tu-Fr 09:00-18:00</span>
               </span>
             </div>
 

@@ -32,9 +32,9 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ihre Website nimmt Tag und Nacht Anfragen an. Ich baue sie in Biel/Bienne und bleibe danach zuständig.",
+    unter: "Ich baue Ihre Website in Biel/Bienne und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.",
     cta: "Erstgespräch anfragen",
-    ctaHinweis: "Kostenlos, 20 Minuten.",
+    ctaHinweis: "Kostenlos. Verpflichtet zu nichts.",
     wahlTitel: "Vier Seiten von mir",
     zeigen: "{domain} im Gerät zeigen",
     laptopAlt: "{domain} auf einem Laptop",
@@ -69,15 +69,13 @@ export const de = {
       { name: "Aufbau.", text: "Was Ihre Kunden suchen, steht oben." },
       { name: "Gestaltung.", text: "Ihre Farben, Ihre Schrift." },
       { name: "Funktion.", text: "Ein Klick, und die Anfrage ist bei Ihnen." },
-      { name: "Für Google lesbar.", text: "Öffnungszeiten, die Google lesen kann. Auf Wunsch zweisprachig." },
+      { name: "Google.", text: "Öffnungszeiten, die Google lesen kann." },
     ],
     vorschau: {
       name: "Salon Lumen",
       links: ["Leistungen", "Team", "Kontakt"],
       titel: "Termin buchen, ohne anzurufen.",
       text: "Wählen Sie eine Zeit. Wir bestätigen per E-Mail.",
-      titelFr: "Réserver, sans téléphoner.",
-      textFr: "Choisissez un horaire. Nous confirmons par e-mail.",
       zeiten: ["Di 10:00", "Di 14:30", "Mi 09:00"],
       knopf: "Termin anfragen",
       erfolg: "Anfrage gesendet",
@@ -97,7 +95,7 @@ export const de = {
     titel: "In zwei bis vier Wochen steht Ihre Seite.",
     schritte: [
       {
-        zeit: "20 Minuten",
+        zeit: "kostenlos",
         was: "Wir reden",
         text: "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue.",
       },
@@ -141,7 +139,7 @@ export const de = {
   kontakt: {
     titel: "Reden wir über Ihren Betrieb.",
     titelMitName: "Reden wir über {name}.",
-    text: "20 Minuten, kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.",
+    text: "Das Gespräch ist kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.",
     whatsapp: "WhatsApp",
     whatsappText: "Grüezi, ich interessiere mich für eine Website für {betrieb}. Hätten Sie Zeit für ein kurzes Erstgespräch?",
     whatsappOhne: "meinen Betrieb",
@@ -163,7 +161,7 @@ export const de = {
       { wert: "umschauen", text: "Ich schaue mich erst um" },
     ],
     textLabel: "Ein paar Stichworte dazu",
-    textPlatzhalter: "Zum Beispiel: Coiffeursalon, Termine online, zwei Sprachen",
+    textPlatzhalter: "Zum Beispiel: Coiffeursalon, Termine online, alte Seite ersetzen",
     textHinweis: "Bitte keine Gesundheits- oder Patientendaten.",
     nameLabel: "Ihr Name",
     mailLabel: "E-Mail",

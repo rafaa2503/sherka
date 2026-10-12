@@ -41,7 +41,7 @@ Die meisten Besucher sind "Lösung bewusst": Sie wissen, dass sie eine Seite bra
 | 3 | Intro | Problem und Verstärkung | Problem, Verstärkung, Lösung in zwei Sätzen, Verlust statt Gewinn |
 | 4 | Entstehung | Unterschied gegen den Baukasten | Gegensatz im Titel, Vorführung als Beleg |
 | 5 | Vorteile mit Person | Unterschied gegen Agentur, Baukasten und Bekannte | Drei Kacheln, jede ein ganzer Satz gegen eine Alternative: Eigenschaft, Nutzen, Beleg. Die Person ist der Beleg, kein eigenes Kapitel |
-| 6 | Ablauf | Der Weg | Drei Schritte, genaue Fristen, Risikoumkehr im letzten Schritt |
+| 6 | Ablauf | Der Weg | Drei Schritte, der Titel nennt den ganzen Aufwand des Kunden, keine Dauer, Risikoumkehr im letzten Schritt |
 | 7 | FAQ | Einwände | Nur was vom Kontakt abhält, jede Antwort endet mit Sicherheit |
 | 8 | Kontakt | Handlung | Risikoumkehr: klein, kostenlos, unverbindlich, mit Frist für die Antwort |
 
@@ -54,7 +54,7 @@ Eine Hauptaktion, überall mit demselben Wort: "Erstgespräch".
 3. Das Telefon klingelt, und Sie haben die Hände voll.
 4. Beim Baukasten bauen Sie. Hier baue ich.
 5. Wer baut, bleibt.
-6. In zwei bis vier Wochen steht Ihre Seite.
+6. Sie liefern Texte und Bilder. Den Rest mache ich.
 7. Von Technik müssen Sie nichts verstehen.
 8. Reden wir über Ihren Betrieb.
 
@@ -112,7 +112,7 @@ Methode: Ergebnis in Kundenworten, darunter das Angebot so, wie Raffa es am Tres
 - `hero.unter` (empfohlen): Ich baue Ihre Website und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.
   - Alternative, nimmt zuerst die Angst vor der Technik: Ihre Website baue ich. Sie müssen dafür nichts können und danach nichts tun.
 - `hero.cta`: Erstgespräch anfragen
-- `hero.ctaHinweis` (neuer Schlüssel, kleine Zeile direkt unter dem Knopf, kein zweiter Knopf): Kostenlos. Verpflichtet zu nichts.
+- `hero.ctaHinweis` (neuer Schlüssel, kleine Zeile direkt unter dem Knopf, kein zweiter Knopf): Kostenlos und unverbindlich. (von Raffa gesetzt)
 - `hero.wahlTitel`: Von mir gebaut
 - `hero.messTitel`: Soeben bei Ihnen gemessen
 - `hero.messLcp`: Diese Seite sichtbar nach
@@ -180,12 +180,13 @@ Aufbau: Titel, darunter Foto und `person.text`, darunter drei Kacheln.
 
 ### Ablauf
 
-Methode: kurzer Weg in drei Schritten mit genauen Fristen. Schritt 3 endet mit Risikoumkehr.
+Methode: kurzer Weg in drei Schritten. Der Titel sagt, wie wenig der Kunde tun muss. Keine Bauzeit, keine Frist. Schritt 3 endet mit Risikoumkehr.
 
-- `ablauf.titel`: In zwei bis vier Wochen steht Ihre Seite.
+- `ablauf.titel` (empfohlen): Sie liefern Texte und Bilder. Den Rest mache ich.
+  - Alternative, stellt die Sicherheit vor den Aufwand: Erst sehen Sie Ihre Seite. Dann baue ich sie.
 - `ablauf.schritte[0]`: zeit "kostenlos", was "Wir reden", text "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue."
-- `ablauf.schritte[1]`: zeit "schriftlich", was "Sie sehen den Entwurf", text "Wie Ihre Seite aussieht, was ich baue, bis wann."
-- `ablauf.schritte[2]`: zeit "2 bis 4 Wochen", was "Ich baue", text "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen."
+- `ablauf.schritte[1]`: zeit "schriftlich", was "Sie sehen den Entwurf", text "Wie Ihre Seite aussieht und was ich baue."
+- `ablauf.schritte[2]`: zeit "von Hand", was "Ich baue", text "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen."
 - Die Schritte "Letzte Kontrolle" und "Betreuung": gestrichen.
 
 ### FAQ
@@ -196,7 +197,7 @@ Methode: Einwandbehandlung. Nur drei Einwände, die vom Kontakt abhalten: zu vie
 - `faq.liste[0]`: frage "Was muss ich liefern?" antwort "Ein paar Sätze über Ihren Betrieb, die Öffnungszeiten und Fotos, falls Sie welche haben. Mehr nicht."
 - `faq.liste[1]`: frage "Ich habe schon eine Website." antwort "Dann fangen wir nicht bei null an. Was gut ist, bleibt."
 - `faq.liste[2]`: frage "Bin ich danach von Ihnen abhängig?" antwort "Nein. Die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um."
-- Die übrigen Fragen (Dauer, selbst ändern, später ändern, Patientendaten): gestrichen. Dauer steht im Ablauf, Ändern in den Kacheln, der Hinweis zu Patientendaten bleibt im Formular.
+- Die übrigen Fragen (Dauer, selbst ändern, später ändern, Patientendaten): gestrichen. Eine Dauer wird nirgends versprochen, Ändern steht in den Kacheln, der Hinweis zu Patientendaten bleibt im Formular.
 
 ### Kontakt
 
@@ -204,7 +205,7 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 
 - `kontakt.titel`: Reden wir über Ihren Betrieb.
 - `kontakt.titelMitName`: Reden wir über {name}.
-- `kontakt.text`: Das Gespräch ist kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.
+- `kontakt.text`: Das Gespräch ist kostenlos und unverbindlich. Antwort innert eines Werktags.
 - `kontakt.betriebLabel`: Wie heisst Ihr Betrieb?
 - `kontakt.textLabel`: Ein paar Stichworte dazu
 - `kontakt.textPlatzhalter`: Zum Beispiel: Coiffeursalon, Termine online, alte Seite ersetzen
@@ -244,6 +245,9 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 - Zweisprachigkeit kommt nicht mehr vor: raus aus Untertitel, Kacheln, Beschreibung, Vorführung, Formular und der Zeile zu kamil-energy.ch.
 - "20 Minuten" ist überall gestrichen. "Kostenlos" steht am Knopf, im ersten Schritt und im Kontakt.
 - Der Ort ist kein Argument: raus aus Untertitel, Über-mich-Satz, Seitentitel und Beschreibung. Biel/Bienne bleibt nur im Fuss und bei bledi-bienne.ch.
+- Die Bauzeit wird nirgends versprochen: "zwei bis vier Wochen" und "bis wann" sind gestrichen. Die Antwort innert eines Werktags bleibt.
+- Am Knopf und im Kontakt steht "kostenlos und unverbindlich".
+- Offen: Raffa wählt den Ablauf-Titel aus der empfohlenen Fassung und einer Alternative.
 - Offen: Raffa wählt den Untertitel aus der empfohlenen Fassung und einer Alternative (siehe Hero).
 - bledi-bienne.ch hat keine Online-Bestellung. Steht nirgends mehr.
 
@@ -253,23 +257,23 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 
 - **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), von wem (einer baut und hält sie am Laufen), was der Kunde davon hat (er kümmert sich um seine Kunden) und was zu tun ist (Erstgespräch, kostenlos). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
 - **Titel-Test:** bestanden. Die acht Titel ergeben allein das Gespräch: Versprechen, Beweis, Problem, zwei Unterschiede, Weg, Einwand, Handlung.
-- **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 kann jeder schreiben, er trägt aber eine Zahl, die stimmt. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt. Die drei Kacheln bestehen: "Ich nehme ab." kann keine Agentur sagen, "Mein Problem." kein Baukasten, "Keiner wartet." keiner, der es nicht messen lässt.
+- **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 besteht gegen den Baukasten, bei dem der Kunde den Rest selbst macht. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt. Die drei Kacheln bestehen: "Ich nehme ab." kann keine Agentur sagen, "Mein Problem." kein Baukasten, "Keiner wartet." keiner, der es nicht messen lässt.
 - **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Von Hand: Sie bauen nicht selbst. Eine Person: Sie reden mit dem, der gebaut hat. Betreuung: nicht Ihr Problem. Schnell: Ihre Besucher warten nicht, und den Wert hat der Leser gerade selbst gemessen.
 - **Tresen-Test:** bestanden für alle Titel und Kacheln. Die Kacheln sind jetzt drei Sätze, die Raffa wörtlich so sagen kann.
 - **Streich-Test:** gestrichen sind Leistungen, Über mich als Kapitel, drei Kacheln, zwei Ablaufschritte, drei Fragen und der Hinweis zur Internetadresse in den Kacheln. Das Intro bleibt, weil sonst nirgends steht, was der Betrieb heute verliert.
 - **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 15 Wörter, kein Ort in Verkaufssätzen, kein Wort zu Sprachen, keine "20 Minuten", Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Seitentitel 58 und Beschreibung 137 Zeichen.
 - **Wortzahl** (Hero bis Kontakt, ohne Formular, Fehlermeldungen, Menü, Fuss und die Vorschau des erfundenen Salons):
-  - vorher 788, nachher 365, das sind 46 Prozent.
-  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 324, das sind 49 Prozent.
+  - vorher 788, nachher 361, das sind 46 Prozent.
+  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 320, das sind 48 Prozent.
 
 | Abschnitt | vorher | nachher |
 |---|---|---|
-| Hero | 59 | 53 |
+| Hero | 59 | 52 |
 | Intro | 31 | 22 |
 | Arbeiten | 131 | 52 |
 | Entstehung | 76 | 43 |
 | Vorteile und Leistungen | 137 | 58 |
 | Über mich | 48 | 0 (in Vorteile) |
-| Ablauf | 105 | 56 |
+| Ablauf | 105 | 54 |
 | FAQ | 166 | 62 |
-| Kontakt | 35 | 19 |
+| Kontakt | 35 | 18 |

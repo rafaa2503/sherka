@@ -35,7 +35,7 @@ export const de = {
     titel: "Mehr Kunden. Weniger Aufwand.",
     unter: "Ich baue Ihre Website und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.",
     cta: "Erstgespräch anfragen",
-    ctaHinweis: "Kostenlos. Verpflichtet zu nichts.",
+    ctaHinweis: "Kostenlos und unverbindlich.",
     wahlTitel: "Von mir gebaut",
     zeigen: "{domain} im Gerät zeigen",
     laptopAlt: "{domain} auf einem Laptop",
@@ -93,7 +93,7 @@ export const de = {
   },
 
   ablauf: {
-    titel: "In zwei bis vier Wochen steht Ihre Seite.",
+    titel: "Sie liefern Texte und Bilder. Den Rest mache ich.",
     schritte: [
       {
         zeit: "kostenlos",
@@ -103,10 +103,10 @@ export const de = {
       {
         zeit: "schriftlich",
         was: "Sie sehen den Entwurf",
-        text: "Wie Ihre Seite aussieht, was ich baue, bis wann.",
+        text: "Wie Ihre Seite aussieht und was ich baue.",
       },
       {
-        zeit: "2 bis 4 Wochen",
+        zeit: "von Hand",
         was: "Ich baue",
         text: "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen.",
       },
@@ -140,7 +140,7 @@ export const de = {
   kontakt: {
     titel: "Reden wir über Ihren Betrieb.",
     titelMitName: "Reden wir über {name}.",
-    text: "Das Gespräch ist kostenlos. Danach entscheiden Sie. Antwort innert eines Werktags.",
+    text: "Das Gespräch ist kostenlos und unverbindlich. Antwort innert eines Werktags.",
     whatsapp: "WhatsApp",
     whatsappText: "Grüezi, ich interessiere mich für eine Website für {betrieb}. Hätten Sie Zeit für ein kurzes Erstgespräch?",
     whatsappOhne: "meinen Betrieb",

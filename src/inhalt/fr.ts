@@ -38,7 +38,7 @@ export const fr: Woerter = typoFr({
     titel: "Plus de clients. Moins d'efforts.",
     unter: "Je construis votre site et je le fais tourner. Vous vous occupez de vos clients.",
     cta: "Demander un rendez-vous",
-    ctaHinweis: "Gratuit. Ça n'engage à rien.",
+    ctaHinweis: "Gratuit et sans engagement.",
     wahlTitel: "Faits par moi",
     zeigen: "Afficher {domain} dans l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
@@ -96,7 +96,7 @@ export const fr: Woerter = typoFr({
   },
 
   ablauf: {
-    titel: "Deux à quatre semaines, et votre site est là.",
+    titel: "À vous les textes et les images. À moi le reste.",
     schritte: [
       {
         zeit: "gratuit",
@@ -106,10 +106,10 @@ export const fr: Woerter = typoFr({
       {
         zeit: "par écrit",
         was: "Vous voyez la maquette",
-        text: "L'aspect du site, ce que je construis, pour quand.",
+        text: "L'aspect du site et ce que je construis.",
       },
       {
-        zeit: "2 à 4 semaines",
+        zeit: "à la main",
         was: "Je construis",
         text: "Dès que j'ai vos textes et vos images. Rien n'est mis en ligne avant votre oui.",
       },
@@ -143,7 +143,7 @@ export const fr: Woerter = typoFr({
   kontakt: {
     titel: "Parlons de votre entreprise.",
     titelMitName: "{name} : parlons-en.",
-    text: "Le rendez-vous est gratuit. Ensuite, vous décidez. Réponse sous un jour ouvrable.",
+    text: "Le rendez-vous est gratuit et sans engagement. Réponse sous un jour ouvrable.",
     whatsapp: "WhatsApp",
     whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un premier rendez-vous ?",
     whatsappOhne: "mon entreprise",

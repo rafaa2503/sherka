@@ -2,7 +2,7 @@ import { useSprache } from "../lib/sprache";
 import { PORTRAET_1120, PORTRAET_560, PORTRAET_DA } from "../data/portraet";
 import "./Abschnitte.css";
 
-/* Vorteile als Kacheln (Bento wie auf apple.com), Ablauf, Über mich, Fragen. */
+/* "Wer baut, bleibt": die Person als Beleg und drei Kacheln. Dazu Ablauf und Fragen. */
 
 export function Vorteile() {
   const { t } = useSprache();
@@ -13,25 +13,32 @@ export function Vorteile() {
         <h2 id="vorteile-titel" className="auftritt abschnitt-titel">
           {v.titel}
         </h2>
+
+        <div className={PORTRAET_DA ? "person auftritt" : "person person-ohne-bild auftritt"}>
+          {PORTRAET_DA && (
+            <img
+              className="person-bild"
+              src={PORTRAET_1120}
+              srcSet={`${PORTRAET_560} 560w, ${PORTRAET_1120} 1120w`}
+              sizes="(min-width: 900px) 320px, 70vw"
+              alt={t.person.fotoAlt}
+              width={560}
+              height={700}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+          <p className="person-text">{t.person.text}</p>
+        </div>
+
         <ul className="bento">
           {v.kacheln.map((k, i) => (
-            <li key={k.gross} className={`bento-kachel auftritt bento-${i + 1}`} style={{ "--i": i % 3 } as React.CSSProperties}>
+            <li key={k.gross} className={`bento-kachel auftritt bento-${i + 1}`} style={{ "--i": i } as React.CSSProperties}>
               <p className="bento-gross">{k.gross}</p>
               <p className="bento-text">{k.text}</p>
             </li>
           ))}
         </ul>
-
-        <div className="leistungen auftritt">
-          <h3>{v.leistungenTitel}</h3>
-          <ul>
-            {v.leistungen.map((l) => (
-              <li key={l.was} className="zweiklang">
-                <strong>{l.was}</strong> {l.text}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );
@@ -58,33 +65,6 @@ export function Ablauf() {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
-  );
-}
-
-export function UeberMich() {
-  const { t } = useSprache();
-  return (
-    <section className="sektion" id="person" aria-labelledby="person-titel">
-      <div className={PORTRAET_DA ? "shell person" : "shell person person-ohne-bild"}>
-        {PORTRAET_DA && (
-          <img
-            className="person-bild auftritt"
-            src={PORTRAET_1120}
-            srcSet={`${PORTRAET_560} 560w, ${PORTRAET_1120} 1120w`}
-            sizes="(min-width: 900px) 320px, 70vw"
-            alt={t.person.fotoAlt}
-            width={560}
-            height={700}
-            loading="lazy"
-            decoding="async"
-          />
-        )}
-        <div className="person-text-block auftritt">
-          <h2 id="person-titel">{t.person.titel}</h2>
-          <p className="person-text">{t.person.text}</p>
-        </div>
       </div>
     </section>
   );

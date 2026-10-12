@@ -11,13 +11,15 @@ Heute sagt die Seite: "Ich baue Websites und erkläre Ihnen freundlich, wie das 
 ### Positionierung
 
 1. **Alternativen:** Ohne Sherka baut der Inhaber abends selbst am Baukasten, zahlt eine Agentur mit wechselnden Ansprechpersonen, fragt den Neffen, der danach nicht mehr antwortet, oder lässt die alte Seite stehen.
-2. **Was nur Sherka hat:** Ein gelernter Informatiker in Biel/Bienne baut von Hand, zweisprachig, und bleibt danach selbst zuständig, belegt mit vier Seiten, die jeder öffnen kann.
+2. **Was nur Sherka hat:** Ein gelernter Informatiker in Biel/Bienne baut von Hand und bleibt danach selbst zuständig und erreichbar, belegt mit vier Seiten, die jeder öffnen kann, und einer Ladezeit, die der Besucher selbst misst.
 3. **Was der Kunde davon hat:** Er erklärt seinen Betrieb einmal, sitzt keinen Abend an der Technik, und die Seite nimmt Anfragen an, während er bedient.
 4. **Für wen:** Die Coiffeuse oder der Wirt in Biel, den ganzen Tag am Kunden, mit einer veralteten Seite und ohne Lust auf Technik.
 5. **Schublade:** "Mein Web-Mann in Biel", so wie man einen Treuhänder oder einen Garagisten hat: einer, den man anruft.
 
 **Das eine Versprechen:** Sie bekommen eine Website, die Anfragen annimmt, und einen Mann in Biel/Bienne, der dafür zuständig bleibt.
-"Nur wir"-Test: Der Baukasten kann "Sie tun nichts" nicht sagen, die Agentur nicht "eine Person", der Neffe nicht "ich bleibe". Besteht.
+"Nur wir"-Test: Der Baukasten kann "das ist mein Problem" nicht sagen, die Agentur nicht "ich nehme ab", der Neffe nicht "ich bleibe". Besteht.
+
+Zweisprachigkeit ist kein Teil des Unterschieds. Sie kommt nur noch einmal beiläufig vor, im vierten Schritt der Vorführung, weil man sie dort sieht.
 
 ### Bewusstseinsstufe
 
@@ -36,7 +38,7 @@ Die meisten Besucher sind "Lösung bewusst": Sie wissen, dass sie eine Seite bra
 | 2 | Arbeiten | Beweis | Prüfbare Arbeiten statt Behauptung, die fehlenden Kundenstimmen offen umgedreht |
 | 3 | Intro | Problem und Verstärkung | Problem, Verstärkung, Lösung in zwei Sätzen, Verlust statt Gewinn |
 | 4 | Entstehung | Unterschied gegen den Baukasten | Gegensatz im Titel, Vorführung als Beleg |
-| 5 | Vorteile mit Person | Unterschied gegen Agentur und Bekannte | Eigenschaft, Nutzen, Beleg. Die Person ist der Beleg, kein eigenes Kapitel |
+| 5 | Vorteile mit Person | Unterschied gegen Agentur, Baukasten und Bekannte | Drei Kacheln, jede ein ganzer Satz gegen eine Alternative: Eigenschaft, Nutzen, Beleg. Die Person ist der Beleg, kein eigenes Kapitel |
 | 6 | Ablauf | Der Weg | Drei Schritte, genaue Fristen, Risikoumkehr im letzten Schritt |
 | 7 | FAQ | Einwände | Nur was vom Kontakt abhält, jede Antwort endet mit Sicherheit |
 | 8 | Kontakt | Handlung | Risikoumkehr: klein, kostenlos, unverbindlich, mit Frist für die Antwort |
@@ -105,7 +107,7 @@ Methode: keine. Menüpunkte sind Beschriftungen, damit man sich zurechtfindet.
 Methode: Ergebnis in Kundenworten, darunter das Angebot in einem Satz (was, wo, was anders ist). Reibung am Knopf gesenkt. Messung als Beleg zum Ausprobieren.
 
 - `hero.titel`: Mehr Kunden. Weniger Aufwand.
-- `hero.unter`: Ihre Website nimmt Anfragen an, auf Deutsch und Französisch. Ich baue sie in Biel/Bienne und bleibe danach zuständig.
+- `hero.unter`: Ihre Website nimmt Tag und Nacht Anfragen an. Ich baue sie in Biel/Bienne und bleibe danach zuständig.
 - `hero.cta`: Erstgespräch anfragen
 - `hero.ctaHinweis` (neuer Schlüssel, kleine Zeile direkt unter dem Knopf, kein zweiter Knopf): Kostenlos, 20 Minuten.
 - `hero.wahlTitel`: Vier Seiten von mir
@@ -116,7 +118,9 @@ Methode: Ergebnis in Kundenworten, darunter das Angebot in einem Satz (was, wo, 
 - `was` der vier Seiten in `projekte.ts`: unverändert.
 - Rest unverändert.
 
-Der Untertitel hat 18 Wörter. Satz eins belegt "Mehr Kunden", Satz zwei "Weniger Aufwand".
+Der Untertitel hat 17 Wörter. Satz eins belegt "Mehr Kunden" (die Seite nimmt auch an, wenn Sie zu haben), Satz zwei "Weniger Aufwand".
+
+- `meta.beschreibung`: Websites für Salons, Praxen, Restaurants und Handwerker in Biel/Bienne. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos. (152 Zeichen)
 
 ### Arbeiten
 
@@ -151,12 +155,12 @@ Methode: Unterschied gegen den Baukasten als Gegensatz. Die Vorführung ist der 
 - `entstehung.schritte[0]`: name "Aufbau." text "Was Ihre Kunden suchen, steht oben."
 - `entstehung.schritte[1]`: name "Gestaltung." text "Ihre Farben, Ihre Schrift."
 - `entstehung.schritte[2]`: name "Funktion." text "Ein Klick, und die Anfrage ist bei Ihnen."
-- `entstehung.schritte[3]`: name "Zwei Sprachen und Google." text "Mit Öffnungszeiten, die Google lesen kann."
+- `entstehung.schritte[3]`: name "Für Google lesbar." text "Öffnungszeiten, die Google lesen kann. Auf Wunsch zweisprachig."
 - `entstehung.beispiel`, `entstehung.codeLabel`, `entstehung.vorschau`: unverändert.
 
 ### Vorteile mit Person
 
-Methode: Unterschied gegen Agentur und Bekannte. Jede Kachel ist Eigenschaft plus Nutzen, die Belege sind die Person (Ausbildung, Ort), die Telefonnummer unten und der Sprachschalter oben.
+Methode: Unterschied gegen die drei Alternativen. Jede Kachel ist gross ein ganzer Satz, den der Wirt als Vorteil hört, und klein der Gegensatz oder der Beleg. Kachel 1 gegen die Agentur (Beleg: die Nummer unten auf der Seite), Kachel 2 gegen den Baukasten, Kachel 3 mit dem einzigen Beleg, den der Besucher selbst erhoben hat (die Messung im Hero).
 
 Aufbau: Titel, darunter Foto und `person.text`, darunter drei Kacheln.
 
@@ -164,10 +168,10 @@ Aufbau: Titel, darunter Foto und `person.text`, darunter drei Kacheln.
 - `person.text`: Ich bin Raffa Amro Elsherkasi, Informatiker EFZ aus Biel/Bienne. Im Beruf habe ich Systeme am Laufen gehalten. Jetzt Ihre Seite.
 - `person.titel`: gestrichen.
 - `person.fotoAlt`: unverändert.
-- `vorteile.kacheln[0]`: gross "Eine Nummer", text "Meine. Sie reden immer mit dem, der gebaut hat."
-- `vorteile.kacheln[1]`: gross "Deutsch et français", text "Ihre Kundschaft spricht beides. Ihre Seite auch."
-- `vorteile.kacheln[2]`: gross "Nichts zu tun", text "Dass die Seite läuft, ist meine Aufgabe. Nicht Ihre."
-- Die alten Kacheln "20 Minuten", "1 Werktag" und "Ihre Adresse": gestrichen. Die drei Angaben stehen jetzt am Knopf, im Kontakt und in der dritten Frage.
+- `vorteile.kacheln[0]`: gross "Ich nehme ab." (13 Zeichen), text "Kein Sekretariat. Sie reden mit dem, der gebaut hat."
+- `vorteile.kacheln[1]`: gross "Mein Problem." (13 Zeichen), text "Dass die Seite läuft, ist meine Sache. Beim Baukasten Ihre."
+- `vorteile.kacheln[2]`: gross "Keiner wartet." (14 Zeichen), text "Die Ladezeit oben haben Sie selbst gemessen. So baue ich."
+- Alle sechs alten Kacheln sind ersetzt. "20 Minuten", "1 Werktag" und "Ihre Adresse" stehen jetzt am Knopf, im Kontakt und in der dritten Frage. Die Sprachen sind kein Argument mehr.
 - `vorteile.leistungenTitel`, `vorteile.leistungen`: gestrichen.
 
 ### Ablauf
@@ -214,49 +218,48 @@ Methode: Handlung mit Risikoumkehr. Der Schritt ist klein, kostet nichts, verpfl
 ### Bitte bestätigen
 
 1. **bledi-bienne.ch, "Bestellung online":** Geklärt am 12.10.2026. Raffa: Das gibt es nicht. Die Zeile lautet "Speisekarte ohne PDF, Brunch mit eigenem Bereich". Online-Bestellung darf nirgends behauptet werden.
-2. **"Eine Nummer. Meine. Sie reden immer mit dem, der gebaut hat.":** Du nimmst auch nach dem Start selbst ab.
-3. **"Dass die Seite läuft, ist meine Aufgabe. Nicht Ihre.":** Die Betreuung gehört bei jedem neuen Kunden dazu.
-4. **"Online geht nichts, bevor Sie Ja sagen.":** Es gibt vor jedem Start eine Abnahme durch den Kunden.
+2. **"Ich nehme ab. Sie reden mit dem, der gebaut hat.":** Du nimmst auch nach dem Start selbst ab oder rufst am selben Tag zurück.
+3. **"Mein Problem. Dass die Seite läuft, ist meine Sache.":** Die Betreuung gehört bei jedem neuen Kunden dazu.4. **"Online geht nichts, bevor Sie Ja sagen.":** Es gibt vor jedem Start eine Abnahme durch den Kunden.
 5. **"Die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um.":** Gilt für jeden Kunden.
 6. **"Informatiker EFZ" und "Im Beruf habe ich Systeme am Laufen gehalten.":** Kurzform und Vergangenheit passen so.
 7. **"Was gut ist, bleibt.":** Du übernimmst bei einer Überarbeitung wirklich Teile der alten Seite.
 8. **Freigabe der vier Kunden** für Name, Bild und Link (steht schon in `projekte.ts` als offen).
 9. **Patientendaten:** Die Frage ist aus dem FAQ gestrichen. Wenn Praxen dein wichtigstes Ziel sind, kommt sie als vierte Frage zurück.
+10. **"Keiner wartet. So baue ich.":** Kundenseiten laden ähnlich schnell wie diese. Auf einem langsamen Handy kann die Messung im Hero schwächer ausfallen, die Kachel verweist trotzdem darauf.
 
 ### Der Beweis, der fehlt
 
 "Mehr Kunden" ist ein Versprechen, kein gemessenes Ergebnis. So beschaffst du den Beleg: Frag bledi und die Zahnarztpraxis nach einem Satz mit Namen oder zähl die Anfragen, die über ihre Formulare kommen. Ein einziger echter Satz unter den Arbeiten wiegt mehr als jeder Text hier.
 
-### Zwei Entscheidungen, die bei dir liegen
+### Entschieden von Raffa
 
-**A. Hero-Titel.** Dein Titel bleibt. Er nennt, was der Kunde will, aber jeder Anbieter könnte ihn hinschreiben, und "Mehr Kunden" ist nicht belegt. Meine einzige Alternative, die beides löst und in die Spalte passt (13 und 16 Zeichen):
-
-> Sie arbeiten. Ihre Seite auch.
-
-**B. Titel der Arbeiten.** Empfohlen ist die Fassung mit Kante: "Glauben Sie mir nichts. Öffnen Sie die vier Seiten." Wenn dir das zu frech ist, die ruhige: "Vier Seiten. Alle online. Öffnen Sie eine."
+- Hero-Titel bleibt: "Mehr Kunden. Weniger Aufwand."
+- Titel der Arbeiten bleibt: "Glauben Sie mir nichts. Öffnen Sie die vier Seiten."
+- Zweisprachigkeit ist kein Hauptargument. Sie ist aus Untertitel, Kacheln und Beschreibung entfernt.
+- bledi-bienne.ch hat keine Online-Bestellung. Steht nirgends mehr.
 
 ---
 
 ## 6. Prüfung
 
-- **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), wo (Biel/Bienne), was anders ist (zweisprachig, bleibt zuständig) und was zu tun ist (Erstgespräch, kostenlos, 20 Minuten). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
+- **Fünf-Sekunden-Test:** bestanden. Erster Bildschirm sagt was (Website), wo (Biel/Bienne), was anders ist (einer baut und bleibt zuständig) und was zu tun ist (Erstgespräch, kostenlos, 20 Minuten). "Für wen" steht nicht als Wort da, ergibt sich aus "Anfragen" und der Liste Restaurant, Zahnarztpraxis.
 - **Titel-Test:** bestanden. Die acht Titel ergeben allein das Gespräch: Versprechen, Beweis, Problem, zwei Unterschiede, Weg, Einwand, Handlung.
-- **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 kann jeder schreiben, er trägt aber eine Zahl, die stimmt. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt, siehe Entscheidung A.
-- **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Von Hand: Sie bauen nicht selbst. Eine Person: Sie reden immer mit dem, der gebaut hat. Zweisprachig: Ihre Kundschaft spricht beides. Schnell: ein Wert, den der Besucher gerade selbst sieht.
-- **Tresen-Test:** bestanden für alle Titel und Kacheln. Grenzfall "Deutsch et français": gewollt, weil es nach Biel klingt.
+- **"Nur wir"-Test:** Titel 2, 4, 5 und 7 bestehen (gegen Baukasten, Agentur, Bekannte). Titel 6 kann jeder schreiben, er trägt aber eine Zahl, die stimmt. Titel 8 ist allgemein, wird aber mit dem Betriebsnamen persönlich. Titel 1 besteht nicht und ist von Raffa gesetzt. Die drei Kacheln bestehen: "Ich nehme ab." kann keine Agentur sagen, "Mein Problem." kein Baukasten, "Keiner wartet." keiner, der es nicht messen lässt.
+- **"Na und?"-Test:** Jede Eigenschaft endet beim Kunden. Von Hand: Sie bauen nicht selbst. Eine Person: Sie reden mit dem, der gebaut hat. Betreuung: nicht Ihr Problem. Schnell: Ihre Besucher warten nicht, und den Wert hat der Leser gerade selbst gemessen.
+- **Tresen-Test:** bestanden für alle Titel und Kacheln. Die Kacheln sind jetzt drei Sätze, die Raffa wörtlich so sagen kann.
 - **Streich-Test:** gestrichen sind Leistungen, Über mich als Kapitel, drei Kacheln, zwei Ablaufschritte, drei Fragen und der Hinweis zur Internetadresse in den Kacheln. Das Intro bleibt, weil sonst nirgends steht, was der Betrieb heute verliert.
-- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 18 Wörter.
+- **Regeln:** das Geldthema kommt nicht vor, keine verbotenen Wörter, keine Gedankenstriche, keine Ausrufezeichen, kein scharfes S, Sie-Form. Titelzeilen 12 und 16 Zeichen, Untertitel 17 Wörter, Kacheln gross 13 bis 14 Zeichen und klein 9 bis 10 Wörter, Beschreibung 152 Zeichen.
 - **Wortzahl** (Hero bis Kontakt, ohne Formular, Fehlermeldungen, Menü, Fuss und die Vorschau des erfundenen Salons):
-  - vorher 788, nachher 368, das sind 47 Prozent.
-  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 327, das sind 49 Prozent.
+  - vorher 788, nachher 373, das sind 47 Prozent.
+  - ohne die zugeklappten FAQ-Antworten: vorher 665, nachher 332, das sind 50 Prozent.
 
 | Abschnitt | vorher | nachher |
 |---|---|---|
-| Hero | 59 | 56 |
+| Hero | 59 | 55 |
 | Intro | 31 | 22 |
-| Arbeiten | 131 | 50 |
-| Entstehung | 76 | 47 |
-| Vorteile und Leistungen | 137 | 56 |
+| Arbeiten | 131 | 52 |
+| Entstehung | 76 | 48 |
+| Vorteile und Leistungen | 137 | 59 |
 | Über mich | 48 | 0 (in Vorteile) |
 | Ablauf | 105 | 57 |
 | FAQ | 166 | 62 |

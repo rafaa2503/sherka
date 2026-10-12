@@ -161,6 +161,7 @@ export function Hero() {
             <a className="knopf knopf-voll" href="#kontakt">
               {h.cta}
             </a>
+            <p className="hero-hinweis">{h.ctaHinweis}</p>
           </div>
         </div>
 

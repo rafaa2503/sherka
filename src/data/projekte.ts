@@ -31,19 +31,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Restaurant in Biel/Bienne",
-        pruefpunkte: [
-          "Gäste lesen die Speisekarte direkt, ohne PDF",
-          "Der Wochenend-Brunch hat seinen eigenen Bereich",
-          "Zuerst fürs Handy gebaut",
-        ],
+        pruefpunkte: ["Speisekarte ohne PDF, Brunch mit eigenem Bereich"],
       },
       fr: {
         was: "Restaurant à Bienne",
-        pruefpunkte: [
-          "Les clients lisent la carte directement, sans PDF",
-          "Le brunch du week-end a sa propre rubrique",
-          "Conçu d'abord pour mobile",
-        ],
+        pruefpunkte: ["Carte sans PDF, brunch avec sa propre rubrique"],
       },
     },
   },
@@ -58,21 +50,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Zahnarztpraxis",
-        pruefpunkte: [
-          "Patienten fragen Termine auf der Seite an",
-          "Notfallnummer auf den ersten Blick",
-          "Patienten sehen vorher, wer sie behandelt",
-          "Öffnungszeiten für Google lesbar hinterlegt",
-        ],
+        pruefpunkte: ["Termin online anfragen, Notfallnummer sofort sichtbar"],
       },
       fr: {
         was: "Cabinet dentaire",
-        pruefpunkte: [
-          "Les patients demandent un rendez-vous en ligne",
-          "Numéro d'urgence visible d'emblée",
-          "Les patients voient d'avance qui les soigne",
-          "Horaires enregistrés pour que Google les lise",
-        ],
+        pruefpunkte: ["Demande de rendez-vous en ligne, numéro d'urgence bien en vue"],
       },
     },
   },
@@ -87,17 +69,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Event-Plattform",
-        pruefpunkte: [
-          "Der Kunde trägt Termine und Inhalte selbst ein",
-          "Texte selber ändern, ohne auf mich zu warten",
-        ],
+        pruefpunkte: ["Der Kunde ändert Texte selbst"],
       },
       fr: {
         was: "Plateforme d'événements",
-        pruefpunkte: [
-          "Le client saisit lui-même dates et contenus",
-          "Il change ses textes lui-même, sans m'attendre",
-        ],
+        pruefpunkte: ["Le client change ses textes seul"],
       },
     },
   },
@@ -112,11 +88,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Handel mit Agrar-Rohstoffen",
-        pruefpunkte: ["Ganz auf Englisch, für internationale Geschäftspartner", "Bewusst nüchtern gehalten"],
+        pruefpunkte: ["Ganz auf Englisch, bewusst nüchtern"],
       },
       fr: {
         was: "Négoce de matières premières agricoles",
-        pruefpunkte: ["Entièrement en anglais, pour des partenaires internationaux", "Volontairement sobre"],
+        pruefpunkte: ["Tout en anglais, volontairement sobre"],
       },
     },
   },

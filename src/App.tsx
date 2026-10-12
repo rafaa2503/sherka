@@ -4,13 +4,14 @@ import { Kopf } from "./abschnitte/Kopf";
 import { Hero } from "./abschnitte/Hero";
 import { Arbeiten, Intro } from "./abschnitte/Arbeiten";
 import { Entstehung } from "./abschnitte/Entstehung";
-import { Ablauf, Faq, UeberMich, Vorteile } from "./abschnitte/Abschnitte";
+import { Ablauf, Faq, Vorteile } from "./abschnitte/Abschnitte";
 import { Kontakt } from "./abschnitte/Kontakt";
 import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
 
-/* Sherka V2 im Stil einer Apple-Produktseite: Laptop mit echter Kundenseite,
-   Arbeiten als Karussell, "So entsteht" auf dunkler Bühne, Vorteile als
-   Kacheln, Ablauf, Über mich, Fragen, Kontakt. */
+/* Die Seite folgt einer Verkaufslinie (plans/texte-marketing.md): Versprechen
+   (Hero), Beweis (vier Seiten), Problem (Intro), Unterschied (Handarbeit auf
+   dunkler Bühne, "Wer baut, bleibt" mit der Person), Weg (Ablauf), Einwände
+   (Fragen), Handlung (Kontakt). */
 
 export default function App() {
   const { t } = useSprache();
@@ -23,12 +24,11 @@ export default function App() {
       <Kopf />
       <main id="inhalt">
         <Hero />
-        <Intro />
         <Arbeiten />
+        <Intro />
         <Entstehung />
         <Vorteile />
         <Ablauf />
-        <UeberMich />
         <Faq />
         <Kontakt />
       </main>

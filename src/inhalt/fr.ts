@@ -3,13 +3,15 @@ import { typoFr } from "../lib/typo";
 
 /* Vor dem Livegang von einer bezahlten Muttersprachlerin aus der Romandie
    abnehmen lassen. Kein Satz darf ein Adjektiv an {name} angleichen müssen,
-   und vor {name} steht kein "de" (sonst fehlt die Elision bei Vokal). */
+   und vor {name} steht kein "de" (sonst fehlt die Elision bei Vokal).
+   Das Erstgespräch heisst überall "rendez-vous" ("entretien" hiesse
+   auch Wartung). */
 
 export const fr: Woerter = typoFr({
   meta: {
     titel: "Site internet à Bienne pour votre entreprise | Sherka",
     beschreibung:
-      "Sites internet pour salons, cabinets, restaurants et artisans à Bienne. En français et en allemand, créés puis suivis. Premier entretien gratuit.",
+      "Sites internet pour salons, cabinets, restaurants et artisans à Bienne. Faits main, puis suivis, par une seule personne. Premier rendez-vous gratuit.",
     ogTitel: "Des sites qui travaillent.",
   },
 
@@ -18,12 +20,12 @@ export const fr: Woerter = typoFr({
     navLabel: "Navigation principale",
     links: {
       arbeiten: "Exemples",
-      entstehung: "Coulisses",
-      vorteile: "Pourquoi Sherka",
+      entstehung: "Fait main",
+      vorteile: "À propos",
       ablauf: "Étapes",
       faq: "Questions",
     },
-    anfragen: "Parlons-en",
+    anfragen: "Rendez-vous",
     themaHell: "Passer en affichage clair",
     themaDunkel: "Passer en affichage sombre",
     andereSprache: "Deutsch",
@@ -34,45 +36,44 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins d'efforts.",
-    unter: "Votre site amène des demandes, en français et en allemand. À Bienne, je le crée et m'en occupe pour vous.",
-    cta: "Demander un entretien",
-    wahlTitel: "Quatre sites en ligne",
+    unter: "Votre site prend les demandes jour et nuit. Je le construis à Bienne et j'en reste responsable.",
+    cta: "Demander un rendez-vous",
+    ctaHinweis: "Gratuit, 20 minutes.",
+    wahlTitel: "Quatre de mes sites",
     zeigen: "Afficher {domain} dans l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
     handyAlt: "{domain} sur un téléphone",
-    messTitel: "Vitesse de ce site, mesurée chez vous",
-    messLcp: "L'essentiel visible après",
+    messTitel: "Mesuré à l'instant chez vous",
+    messLcp: "Cette page visible après",
     messFcp: "Premier contenu visible après",
     messRichtLcp: "Google recommande : moins de 2,5 secondes",
     messRichtFcp: "Google recommande : moins de 1,8 seconde",
   },
 
   intro: {
-    stark: "Le téléphone sonne en plein travail.",
-    rest: "Encore quelqu'un qui veut juste vos horaires, parce que le site n'est plus à jour. Un bon site répond lui-même et prend les demandes pendant que vous travaillez.",
+    stark: "Le téléphone sonne et vous avez les mains prises.",
+    rest: "Qui ne vous joint pas appelle le suivant. Votre site, lui, répond pendant que vous travaillez.",
   },
 
   arbeiten: {
-    titel: "Quatre sites. Tous en ligne.",
-    text: "Ce sont les sites de vraies entreprises. Ouvrez-les et jugez par vous-même.",
-    domainKunde: "Adresse internet au nom du client",
-    domainSherka: "Adresse internet chez Sherka, transférée au client sur demande",
-    oeffnen: "Voir le site",
+    titel: "Ne me croyez pas. Ouvrez les quatre sites.",
+    text: "De vrais clients, tous en ligne.",
+    oeffnen: "Ouvrir",
     zurueck: "Exemple précédent",
     weiter: "Exemple suivant",
     bildAlt: "Page d'accueil de {domain}",
   },
 
   entstehung: {
-    titel: "Comment naît un site.",
-    text: "Ici avec un salon inventé. Pour votre site, je m'y prends de la même façon.",
+    titel: "Un site en kit, vous le montez. Ici, c'est moi.",
+    text: "Le salon est inventé. La méthode, non.",
     beispiel: "Exemple",
     codeLabel: "Code de cette étape",
     schritte: [
-      { name: "Structure.", text: "D'abord l'ordre, encore sans couleur : ce que vos clients cherchent vient en haut." },
-      { name: "Design.", text: "Une police et des couleurs qui vous ressemblent. Peu, pour que l'ensemble reste calme." },
-      { name: "Fonction.", text: "Un clic, et la demande de rendez-vous vous arrive. Les fautes de frappe sont repérées avant l'envoi." },
-      { name: "Bilingue et sur Google.", text: "Français et allemand. Avec les indications qui permettent à Google d'afficher correctement vos horaires." },
+      { name: "Structure.", text: "Ce que vos clients cherchent est en haut." },
+      { name: "Design.", text: "Vos couleurs, votre police." },
+      { name: "Fonction.", text: "Un clic, et la demande vous arrive." },
+      { name: "Lisible par Google.", text: "Des horaires que Google sait lire. Bilingue sur demande." },
     ],
     vorschau: {
       name: "Salon Lumen",
@@ -88,102 +89,65 @@ export const fr: Woerter = typoFr({
   },
 
   vorteile: {
-    titel: "Pourquoi Sherka.",
+    titel: "Qui construit reste.",
     kacheln: [
-      { gross: "FR et DE", text: "Votre clientèle parle les deux langues. Votre site aussi, dès le départ." },
-      { gross: "Fait main", text: "Créé pour votre entreprise, sans modèle tout fait. Vous ne gérez rien." },
-      { gross: "Une personne", text: "Je crée le site et je reste là ensuite. Vous n'expliquez tout qu'une fois." },
-      { gross: "20 minutes", text: "C'est la durée du premier entretien, gratuit. Vous décidez ensuite." },
-      { gross: "1 jour", text: "Vous avez ma réponse en un jour ouvrable." },
-      { gross: "Votre adresse", text: "L'adresse internet est à votre nom, ou je la transfère à votre nom sur demande." },
-    ],
-    leistungenTitel: "Ce que je crée.",
-    leistungen: [
-      { was: "Nouveaux sites.", text: "En une ou deux langues, de la page unique au site complet." },
-      { was: "Rendez-vous et réservations.", text: "Vos clients passent par le site au lieu d'appeler pendant que vous vous occupez de quelqu'un." },
-      { was: "Outils d'organisation.", text: "Listes et plannings qui passent aujourd'hui par Excel et WhatsApp." },
-      { was: "Retravailler un site existant.", text: "Le rendre plus rapide et plus utile, sans que vous repartiez de zéro." },
+      { gross: "Je décroche.", text: "Pas de secrétariat. Vous parlez à celui qui a construit." },
+      { gross: "Mon problème.", text: "Que le site tourne, c'est mon affaire. En kit, c'est la vôtre." },
+      { gross: "On n'attend pas.", text: "La vitesse en haut, c'est vous qui l'avez mesurée. Je construis ainsi." },
     ],
   },
 
   ablauf: {
-    titel: "Étape par étape",
+    titel: "Deux à quatre semaines, et votre site est là.",
     schritte: [
       {
         zeit: "20 minutes",
-        was: "Premier entretien",
-        text: "Vous dites ce qu'il faut à votre entreprise. Je dis ce que je peux en réaliser. Après, nous savons tous deux si cela convient.",
+        was: "On se parle",
+        text: "Vous dites ce qu'il vous faut. Je dis ce que je construis.",
       },
       {
         zeit: "par écrit",
-        was: "Maquette",
-        text: "Vous voyez à quoi ressemblera votre site. Je note aussi par écrit ce que je réalise et pour quand.",
+        was: "Vous voyez la maquette",
+        text: "L'aspect du site, ce que je construis, pour quand.",
       },
       {
         zeit: "2 à 4 semaines",
-        was: "Création",
-        text: "À partir du jour où j'ai vos textes et vos images. En cours de route, je vous envoie un lien pour regarder.",
-      },
-      {
-        zeit: "avant la mise en ligne",
-        was: "Dernier contrôle",
-        text: "Nous regardons tout ensemble. Ce qui ne va pas, je le corrige.",
-      },
-      {
-        zeit: "ensuite",
-        was: "Suivi",
-        text: "Que le site fonctionne, c'est mon travail, pas le vôtre. Les petits changements, vous me les envoyez, je m'en charge.",
+        was: "Je construis",
+        text: "Dès que j'ai vos textes et vos images. Rien n'est mis en ligne avant votre oui.",
       },
     ],
   },
 
+  /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
   person: {
-    titel: "Qui crée votre site",
-    text: "Je m'appelle Raffa Amro Elsherkasi et je travaille depuis Bienne. J'ai appris le métier d'informaticien (CFC en développement d'applications). Ensuite, mon travail a été de faire tourner des systèmes. Voilà pourquoi, pour moi, rien ne s'arrête à la mise en ligne : je reste responsable, et vous me joignez directement.",
+    text: "Je suis Raffa Amro Elsherkasi, informaticien CFC de Bienne. Dans mon métier, j'ai fait tourner des systèmes. Maintenant, votre site.",
     fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   faq: {
-    titel: "Vous vous demandez",
+    titel: "La technique, vous n'avez pas à la comprendre.",
     liste: [
       {
-        frage: "Combien de temps, vraiment ?",
-        antwort:
-          "Deux à quatre semaines, dès que j'ai vos textes et vos images. La date à laquelle le site sera prêt, vous la recevez avant, par écrit.",
+        frage: "Que dois-je fournir ?",
+        antwort: "Quelques phrases sur votre entreprise, vos horaires et des photos, si vous en avez. Rien de plus.",
       },
       {
-        frage: "Que dois-je préparer ?",
-        antwort:
-          "Peu de choses : quelques phrases sur votre entreprise, vos horaires et des photos si vous en avez. Ce qui manque, nous le voyons au premier entretien.",
+        frage: "J'ai déjà un site.",
+        antwort: "Alors on ne repart pas de zéro. Ce qui est bon reste.",
       },
       {
-        frage: "Changer les textes moi-même ?",
-        antwort: "Oui, si vous le souhaitez, comme le fait le client de takabul.ch. Sinon, vous m'envoyez le nouveau texte et je le change.",
-      },
-      {
-        frage: "Et si je veux changer quelque chose après ?",
-        antwort:
-          "Vous m'écrivez par e-mail ou WhatsApp. Les gros changements, nous en parlons brièvement. Les petits, je les fais.",
-      },
-      {
-        frage: "Je n'y connais rien en informatique. Ça ira ?",
-        antwort:
-          "Oui. Il me faut seulement vos textes, vos images et quelques réponses. Toute la technique, je m'en charge, avant la mise en ligne et après.",
-      },
-      {
-        frage: "J'ai un cabinet. Et les données des patients ?",
-        antwort:
-          "Les données de santé n'ont pas leur place dans un formulaire de contact ordinaire. Nous voyons donc au premier entretien ce que votre formulaire peut demander et où vont les réponses.",
+        frage: "Et après, je dépends de vous ?",
+        antwort: "Non. L'adresse internet est à votre nom, ou je vous la transfère.",
       },
     ],
   },
 
   kontakt: {
-    titel: "Parlons de votre entreprise",
-    titelMitName: "{name} : parlons-en",
-    text: "Le premier entretien est gratuit, et vous parlez directement à celui qui crée votre site. Quelques mots suffisent. Je réponds sous un jour ouvrable. Si ça presse : WhatsApp ou téléphone.",
+    titel: "Parlons de votre entreprise.",
+    titelMitName: "{name} : parlons-en.",
+    text: "20 minutes, gratuit. Ensuite, vous décidez. Réponse sous un jour ouvrable.",
     whatsapp: "WhatsApp",
-    whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un bref premier entretien ?",
+    whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un premier rendez-vous ?",
     whatsappOhne: "mon entreprise",
     telefon: "Téléphone",
     mail: "E-mail",
@@ -192,17 +156,17 @@ export const fr: Woerter = typoFr({
     anliegen: [
       { wert: "neu", text: "Nouveau site" },
       { wert: "ueberarbeiten", text: "Retravailler un site existant" },
-      { wert: "anwendung", text: "Outil d'organisation" },
+      { wert: "anwendung", text: "Un outil au lieu d'Excel" },
       { wert: "offen", text: "Je ne sais pas encore" },
     ],
-    betriebLabel: "Votre entreprise",
+    betriebLabel: "Nom de votre entreprise",
     zeitLabel: "Est-ce urgent ?",
     zeit: [
       { wert: "bald", text: "Dès que possible" },
       { wert: "monate", text: "Dans les prochains mois" },
       { wert: "umschauen", text: "Je me renseigne d'abord" },
     ],
-    textLabel: "Que devrais-je déjà savoir ?",
+    textLabel: "Quelques mots à ce sujet",
     textPlatzhalter: "Par exemple : salon de coiffure, rendez-vous en ligne, bilingue",
     textHinweis: "Pas de données de santé ni de patients, merci.",
     nameLabel: "Votre nom",
@@ -211,7 +175,7 @@ export const fr: Woerter = typoFr({
     erreichbarHinweis: "E-mail ou téléphone, un seul suffit.",
     freiwillig: "Facultatif",
 
-    senden: "Demander un entretien",
+    senden: "Demander un rendez-vous",
     sendet: "Envoi en cours",
 
     erfolgTitel: "Bien reçu",
@@ -236,7 +200,7 @@ export const fr: Woerter = typoFr({
   aktionsleiste: {
     label: "Contact rapide",
     anrufen: "Appeler",
-    anfragen: "Parlons-en",
+    anfragen: "Rendez-vous",
     whatsapp: "WhatsApp",
   },
 

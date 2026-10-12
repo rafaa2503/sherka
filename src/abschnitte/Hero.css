@@ -48,7 +48,15 @@
   color: var(--leise);
 }
 .hero-knoepfe {
+  display: grid;
+  justify-items: start;
+  gap: var(--a-3);
   margin-top: var(--a-3);
+}
+/* Senkt die Hürde am Knopf: was es kostet und wie lange es dauert. */
+.hero-hinweis {
+  font-size: var(--t-klein);
+  color: var(--leise);
 }
 
 /* ---------- Mitte: das Gerät ---------- */

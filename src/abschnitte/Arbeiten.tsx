@@ -82,7 +82,6 @@ export function Arbeiten() {
                   </li>
                 ))}
               </ul>
-              <p className="kachel-domain">{p.domainBei === "kunde" ? t.arbeiten.domainKunde : t.arbeiten.domainSherka}</p>
               <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
                 {t.arbeiten.oeffnen}
               </a>

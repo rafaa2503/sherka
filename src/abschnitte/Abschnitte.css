@@ -1,6 +1,6 @@
 .abschnitt-titel {
   margin-bottom: var(--a-7);
-  max-width: 18ch;
+  max-width: 22ch;
 }
 
 /* ---------- Bento ---------- */
@@ -13,35 +13,27 @@
   gap: 16px;
   grid-template-columns: minmax(0, 1fr);
 }
-@media (min-width: 640px) {
+@media (min-width: 900px) {
   .bento {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
-@media (min-width: 1000px) {
-  .bento {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-  /* Unterschiedliche Grössen, damit es kein gleichförmiges Raster wird. */
-  .bento-1 { grid-column: span 4; }
-  .bento-2 { grid-column: span 2; }
-  .bento-3 { grid-column: span 2; }
-  .bento-4 { grid-column: span 2; }
-  .bento-5 { grid-column: span 2; }
-  .bento-6 { grid-column: span 6; }
 }
 
 .bento-kachel {
+  /* Die grosse Zeile richtet sich nach der Breite der Kachel, damit der Satz
+     in jeder Sprache auf einer Zeile steht. */
+  container-type: inline-size;
   display: grid;
   align-content: space-between;
   gap: var(--a-6);
-  min-height: 15rem;
+  min-height: clamp(10.5rem, 6rem + 12vw, 14rem);
   padding: clamp(24px, 3vw, 40px);
   border-radius: var(--r-3);
   background: var(--flaeche);
 }
 .bento-gross {
-  font-size: clamp(2.25rem, 1.5rem + 2.6vw, 3.75rem);
+  font-size: clamp(1.75rem, 11.4cqi, 3.25rem);
+  white-space: nowrap;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -54,45 +46,16 @@
   color: var(--leise);
   max-width: 26ch;
 }
-/* Die grosse Kachel trägt die Akzentfarbe, die letzte ist dunkel. */
+/* Die erste Kachel trägt die Akzentfarbe, die letzte ist dunkel. */
 .bento-1 .bento-gross {
   color: var(--akzent);
 }
-.bento-6 {
+.bento-3 {
   background: var(--ink);
   color: var(--grund);
 }
-.bento-6 .bento-text {
+.bento-3 .bento-text {
   color: color-mix(in srgb, var(--grund) 70%, var(--ink));
-}
-@media (min-width: 1000px) {
-  .bento-6 {
-    min-height: 0;
-    grid-template-columns: auto 1fr;
-    align-items: end;
-  }
-}
-
-.leistungen {
-  display: grid;
-  gap: var(--a-5);
-  margin-top: var(--a-9);
-}
-.leistungen h3 {
-  font-size: var(--t-h2);
-  letter-spacing: -0.03em;
-}
-.leistungen ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--a-5) var(--a-7);
-}
-@media (min-width: 900px) {
-  .leistungen ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 /* ---------- Ablauf ---------- */
@@ -112,10 +75,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (min-width: 1100px) {
+@media (min-width: 900px) {
   .abl {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--a-5);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--a-7);
   }
 }
 .abl-schritt {
@@ -148,12 +111,13 @@
   font-size: 1.375rem;
 }
 
-/* ---------- Über mich ---------- */
+/* ---------- Die Person unter dem Titel der Vorteile ---------- */
 
 .person {
   display: grid;
   gap: var(--a-6);
   align-items: center;
+  margin-bottom: var(--a-8);
 }
 @media (min-width: 900px) {
   .person {
@@ -163,10 +127,6 @@
   .person-ohne-bild {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-.person-text-block {
-  display: grid;
-  gap: var(--a-5);
 }
 .person-bild {
   width: 100%;

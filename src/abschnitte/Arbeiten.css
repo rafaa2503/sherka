@@ -104,10 +104,6 @@
   margin-top: 4px;
   color: var(--gut);
 }
-.kachel-domain {
-  font-size: var(--t-kote);
-  color: var(--leise);
-}
 
 .karussell-steuerung {
   display: flex;

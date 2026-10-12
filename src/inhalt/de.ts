@@ -1,13 +1,14 @@
 /* Alle sichtbaren Texte der Seite, Deutsch ist die Quelle.
    Regeln: Schweizer Hochdeutsch (ss statt ß), Sie-Form, keine Gedankenstriche,
-   keine Preise (das Thema wird gar nicht angesprochen), Ort nur Biel/Bienne,
+   keine Preise (das Thema wird gar nicht angesprochen), kein Ort, keine
+   Zweisprachigkeit und keine Anzahl Kundenseiten als Verkaufsargument,
    nichts Erfundenes. {name} und {branche} werden zur Laufzeit ersetzt. */
 
 export const de = {
   meta: {
-    titel: "Webdesign Biel/Bienne: Website für Ihren Betrieb | Sherka",
+    titel: "Webdesign für kleine Betriebe: gebaut und betreut | Sherka",
     beschreibung:
-      "Websites für Salons, Praxen, Restaurants und Handwerker in Biel/Bienne. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos.",
+      "Websites für Salons, Praxen, Restaurants und Handwerker. Von Hand gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos.",
     ogTitel: "Websites, die arbeiten.",
   },
 
@@ -32,10 +33,10 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ich baue Ihre Website in Biel/Bienne und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.",
+    unter: "Ich baue Ihre Website und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.",
     cta: "Erstgespräch anfragen",
     ctaHinweis: "Kostenlos. Verpflichtet zu nichts.",
-    wahlTitel: "Vier Seiten von mir",
+    wahlTitel: "Von mir gebaut",
     zeigen: "{domain} im Gerät zeigen",
     laptopAlt: "{domain} auf einem Laptop",
     handyAlt: "{domain} auf einem Handy",
@@ -52,7 +53,7 @@ export const de = {
   },
 
   arbeiten: {
-    titel: "Glauben Sie mir nichts. Öffnen Sie die vier Seiten.",
+    titel: "Glauben Sie mir nichts. Öffnen Sie die Seiten.",
     text: "Echte Betriebe, alle online.",
     oeffnen: "Öffnen",
     zurueck: "Vorheriges Beispiel",
@@ -114,7 +115,7 @@ export const de = {
 
   /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
   person: {
-    text: "Ich bin Raffa Amro Elsherkasi, Informatiker EFZ aus Biel/Bienne. Im Beruf habe ich Systeme am Laufen gehalten. Jetzt Ihre Seite.",
+    text: "Ich bin Raffa Amro Elsherkasi, gelernter Informatiker EFZ. Im Beruf habe ich Systeme am Laufen gehalten. Jetzt Ihre Seite.",
     fotoAlt: "Raffa Amro Elsherkasi",
   },
 

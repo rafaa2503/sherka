@@ -9,9 +9,9 @@ import { typoFr } from "../lib/typo";
 
 export const fr: Woerter = typoFr({
   meta: {
-    titel: "Site internet à Bienne pour votre entreprise | Sherka",
+    titel: "Site internet pour petite entreprise, créé et suivi | Sherka",
     beschreibung:
-      "Sites internet pour salons, cabinets, restaurants et artisans à Bienne. Faits main, puis suivis, par une seule personne. Premier rendez-vous gratuit.",
+      "Sites internet pour salons, cabinets, restaurants et artisans. Faits main, puis suivis, par une seule personne. Premier rendez-vous gratuit.",
     ogTitel: "Des sites qui travaillent.",
   },
 
@@ -36,10 +36,10 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins d'efforts.",
-    unter: "Je construis votre site à Bienne et je le fais tourner. Vous vous occupez de vos clients.",
+    unter: "Je construis votre site et je le fais tourner. Vous vous occupez de vos clients.",
     cta: "Demander un rendez-vous",
     ctaHinweis: "Gratuit. Ça n'engage à rien.",
-    wahlTitel: "Quatre de mes sites",
+    wahlTitel: "Faits par moi",
     zeigen: "Afficher {domain} dans l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
     handyAlt: "{domain} sur un téléphone",
@@ -56,7 +56,7 @@ export const fr: Woerter = typoFr({
   },
 
   arbeiten: {
-    titel: "Ne me croyez pas. Ouvrez les quatre sites.",
+    titel: "Ne me croyez pas. Ouvrez les sites.",
     text: "De vrais clients, tous en ligne.",
     oeffnen: "Ouvrir",
     zurueck: "Exemple précédent",
@@ -118,7 +118,7 @@ export const fr: Woerter = typoFr({
 
   /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
   person: {
-    text: "Je suis Raffa Amro Elsherkasi, informaticien CFC de Bienne. Dans mon métier, j'ai fait tourner des systèmes. Maintenant, votre site.",
+    text: "Je suis Raffa Amro Elsherkasi, informaticien CFC de formation. Dans mon métier, j'ai fait tourner des systèmes. Maintenant, votre site.",
     fotoAlt: "Raffa Amro Elsherkasi",
   },
 

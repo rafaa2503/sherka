@@ -84,7 +84,8 @@ export function kopfDaten(sprache: Sprache, art: SeitenArt): Kopf {
           addressRegion: "BE",
           addressCountry: "CH",
         },
-        areaServed: { "@type": "City", name: "Biel/Bienne" },
+        // Der Standort ist Biel/Bienne, das Angebot gilt für die ganze Schweiz.
+        areaServed: { "@type": "Country", name: "CH" },
         availableLanguage: ["de", "fr"],
         founder: { "@id": `${DOMAIN}/#raffa` },
       },

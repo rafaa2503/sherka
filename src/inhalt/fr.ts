@@ -36,7 +36,7 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins d'efforts.",
-    unter: "Je crée votre site et je m'en occupe ensuite moi-même, pour que vous ayez du temps pour vos clients.",
+    unter: "Votre site s'ouvre vite, fonctionne sur tous les téléphones et apparaît sur Google. Je gère la maquette, la technique et le suivi.",
     cta: "Demander un rendez-vous",
     ctaHinweis: "Gratuit et sans engagement.",
     wahlTitel: "Faits par moi",
@@ -66,8 +66,8 @@ export const fr: Woerter = typoFr({
   vorteile: {
     titel: "Dès le premier rendez-vous, vous avez toujours affaire à moi.",
     kacheln: [
-      { gross: "Vous me joignez directement.", text: "Je réponds moi-même et je connais votre site, parce que je l'ai créé." },
-      { gross: "Après le lancement, vous n'avez rien à faire.", text: "Je m'occupe de votre site et je veille à ce qu'il fonctionne." },
+      { gross: "Vous me joignez directement.", text: "Mon numéro se trouve en bas de cette page." },
+      { gross: "Après le lancement, vous n'avez rien à faire.", text: "" },
       {
         gross: "Vos visiteurs n'attendent pas longtemps.",
         text: "Vous voyez en haut la vitesse de cette page chez vous, et je crée la vôtre de la même façon.",

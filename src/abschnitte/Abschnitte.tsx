@@ -1,8 +1,7 @@
 import { useSprache } from "../lib/sprache";
-import { PORTRAET_1120, PORTRAET_560, PORTRAET_DA } from "../data/portraet";
 import "./Abschnitte.css";
 
-/* "Wer baut, bleibt": die Person als Beleg und drei Kacheln. Dazu Ablauf und Fragen. */
+/* Drei Vorteile der Website als ganze Sätze, dazu Ablauf und Fragen. */
 
 export function Vorteile() {
   const { t } = useSprache();
@@ -13,23 +12,6 @@ export function Vorteile() {
         <h2 id="vorteile-titel" className="auftritt abschnitt-titel">
           {v.titel}
         </h2>
-
-        <div className={PORTRAET_DA ? "person auftritt" : "person person-ohne-bild auftritt"}>
-          {PORTRAET_DA && (
-            <img
-              className="person-bild"
-              src={PORTRAET_1120}
-              srcSet={`${PORTRAET_560} 560w, ${PORTRAET_1120} 1120w`}
-              sizes="(min-width: 900px) 320px, 70vw"
-              alt={t.person.fotoAlt}
-              width={560}
-              height={700}
-              loading="lazy"
-              decoding="async"
-            />
-          )}
-          <p className="person-text">{t.person.text}</p>
-        </div>
 
         <ul className="bento">
           {v.kacheln.map((k, i) => (

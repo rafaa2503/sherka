@@ -8,8 +8,8 @@ export const de = {
   meta: {
     titel: "Webdesign für kleine Betriebe: gebaut und betreut | Sherka",
     beschreibung:
-      "Ich baue Websites für Salons, Praxen, Restaurants und Handwerker und betreue sie danach selbst. Das Erstgespräch ist kostenlos und unverbindlich.",
-    ogTitel: "Ich baue und betreue Websites für kleine Betriebe.",
+      "Wir bauen Websites für Salons, Praxen, Restaurants und Handwerker, die Anfragen bringen, und betreuen sie danach. Das Erstgespräch ist kostenlos.",
+    ogTitel: "Websites, die Kunden bringen, statt nur gut auszusehen.",
   },
 
   kopf: {
@@ -17,7 +17,7 @@ export const de = {
     navLabel: "Hauptnavigation",
     links: {
       arbeiten: "Beispiele",
-      vorteile: "Über mich",
+      vorteile: "Vorteile",
       ablauf: "Ablauf",
       faq: "Fragen",
     },
@@ -32,10 +32,10 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ihre Website lädt schnell, funktioniert auf jedem Handy und wird bei Google gefunden. Um Entwurf, Technik und Betreuung kümmere ich mich.",
+    unter: "Eine schöne Website haben viele. Wir bauen Ihnen eine, die Kunden bringt.",
     cta: "Erstgespräch anfragen",
     ctaHinweis: "Kostenlos und unverbindlich.",
-    wahlTitel: "Von mir gebaut",
+    wahlTitel: "Von uns gebaut",
     zeigen: "{domain} im Gerät zeigen",
     laptopAlt: "{domain} auf einem Laptop",
     handyAlt: "{domain} auf einem Handy",
@@ -52,7 +52,7 @@ export const de = {
   },
 
   arbeiten: {
-    titel: "Glauben Sie mir nichts. Öffnen Sie die Seiten.",
+    titel: "Glauben Sie uns nichts. Öffnen Sie die Seiten.",
     oeffnen: "Öffnen",
     zurueck: "Vorheriges Beispiel",
     weiter: "Nächstes Beispiel",
@@ -60,30 +60,30 @@ export const de = {
   },
 
   vorteile: {
-    titel: "Vom ersten Gespräch an haben Sie immer mit mir zu tun.",
+    titel: "Eine Website, die sich für Sie lohnt.",
     kacheln: [
-      { gross: "Sie erreichen mich direkt.", text: "Meine Nummer steht unten auf dieser Seite." },
-      { gross: "Nach dem Start müssen Sie nichts mehr tun.", text: "" },
       {
-        gross: "Ihre Website bringt Ihnen neue Anfragen.",
-        text: "Kunden finden Sie bei Google und schreiben Ihnen direkt über die Seite, auch ausserhalb Ihrer Öffnungszeiten.",
+        gross: "Kunden finden Sie, bevor sie die Konkurrenz finden.",
+        text: "Wir bauen Ihre Seite so, dass Google Ihr Angebot und Ihre Öffnungszeiten lesen kann.",
+      },
+      {
+        gross: "Anfragen kommen, auch wenn Sie Feierabend haben.",
+        text: "Kunden schreiben Ihnen direkt über die Seite, statt es am Telefon zu versuchen.",
+      },
+      {
+        gross: "Um die Technik kümmern wir uns, nicht Sie.",
+        text: "Wir halten Ihre Seite aktuell und erledigen Änderungen für Sie.",
       },
     ],
   },
 
   ablauf: {
-    titel: "Sie sehen, was Sie bekommen, bevor ich mit der Arbeit beginne.",
+    titel: "Sie sehen, was Sie bekommen, bevor wir mit der Arbeit beginnen.",
     schritte: [
-      { was: "Sie stellen mir Ihr Unternehmen vor.", text: "Daraus bauen wir gemeinsam ein Konzept." },
-      { was: "Sie erhalten einen ersten Entwurf.", text: "Sie sagen mir, was Sie daran ändern möchten." },
+      { was: "Sie stellen uns Ihr Unternehmen vor.", text: "Daraus bauen wir gemeinsam ein Konzept." },
+      { was: "Sie erhalten einen ersten Entwurf.", text: "Sie sagen uns, was Sie daran ändern möchten." },
       { was: "Auf Ihren Wunsch startet dann die Arbeit.", text: "Online geht Ihre Seite erst, wenn Sie einverstanden sind." },
     ],
-  },
-
-  /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
-  person: {
-    text: "Ich bin Raffa Amro Elsherkasi, gelernter Informatiker EFZ, und habe im Beruf dafür gesorgt, dass Systeme laufen.",
-    fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   faq: {
@@ -91,7 +91,7 @@ export const de = {
     liste: [
       {
         frage: "Was muss ich liefern?",
-        antwort: "Ich brauche ein paar Sätze über Ihren Betrieb, Ihre Öffnungszeiten und Fotos, falls Sie welche haben.",
+        antwort: "Wir brauchen ein paar Sätze über Ihren Betrieb, Ihre Öffnungszeiten und Fotos, falls Sie welche haben.",
       },
       {
         frage: "Ich habe schon eine Website.",
@@ -99,15 +99,15 @@ export const de = {
       },
       {
         frage: "Bin ich danach von Ihnen abhängig?",
-        antwort: "Nein, die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um.",
+        antwort: "Nein, die Internetadresse läuft auf Ihren Namen, oder wir schreiben sie auf Sie um.",
       },
     ],
   },
 
   kontakt: {
-    titel: "Stellen Sie mir Ihr Unternehmen vor.",
-    titelMitName: "Stellen Sie mir {name} vor.",
-    text: "Das erste Gespräch ist kostenlos und unverbindlich, und ich antworte innert eines Werktags.",
+    titel: "Stellen Sie uns Ihr Unternehmen vor.",
+    titelMitName: "Stellen Sie uns {name} vor.",
+    text: "Das erste Gespräch ist kostenlos und unverbindlich, und wir antworten innert eines Werktags.",
     whatsapp: "WhatsApp",
     whatsappText: "Grüezi, ich interessiere mich für eine Website für {betrieb}. Hätten Sie Zeit für ein kurzes Erstgespräch?",
     whatsappOhne: "meinen Betrieb",
@@ -141,13 +141,13 @@ export const de = {
     sendet: "Wird geschickt",
 
     erfolgTitel: "Angekommen",
-    erfolgText: "Danke, {name}. Ich melde mich innert eines Werktags.",
-    erfolgEilig: "Wenn es eilt, schreiben Sie mir auf WhatsApp.",
+    erfolgText: "Danke, {name}. Wir melden uns innert eines Werktags.",
+    erfolgEilig: "Wenn es eilt, schreiben Sie uns auf WhatsApp.",
 
     fehlerTitel: "Das hat nicht geklappt",
-    fehlerText: "Ihre Angaben sind noch da. Versuchen Sie es nochmals, oder erreichen Sie mich direkt:",
+    fehlerText: "Ihre Angaben sind noch da. Versuchen Sie es nochmals, oder erreichen Sie uns direkt:",
     zuViele:
-      "Das waren zu viele Versuche in kurzer Zeit. Versuchen Sie es bitte etwas später nochmals, oder erreichen Sie mich per Telefon oder WhatsApp.",
+      "Das waren zu viele Versuche in kurzer Zeit. Versuchen Sie es bitte etwas später nochmals, oder erreichen Sie uns per Telefon oder WhatsApp.",
     aus: "In dieser Vorschau ist das Formular abgeschaltet.",
 
     pflichtAnliegen: "Wählen Sie kurz aus, worum es geht.",
@@ -157,7 +157,7 @@ export const de = {
     falschesTel: "Diese Telefonnummer stimmt so nicht.",
     fehlerAnzahl: "Fehlende Angaben: {n}",
 
-    datenschutzHinweis: "Ihre Angaben nutze ich nur, um Ihnen zu antworten.",
+    datenschutzHinweis: "Ihre Angaben nutzen wir nur, um Ihnen zu antworten.",
   },
 
   aktionsleiste: {

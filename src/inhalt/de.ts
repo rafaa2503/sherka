@@ -32,7 +32,7 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ich baue die Website für Ihren Betrieb und betreue sie danach selbst, damit Sie Zeit für Ihre Kunden haben.",
+    unter: "Ihre Website lädt schnell, funktioniert auf jedem Handy und wird bei Google gefunden. Um Entwurf, Technik und Betreuung kümmere ich mich.",
     cta: "Erstgespräch anfragen",
     ctaHinweis: "Kostenlos und unverbindlich.",
     wahlTitel: "Von mir gebaut",
@@ -62,8 +62,8 @@ export const de = {
   vorteile: {
     titel: "Vom ersten Gespräch an haben Sie immer mit mir zu tun.",
     kacheln: [
-      { gross: "Sie erreichen mich direkt.", text: "Ich antworte selbst und kenne Ihre Seite, weil ich sie gebaut habe." },
-      { gross: "Nach dem Start müssen Sie nichts mehr tun.", text: "Ich betreue Ihre Seite und sorge dafür, dass sie läuft." },
+      { gross: "Sie erreichen mich direkt.", text: "Meine Nummer steht unten auf dieser Seite." },
+      { gross: "Nach dem Start müssen Sie nichts mehr tun.", text: "" },
       {
         gross: "Ihre Besucher müssen nicht lange warten.",
         text: "Oben steht, wie schnell diese Seite bei Ihnen geladen hat, und Ihre baue ich genauso.",

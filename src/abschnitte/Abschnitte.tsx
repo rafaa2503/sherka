@@ -35,7 +35,7 @@ export function Vorteile() {
           {v.kacheln.map((k, i) => (
             <li key={k.gross} className={`bento-kachel auftritt bento-${i + 1}`} style={{ "--i": i } as React.CSSProperties}>
               <p className="bento-gross">{k.gross}</p>
-              <p className="bento-text">{k.text}</p>
+              {k.text && <p className="bento-text">{k.text}</p>}
             </li>
           ))}
         </ul>

@@ -52,7 +52,7 @@ export const fr: Woerter = typoFr({
 
   intro: {
     stark: "Le téléphone sonne et vous avez les mains prises.",
-    rest: "Sur votre site, les clients peuvent quand même faire leur demande, au lieu d'aller voir ailleurs.",
+    rest: "Qui ne vous joint pas appelle le suivant. Votre site, lui, répond pendant que vous travaillez.",
   },
 
   arbeiten: {

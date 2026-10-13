@@ -48,7 +48,7 @@ export const de = {
 
   intro: {
     stark: "Das Telefon klingelt, und Sie haben die Hände voll.",
-    rest: "Über Ihre Website können Kunden trotzdem anfragen, statt es beim nächsten Betrieb zu versuchen.",
+    rest: "Wer nicht durchkommt, versucht es beim Nächsten. Ihre Seite antwortet, während Sie arbeiten.",
   },
 
   arbeiten: {

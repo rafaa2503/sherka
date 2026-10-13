@@ -65,8 +65,8 @@ export const de = {
       { gross: "Sie erreichen mich direkt.", text: "Meine Nummer steht unten auf dieser Seite." },
       { gross: "Nach dem Start müssen Sie nichts mehr tun.", text: "" },
       {
-        gross: "Ihre Besucher müssen nicht lange warten.",
-        text: "Oben steht, wie schnell diese Seite bei Ihnen geladen hat, und Ihre baue ich genauso.",
+        gross: "Ihre Website bringt Ihnen neue Anfragen.",
+        text: "Kunden finden Sie bei Google und schreiben Ihnen direkt über die Seite, auch ausserhalb Ihrer Öffnungszeiten.",
       },
     ],
   },

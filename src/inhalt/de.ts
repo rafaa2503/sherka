@@ -53,7 +53,6 @@ export const de = {
 
   arbeiten: {
     titel: "Glauben Sie mir nichts. Öffnen Sie die Seiten.",
-    text: "Sie gehören echten Betrieben, und alle sind online.",
     oeffnen: "Öffnen",
     zurueck: "Vorheriges Beispiel",
     weiter: "Nächstes Beispiel",

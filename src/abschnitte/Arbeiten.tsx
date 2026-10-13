@@ -55,7 +55,6 @@ export function Arbeiten() {
     <section className="sektion arbeiten" id="arbeiten" aria-labelledby="arbeiten-titel">
       <div className="shell-breit arbeiten-kopf auftritt">
         <h2 id="arbeiten-titel">{t.arbeiten.titel}</h2>
-        <p className="leise arbeiten-text">{t.arbeiten.text}</p>
       </div>
 
       <ul className="karussell" ref={spur}>

@@ -57,7 +57,6 @@ export const fr: Woerter = typoFr({
 
   arbeiten: {
     titel: "Ne me croyez pas. Ouvrez les sites.",
-    text: "Ce sont ceux de vraies entreprises, et tous sont en ligne.",
     oeffnen: "Ouvrir",
     zurueck: "Exemple précédent",
     weiter: "Exemple suivant",

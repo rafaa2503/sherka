@@ -31,11 +31,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Restaurant in Biel/Bienne",
-        pruefpunkte: ["Speisekarte ohne PDF, Brunch mit eigenem Bereich"],
+        pruefpunkte: ["Gäste lesen die Speisekarte direkt, ohne PDF."],
       },
       fr: {
         was: "Restaurant à Bienne",
-        pruefpunkte: ["Carte sans PDF, brunch avec sa propre rubrique"],
+        pruefpunkte: ["Les clients lisent la carte directement, sans PDF."],
       },
     },
   },
@@ -50,11 +50,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Zahnarztpraxis",
-        pruefpunkte: ["Termin online anfragen, Notfallnummer sofort sichtbar"],
+        pruefpunkte: ["Patienten fragen Termine online an und sehen die Notfallnummer sofort."],
       },
       fr: {
         was: "Cabinet dentaire",
-        pruefpunkte: ["Demande de rendez-vous en ligne, numéro d'urgence bien en vue"],
+        pruefpunkte: ["Les patients demandent un rendez-vous en ligne et voient tout de suite le numéro d'urgence."],
       },
     },
   },
@@ -69,11 +69,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Event-Plattform",
-        pruefpunkte: ["Der Kunde ändert Texte selbst"],
+        pruefpunkte: ["Der Kunde pflegt Termine und Texte selbst."],
       },
       fr: {
         was: "Plateforme d'événements",
-        pruefpunkte: ["Le client change ses textes seul"],
+        pruefpunkte: ["Le client gère lui-même ses dates et ses textes."],
       },
     },
   },
@@ -88,11 +88,11 @@ export const projekte: Projekt[] = [
     text: {
       de: {
         was: "Handel mit Agrar-Rohstoffen",
-        pruefpunkte: ["Für Geschäftspartner im Ausland, bewusst nüchtern"],
+        pruefpunkte: ["Die Seite spricht Geschäftspartner im Ausland sachlich an."],
       },
       fr: {
         was: "Négoce de matières premières agricoles",
-        pruefpunkte: ["Pour des partenaires à l'étranger, volontairement sobre"],
+        pruefpunkte: ["Le site s'adresse sobrement à des partenaires commerciaux à l'étranger."],
       },
     },
   },

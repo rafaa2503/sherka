@@ -3,14 +3,13 @@ import { useAuftritt } from "./lib/bewegung";
 import { Kopf } from "./abschnitte/Kopf";
 import { Hero } from "./abschnitte/Hero";
 import { Arbeiten, Intro } from "./abschnitte/Arbeiten";
-import { Entstehung } from "./abschnitte/Entstehung";
 import { Ablauf, Faq, Vorteile } from "./abschnitte/Abschnitte";
 import { Kontakt } from "./abschnitte/Kontakt";
 import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
 
 /* Die Seite folgt einer Verkaufslinie (plans/texte-marketing.md): Versprechen
-   (Hero), Beweis (Kundenseiten), Problem (Intro), Unterschied (Vorführung auf
-   dunkler Bühne, "Wer baut, bleibt" mit der Person), Weg (Ablauf), Einwände
+   (Hero), Beweis (Kundenseiten), Problem (Intro), Unterschied ("Wer baut, bleibt"
+   mit der Person), Weg (Ablauf), Einwände
    (Fragen), Handlung (Kontakt). */
 
 export default function App() {
@@ -26,7 +25,6 @@ export default function App() {
         <Hero />
         <Arbeiten />
         <Intro />
-        <Entstehung />
         <Vorteile />
         <Ablauf />
         <Faq />

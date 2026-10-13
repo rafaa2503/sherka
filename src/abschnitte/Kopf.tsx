@@ -9,7 +9,6 @@ import "./Kopf.css";
 
 const LINKS = [
   ["arbeiten", "#arbeiten"],
-  ["entstehung", "#entstehung"],
   ["vorteile", "#vorteile"],
   ["ablauf", "#ablauf"],
   ["faq", "#faq"],

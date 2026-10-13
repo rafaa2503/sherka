@@ -8,8 +8,8 @@ export const de = {
   meta: {
     titel: "Webdesign für kleine Betriebe: gebaut und betreut | Sherka",
     beschreibung:
-      "Websites für Salons, Praxen, Restaurants und Handwerker. Eigens für Ihren Betrieb gebaut, danach betreut, alles von einer Person. Erstgespräch kostenlos.",
-    ogTitel: "Websites, die arbeiten.",
+      "Ich baue Websites für Salons, Praxen, Restaurants und Handwerker und betreue sie danach selbst. Das Erstgespräch ist kostenlos und unverbindlich.",
+    ogTitel: "Ich baue und betreue Websites für kleine Betriebe.",
   },
 
   kopf: {
@@ -17,7 +17,6 @@ export const de = {
     navLabel: "Hauptnavigation",
     links: {
       arbeiten: "Beispiele",
-      entstehung: "Vorführung",
       vorteile: "Über mich",
       ablauf: "Ablauf",
       faq: "Fragen",
@@ -33,7 +32,7 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Ich baue Ihre Website und halte sie am Laufen. Sie kümmern sich um Ihre Kunden.",
+    unter: "Ich baue die Website für Ihren Betrieb und betreue sie danach selbst, damit Sie Zeit für Ihre Kunden haben.",
     cta: "Erstgespräch anfragen",
     ctaHinweis: "Kostenlos und unverbindlich.",
     wahlTitel: "Von mir gebaut",
@@ -49,73 +48,42 @@ export const de = {
 
   intro: {
     stark: "Das Telefon klingelt, und Sie haben die Hände voll.",
-    rest: "Wer nicht durchkommt, versucht es beim Nächsten. Ihre Seite antwortet, während Sie arbeiten.",
+    rest: "Über Ihre Website können Kunden trotzdem anfragen, statt es beim nächsten Betrieb zu versuchen.",
   },
 
   arbeiten: {
     titel: "Glauben Sie mir nichts. Öffnen Sie die Seiten.",
-    text: "Echte Betriebe, alle online.",
+    text: "Sie gehören echten Betrieben, und alle sind online.",
     oeffnen: "Öffnen",
     zurueck: "Vorheriges Beispiel",
     weiter: "Nächstes Beispiel",
     bildAlt: "Startseite von {domain}",
   },
 
-  entstehung: {
-    titel: "Beim Baukasten bauen Sie. Hier baue ich.",
-    text: "Der Salon ist erfunden. Die Schritte sind echt.",
-    beispiel: "Beispiel",
-    codeLabel: "Code zu diesem Schritt",
-    schritte: [
-      { name: "Aufbau.", text: "Was Ihre Kunden suchen, steht oben." },
-      { name: "Gestaltung.", text: "Ihre Farben, Ihre Schrift." },
-      { name: "Funktion.", text: "Ein Klick, und die Anfrage ist bei Ihnen." },
-      { name: "Google.", text: "Öffnungszeiten, die Google lesen kann." },
-    ],
-    vorschau: {
-      name: "Salon Lumen",
-      links: ["Leistungen", "Team", "Kontakt"],
-      titel: "Termin buchen, ohne anzurufen.",
-      text: "Wählen Sie eine Zeit. Wir bestätigen per E-Mail.",
-      zeiten: ["Di 10:00", "Di 14:30", "Mi 09:00"],
-      knopf: "Termin anfragen",
-      erfolg: "Anfrage gesendet",
-    },
-  },
-
   vorteile: {
-    titel: "Wer baut, bleibt.",
+    titel: "Vom ersten Gespräch an haben Sie immer mit mir zu tun.",
     kacheln: [
-      { gross: "Ich nehme ab.", text: "Kein Sekretariat. Sie reden mit dem, der gebaut hat." },
-      { gross: "Mein Problem.", text: "Dass die Seite läuft, ist meine Sache. Beim Baukasten Ihre." },
-      { gross: "Keiner wartet.", text: "Die Ladezeit oben haben Sie selbst gemessen. So baue ich." },
+      { gross: "Sie erreichen mich direkt.", text: "Ich antworte selbst und kenne Ihre Seite, weil ich sie gebaut habe." },
+      { gross: "Nach dem Start müssen Sie nichts mehr tun.", text: "Ich betreue Ihre Seite und sorge dafür, dass sie läuft." },
+      {
+        gross: "Ihre Besucher müssen nicht lange warten.",
+        text: "Oben steht, wie schnell diese Seite bei Ihnen geladen hat, und Ihre baue ich genauso.",
+      },
     ],
   },
 
   ablauf: {
-    titel: "Sie liefern Texte und Bilder. Den Rest mache ich.",
+    titel: "Sie sehen, was Sie bekommen, bevor ich mit der Arbeit beginne.",
     schritte: [
-      {
-        zeit: "kostenlos",
-        was: "Wir reden",
-        text: "Sie sagen, was Ihr Betrieb braucht. Ich sage, was ich baue.",
-      },
-      {
-        zeit: "schriftlich",
-        was: "Sie sehen den Entwurf",
-        text: "Wie Ihre Seite aussieht und was ich baue.",
-      },
-      {
-        zeit: "eigens für Sie",
-        was: "Ich baue",
-        text: "Sobald Ihre Texte und Bilder da sind. Online geht nichts, bevor Sie Ja sagen.",
-      },
+      { was: "Sie stellen mir Ihr Unternehmen vor.", text: "Daraus bauen wir gemeinsam ein Konzept." },
+      { was: "Sie erhalten einen ersten Entwurf.", text: "Sie sagen mir, was Sie daran ändern möchten." },
+      { was: "Auf Ihren Wunsch startet dann die Arbeit.", text: "Online geht Ihre Seite erst, wenn Sie einverstanden sind." },
     ],
   },
 
   /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
   person: {
-    text: "Ich bin Raffa Amro Elsherkasi, gelernter Informatiker EFZ. Im Beruf habe ich Systeme am Laufen gehalten. Jetzt Ihre Seite.",
+    text: "Ich bin Raffa Amro Elsherkasi, gelernter Informatiker EFZ, und habe im Beruf dafür gesorgt, dass Systeme laufen.",
     fotoAlt: "Raffa Amro Elsherkasi",
   },
 
@@ -124,23 +92,23 @@ export const de = {
     liste: [
       {
         frage: "Was muss ich liefern?",
-        antwort: "Ein paar Sätze über Ihren Betrieb, die Öffnungszeiten und Fotos, falls Sie welche haben. Mehr nicht.",
+        antwort: "Ich brauche ein paar Sätze über Ihren Betrieb, Ihre Öffnungszeiten und Fotos, falls Sie welche haben.",
       },
       {
         frage: "Ich habe schon eine Website.",
-        antwort: "Dann fangen wir nicht bei null an. Was gut ist, bleibt.",
+        antwort: "Dann schauen wir sie gemeinsam an und behalten, was gut ist.",
       },
       {
         frage: "Bin ich danach von Ihnen abhängig?",
-        antwort: "Nein. Die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um.",
+        antwort: "Nein, die Internetadresse läuft auf Ihren Namen, oder ich schreibe sie auf Sie um.",
       },
     ],
   },
 
   kontakt: {
-    titel: "Reden wir über Ihren Betrieb.",
-    titelMitName: "Reden wir über {name}.",
-    text: "Das Gespräch ist kostenlos und unverbindlich. Antwort innert eines Werktags.",
+    titel: "Stellen Sie mir Ihr Unternehmen vor.",
+    titelMitName: "Stellen Sie mir {name} vor.",
+    text: "Das erste Gespräch ist kostenlos und unverbindlich, und ich antworte innert eines Werktags.",
     whatsapp: "WhatsApp",
     whatsappText: "Grüezi, ich interessiere mich für eine Website für {betrieb}. Hätten Sie Zeit für ein kurzes Erstgespräch?",
     whatsappOhne: "meinen Betrieb",
@@ -174,12 +142,13 @@ export const de = {
     sendet: "Wird geschickt",
 
     erfolgTitel: "Angekommen",
-    erfolgText: "Danke, {name}. Ich melde mich innerhalb eines Werktags.",
-    erfolgEilig: "Eilig? Schreiben Sie auf WhatsApp.",
+    erfolgText: "Danke, {name}. Ich melde mich innert eines Werktags.",
+    erfolgEilig: "Wenn es eilt, schreiben Sie mir auf WhatsApp.",
 
     fehlerTitel: "Das hat nicht geklappt",
     fehlerText: "Ihre Angaben sind noch da. Versuchen Sie es nochmals, oder erreichen Sie mich direkt:",
-    zuViele: "Zu viele Versuche in kurzer Zeit. Bitte etwas später nochmals, oder direkt per Telefon oder WhatsApp.",
+    zuViele:
+      "Das waren zu viele Versuche in kurzer Zeit. Versuchen Sie es bitte etwas später nochmals, oder erreichen Sie mich per Telefon oder WhatsApp.",
     aus: "In dieser Vorschau ist das Formular abgeschaltet.",
 
     pflichtAnliegen: "Wählen Sie kurz aus, worum es geht.",

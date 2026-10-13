@@ -59,7 +59,6 @@ export function Ablauf() {
               <span className="abl-nr" aria-hidden="true">
                 {i + 1}
               </span>
-              <span className="abl-zeit">{s.zeit}</span>
               <h3>{s.was}</h3>
               <p className="leise">{s.text}</p>
             </li>

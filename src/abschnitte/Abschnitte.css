@@ -1,6 +1,6 @@
 .abschnitt-titel {
   margin-bottom: var(--a-7);
-  max-width: 22ch;
+  max-width: 24ch;
 }
 
 /* ---------- Bento ---------- */
@@ -20,9 +20,6 @@
 }
 
 .bento-kachel {
-  /* Die grosse Zeile richtet sich nach der Breite der Kachel, damit der Satz
-     in jeder Sprache auf einer Zeile steht. */
-  container-type: inline-size;
   display: grid;
   align-content: space-between;
   gap: var(--a-6);
@@ -32,19 +29,18 @@
   background: var(--flaeche);
 }
 .bento-gross {
-  font-size: clamp(1.75rem, 11.4cqi, 3.25rem);
-  white-space: nowrap;
+  /* Ein ganzer Satz, kein Schlagwort: darf über zwei, drei Zeilen laufen. */
+  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 .bento-text {
-  font-size: var(--t-gross);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.015em;
+  font-size: var(--t-text);
+  line-height: 1.45;
   color: var(--leise);
-  max-width: 26ch;
+  max-width: 34ch;
 }
 /* Die erste Kachel trägt die Akzentfarbe, die letzte ist dunkel. */
 .bento-1 .bento-gross {
@@ -101,11 +97,6 @@
 .abl-schritt:first-child .abl-nr {
   background: var(--akzent);
   color: var(--auf-akzent);
-}
-.abl-zeit {
-  font-size: var(--t-klein);
-  font-weight: 600;
-  color: var(--leise);
 }
 .abl-schritt h3 {
   font-size: 1.375rem;

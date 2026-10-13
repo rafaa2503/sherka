@@ -69,8 +69,8 @@ export const fr: Woerter = typoFr({
       { gross: "Vous me joignez directement.", text: "Mon numéro se trouve en bas de cette page." },
       { gross: "Après le lancement, vous n'avez rien à faire.", text: "" },
       {
-        gross: "Vos visiteurs n'attendent pas longtemps.",
-        text: "Vous voyez en haut la vitesse de cette page chez vous, et je crée la vôtre de la même façon.",
+        gross: "Votre site vous amène de nouvelles demandes.",
+        text: "Les clients vous trouvent sur Google et vous écrivent directement par le site, même en dehors de vos horaires d'ouverture.",
       },
     ],
   },

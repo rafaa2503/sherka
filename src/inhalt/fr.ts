@@ -12,8 +12,8 @@ export const fr: Woerter = typoFr({
   meta: {
     titel: "Site internet pour petite entreprise, créé et suivi | Sherka",
     beschreibung:
-      "Je crée des sites web pour salons, cabinets, restaurants et artisans, puis je m'en occupe moi-même. Le premier rendez-vous est gratuit et sans engagement.",
-    ogTitel: "Je crée des sites pour les petites entreprises et je m'en occupe.",
+      "Nous créons et gérons des sites internet qui amènent des demandes aux salons, cabinets, restaurants et artisans. Le premier rendez-vous est gratuit.",
+    ogTitel: "Des sites qui amènent des clients au lieu de seulement faire joli.",
   },
 
   kopf: {
@@ -21,7 +21,7 @@ export const fr: Woerter = typoFr({
     navLabel: "Navigation principale",
     links: {
       arbeiten: "Exemples",
-      vorteile: "À propos",
+      vorteile: "Avantages",
       ablauf: "Étapes",
       faq: "Questions",
     },
@@ -36,10 +36,10 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins d'efforts.",
-    unter: "Votre site s'ouvre vite, fonctionne sur tous les téléphones et apparaît sur Google. Je gère la maquette, la technique et le suivi.",
+    unter: "Un beau site, beaucoup en ont un. Nous vous en créons un qui amène des clients.",
     cta: "Demander un rendez-vous",
     ctaHinweis: "Gratuit et sans engagement.",
-    wahlTitel: "Faits par moi",
+    wahlTitel: "Nos réalisations",
     zeigen: "Afficher {domain} dans l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
     handyAlt: "{domain} sur un téléphone",
@@ -56,7 +56,7 @@ export const fr: Woerter = typoFr({
   },
 
   arbeiten: {
-    titel: "Ne me croyez pas. Ouvrez les sites.",
+    titel: "Ne nous croyez pas. Ouvrez les sites.",
     oeffnen: "Ouvrir",
     zurueck: "Exemple précédent",
     weiter: "Exemple suivant",
@@ -64,30 +64,30 @@ export const fr: Woerter = typoFr({
   },
 
   vorteile: {
-    titel: "Dès le premier rendez-vous, vous avez toujours affaire à moi.",
+    titel: "Un site qui vous rapporte.",
     kacheln: [
-      { gross: "Vous me joignez directement.", text: "Mon numéro se trouve en bas de cette page." },
-      { gross: "Après le lancement, vous n'avez rien à faire.", text: "" },
       {
-        gross: "Votre site vous amène de nouvelles demandes.",
-        text: "Les clients vous trouvent sur Google et vous écrivent directement par le site, même en dehors de vos horaires d'ouverture.",
+        gross: "Les clients vous trouvent avant vos concurrents.",
+        text: "Nous créons votre site pour que Google puisse lire votre offre et vos horaires.",
+      },
+      {
+        gross: "Les demandes arrivent même quand vous avez fermé.",
+        text: "Les clients vous écrivent directement par le site, au lieu d'essayer par téléphone.",
+      },
+      {
+        gross: "Nous nous occupons de la technique, pas vous.",
+        text: "Nous tenons votre site à jour et nous faisons les changements pour vous.",
       },
     ],
   },
 
   ablauf: {
-    titel: "Vous voyez ce que vous recevez avant que je commence le travail.",
+    titel: "Vous voyez ce que vous recevez avant que nous commencions le travail.",
     schritte: [
-      { was: "Vous me présentez votre entreprise.", text: "À partir de là, nous élaborons ensemble un concept." },
-      { was: "Vous recevez une première maquette.", text: "Vous me dites ce que vous souhaitez y changer." },
+      { was: "Vous nous présentez votre entreprise.", text: "À partir de là, nous élaborons ensemble un concept." },
+      { was: "Vous recevez une première maquette.", text: "Vous nous dites ce que vous souhaitez y changer." },
       { was: "Ensuite, le travail commence à votre demande.", text: "Votre site n'est mis en ligne que lorsque vous êtes d'accord." },
     ],
-  },
-
-  /* Steht unter dem Titel der Vorteile: die Person ist der Beleg, kein eigenes Kapitel. */
-  person: {
-    text: "Je suis Raffa Amro Elsherkasi, informaticien CFC de formation, et dans mon métier, j'ai veillé à ce que les systèmes fonctionnent.",
-    fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   faq: {
@@ -95,7 +95,7 @@ export const fr: Woerter = typoFr({
     liste: [
       {
         frage: "Que dois-je fournir ?",
-        antwort: "J'ai besoin de quelques phrases sur votre entreprise, de vos horaires et de photos, si vous en avez.",
+        antwort: "Nous avons besoin de quelques phrases sur votre entreprise, de vos horaires et de photos, si vous en avez.",
       },
       {
         frage: "J'ai déjà un site.",
@@ -103,15 +103,15 @@ export const fr: Woerter = typoFr({
       },
       {
         frage: "Et après, je dépends de vous ?",
-        antwort: "Non, l'adresse internet est à votre nom, ou je vous la transfère.",
+        antwort: "Non, l'adresse internet est à votre nom, ou nous vous la transférons.",
       },
     ],
   },
 
   kontakt: {
-    titel: "Présentez-moi votre entreprise.",
-    titelMitName: "Présentez-moi {name}.",
-    text: "Le premier rendez-vous est gratuit et sans engagement, et je vous réponds sous un jour ouvrable.",
+    titel: "Présentez-nous votre entreprise.",
+    titelMitName: "Présentez-nous {name}.",
+    text: "Le premier rendez-vous est gratuit et sans engagement, et nous vous répondons sous un jour ouvrable.",
     whatsapp: "WhatsApp",
     whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un premier rendez-vous ?",
     whatsappOhne: "mon entreprise",
@@ -145,13 +145,13 @@ export const fr: Woerter = typoFr({
     sendet: "Envoi en cours",
 
     erfolgTitel: "Bien reçu",
-    erfolgText: "Merci, {name}. Je vous réponds sous un jour ouvrable.",
-    erfolgEilig: "Si c'est urgent, écrivez-moi sur WhatsApp.",
+    erfolgText: "Merci, {name}. Nous vous répondons sous un jour ouvrable.",
+    erfolgEilig: "Si c'est urgent, écrivez-nous sur WhatsApp.",
 
     fehlerTitel: "Ça n'a pas marché",
-    fehlerText: "Vos réponses sont toujours là. Réessayez, ou joignez-moi directement :",
+    fehlerText: "Vos réponses sont toujours là. Réessayez, ou joignez-nous directement :",
     zuViele:
-      "Il y a eu trop de tentatives en peu de temps. Réessayez un peu plus tard, s'il vous plaît, ou joignez-moi par téléphone ou sur WhatsApp.",
+      "Il y a eu trop de tentatives en peu de temps. Réessayez un peu plus tard, s'il vous plaît, ou joignez-nous par téléphone ou sur WhatsApp.",
     aus: "Dans cet aperçu, le formulaire est désactivé.",
 
     pflichtAnliegen: "Choisissez de quoi il s'agit.",
@@ -161,7 +161,7 @@ export const fr: Woerter = typoFr({
     falschesTel: "Ce numéro de téléphone semble incorrect.",
     fehlerAnzahl: "Informations manquantes : {n}",
 
-    datenschutzHinweis: "Je n'utilise vos données que pour vous répondre.",
+    datenschutzHinweis: "Nous n'utilisons vos données que pour vous répondre.",
   },
 
   aktionsleiste: {

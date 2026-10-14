@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSprache } from "../lib/sprache";
 import { fuelle } from "../lib/typo";
 import { projekte } from "../data/projekte";
-import { IconCheck, IconPfeil } from "./Icons";
+import { IconPfeil } from "./Icons";
 import "./Arbeiten.css";
 
 /* Einleitung im Apple-Satz und die vier Arbeiten als Karussell mit grossen
@@ -71,16 +71,8 @@ export function Arbeiten() {
               />
             </div>
             <div className="kachel-text">
-              <p className="kachel-was">{p.text[sprache].was}</p>
               <h3 translate="no">{p.domain}</h3>
-              <ul className="kachel-punkte">
-                {p.text[sprache].pruefpunkte.map((pp) => (
-                  <li key={pp}>
-                    <IconCheck />
-                    <span>{pp}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="kachel-was">{p.text[sprache].was}</p>
               <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
                 {t.arbeiten.oeffnen}
               </a>

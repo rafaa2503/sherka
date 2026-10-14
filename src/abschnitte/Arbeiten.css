@@ -77,32 +77,11 @@
   padding: var(--a-5) var(--a-5) var(--a-4);
 }
 .kachel-was {
-  font-size: var(--t-klein);
-  font-weight: 600;
+  font-size: 1.0625rem;
   color: var(--leise);
 }
 .kachel-text h3 {
   font-size: 1.5rem;
-}
-.kachel-punkte {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--a-2);
-}
-.kachel-punkte li {
-  display: flex;
-  gap: var(--a-2);
-  align-items: flex-start;
-  font-size: 0.9375rem;
-}
-.kachel-punkte svg {
-  flex: none;
-  width: 16px;
-  height: 16px;
-  margin-top: 4px;
-  color: var(--gut);
 }
 
 .karussell-steuerung {

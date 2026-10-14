@@ -16,7 +16,8 @@ export type Projekt = {
   /* bledi-bienne.ch sendet X-Frame-Options: SAMEORIGIN und lässt sich nicht
      einbetten. Dort gibt es nur den Link. */
   einbettbar: boolean;
-  text: Record<Sprache, { was: string; pruefpunkte: string[] }>;
+  /* Was für eine Seite es ist, in Raffas Worten. */
+  text: Record<Sprache, { was: string }>;
 };
 
 export const projekte: Projekt[] = [
@@ -29,14 +30,8 @@ export const projekte: Projekt[] = [
     domainBei: "sherka",
     einbettbar: false,
     text: {
-      de: {
-        was: "Restaurant in Biel/Bienne",
-        pruefpunkte: ["Gäste lesen die Speisekarte direkt, ohne PDF."],
-      },
-      fr: {
-        was: "Restaurant à Bienne",
-        pruefpunkte: ["Les clients lisent la carte directement, sans PDF."],
-      },
+      de: { was: "Marokkanisches Restaurant in Biel" },
+      fr: { was: "Restaurant marocain à Bienne" },
     },
   },
   {
@@ -48,14 +43,8 @@ export const projekte: Projekt[] = [
     domainBei: "sherka",
     einbettbar: true,
     text: {
-      de: {
-        was: "Zahnarztpraxis",
-        pruefpunkte: ["Patienten fragen Termine online an und sehen die Notfallnummer sofort."],
-      },
-      fr: {
-        was: "Cabinet dentaire",
-        pruefpunkte: ["Les patients demandent un rendez-vous en ligne et voient tout de suite le numéro d'urgence."],
-      },
+      de: { was: "Zahnarztpraxis in Bern" },
+      fr: { was: "Cabinet dentaire à Berne" },
     },
   },
   {
@@ -67,14 +56,8 @@ export const projekte: Projekt[] = [
     domainBei: "kunde",
     einbettbar: true,
     text: {
-      de: {
-        was: "Event-Plattform",
-        pruefpunkte: ["Der Kunde pflegt Termine und Texte selbst."],
-      },
-      fr: {
-        was: "Plateforme d'événements",
-        pruefpunkte: ["Le client gère lui-même ses dates et ses textes."],
-      },
+      de: { was: "Event-Seite mit Ticketshop" },
+      fr: { was: "Site d'événements avec billetterie" },
     },
   },
   {
@@ -86,14 +69,8 @@ export const projekte: Projekt[] = [
     domainBei: "kunde",
     einbettbar: true,
     text: {
-      de: {
-        was: "Handel mit Agrar-Rohstoffen",
-        pruefpunkte: ["Die Seite spricht Geschäftspartner im Ausland sachlich an."],
-      },
-      fr: {
-        was: "Négoce de matières premières agricoles",
-        pruefpunkte: ["Le site s'adresse sobrement à des partenaires commerciaux à l'étranger."],
-      },
+      de: { was: "Handels-Website für ein Schweizer Unternehmen" },
+      fr: { was: "Site commercial pour une entreprise suisse" },
     },
   },
 ];

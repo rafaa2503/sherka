@@ -11,7 +11,7 @@ import { FORMSPREE } from "../lib/formular";
 export type Block = { titel: string; absaetze: string[] };
 export type RechtText = { titel: string; stand: string; bloecke: Block[] };
 
-const MAIL = "hallo@sherka.ch";
+const MAIL = "info@sherka.ch";
 
 export const IMPRESSUM: Record<Sprache, RechtText> = {
   de: {

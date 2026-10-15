@@ -55,7 +55,7 @@ for (const og of ["public/og-de.png", "public/og-fr.png"]) {
 try {
   await lookup("sherka.ch");
 } catch {
-  fehler.push("sherka.ch löst nicht auf. Domain registrieren und DNS einrichten, sonst kommen keine Mails an hallo@sherka.ch.");
+  fehler.push("sherka.ch löst nicht auf. Domain registrieren und DNS einrichten, sonst kommen keine Mails an info@sherka.ch.");
 }
 
 // 5. Porträt

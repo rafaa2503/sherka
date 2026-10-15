@@ -22,10 +22,10 @@ node scripts/og.mjs  # Teilen-Bilder neu erzeugen
 ## Produktion auf Infomaniak
 
 1. **Domain:** sherka.ch registrieren (Halter Raffa), DNS bei Infomaniak. `www` leitet die `.htaccess` auf die Hauptdomain um.
-2. **Mail:** Postfach `hallo@sherka.ch` und Absender `anfrage@sherka.ch` anlegen.
+2. **Mail:** Postfach `info@sherka.ch` anlegen (dient auch als Absender).
    - SPF: `v=spf1 include:spf.infomaniak.ch -all`
    - DKIM im Manager aktivieren
-   - DMARC zuerst `v=DMARC1; p=none; rua=mailto:hallo@sherka.ch`, nach vier Wochen `quarantine`, später `reject`
+   - DMARC zuerst `v=DMARC1; p=none; rua=mailto:info@sherka.ch`, nach vier Wochen `quarantine`, später `reject`
 3. **Webhosting:** PHP 8.2 oder neuer. Webordner z. B. `sites/sherka.ch`.
 4. **Formular-Konfiguration:** `deploy/sherka-config.example.php` kopieren, Werte eintragen, als `sherka-config.php` EINE EBENE ÜBER dem Webordner ablegen. Ordner `sherka-rate` daneben anlegen (beschreibbar).
 5. **Auslieferung:** GitHub Action `Deploy` (`.github/workflows/deploy.yml`). Secrets: `INFOMANIAK_SSH_HOST`, `INFOMANIAK_SSH_USER`, `INFOMANIAK_SSH_KEY`, `INFOMANIAK_WEBORDNER`.

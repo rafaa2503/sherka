@@ -36,7 +36,7 @@ for (const [datei, name] of [["public/impressum.html", "Impressum"], ["public/da
 // 3. Formularziel gesetzt?
 const env = (await lies(".env.local")) + (await lies(".env"));
 if (!/VITE_FORMSPREE=\S+/.test(env)) {
-  fehler.push("VITE_FORMSPREE ist leer. Das Formular meldet Erfolg, verschickt aber nichts.");
+  fehler.push("VITE_FORMSPREE ist leer. Live zeigt das Formular dann nur die Fehlermeldung, keine Anfrage kommt an.");
 }
 
 // 4. Portraet vorhanden?

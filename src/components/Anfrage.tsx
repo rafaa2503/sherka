@@ -72,9 +72,12 @@ export function Anfrage() {
       return;
     }
 
+    // Ohne Formularziel geht nichts raus. Lokal darf der Erfolg zum Testen
+    // gespielt werden, live nie: dort sieht der Besucher die Fehlermeldung
+    // mit Telefon und E-Mail, statt dass seine Anfrage still verschwindet.
     if (!FORMSPREE) {
       console.warn("VITE_FORMSPREE fehlt. Anfrage wurde nicht verschickt.", Object.fromEntries(daten));
-      setZustand("fertig");
+      setZustand(import.meta.env.DEV ? "fertig" : "fehler");
       return;
     }
 

@@ -101,7 +101,7 @@ const csp = [
   "font-src 'self'",
   "media-src 'self'",
   "manifest-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://formspree.io",
   `frame-src ${REFERENZEN.join(" ")}`,
   "form-action 'self'",
   "frame-ancestors 'none'",

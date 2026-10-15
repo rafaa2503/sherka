@@ -1,4 +1,5 @@
 import type { Sprache } from "../lib/sprache";
+import { FORMSPREE } from "../lib/formular";
 
 /* Impressum und Datenschutzerklärung, Deutsch und Französisch.
    Stand: Hosting und Formular bei Infomaniak (Schweiz), keine Cookies, keine
@@ -109,7 +110,9 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
       {
         titel: "Kontaktformular",
         absaetze: [
-          "Wenn Sie das Formular abschicken, übermittle ich Ihre Angaben (Anliegen, Betrieb, Zeitrahmen, Ihre Nachricht, Name, E-Mail-Adresse oder Telefonnummer, Sprache) über einen Server der Infomaniak Network SA in der Schweiz an mein Postfach, ebenfalls bei Infomaniak. Ich verwende sie nur, um Ihre Anfrage zu beantworten. Bitte geben Sie im Formular keine Gesundheits- oder Patientendaten an.",
+          FORMSPREE
+            ? "Wenn Sie das Formular abschicken, werden Ihre Angaben (Anliegen, Betrieb, Zeitrahmen, Ihre Nachricht, Name, E-Mail-Adresse oder Telefonnummer, Sprache) über den Dienst Formspree (Formspree Inc., USA) an mein Postfach übermittelt. Formspree bearbeitet die Angaben in meinem Auftrag, dabei werden sie in die USA übertragen. Ich verwende sie nur, um Ihre Anfrage zu beantworten. Bitte geben Sie im Formular keine Gesundheits- oder Patientendaten an."
+            : "Wenn Sie das Formular abschicken, übermittle ich Ihre Angaben (Anliegen, Betrieb, Zeitrahmen, Ihre Nachricht, Name, E-Mail-Adresse oder Telefonnummer, Sprache) über einen Server der Infomaniak Network SA in der Schweiz an mein Postfach, ebenfalls bei Infomaniak. Ich verwende sie nur, um Ihre Anfrage zu beantworten. Bitte geben Sie im Formular keine Gesundheits- oder Patientendaten an.",
         ],
       },
       {
@@ -155,7 +158,9 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
       {
         titel: "Formulaire de contact",
         absaetze: [
-          "Lorsque vous envoyez le formulaire, vos indications (objet, entreprise, délai, message, nom, adresse e-mail ou numéro de téléphone, langue) sont transmises via un serveur d'Infomaniak Network SA en Suisse à ma boîte mail, également chez Infomaniak. Je les utilise uniquement pour répondre à votre demande. Merci de ne pas indiquer de données de santé ou de patients dans le formulaire.",
+          FORMSPREE
+            ? "Lorsque vous envoyez le formulaire, vos indications (objet, entreprise, délai, message, nom, adresse e-mail ou numéro de téléphone, langue) sont transmises à ma boîte mail par le service Formspree (Formspree Inc., États-Unis). Formspree traite ces données pour mon compte, elles sont alors transférées aux États-Unis. Je les utilise uniquement pour répondre à votre demande. Merci de ne pas indiquer de données de santé ou de patients dans le formulaire."
+            : "Lorsque vous envoyez le formulaire, vos indications (objet, entreprise, délai, message, nom, adresse e-mail ou numéro de téléphone, langue) sont transmises via un serveur d'Infomaniak Network SA en Suisse à ma boîte mail, également chez Infomaniak. Je les utilise uniquement pour répondre à votre demande. Merci de ne pas indiquer de données de santé ou de patients dans le formulaire.",
         ],
       },
       {

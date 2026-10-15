@@ -310,3 +310,16 @@ html[data-bewegung="voll"] .auftritt:not(.da) {
 .buehne-dunkel .marke-punkt {
   color: #ffa51e;
 }
+
+.marke-zeichen {
+  flex: none;
+  width: auto;
+  height: 1.15em;
+}
+.marke-punkt-kreis {
+  fill: #c77700;
+}
+:root[data-theme="dunkel"] .marke-punkt-kreis,
+.buehne-dunkel .marke-punkt-kreis {
+  fill: #ffa51e;
+}

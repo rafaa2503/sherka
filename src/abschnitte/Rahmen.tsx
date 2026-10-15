@@ -3,6 +3,7 @@ import { useSprache } from "../lib/sprache";
 import { TELEFON_ROH, whatsappLink } from "../lib/kontakt";
 import { fuelle } from "../lib/typo";
 import { useBetrieb } from "../lib/betrieb";
+import { Marke } from "./Marke";
 import { IconPhone, IconWhatsapp } from "./Icons";
 import "./Rahmen.css";
 
@@ -70,7 +71,7 @@ export function Fuss() {
     <footer className="fuss">
       <div className="shell fuss-innen">
         <span className="fuss-marke" translate="no" aria-label="Sherka">
-          sherka<span className="marke-punkt">.</span>
+          <Marke />
         </span>
         <span className="leise">{t.fuss.ort}</span>
         <a href={t.fuss.impressumPfad}>{t.fuss.impressum}</a>

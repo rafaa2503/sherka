@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { STARTPFAD, useSprache } from "../lib/sprache";
 import { aktuellesThema, setzeThema, type Thema } from "../lib/thema";
 import { IconListe, IconMond, IconSonne, IconX } from "./Icons";
+import { Marke } from "./Marke";
 import "./Kopf.css";
 
 /* Dünne Glasleiste wie auf apple.com (bei reduzierter Transparenz deckend). Der Sprachwechsel ist ein echter Link auf die
@@ -66,7 +67,7 @@ export function Kopf() {
     <header className={`kopf${gescrollt ? " kopf-linie" : ""}${ueberDunkel ? " buehne-dunkel kopf-dunkel" : ""}`}>
       <div className="kopf-innen">
         <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no" aria-label="Sherka">
-          sherka<span className="marke-punkt">.</span>
+          <Marke />
         </a>
 
         <nav className="kopf-nav" aria-label={t.kopf.navLabel}>

@@ -184,7 +184,13 @@ const ht = [
   "RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]",
   "RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]",
   "RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]",
-  ...weiterleitungen.map(([a, b]) => `RewriteRule ^${a.slice(1).replace(/\./g, "\\.")}$ ${b} [L,R=301]`),
+  // Nur die vom Besucher angefragte Adresse umleiten (THE_REQUEST), nicht die
+  // interne Anfrage von DirectoryIndex: sonst leitet "/" auf "/index.html" und
+  // die Regel für index.html zurück auf "/", eine Endlosschleife.
+  ...weiterleitungen.flatMap(([a, b]) => {
+    const pfad = a.replace(/\./g, "\\.");
+    return [`RewriteCond %{THE_REQUEST} \\s${pfad}[\\s?]`, `RewriteRule ^${pfad.slice(1)}$ ${b} [L,R=301]`];
+  }),
   "",
   "<IfModule mod_headers.c>",
   ...Object.entries(header).map(([k, v]) => `  Header always set ${k} "${v.replace(/"/g, '\\"')}"`),

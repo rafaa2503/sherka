@@ -8,7 +8,7 @@ export const ENDPUNKT = "/api/anfrage.php";
 /* Formspree-Endpunkt aus dem Dashboard (Form > Integration), z. B.
    https://formspree.io/f/abcdwxyz. Die Adresse ist nicht geheim: Sie steht
    ohnehin im Code, den jeder Browser lädt. */
-export const FORMSPREE: string = import.meta.env.VITE_FORMSPREE || "";
+export const FORMSPREE: string = import.meta.env.VITE_FORMSPREE || "https://formspree.io/f/xljgajzy";
 export const FORMULAR_AUS = import.meta.env.VITE_FORMULAR_AUS === "1";
 
 export type Anfrage = {

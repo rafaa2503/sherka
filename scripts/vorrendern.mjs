@@ -119,7 +119,9 @@ const header = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
-  "Cross-Origin-Opener-Policy": "same-origin",
+  // Kein Cross-Origin-Opener-Policy: Gemessen hielt der Header den Aufbau der
+  // Seite online rund zwei Sekunden auf (Prozesswechsel im Browser), und eine
+  // reine Infoseite ohne Pop-ups gewinnt damit nichts.
 };
 
 const weiterleitungen = [

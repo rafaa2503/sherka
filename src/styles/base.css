@@ -300,3 +300,13 @@ html[data-bewegung="voll"] .auftritt:not(.da) {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Wortmarke "sherka." aus dem Logo: der Punkt in Bernstein. Auf hellem Grund
+   ein tieferer Ton, damit er nicht verblasst. */
+.marke-punkt {
+  color: #c77700;
+}
+:root[data-theme="dunkel"] .marke-punkt,
+.buehne-dunkel .marke-punkt {
+  color: #ffa51e;
+}

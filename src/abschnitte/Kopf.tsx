@@ -65,8 +65,8 @@ export function Kopf() {
   return (
     <header className={`kopf${gescrollt ? " kopf-linie" : ""}${ueberDunkel ? " buehne-dunkel kopf-dunkel" : ""}`}>
       <div className="kopf-innen">
-        <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no">
-          Sherka
+        <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no" aria-label="Sherka">
+          sherka<span className="marke-punkt">.</span>
         </a>
 
         <nav className="kopf-nav" aria-label={t.kopf.navLabel}>

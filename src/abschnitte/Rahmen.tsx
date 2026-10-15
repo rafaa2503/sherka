@@ -69,8 +69,8 @@ export function Fuss() {
   return (
     <footer className="fuss">
       <div className="shell fuss-innen">
-        <span className="fuss-marke" translate="no">
-          Sherka
+        <span className="fuss-marke" translate="no" aria-label="Sherka">
+          sherka<span className="marke-punkt">.</span>
         </span>
         <span className="leise">{t.fuss.ort}</span>
         <a href={t.fuss.impressumPfad}>{t.fuss.impressum}</a>

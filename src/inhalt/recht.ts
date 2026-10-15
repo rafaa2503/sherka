@@ -15,18 +15,18 @@ const MAIL = "hallo@sherka.ch";
 export const IMPRESSUM: Record<Sprache, RechtText> = {
   de: {
     titel: "Impressum",
-    stand: "Stand: [Datum]",
+    stand: "Stand: 15. Oktober 2026",
     bloecke: [
       {
         titel: "Verantwortlich",
         absaetze: [
           "Raffa Amro Elsherkasi, handelnd unter Sherka",
-          "[Strasse und Nummer]",
-          "[PLZ] Biel/Bienne, Schweiz",
+          "Alfred-Aebi-Strasse 92",
+          "2503 Biel/Bienne, Schweiz",
         ],
       },
       { titel: "Kontakt", absaetze: [`Telefon +41 78 745 00 47`, `E-Mail ${MAIL}`] },
-      { titel: "Rechtsform", absaetze: ["[Einzelunternehmen, UID falls vorhanden]"] },
+      { titel: "Rechtsform", absaetze: ["Einzelunternehmen, nicht im Handelsregister eingetragen"] },
       {
         titel: "Haftung für Inhalte",
         absaetze: [
@@ -49,14 +49,14 @@ export const IMPRESSUM: Record<Sprache, RechtText> = {
   },
   fr: {
     titel: "Mentions légales",
-    stand: "État : [date]",
+    stand: "État : 15 octobre 2026",
     bloecke: [
       {
         titel: "Responsable",
-        absaetze: ["Raffa Amro Elsherkasi, sous le nom de Sherka", "[rue et numéro]", "[NPA] Bienne, Suisse"],
+        absaetze: ["Raffa Amro Elsherkasi, sous le nom de Sherka", "Alfred-Aebi-Strasse 92", "2503 Bienne, Suisse"],
       },
       { titel: "Contact", absaetze: [`Téléphone +41 78 745 00 47`, `E-mail ${MAIL}`] },
-      { titel: "Forme juridique", absaetze: ["[entreprise individuelle, IDE le cas échéant]"] },
+      { titel: "Forme juridique", absaetze: ["Entreprise individuelle, non inscrite au registre du commerce"] },
       {
         titel: "Responsabilité pour les contenus",
         absaetze: [
@@ -82,11 +82,11 @@ export const IMPRESSUM: Record<Sprache, RechtText> = {
 export const DATENSCHUTZ: Record<Sprache, RechtText> = {
   de: {
     titel: "Datenschutzerklärung",
-    stand: "Stand: [Datum]",
+    stand: "Stand: 15. Oktober 2026",
     bloecke: [
       {
         titel: "Verantwortliche Person",
-        absaetze: [`Raffa Amro Elsherkasi, [Strasse und Nummer], [PLZ] Biel/Bienne, Schweiz. E-Mail ${MAIL}.`],
+        absaetze: [`Raffa Amro Elsherkasi, Alfred-Aebi-Strasse 92, 2503 Biel/Bienne, Schweiz. E-Mail ${MAIL}.`],
       },
       {
         titel: "Grundsatz",
@@ -97,7 +97,7 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
       {
         titel: "Aufruf der Website",
         absaetze: [
-          "Die Website liegt bei der Infomaniak Network SA in der Schweiz. Beim Aufruf fallen technisch notwendige Daten an (IP-Adresse, Zeitpunkt, aufgerufene Seite, Browserangaben). Sie dienen dem Betrieb und der Sicherheit und werden nach [Frist laut Infomaniak] gelöscht.",
+          "Die Website liegt bei der Infomaniak Network SA in der Schweiz. Beim Aufruf fallen technisch notwendige Daten an (IP-Adresse, Zeitpunkt, aufgerufene Seite, Browserangaben). Sie dienen nur dem Betrieb und der Sicherheit der Website.",
         ],
       },
       {
@@ -110,13 +110,6 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
         titel: "Kontaktformular",
         absaetze: [
           "Wenn Sie das Formular abschicken, übermittle ich Ihre Angaben (Anliegen, Betrieb, Zeitrahmen, Ihre Nachricht, Name, E-Mail-Adresse oder Telefonnummer, Sprache) über einen Server der Infomaniak Network SA in der Schweiz an mein Postfach, ebenfalls bei Infomaniak. Ich verwende sie nur, um Ihre Anfrage zu beantworten. Bitte geben Sie im Formular keine Gesundheits- oder Patientendaten an.",
-          "[Falls Mails an ein weiteres Postfach weitergeleitet werden, hier den Anbieter und das Land nennen. Sonst diesen Absatz streichen.]",
-        ],
-      },
-      {
-        titel: "Live-Ansicht der Referenzen",
-        absaetze: [
-          "Unter Abnahme können Sie einzelne Kundenseiten in einem Fenster live ansehen. Erst wenn Sie darauf klicken, wird die Seite des Kunden geladen. Dabei erhält deren Betreiber Ihre IP-Adresse und es gilt dessen Datenschutzerklärung. Die Bilder der Referenzen liegen auf meinem eigenen Server.",
         ],
       },
       {
@@ -135,11 +128,11 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
   },
   fr: {
     titel: "Protection des données",
-    stand: "État : [date]",
+    stand: "État : 15 octobre 2026",
     bloecke: [
       {
         titel: "Personne responsable",
-        absaetze: [`Raffa Amro Elsherkasi, [rue et numéro], [NPA] Bienne, Suisse. E-mail ${MAIL}.`],
+        absaetze: [`Raffa Amro Elsherkasi, Alfred-Aebi-Strasse 92, 2503 Bienne, Suisse. E-mail ${MAIL}.`],
       },
       {
         titel: "Principe",
@@ -150,7 +143,7 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
       {
         titel: "Consultation du site",
         absaetze: [
-          "Le site est hébergé par Infomaniak Network SA en Suisse. Lors de la consultation, des données techniquement nécessaires sont traitées (adresse IP, heure, page consultée, informations sur le navigateur). Elles servent au fonctionnement et à la sécurité et sont effacées après [délai selon Infomaniak].",
+          "Le site est hébergé par Infomaniak Network SA en Suisse. Lors de la consultation, des données techniquement nécessaires sont traitées (adresse IP, heure, page consultée, informations sur le navigateur). Elles servent uniquement au fonctionnement et à la sécurité du site.",
         ],
       },
       {
@@ -163,13 +156,6 @@ export const DATENSCHUTZ: Record<Sprache, RechtText> = {
         titel: "Formulaire de contact",
         absaetze: [
           "Lorsque vous envoyez le formulaire, vos indications (objet, entreprise, délai, message, nom, adresse e-mail ou numéro de téléphone, langue) sont transmises via un serveur d'Infomaniak Network SA en Suisse à ma boîte mail, également chez Infomaniak. Je les utilise uniquement pour répondre à votre demande. Merci de ne pas indiquer de données de santé ou de patients dans le formulaire.",
-          "[Si les e-mails sont transférés vers une autre boîte, indiquer ici le prestataire et le pays. Sinon, supprimer ce paragraphe.]",
-        ],
-      },
-      {
-        titel: "Aperçu en direct des références",
-        absaetze: [
-          "Sous Réception des travaux, vous pouvez afficher certains sites de clients en direct. Le site du client n'est chargé que lorsque vous cliquez. Son exploitant reçoit alors votre adresse IP et sa propre déclaration de protection des données s'applique. Les images des références sont hébergées sur mon propre serveur.",
         ],
       },
       {

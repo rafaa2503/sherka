@@ -47,8 +47,8 @@ export function Nav() {
   return (
     <header className={gescrollt ? "nav nav-fest" : "nav"}>
       <div className="shell nav-inhalt">
-        <a className="marke" href="#oben">
-          Sherka
+        <a className="marke" href="#oben" aria-label="Sherka">
+          sherka<span className="marke-punkt">.</span>
         </a>
 
         <nav className="nav-links" aria-label="Navigation">

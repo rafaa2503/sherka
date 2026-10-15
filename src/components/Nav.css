@@ -26,6 +26,12 @@
   letter-spacing: -0.035em;
   text-decoration: none;
 }
+/* Der Punkt aus dem Logo. Auf Hellgrau verblasst --amber, deshalb dort der tiefere Ton. */
+.marke-punkt { color: var(--amber-tief); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="hell"]) .marke-punkt { color: var(--amber); }
+}
+:root[data-theme="dunkel"] .marke-punkt { color: var(--amber); }
 
 .nav-links { display: flex; gap: 1.75rem; }
 .nav-links a {

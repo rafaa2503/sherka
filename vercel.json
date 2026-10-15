@@ -27,7 +27,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy-Report-Only",
-          "value": "default-src 'none'; script-src 'self' 'sha256-g4hEYS+sK5+X1igwMAvOUUuMCW4ImrXQLQfmdLKc444='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; manifest-src 'self'; connect-src 'self' https://formspree.io; frame-src https://bern-zahnarzt-team.ch https://kamil-energy.ch https://takabul.ch; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'none'; script-src 'self' 'sha256-g4hEYS+sK5+X1igwMAvOUUuMCW4ImrXQLQfmdLKc444='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; manifest-src 'self'; connect-src 'self' https://formspree.io; frame-src https://bern-zahnarzt-team.ch https://kamil-energy.ch https://takabul.ch; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
         },
         {
           "key": "Strict-Transport-Security",

@@ -107,7 +107,6 @@ const csp = [
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "object-src 'none'",
-  "upgrade-insecure-requests",
 ].join("; ");
 
 // Zuerst nur melden, nicht blockieren. Scharf schalten mit SHERKA_CSP_SCHARF=1.

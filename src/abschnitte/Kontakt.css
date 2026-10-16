@@ -3,7 +3,14 @@
   .kontakt { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: var(--a-8); }
   .kontakt-links { position: sticky; top: calc(var(--kopf) + var(--a-6)); }
 }
-.kontakt-links h2 { overflow-wrap: anywhere; }
+/* Titel wächst mit der Spalte, damit "Unternehmen" bzw. "entreprise" immer
+   ganz auf eine Zeile passt. Nur ein sehr langer Betriebsname (aus dem
+   Formular) darf als Notlösung umbrechen. */
+.kontakt-links { container-type: inline-size; }
+.kontakt-links h2 {
+  font-size: min(var(--t-h2), 13cqi);
+  overflow-wrap: break-word;
+}
 .kontakt-text { font-size: var(--t-gross); }
 
 .kanaele { list-style: none; margin: var(--a-3) 0 0; padding: 0; display: grid; }

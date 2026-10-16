@@ -80,8 +80,14 @@
   font-size: 1.0625rem;
   color: var(--leise);
 }
+/* Die Domain bleibt auf einer Zeile: Auf schmalen Kacheln wird sie
+   kleiner, statt am Bindestrich umzubrechen. */
+.kachel-text {
+  container-type: inline-size;
+}
 .kachel-text h3 {
-  font-size: 1.5rem;
+  font-size: min(1.5rem, 7.8cqi);
+  white-space: nowrap;
 }
 
 .karussell-steuerung {

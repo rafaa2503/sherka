@@ -17,7 +17,7 @@ const logo = `data:image/svg+xml;base64,${Buffer.from(lockup).toString("base64")
 
 const TEXTE = {
   de: "Mehr Kunden. Weniger Aufwand.",
-  fr: "Plus de clients. Moins d'efforts.",
+  fr: "Plus de clients. Moins de tracas.",
 };
 
 const b = await chromium.launch();

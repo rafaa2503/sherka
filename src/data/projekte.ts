@@ -57,7 +57,7 @@ export const projekte: Projekt[] = [
     einbettbar: true,
     text: {
       de: { was: "Event-Seite mit Ticketshop" },
-      fr: { was: "Site d'événements avec billetterie" },
+      fr: { was: "Site événementiel avec billetterie en ligne" },
     },
   },
   {

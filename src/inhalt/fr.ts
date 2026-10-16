@@ -6,28 +6,31 @@ import { typoFr } from "../lib/typo";
    und vor {name} steht kein "de" (sonst fehlt die Elision bei Vokal).
    Das Erstgespräch heisst überall "rendez-vous" ("entretien" hiesse
    auch Wartung). Stimme wie im Deutschen: ganze, ruhige Sätze mit Subjekt
-   und Verb, keine Schlagworte, keine Gegensatzpaare. */
+   und Verb, keine Schlagworte, keine Gegensatzpaare. Die Texte sind keine
+   Übersetzung, sondern so geschrieben, wie man sie in der Romandie sagt.
+   Gerade Apostrophe und normale Leerzeichen genügen, typoFr setzt die
+   französische Typografie. */
 
 export const fr: Woerter = typoFr({
   meta: {
-    titel: "Site internet pour petite entreprise, créé et suivi | Sherka",
+    titel: "Création de site internet pour PME et indépendants | Sherka",
     beschreibung:
-      "Nous créons et gérons des sites internet qui amènent des demandes aux salons, cabinets, restaurants et artisans. Le premier rendez-vous est gratuit.",
-    ogTitel: "Des sites qui amènent des clients au lieu de seulement faire joli.",
+      "Nous créons et entretenons des sites internet qui amènent des demandes aux salons, cabinets, restaurants et artisans. Le premier rendez-vous est gratuit.",
+    ogTitel: "Des sites internet pensés pour vous amener des clients.",
   },
 
   kopf: {
     zumInhalt: "Aller au contenu",
     navLabel: "Navigation principale",
     links: {
-      arbeiten: "Exemples",
+      arbeiten: "Réalisations",
       vorteile: "Avantages",
-      ablauf: "Étapes",
+      ablauf: "Déroulement",
       faq: "Questions",
     },
     anfragen: "Rendez-vous",
-    themaHell: "Passer en affichage clair",
-    themaDunkel: "Passer en affichage sombre",
+    themaHell: "Passer en mode clair",
+    themaDunkel: "Passer en mode sombre",
     andereSprache: "Deutsch",
     andereSpracheKurz: "DE",
     menue: "Ouvrir le menu",
@@ -35,28 +38,28 @@ export const fr: Woerter = typoFr({
   },
 
   hero: {
-    titel: "Plus de clients. Moins d'efforts.",
-    unter: "Un beau site, beaucoup en ont un. Nous vous en créons un qui amène des clients.",
-    cta: "Demander un rendez-vous",
+    titel: "Plus de clients. Moins de tracas.",
+    unter: "Beaucoup d'entreprises ont un beau site. Nous créons le vôtre pour qu'il vous amène des clients.",
+    cta: "Prendre rendez-vous",
     ctaHinweis: "Gratuit et sans engagement.",
     wahlTitel: "Nos réalisations",
-    zeigen: "Afficher {domain} dans l'appareil",
+    zeigen: "Afficher {domain} sur l'appareil",
     laptopAlt: "{domain} sur un ordinateur portable",
-    handyAlt: "{domain} sur un téléphone",
-    messTitel: "Mesuré à l'instant chez vous",
-    messLcp: "Cette page visible après",
-    messFcp: "Premier contenu visible après",
+    handyAlt: "{domain} sur un smartphone",
+    messTitel: "Mesuré à l'instant sur votre appareil",
+    messLcp: "Page affichée en",
+    messFcp: "Premier contenu affiché en",
     messRichtLcp: "Google recommande : moins de 2,5 secondes",
     messRichtFcp: "Google recommande : moins de 1,8 seconde",
   },
 
   intro: {
     stark: "Le téléphone sonne et vous avez les mains prises.",
-    rest: "Qui ne vous joint pas appelle le suivant. Votre site, lui, répond pendant que vous travaillez.",
+    rest: "Le client qui n'arrive pas à vous joindre appelle ailleurs. Votre site, lui, répond pendant que vous travaillez.",
   },
 
   arbeiten: {
-    titel: "Ne nous croyez pas. Ouvrez les sites.",
+    titel: "Ne nous croyez pas sur parole. Ouvrez les sites.",
     oeffnen: "Ouvrir",
     zurueck: "Exemple précédent",
     weiter: "Exemple suivant",
@@ -67,43 +70,43 @@ export const fr: Woerter = typoFr({
     titel: "Un site qui vous rapporte.",
     kacheln: [
       {
-        gross: "Les clients vous trouvent avant vos concurrents.",
-        text: "Nous créons votre site pour que Google puisse lire votre offre et vos horaires.",
+        gross: "Vos clients vous trouvent avant de tomber sur la concurrence.",
+        text: "Nous construisons votre site pour que Google y trouve vos prestations et vos horaires d'ouverture.",
       },
       {
-        gross: "Les demandes arrivent même quand vous avez fermé.",
-        text: "Les clients vous écrivent directement par le site, au lieu d'essayer par téléphone.",
+        gross: "Les demandes arrivent même une fois votre journée terminée.",
+        text: "Vos clients vous écrivent directement depuis le site au lieu d'essayer de vous appeler.",
       },
       {
-        gross: "Nous nous occupons de la technique, pas vous.",
-        text: "Nous tenons votre site à jour et nous faisons les changements pour vous.",
+        gross: "C'est nous qui nous occupons de la technique.",
+        text: "Nous tenons votre site à jour et faisons les modifications à votre place.",
       },
     ],
   },
 
   ablauf: {
-    titel: "Vous voyez ce que vous recevez avant que nous commencions le travail.",
+    titel: "Vous voyez à quoi ressemblera votre site avant que nous commencions.",
     schritte: [
-      { was: "Vous nous présentez votre entreprise.", text: "À partir de là, nous élaborons ensemble un concept." },
-      { was: "Vous recevez une première maquette.", text: "Vous nous dites ce que vous souhaitez y changer." },
-      { was: "Ensuite, le travail commence à votre demande.", text: "Votre site n'est mis en ligne que lorsque vous êtes d'accord." },
+      { was: "Vous nous présentez votre entreprise.", text: "Sur cette base, nous définissons le concept ensemble." },
+      { was: "Vous recevez une première maquette.", text: "Vous nous dites ce que vous aimeriez y changer." },
+      { was: "Avec votre feu vert, nous nous mettons au travail.", text: "Nous ne mettons votre site en ligne que lorsque vous êtes d'accord." },
     ],
   },
 
   faq: {
-    titel: "La technique, vous n'avez pas à la comprendre.",
+    titel: "Vous n'avez pas besoin de vous y connaître en informatique.",
     liste: [
       {
-        frage: "Que dois-je fournir ?",
-        antwort: "Nous avons besoin de quelques phrases sur votre entreprise, de vos horaires et de photos, si vous en avez.",
+        frage: "Qu'est-ce que je dois vous fournir ?",
+        antwort: "Il nous faut quelques lignes sur votre entreprise, vos horaires d'ouverture et, si vous en avez, des photos.",
       },
       {
-        frage: "J'ai déjà un site.",
-        antwort: "Alors nous le regardons ensemble et nous gardons ce qui est bon.",
+        frage: "J'ai déjà un site internet.",
+        antwort: "Nous le passons en revue ensemble et nous gardons ce qui fonctionne.",
       },
       {
         frage: "Et après, je dépends de vous ?",
-        antwort: "Non, l'adresse internet est à votre nom, ou nous vous la transférons.",
+        antwort: "Non, l'adresse de votre site est enregistrée à votre nom, ou nous la mettons à votre nom.",
       },
     ],
   },
@@ -111,55 +114,55 @@ export const fr: Woerter = typoFr({
   kontakt: {
     titel: "Présentez-nous votre entreprise.",
     titelMitName: "Présentez-nous {name}.",
-    text: "Le premier rendez-vous est gratuit et sans engagement, et nous vous répondons sous un jour ouvrable.",
+    text: "Le premier rendez-vous est gratuit et sans engagement. Nous vous répondons dans un délai d'un jour ouvrable.",
     whatsapp: "WhatsApp",
-    whatsappText: "Bonjour, je m'intéresse à un site internet pour {betrieb}. Auriez-vous un moment pour un premier rendez-vous ?",
+    whatsappText: "Bonjour, je réfléchis à un site internet pour {betrieb}. Auriez-vous un moment pour en parler ?",
     whatsappOhne: "mon entreprise",
     telefon: "Téléphone",
     mail: "E-mail",
 
     anliegenLabel: "De quoi s'agit-il ?",
     anliegen: [
-      { wert: "neu", text: "Nouveau site" },
-      { wert: "ueberarbeiten", text: "Retravailler un site existant" },
-      { wert: "anwendung", text: "Un outil au lieu d'Excel" },
+      { wert: "neu", text: "Un nouveau site" },
+      { wert: "ueberarbeiten", text: "Revoir mon site actuel" },
+      { wert: "anwendung", text: "Un outil pour remplacer mes listes Excel" },
       { wert: "offen", text: "Je ne sais pas encore" },
     ],
-    betriebLabel: "Nom de votre entreprise",
-    zeitLabel: "Est-ce urgent ?",
+    betriebLabel: "Comment s'appelle votre entreprise ?",
+    zeitLabel: "C'est pour quand ?",
     zeit: [
       { wert: "bald", text: "Dès que possible" },
       { wert: "monate", text: "Dans les prochains mois" },
-      { wert: "umschauen", text: "Je me renseigne d'abord" },
+      { wert: "umschauen", text: "Je me renseigne pour l'instant" },
     ],
-    textLabel: "Quelques mots à ce sujet",
-    textPlatzhalter: "Ex. : salon de coiffure, rendez-vous en ligne, remplacer l'ancien site",
-    textHinweis: "Pas de données de santé ni de patients, merci.",
+    textLabel: "En quelques mots",
+    textPlatzhalter: "Par exemple : salon de coiffure, réservation en ligne, remplacer l'ancien site",
+    textHinweis: "Merci de ne pas indiquer de données de santé ou de patients.",
     nameLabel: "Votre nom",
     mailLabel: "E-mail",
     telLabel: "Téléphone",
-    erreichbarHinweis: "E-mail ou téléphone, un seul suffit.",
+    erreichbarHinweis: "Un e-mail ou un numéro de téléphone suffit.",
     freiwillig: "Facultatif",
 
     senden: "Demander un rendez-vous",
     sendet: "Envoi en cours",
 
     erfolgTitel: "Bien reçu",
-    erfolgText: "Merci, {name}. Nous vous répondons sous un jour ouvrable.",
+    erfolgText: "Merci, {name}. Nous revenons vers vous dans un délai d'un jour ouvrable.",
     erfolgEilig: "Si c'est urgent, écrivez-nous sur WhatsApp.",
 
-    fehlerTitel: "Ça n'a pas marché",
-    fehlerText: "Vos réponses sont toujours là. Réessayez, ou joignez-nous directement :",
+    fehlerTitel: "Le message n'est pas parti",
+    fehlerText: "Vos informations sont toujours là. Réessayez ou contactez-nous directement :",
     zuViele:
-      "Il y a eu trop de tentatives en peu de temps. Réessayez un peu plus tard, s'il vous plaît, ou joignez-nous par téléphone ou sur WhatsApp.",
-    aus: "Dans cet aperçu, le formulaire est désactivé.",
+      "Il y a eu trop d'essais en peu de temps. Merci de réessayer un peu plus tard ou de nous contacter par téléphone ou sur WhatsApp.",
+    aus: "Le formulaire est désactivé dans cet aperçu.",
 
-    pflichtAnliegen: "Choisissez de quoi il s'agit.",
-    pflichtName: "Il manque votre nom.",
+    pflichtAnliegen: "Indiquez-nous de quoi il s'agit.",
+    pflichtName: "Il manque encore votre nom.",
     pflichtErreichbar: "Indiquez une adresse e-mail ou un numéro de téléphone.",
-    falscheMail: "Cette adresse e-mail semble incorrecte.",
-    falschesTel: "Ce numéro de téléphone semble incorrect.",
-    fehlerAnzahl: "Informations manquantes : {n}",
+    falscheMail: "Il y a une erreur dans cette adresse e-mail.",
+    falschesTel: "Il y a une erreur dans ce numéro de téléphone.",
+    fehlerAnzahl: "Champs à compléter : {n}",
 
     datenschutzHinweis: "Nous n'utilisons vos données que pour vous répondre.",
   },
@@ -181,7 +184,7 @@ export const fr: Woerter = typoFr({
 
   nichtGefunden: {
     titel: "Cette page n'existe pas",
-    text: "Le lien est peut-être obsolète. Voici la page d'accueil.",
+    text: "Ce lien n'est peut-être plus à jour. Vous pouvez repartir de la page d'accueil.",
     zurueck: "Retour à l'accueil",
   },
 });

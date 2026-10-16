@@ -58,7 +58,7 @@ export function NichtGefunden() {
           {t.nichtGefunden.zurueck}
         </a>
         <a className="textlink" href="/fr/" lang="fr">
-          Vers la page d’accueil
+          Page d’accueil en français
         </a>
       </p>
     </Schlicht>

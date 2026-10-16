@@ -301,23 +301,16 @@ html[data-bewegung="voll"] .auftritt:not(.da) {
   }
 }
 
-/* Wortmarke "sherka." aus dem Logo: der Punkt in Bernstein. Auf hellem Grund
-   ein tieferer Ton, damit er nicht verblasst. */
-.marke-punkt {
-  color: #c77700;
-}
-:root[data-theme="dunkel"] .marke-punkt,
-.buehne-dunkel .marke-punkt {
-  color: #ffa51e;
-}
-
-.marke-zeichen {
-  flex: none;
+/* Logo (Marke.tsx): Zeichen und Wortmarke als ein SVG, so hoch wie etwa
+   anderthalb Zeilen der umgebenden Schrift. Der Punkt in Bernstein, auf
+   hellem Grund im tieferen Ton aus lockup-light.svg. */
+.marke {
+  display: block;
+  height: 1.5em;
   width: auto;
-  height: 1.15em;
 }
 .marke-punkt-kreis {
-  fill: #c77700;
+  fill: #c77a00;
 }
 :root[data-theme="dunkel"] .marke-punkt-kreis,
 .buehne-dunkel .marke-punkt-kreis {

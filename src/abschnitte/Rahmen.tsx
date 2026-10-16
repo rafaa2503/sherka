@@ -70,7 +70,7 @@ export function Fuss() {
   return (
     <footer className="fuss">
       <div className="shell fuss-innen">
-        <span className="fuss-marke" translate="no" aria-label="Sherka">
+        <span className="fuss-marke" translate="no">
           <Marke />
         </span>
         <span className="leise">{t.fuss.ort}</span>

@@ -43,7 +43,7 @@
 
 .fuss { border-top: 1px solid var(--linie); padding-block: var(--a-6) var(--a-7); }
 .fuss-innen { display: flex; flex-wrap: wrap; align-items: center; gap: var(--a-2) var(--a-5); }
-.fuss-marke { display: inline-flex; align-items: center; gap: 0.45em; font-weight: 700; font-size: 1.125rem; letter-spacing: -0.03em; }
+.fuss-marke { display: inline-flex; align-items: center; font-size: 1.125rem; }
 .fuss-innen a {
   display: inline-flex;
   align-items: center;

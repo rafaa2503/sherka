@@ -66,7 +66,7 @@ export function Kopf() {
   return (
     <header className={`kopf${gescrollt ? " kopf-linie" : ""}${ueberDunkel ? " buehne-dunkel kopf-dunkel" : ""}`}>
       <div className="kopf-innen">
-        <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no" aria-label="Sherka">
+        <a className="kopf-marke" href={STARTPFAD[sprache]} translate="no">
           <Marke />
         </a>
 

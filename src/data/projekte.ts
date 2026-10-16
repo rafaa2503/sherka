@@ -70,7 +70,7 @@ export const projekte: Projekt[] = [
     einbettbar: true,
     text: {
       de: { was: "Handels-Website für ein Schweizer Unternehmen" },
-      fr: { was: "Site commercial pour une entreprise suisse" },
+      fr: { was: "Site pour une entreprise de négoce suisse" },
     },
   },
 ];

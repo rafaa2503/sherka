@@ -3,6 +3,7 @@ import { hydrate } from "preact";
 import App from "./App";
 import { SprachProvider, spracheAusPfad } from "./lib/sprache";
 import "./abschnitte/Recht.css";
+import { starteAnker } from "./lib/anker";
 
 /* Das HTML steht schon vorgerendert da. hydrate hängt nur die Logik an,
    ohne den Inhalt neu aufzubauen. */
@@ -16,3 +17,4 @@ if (wurzel) {
     wurzel,
   );
 }
+starteAnker();

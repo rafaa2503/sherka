@@ -1,8 +1,9 @@
 # Auslieferung von sherka.ch auf Infomaniak.
 #
-# Läuft bei jedem Push auf main und auf Knopfdruck. Baut die Seite, prüft die
-# Budgets (bricht bei Überschreitung ab) und kopiert dist/ per rsync über SSH
-# in den Webordner. Danach ein kurzer Rauchtest.
+# Läuft nur auf Knopfdruck (Actions > Deploy > Run workflow), nicht bei jedem
+# Push: Solange die Secrets fehlen, geht die Seite per Zip über Web FTP live.
+# Baut die Seite, prüft die Budgets (bricht bei Überschreitung ab) und kopiert
+# dist/ per rsync über SSH in den Webordner. Danach ein kurzer Rauchtest.
 #
 # Benötigte Secrets (Repository > Settings > Secrets and variables > Actions):
 #   INFOMANIAK_SSH_HOST   z. B. xxxxx.ftp.infomaniak.com
@@ -18,8 +19,6 @@
 name: Deploy
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:

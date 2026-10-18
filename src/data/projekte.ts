@@ -92,5 +92,4 @@ export const projekte: Projekt[] = [
 /** Aussagen, die Raffa vor dem Livegang bestätigen muss. */
 export const BESTAETIGEN = [
   "bern-zahnarzt-team.ch: Sind die Öffnungszeiten im Code für Google ausgezeichnet (Rich-Results-Test)?",
-  "Alle fünf Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
 ];

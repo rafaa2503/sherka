@@ -61,7 +61,6 @@ export const fr: Woerter = typoFr({
   arbeiten: {
     titel: "Vous ne nous croyez pas ? Ouvrez les sites.",
     oeffnen: "Ouvrir",
-    bald: "Bientôt en ligne",
     zurueck: "Exemple précédent",
     weiter: "Exemple suivant",
     bildAlt: "Page d'accueil de {domain}",

@@ -73,13 +73,9 @@ export function Arbeiten() {
             <div className="kachel-text">
               <h3 translate="no">{p.domain}</h3>
               <p className="kachel-was">{p.text[sprache].was}</p>
-              {p.url ? (
-                <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
-                  {t.arbeiten.oeffnen}
-                </a>
-              ) : (
-                <p className="kachel-bald">{t.arbeiten.bald}</p>
-              )}
+              <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
+                {t.arbeiten.oeffnen}
+              </a>
             </div>
           </li>
         ))}

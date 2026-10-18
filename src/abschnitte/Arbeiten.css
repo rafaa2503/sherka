@@ -130,12 +130,3 @@
     display: none;
   }
 }
-
-/* Seite noch nicht live: gleiche Höhe wie der Link, damit die Kacheln bündig bleiben. */
-.kachel-bald {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 1.0625rem;
-  color: var(--leise);
-}

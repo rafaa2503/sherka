@@ -1,8 +1,8 @@
 import { chromium } from "playwright";
 import sharp from "sharp";
-/* Nimmt die vier Referenzseiten frisch auf, 1240x775, ohne Rand.
+/* Nimmt die Referenzseiten frisch auf, 1240x775, ohne Rand.
    Aufruf: node scripts/aufnahmen.mjs */
-const seiten = ["bledi-bienne.ch", "bern-zahnarzt-team.ch", "kamil-energy.ch", "takabul.ch"];
+const seiten = ["bledi-bienne.ch", "bern-zahnarzt-team.ch", "kamil-energy.ch", "takabul.ch", "teemarclub.com"];
 const b = await chromium.launch();
 for (const s of seiten) {
   const p = await b.newPage({ viewport: { width: 1240, height: 775 }, deviceScaleFactor: 1 });

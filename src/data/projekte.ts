@@ -6,8 +6,7 @@ import type { Sprache } from "../lib/sprache";
 
 export type Projekt = {
   domain: string;
-  /* null: Seite ist noch nicht live, dann gibt es keinen Link. */
-  url: string | null;
+  url: string;
   bild: string;
   bildBreite: number;
   bildHoehe: number;
@@ -75,11 +74,10 @@ export const projekte: Projekt[] = [
     },
   },
   {
-    /* Noch ohne Domain (Hosting bei Infomaniak steht aus). Sobald sie live
-       ist: domain und url eintragen, Bilder umbenennen. */
-    domain: "The Teemar Club",
-    url: null,
-    bild: "/shots/teemar.webp",
+    /* Sendet X-Frame-Options: SAMEORIGIN, daher nur Link. */
+    domain: "teemarclub.com",
+    url: "https://teemarclub.com",
+    bild: "/shots/teemarclub.com.webp",
     bildBreite: 1240,
     bildHoehe: 775,
     domainBei: "kunde",
@@ -94,6 +92,5 @@ export const projekte: Projekt[] = [
 /** Aussagen, die Raffa vor dem Livegang bestätigen muss. */
 export const BESTAETIGEN = [
   "bern-zahnarzt-team.ch: Sind die Öffnungszeiten im Code für Google ausgezeichnet (Rich-Results-Test)?",
-  "Teemar: Domain eintragen, sobald die Seite live ist, und Link prüfen.",
   "Alle fünf Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
 ];

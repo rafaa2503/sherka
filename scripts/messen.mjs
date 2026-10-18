@@ -1,9 +1,9 @@
-/* Misst die vier Referenzseiten über die PageSpeed-Insights-API von Google
+/* Misst die Referenzseiten über die PageSpeed-Insights-API von Google
    (simuliertes Mittelklasse-Handy, Labormessung) und schreibt Ergebnis und
    Datum nach src/data/messungen.json. Keine Ersatzwerte: schlägt eine
    Messung fehl, fehlt der Eintrag und die Seite zeigt die Zeile nicht. */
 import { writeFile } from "node:fs/promises";
-const seiten = ["bledi-bienne.ch", "bern-zahnarzt-team.ch", "kamil-energy.ch", "takabul.ch"];
+const seiten = ["bledi-bienne.ch", "bern-zahnarzt-team.ch", "kamil-energy.ch", "takabul.ch", "teemarclub.com"];
 const key = process.env.PSI_KEY ? `&key=${process.env.PSI_KEY}` : "";
 const ergebnis = {};
 for (const s of seiten) {

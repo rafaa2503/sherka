@@ -1,12 +1,13 @@
 import type { Sprache } from "../lib/sprache";
 
-/* Die vier echten Referenzen. Nur Prüfpunkte, die stimmen. Was Raffa noch
+/* Die echten Referenzen. Nur Prüfpunkte, die stimmen. Was Raffa noch
    bestätigen muss, steht in BESTAETIGEN (npm run startklar listet es).
    Reihenfolge: zuerst die Betriebe aus der Region, kamil-energy zuletzt. */
 
 export type Projekt = {
   domain: string;
-  url: string;
+  /* null: Seite ist noch nicht live, dann gibt es keinen Link. */
+  url: string | null;
   bild: string;
   bildBreite: number;
   bildHoehe: number;
@@ -73,10 +74,26 @@ export const projekte: Projekt[] = [
       fr: { was: "Site pour une entreprise de négoce suisse" },
     },
   },
+  {
+    /* Noch ohne Domain (Hosting bei Infomaniak steht aus). Sobald sie live
+       ist: domain und url eintragen, Bilder umbenennen. */
+    domain: "The Teemar Club",
+    url: null,
+    bild: "/shots/teemar.webp",
+    bildBreite: 1240,
+    bildHoehe: 775,
+    domainBei: "kunde",
+    einbettbar: false,
+    text: {
+      de: { was: "Social Club für Frauen, mit Shop, Monatsabo und CRM" },
+      fr: { was: "Club social pour femmes, avec boutique, abonnement mensuel et CRM" },
+    },
+  },
 ];
 
 /** Aussagen, die Raffa vor dem Livegang bestätigen muss. */
 export const BESTAETIGEN = [
   "bern-zahnarzt-team.ch: Sind die Öffnungszeiten im Code für Google ausgezeichnet (Rich-Results-Test)?",
-  "Alle vier Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
+  "Teemar: Domain eintragen, sobald die Seite live ist, und Link prüfen.",
+  "Alle fünf Kunden: schriftliche Freigabe für Name, Bild und Live-Ansicht.",
 ];

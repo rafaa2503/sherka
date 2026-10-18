@@ -11,7 +11,7 @@ import "./Hero.css";
    Links steht, was Sherka macht, mit genau einem Knopf. In der Mitte steht ein
    Laptop als echtes 3D-Objekt (Bildschirm und Tastaturfläche sind zwei Ebenen
    im Raum), davor ein Handy, dahinter das Licht des Bildschirms. Rechts wählt
-   man, welche der vier Kundenseiten im Gerät läuft; darunter steht die in
+   man, welche der Kundenseiten im Gerät läuft; darunter steht die in
    diesem Browser gemessene Ladezeit dieser Seite.
 
    Regeln aus den Skills: Titel höchstens zwei Zeilen, Text unter 20 Wörtern,

@@ -54,6 +54,7 @@ export const de = {
   arbeiten: {
     titel: "Glauben Sie uns nichts. Öffnen Sie die Seiten.",
     oeffnen: "Öffnen",
+    bald: "Bald online",
     zurueck: "Vorheriges Beispiel",
     weiter: "Nächstes Beispiel",
     bildAlt: "Startseite von {domain}",

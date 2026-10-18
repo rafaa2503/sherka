@@ -5,7 +5,7 @@ import { projekte } from "../data/projekte";
 import { IconPfeil } from "./Icons";
 import "./Arbeiten.css";
 
-/* Einleitung im Apple-Satz und die vier Arbeiten als Karussell mit grossen
+/* Einleitung im Apple-Satz und die Arbeiten als Karussell mit grossen
    Kacheln, wie die Produktreihen auf apple.com. Wischen am Handy, Pfeile am
    Computer, Scroll-Snap statt Skript-Animation. */
 
@@ -73,9 +73,13 @@ export function Arbeiten() {
             <div className="kachel-text">
               <h3 translate="no">{p.domain}</h3>
               <p className="kachel-was">{p.text[sprache].was}</p>
-              <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
-                {t.arbeiten.oeffnen}
-              </a>
+              {p.url ? (
+                <a className="pfeillink" href={p.url} target="_blank" rel="noopener noreferrer">
+                  {t.arbeiten.oeffnen}
+                </a>
+              ) : (
+                <p className="kachel-bald">{t.arbeiten.bald}</p>
+              )}
             </div>
           </li>
         ))}

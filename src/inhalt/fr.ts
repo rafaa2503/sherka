@@ -13,9 +13,9 @@ import { typoFr } from "../lib/typo";
 
 export const fr: Woerter = typoFr({
   meta: {
-    titel: "Création de site internet pour PME et indépendants | Sherka",
+    titel: "Création de sites internet en Suisse qui amènent des clients | Sherka",
     beschreibung:
-      "Nous créons et entretenons des sites internet qui amènent des demandes aux salons, cabinets, restaurants et artisans. Le premier rendez-vous est gratuit.",
+      "Nous créons des sites internet qui amènent des demandes et nous les entretenons. Vous modifiez vous-même textes, images et prix. Le premier rendez-vous est gratuit.",
     ogTitel: "Des sites internet pensés pour vous amener des clients.",
   },
 
@@ -25,6 +25,7 @@ export const fr: Woerter = typoFr({
     links: {
       arbeiten: "Réalisations",
       vorteile: "Avantages",
+      leistungen: "Prestations",
       ablauf: "Déroulement",
       faq: "Questions",
     },
@@ -79,7 +80,29 @@ export const fr: Woerter = typoFr({
       },
       {
         gross: "C'est nous qui nous occupons de la technique.",
-        text: "Nous tenons votre site à jour et faisons les modifications à votre place.",
+        text: "Nous tenons votre site à jour. Textes, images et prix, vous les modifiez vous-même quand vous voulez.",
+      },
+    ],
+  },
+
+  leistungen: {
+    titel: "Ce que nous faisons pour vous.",
+    liste: [
+      {
+        was: "Site internet ou boutique en ligne",
+        text: "Un site pour votre entreprise, si vous le souhaitez avec boutique, réservation ou billetterie.",
+      },
+      {
+        was: "Modifier vous-même le contenu",
+        text: "Vous adaptez vous-même textes, images et prix, depuis votre téléphone ou votre ordinateur.",
+      },
+      {
+        was: "Être trouvé sur Google",
+        text: "Nous créons votre fiche d'établissement Google et annonçons votre site à Google.",
+      },
+      {
+        was: "Hébergement et suivi",
+        text: "Votre site est hébergé sur des serveurs en Suisse. Nous nous chargeons des mises à jour et des sauvegardes.",
       },
     ],
   },
@@ -91,6 +114,12 @@ export const fr: Woerter = typoFr({
       { was: "Vous recevez une première maquette.", text: "Vous nous dites ce que vous aimeriez y changer." },
       { was: "Avec votre feu vert, nous nous mettons au travail.", text: "Nous ne mettons votre site en ligne que lorsque vous êtes d'accord." },
     ],
+  },
+
+  person: {
+    titel: "Qui se cache derrière Sherka.",
+    text: "Raffa Amro Elsherkasi, informaticien CFC. C'est lui que vous rencontrez dès le premier rendez-vous, et c'est lui qui construit votre site.",
+    fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   faq: {
@@ -180,6 +209,7 @@ export const fr: Woerter = typoFr({
     datenschutz: "Protection des données",
     impressumPfad: "/fr/mentions-legales/",
     datenschutzPfad: "/fr/protection-des-donnees/",
+    instagram: "Instagram",
   },
 
   nichtGefunden: {

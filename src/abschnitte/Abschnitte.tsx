@@ -1,7 +1,8 @@
 import { useSprache } from "../lib/sprache";
+import { PORTRAET_1120, PORTRAET_560, PORTRAET_DA } from "../data/portraet";
 import "./Abschnitte.css";
 
-/* Drei Vorteile der Website als ganze Sätze, dazu Ablauf und Fragen. */
+/* Drei Vorteile der Website als ganze Sätze, Leistungen, Ablauf, die Person und Fragen. */
 
 export function Vorteile() {
   const { t } = useSprache();
@@ -21,6 +22,57 @@ export function Vorteile() {
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+export function Leistungen() {
+  const { t } = useSprache();
+  return (
+    <section className="sektion" id="leistungen" aria-labelledby="leistungen-titel">
+      <div className="shell-breit">
+        <h2 id="leistungen-titel" className="auftritt abschnitt-titel">
+          {t.leistungen.titel}
+        </h2>
+        <ul className="leist">
+          {t.leistungen.liste.map((l, i) => (
+            <li key={l.was} className="leist-punkt auftritt" style={{ "--i": i } as React.CSSProperties}>
+              <h3>{l.was}</h3>
+              <p className="leise">{l.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* Ohne Porträt erscheint nur der Text, nie ein Platzhalter (data/portraet.ts). */
+export function Person() {
+  const { t } = useSprache();
+  return (
+    <section className="sektion" id="person" aria-labelledby="person-titel">
+      <div className="shell-breit">
+        <h2 id="person-titel" className="auftritt abschnitt-titel">
+          {t.person.titel}
+        </h2>
+        <div className={PORTRAET_DA ? "person auftritt" : "person person-ohne-bild auftritt"}>
+          {PORTRAET_DA && (
+            <img
+              className="person-bild"
+              src={PORTRAET_1120}
+              srcSet={`${PORTRAET_560} 560w, ${PORTRAET_1120} 1120w`}
+              sizes="(min-width: 900px) 320px, 70vw"
+              alt={t.person.fotoAlt}
+              width={560}
+              height={700}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+          <p className="person-text">{t.person.text}</p>
+        </div>
       </div>
     </section>
   );

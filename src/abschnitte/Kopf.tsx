@@ -11,6 +11,7 @@ import "./Kopf.css";
 const LINKS = [
   ["arbeiten", "#arbeiten"],
   ["vorteile", "#vorteile"],
+  ["leistungen", "#leistungen"],
   ["ablauf", "#ablauf"],
   ["faq", "#faq"],
 ] as const;

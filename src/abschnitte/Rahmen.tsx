@@ -7,6 +7,8 @@ import { Marke } from "./Marke";
 import { IconPhone, IconWhatsapp } from "./Icons";
 import "./Rahmen.css";
 
+const INSTAGRAM = "https://www.instagram.com/sherka.ch/";
+
 /* Aktionsleiste am Handy: Anrufen, WhatsApp, Erstgespräch. Sichtbar, solange
    die Knöpfe der Bautafel nicht im Bild sind. Weg, sobald der Kontakt im Bild
    ist oder die Tastatur offen ist (ein Eingabefeld hat den Fokus). */
@@ -76,6 +78,9 @@ export function Fuss() {
         <span className="leise">{t.fuss.ort}</span>
         <a href={t.fuss.impressumPfad}>{t.fuss.impressum}</a>
         <a href={t.fuss.datenschutzPfad}>{t.fuss.datenschutz}</a>
+        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">
+          {t.fuss.instagram}
+        </a>
         <span className="fuss-jahr mono leise">2026</span>
       </div>
     </footer>

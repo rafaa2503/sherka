@@ -3,7 +3,7 @@ import { useAuftritt } from "./lib/bewegung";
 import { Kopf } from "./abschnitte/Kopf";
 import { Hero } from "./abschnitte/Hero";
 import { Arbeiten, Intro } from "./abschnitte/Arbeiten";
-import { Ablauf, Faq, Vorteile } from "./abschnitte/Abschnitte";
+import { Ablauf, Faq, Leistungen, Person, Vorteile } from "./abschnitte/Abschnitte";
 import { Kontakt } from "./abschnitte/Kontakt";
 import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
 
@@ -26,7 +26,9 @@ export default function App() {
         <Arbeiten />
         <Intro />
         <Vorteile />
+        <Leistungen />
         <Ablauf />
+        <Person />
         <Faq />
         <Kontakt />
       </main>

@@ -6,9 +6,9 @@
 
 export const de = {
   meta: {
-    titel: "Webdesign für kleine Betriebe: gebaut und betreut | Sherka",
+    titel: "Webdesign Schweiz: Websites, die Kunden bringen | Sherka",
     beschreibung:
-      "Wir bauen Websites für Salons, Praxen, Restaurants und Handwerker, die Anfragen bringen, und betreuen sie danach. Das Erstgespräch ist kostenlos.",
+      "Wir bauen Websites, die Anfragen bringen, und betreuen sie danach. Texte, Bilder und Preise ändern Sie selbst. Das Erstgespräch ist kostenlos.",
     ogTitel: "Websites, die Kunden bringen, statt nur gut auszusehen.",
   },
 
@@ -18,6 +18,7 @@ export const de = {
     links: {
       arbeiten: "Beispiele",
       vorteile: "Vorteile",
+      leistungen: "Leistungen",
       ablauf: "Ablauf",
       faq: "Fragen",
     },
@@ -72,7 +73,29 @@ export const de = {
       },
       {
         gross: "Um die Technik kümmern wir uns, nicht Sie.",
-        text: "Wir halten Ihre Seite aktuell und erledigen Änderungen für Sie.",
+        text: "Wir halten Ihre Seite aktuell. Texte, Bilder und Preise ändern Sie selbst, wann Sie wollen.",
+      },
+    ],
+  },
+
+  leistungen: {
+    titel: "Was wir für Sie machen.",
+    liste: [
+      {
+        was: "Website oder Shop",
+        text: "Eine Seite für Ihren Betrieb, auf Wunsch mit Shop, Reservation oder Ticketverkauf.",
+      },
+      {
+        was: "Inhalte selbst ändern",
+        text: "Texte, Bilder und Preise passen Sie selbst an, am Handy oder am Computer.",
+      },
+      {
+        was: "Bei Google gefunden werden",
+        text: "Wir richten Ihr Google-Unternehmensprofil ein und melden Ihre Seite bei Google an.",
+      },
+      {
+        was: "Hosting und Betreuung",
+        text: "Ihre Seite liegt auf Servern in der Schweiz. Updates und Sicherungen übernehmen wir.",
       },
     ],
   },
@@ -84,6 +107,13 @@ export const de = {
       { was: "Sie erhalten einen ersten Entwurf.", text: "Sie sagen uns, was Sie daran ändern möchten." },
       { was: "Auf Ihren Wunsch startet dann die Arbeit.", text: "Online geht Ihre Seite erst, wenn Sie einverstanden sind." },
     ],
+  },
+
+  /* Wer hinter Sherka steht. In der dritten Person, die Seite spricht als "wir". */
+  person: {
+    titel: "Wer hinter Sherka steht.",
+    text: "Raffa Amro Elsherkasi, gelernter Informatiker EFZ. Mit ihm reden Sie vom ersten Gespräch an, und er baut Ihre Seite.",
+    fotoAlt: "Raffa Amro Elsherkasi",
   },
 
   faq: {
@@ -173,6 +203,7 @@ export const de = {
     datenschutz: "Datenschutz",
     impressumPfad: "/impressum/",
     datenschutzPfad: "/datenschutz/",
+    instagram: "Instagram",
   },
 
   nichtGefunden: {

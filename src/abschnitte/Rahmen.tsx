@@ -12,7 +12,6 @@ export function Fuss() {
         <span className="fuss-marke" translate="no">
           <Marke />
         </span>
-        <span className="leise">{t.fuss.ort}</span>
         <a href={t.fuss.impressumPfad}>{t.fuss.impressum}</a>
         <a href={t.fuss.datenschutzPfad}>{t.fuss.datenschutz}</a>
         <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">

@@ -177,7 +177,7 @@ export const de = {
     fehlerTitel: "Das hat nicht geklappt",
     fehlerText: "Ihre Angaben sind noch da. Versuchen Sie es nochmals, oder erreichen Sie uns direkt:",
     zuViele:
-      "Das waren zu viele Versuche in kurzer Zeit. Versuchen Sie es bitte etwas später nochmals, oder erreichen Sie uns per Telefon oder WhatsApp.",
+      "Das waren zu viele Versuche in kurzer Zeit. Versuchen Sie es bitte etwas später nochmals, oder schreiben Sie uns per WhatsApp.",
     aus: "In dieser Vorschau ist das Formular abgeschaltet.",
 
     pflichtAnliegen: "Wählen Sie kurz aus, worum es geht.",

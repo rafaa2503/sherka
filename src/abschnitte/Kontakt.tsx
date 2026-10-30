@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useSprache } from "../lib/sprache";
 import { fuelle } from "../lib/typo";
-import { MAIL, TELEFON, TELEFON_ROH, whatsappLink } from "../lib/kontakt";
+import { MAIL, TELEFON, whatsappLink } from "../lib/kontakt";
 import { setzeName, useBetrieb } from "../lib/betrieb";
 import { FORMULAR_AUS, MAIL_MUSTER, sendeAnfrage, telGueltig } from "../lib/formular";
-import { IconMail, IconPhone, IconWhatsapp } from "./Icons";
+import { IconMail, IconWhatsapp } from "./Icons";
 import "./Kontakt.css";
 
-/* Kontakt: WhatsApp und Telefon zuerst, dann ein kurzes Formular.
+/* Kontakt: WhatsApp und E-Mail zuerst, dann ein kurzes Formular.
    Pflicht sind nur: worum es geht, der Name, und E-Mail ODER Telefon.
    Geprüft wird beim Verlassen eines Feldes und beim Absenden, der Fokus
    springt zum ersten Fehler. Der Betriebsname kommt aus der Bautafel. */
@@ -139,15 +139,6 @@ export function Kontakt() {
                 <IconWhatsapp />
                 <span>
                   <span className="kanal-art">{k.whatsapp}</span>
-                  <span className="kanal-wert mono">{TELEFON}</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a className="kanal" href={`tel:+${TELEFON_ROH}`}>
-                <IconPhone />
-                <span>
-                  <span className="kanal-art">{k.telefon}</span>
                   <span className="kanal-wert mono">{TELEFON}</span>
                 </span>
               </a>
@@ -298,9 +289,6 @@ export function Kontakt() {
                 </p>
                 <p className="leise">{FORMULAR_AUS ? k.aus : zustand === "zuviele" ? k.zuViele : k.fehlerText}</p>
                 <p className="anfrage-alternativen">
-                  <a className="textlink" href={`tel:+${TELEFON_ROH}`}>
-                    {TELEFON}
-                  </a>
                   <a className="textlink" href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </a>

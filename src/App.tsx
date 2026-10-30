@@ -5,7 +5,7 @@ import { Hero } from "./abschnitte/Hero";
 import { Arbeiten, Intro } from "./abschnitte/Arbeiten";
 import { Ablauf, Faq, Leistungen, Person, Vorteile } from "./abschnitte/Abschnitte";
 import { Kontakt } from "./abschnitte/Kontakt";
-import { Aktionsleiste, Fuss } from "./abschnitte/Rahmen";
+import { Fuss } from "./abschnitte/Rahmen";
 
 /* Die Seite folgt einer Verkaufslinie (plans/texte-marketing.md): Versprechen
    (Hero), Beweis (Kundenseiten), Problem (Intro), Unterschied ("Wer baut, bleibt"
@@ -33,7 +33,6 @@ export default function App() {
         <Kontakt />
       </main>
       <Fuss />
-      <Aktionsleiste />
     </>
   );
 }

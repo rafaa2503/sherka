@@ -183,7 +183,7 @@ export const fr: Woerter = typoFr({
     fehlerTitel: "Le message n'est pas parti",
     fehlerText: "Vos informations sont toujours là. Réessayez ou contactez-nous directement :",
     zuViele:
-      "Il y a eu trop d'essais en peu de temps. Merci de réessayer un peu plus tard ou de nous contacter par téléphone ou sur WhatsApp.",
+      "Il y a eu trop d'essais en peu de temps. Merci de réessayer un peu plus tard ou de nous écrire sur WhatsApp.",
     aus: "Le formulaire est désactivé dans cet aperçu.",
 
     pflichtAnliegen: "Indiquez-nous de quoi il s'agit.",

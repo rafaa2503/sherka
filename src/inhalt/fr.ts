@@ -40,7 +40,7 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins de tracas.",
-    unter: "Beaucoup d'entreprises ont un beau site. Nous créons le vôtre pour qu'il vous amène des clients, si vous le souhaitez avec commande en ligne, réservation ou boutique.",
+    unter: "Beaucoup d'entreprises ont un beau site. Nous créons le vôtre pour qu'il vous amène des clients, avec, si vous le souhaitez, commande en ligne, réservation ou boutique.",
     cta: "Prendre rendez-vous",
     ctaHinweis: "Gratuit et sans engagement.",
     wahlTitel: "Nos réalisations",
@@ -94,10 +94,10 @@ export const fr: Woerter = typoFr({
       },
       {
         was: "Rendez-vous et réservations",
-        text: "Vos clients réservent eux-mêmes, aussi le soir et le week-end. Le téléphone reste calme.",
+        text: "Vos clients réservent eux-mêmes, aussi le soir et le week-end. Votre téléphone sonne moins.",
       },
       {
-        was: "Boutique, billets et abonnements",
+        was: "Boutique, billetterie et abonnements",
         text: "Vous vendez directement sur votre site, avec paiement et vue d'ensemble de vos clients.",
       },
       {
@@ -155,11 +155,11 @@ export const fr: Woerter = typoFr({
       },
       {
         frage: "Qui m'aide si quelque chose ne fonctionne pas ?",
-        antwort: "Nous. L'hébergement, les mises à jour et la sécurité sont de notre ressort, et nous répondons gratuitement à vos questions.",
+        antwort: "Nous. Nous nous occupons de l'hébergement, des mises à jour et de la sécurité, et nous répondons gratuitement à vos questions.",
       },
       {
         frage: "Est-ce qu'on me trouvera sur Google ?",
-        antwort: "Nous préparons votre site pour Google et, si vous le souhaitez, votre fiche d'établissement Google. Personne d'honnête ne vous promet la première place.",
+        antwort: "Nous préparons votre site pour Google et, si vous le souhaitez, votre fiche d'établissement Google. Aucun prestataire honnête ne vous promettra la première place.",
       },
     ],
   },

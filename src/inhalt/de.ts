@@ -87,7 +87,7 @@ export const de = {
       },
       {
         was: "Termine und Reservationen",
-        text: "Ihre Kunden buchen selbst, auch abends und am Wochenende. Das Telefon bleibt ruhig.",
+        text: "Ihre Kunden buchen selbst, auch abends und am Wochenende. Ihr Telefon klingelt weniger.",
       },
       {
         was: "Shop, Tickets und Abos",

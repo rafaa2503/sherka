@@ -137,6 +137,18 @@ export const fr: Woerter = typoFr({
         frage: "Et après, je dépends de vous ?",
         antwort: "Non, l'adresse de votre site est enregistrée à votre nom, ou nous la mettons à votre nom.",
       },
+      {
+        frage: "Combien ça coûte ?",
+        antwort: "Cela dépend de ce que votre site doit faire. Après le premier entretien, vous recevez une offre à prix fixe. Ensuite, vous ne payez plus que l'hébergement.",
+      },
+      {
+        frage: "Qui m'aide si quelque chose ne fonctionne pas ?",
+        antwort: "Nous. L'hébergement, les mises à jour et la sécurité sont de notre ressort, et nous répondons gratuitement à vos questions.",
+      },
+      {
+        frage: "Est-ce qu'on me trouvera sur Google ?",
+        antwort: "Nous préparons votre site pour Google et, si vous le souhaitez, votre fiche d'établissement Google. Personne d'honnête ne vous promet la première place.",
+      },
     ],
   },
 

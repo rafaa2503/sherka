@@ -131,6 +131,18 @@ export const de = {
         frage: "Bin ich danach von Ihnen abhängig?",
         antwort: "Nein, die Internetadresse läuft auf Ihren Namen, oder wir schreiben sie auf Sie um.",
       },
+      {
+        frage: "Was kostet das?",
+        antwort: "Das hängt davon ab, was Ihre Seite können muss. Nach dem Erstgespräch erhalten Sie eine feste Offerte. Danach zahlen Sie nur noch das Hosting.",
+      },
+      {
+        frage: "Wer hilft mir, wenn etwas nicht geht?",
+        antwort: "Wir. Hosting, Updates und Sicherheit übernehmen wir, und Fragen beantworten wir kostenlos.",
+      },
+      {
+        frage: "Werde ich bei Google gefunden?",
+        antwort: "Wir richten Ihre Seite für Google ein und auf Wunsch auch Ihr Google-Unternehmensprofil. Platz eins verspricht Ihnen niemand, der ehrlich ist.",
+      },
     ],
   },
 

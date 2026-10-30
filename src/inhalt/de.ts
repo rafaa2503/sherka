@@ -33,7 +33,7 @@ export const de = {
 
   hero: {
     titel: "Mehr Kunden. Weniger Aufwand.",
-    unter: "Eine schöne Website haben viele. Wir bauen Ihnen eine, die Kunden bringt.",
+    unter: "Eine schöne Website haben viele. Wir bauen Ihnen eine, die Kunden bringt, auf Wunsch mit Online-Bestellung, Reservation oder Shop.",
     cta: "Erstgespräch anfragen",
     ctaHinweis: "Kostenlos und unverbindlich.",
     wahlTitel: "Von uns gebaut",
@@ -82,8 +82,16 @@ export const de = {
     titel: "Was wir für Sie machen.",
     liste: [
       {
-        was: "Website oder Shop",
-        text: "Eine Seite für Ihren Betrieb, auf Wunsch mit Shop, Reservation oder Ticketverkauf.",
+        was: "Bestellungen online annehmen",
+        text: "Ihre Kunden bestellen über Ihre Seite, und Sie sehen alle Bestellungen an einem Ort.",
+      },
+      {
+        was: "Termine und Reservationen",
+        text: "Ihre Kunden buchen selbst, auch abends und am Wochenende. Das Telefon bleibt ruhig.",
+      },
+      {
+        was: "Shop, Tickets und Abos",
+        text: "Sie verkaufen direkt über Ihre Seite, mit Zahlung und Übersicht über Ihre Kunden.",
       },
       {
         was: "Inhalte selbst ändern",
@@ -130,6 +138,10 @@ export const de = {
       {
         frage: "Bin ich danach von Ihnen abhängig?",
         antwort: "Nein, die Internetadresse läuft auf Ihren Namen, oder wir schreiben sie auf Sie um.",
+      },
+      {
+        frage: "Passt das zu meinem Ablauf?",
+        antwort: "Erzählen Sie uns im Erstgespräch, wie Sie heute arbeiten. Dann sagen wir Ihnen ehrlich, was sich für Sie lohnt und was nicht.",
       },
       {
         frage: "Was kostet das?",

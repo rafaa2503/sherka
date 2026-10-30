@@ -40,7 +40,7 @@ export const fr: Woerter = typoFr({
 
   hero: {
     titel: "Plus de clients. Moins de tracas.",
-    unter: "Beaucoup d'entreprises ont un beau site. Nous créons le vôtre pour qu'il vous amène des clients.",
+    unter: "Beaucoup d'entreprises ont un beau site. Nous créons le vôtre pour qu'il vous amène des clients, si vous le souhaitez avec commande en ligne, réservation ou boutique.",
     cta: "Prendre rendez-vous",
     ctaHinweis: "Gratuit et sans engagement.",
     wahlTitel: "Nos réalisations",
@@ -89,8 +89,16 @@ export const fr: Woerter = typoFr({
     titel: "Ce que nous faisons pour vous.",
     liste: [
       {
-        was: "Site internet ou boutique en ligne",
-        text: "Un site pour votre entreprise, si vous le souhaitez avec boutique, réservation ou billetterie.",
+        was: "Recevoir des commandes en ligne",
+        text: "Vos clients commandent sur votre site, et vous retrouvez toutes les commandes au même endroit.",
+      },
+      {
+        was: "Rendez-vous et réservations",
+        text: "Vos clients réservent eux-mêmes, aussi le soir et le week-end. Le téléphone reste calme.",
+      },
+      {
+        was: "Boutique, billets et abonnements",
+        text: "Vous vendez directement sur votre site, avec paiement et vue d'ensemble de vos clients.",
       },
       {
         was: "Modifier vous-même le contenu",
@@ -136,6 +144,10 @@ export const fr: Woerter = typoFr({
       {
         frage: "Et après, je dépends de vous ?",
         antwort: "Non, l'adresse de votre site est enregistrée à votre nom, ou nous la mettons à votre nom.",
+      },
+      {
+        frage: "Est-ce que ça s'adapte à ma façon de travailler ?",
+        antwort: "Expliquez-nous lors du premier entretien comment vous travaillez aujourd'hui. Nous vous dirons franchement ce qui vaut la peine pour vous, et ce qui ne la vaut pas.",
       },
       {
         frage: "Combien ça coûte ?",
